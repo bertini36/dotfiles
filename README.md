@@ -18,8 +18,11 @@ anywhere else.
 
 From `dotfiles` root execute:
 ```bash
-ln -s .bash_aliases ~/.bash_aliases
-ln -s .bash_profile ~/.bash_profile
-ln -s .custom_prompt ~/.custom_prompt
-ln -s .bashrc ~/.bashrc
+ln -s ~/.dotfiles/.bash_aliases ~/.bash_aliases
+ln -s ~/.dotfiles/.bash_profile ~/.bash_profile
+ln -s ~/.dotfiles/.custom_prompt ~/.custom_prompt
+ln -s ~/.dotfiles/.bashrc ~/.bashrc
+
+ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
+ln -s ~/.dotfiles/.gitignore_global ~/.gitignore_global
 ```
