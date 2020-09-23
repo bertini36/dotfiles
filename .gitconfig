@@ -1,0 +1,12 @@
+[user]
+	email = albertopouquiros@gmail.com
+	username = bertini36
+	name = Alberto Pou
+
+[alias]
+	st = status
+	co = !git add -A && git commit
+
+[core]
+	autocrlf = input
+	excludesfile = /home/bertini36/.gitignore_global
