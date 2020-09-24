@@ -27,11 +27,7 @@ ln -s ~/.dotfiles/.bashrc ~/.bashrc
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/.gitignore_global ~/.gitignore_global
 
-cd $HOME
-mkdir .config
-cd .config
-mkdir i3
-mkdir terminator
-
+mkdir -p ~/.config
+mkdir -p ~/.config/i3
 ln -s ~/.dotfiles/.i3 .config/i3/config
 ```
