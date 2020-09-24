@@ -1,5 +1,5 @@
 # 👩‍💻 dotfiles
-My personal config files required to work on Linux
+My personal config files
 
 ## 🚀 Environment Setup
 

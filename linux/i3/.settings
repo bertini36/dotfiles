@@ -11,8 +11,8 @@
 set $mod Mod4
 
 # Some constants
-set $rofi_theme ~/.dotfiles/extra/slate.rafi
-set $i3_blocks_conf ~/.dotfiles/extra/i3blocks.conf
+set $rofi_theme ~/.dotfiles/linux/i3/slate.rafi
+set $i3_blocks_conf ~/.dotfiles/linux/i3/i3blocks.conf
 
 set $projects_folder /home/bertini36/Dropbox/projects/
 set $skitude_folder /home/bertini36/skitude/
