@@ -14,7 +14,7 @@
 
 ##### Clone repostory
     git clone [REPOSITORY]
-    git remote -v -> Checks where is local repository pointing (remote)
+    git remote -v   # Checks where is local repository pointing (remote)
 
 ##### Download changes
     git pull
@@ -22,8 +22,8 @@
     git pull --rebase --autostash
 
 ##### Fetch
-    git fetch origin -> Makes visible created new branches
-    git fetch -ap -> Delete references of not existent branches
+    git fetch origin    # Makes visible created new branches
+    git fetch -ap   # Delete references of not existent branches
 
 ##### Change branch
     git checkout [BRANCH]
@@ -31,28 +31,28 @@
 ##### Add changes
     git add .
     git add -A
-    git add -u -> Add just changes in files that git knows
+    git add -u  # Add just changes in files that git knows
 
 ##### Commit changes
     git commit -m "[DESCRIPTION]
-    git commit -am "[DESCRIPTION]"  -> With add included
-    git commit --ammend --no-edit -> Add stuff in staging area to last commit
+    git commit -am "[DESCRIPTION]"      # With add included
+    git commit --ammend --no-edit   # Add stuff in staging area to last commit
 
 ##### Revert
     git revert -m 1 [HASH]
     git revert @ === git revert HEAD~1
 
 ##### Reset
-    git reset --hard -> Go to previous branch state before all your changes
-    git reset --hard [HASH] -> Go to a previous commit state
-    git reset --hard origin/[BRANCH] -> Delete local commits over a branch and restore repository state
-    git reset HEAD~1 --mixed -> Delete last command but not changes (git undo)
+    git reset --hard    # Go to previous branch state before all your changes
+    git reset --hard [HASH]     # Go to a previous commit state
+    git reset --hard origin/[BRANCH]    # Delete local commits over a branch and restore repository state
+    git reset HEAD~1 --mixed    # Delete last command but not changes (git undo)
     (git discard)
 
 ##### Branches
-    git branch -> Check current branch
-    git branch [BRANCHNAME] -> Create a branch (without checkout) === git checkout -b [BRANCHNAME]
-    git branch -a -> List remote branches
+    git branch  # Check current branch
+    git branch [BRANCHNAME]     # Create a branch (without checkout) === git checkout -b [BRANCHNAME]
+    git branch -a   # List remote branches
 
 ##### Merge
     git merge [BRANCH]
@@ -61,25 +61,25 @@
 ##### Rebase
     git rebase [BRANCHNAME]
     Configure pull as fetch+rebase instead of fetch+merge: git config --global pull.rebase true
-    git rebase -i HEAD~3 -> Interactive rebase to 3 commits in the past
+    git rebase -i HEAD~3    # Interactive rebase to 3 commits in the past
     git rebase --continue
     git rebase --abort
 
 ##### Push
     git push
-    git push --force -> When we rewrite the history
+    git push --force    # When we rewrite the history
 
 ##### Tags
-    git tag "v1.0.0" -> Creates a tag for current commit
-    git tag -> List tags
+    git tag "v1.0.0"    # Creates a tag for current commit
+    git tag     # List tags
 
 ##### Logs
-    git log ->  Shows HEAD (current branch)
+    git log     #  Shows HEAD (current branch)
     git log --graph --abbrev-commit --oneline
-    git log master feature-with-merge -> Shows history of selected branches
-    git log --all -> Shows history of all branches
-    git log master..feature-with-merge -> Shows commits of feature-with-merge which master has not
-    git log --left-right master...feature-with-merge -> Shows commits differences between the 2 branches
+    git log master feature-with-merge   # Shows history of selected branches
+    git log --all   # Shows history of all branches
+    git log master..feature-with-merge  # Shows commits of feature-with-merge which master has not
+    git log --left-right master...feature-with-merge    # Shows commits differences between the 2 branches
     git log --oneline
     git log --grep $string
 
