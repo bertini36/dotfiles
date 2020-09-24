@@ -30,4 +30,7 @@ ln -s ~/.dotfiles/.gitignore_global ~/.gitignore_global
 mkdir -p ~/.config
 mkdir -p ~/.config/i3
 ln -s ~/.dotfiles/.i3 .config/i3/config
+
+mkdir -p ~/.config/terminator
+ln -s ~/.dotfiles/.terminator ~/.config/terminator/config
 ```
