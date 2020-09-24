@@ -1,0 +1,197 @@
+{
+  "plugins": [
+    {
+      "pluginId": "BashSupport",
+      "pluginName": "BashSupport",
+      "downloadUrl": "https://www.bashsupport.com/",
+      "dependencyPluginIds": [
+        "com.intellij.modules.lang"
+      ],
+      "optionalDependencyPluginIds": [],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "Key Promoter X",
+      "pluginName": "Key Promoter X",
+      "dependencyPluginIds": [
+        "com.intellij.modules.lang"
+      ],
+      "optionalDependencyPluginIds": [],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "com.alayouni.ansiHighlight",
+      "pluginName": "ANSI Highlighter",
+      "dependencyPluginIds": [
+        "com.intellij.modules.platform",
+        "com.intellij.modules.lang",
+        "com.intellij.modules.vcs",
+        "com.intellij.modules.xml"
+      ],
+      "optionalDependencyPluginIds": [],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "com.github.b3er.idea.plugins.arc.browser",
+      "pluginName": "Archive browser",
+      "dependencyPluginIds": [
+        "com.intellij.modules.lang"
+      ],
+      "optionalDependencyPluginIds": [],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "com.github.redfoos.logstash-intellij-plugin",
+      "pluginName": "logstash config support",
+      "downloadUrl": "https://github.com/redfoos/logstash-intellij-plugin",
+      "dependencyPluginIds": [
+        "com.intellij.modules.lang"
+      ],
+      "optionalDependencyPluginIds": [],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "com.intellij.ideolog",
+      "pluginName": "Ideolog",
+      "dependencyPluginIds": [
+        "com.intellij.modules.lang"
+      ],
+      "optionalDependencyPluginIds": [],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "name.kropp.intellij.makefile",
+      "pluginName": "Makefile support",
+      "dependencyPluginIds": [
+        "com.intellij.modules.lang"
+      ],
+      "optionalDependencyPluginIds": [],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "org.intellij.plugins.hcl",
+      "pluginName": "HashiCorp Terraform / HCL language support",
+      "dependencyPluginIds": [
+        "com.intellij.modules.platform",
+        "com.intellij.modules.lang",
+        "com.intellij.plugins.watcher"
+      ],
+      "optionalDependencyPluginIds": [
+        "com.intellij.plugins.watcher"
+      ],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "org.jetbrains.plugins.hocon",
+      "pluginName": "HOCON",
+      "dependencyPluginIds": [
+        "com.intellij.modules.platform",
+        "com.intellij.modules.lang",
+        "com.intellij.modules.java"
+      ],
+      "optionalDependencyPluginIds": [
+        "com.intellij.modules.java"
+      ],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "org.toml.lang",
+      "pluginName": "Toml",
+      "dependencyPluginIds": [
+        "com.intellij.modules.lang"
+      ],
+      "optionalDependencyPluginIds": [],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "tv.codely.codelytv-theme",
+      "pluginName": "CodelyTV Theme",
+      "dependencyPluginIds": [
+        "com.intellij.modules.lang"
+      ],
+      "optionalDependencyPluginIds": [],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "dev.blachut.svelte.lang",
+      "pluginName": "Svelte",
+      "downloadUrl": "https://github.com/tomblachut/svelte-intellij",
+      "dependencyPluginIds": [
+        "com.intellij.modules.lang",
+        "JavaScript",
+        "com.intellij.css"
+      ],
+      "optionalDependencyPluginIds": [],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "net.ashald.envfile",
+      "pluginName": "EnvFile",
+      "dependencyPluginIds": [
+        "com.intellij.modules.lang",
+        "com.intellij.java",
+        "com.intellij.modules.python",
+        "com.intellij.modules.ruby",
+        "org.jetbrains.plugins.go"
+      ],
+      "optionalDependencyPluginIds": [
+        "com.intellij.java",
+        "com.intellij.modules.python",
+        "com.intellij.modules.ruby",
+        "org.jetbrains.plugins.go"
+      ],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "ru.meanmail.plugin.requirements",
+      "pluginName": "Requirements",
+      "dependencyPluginIds": [
+        "com.intellij.modules.lang",
+        "com.intellij.modules.python"
+      ],
+      "optionalDependencyPluginIds": [
+        "com.intellij.modules.python"
+      ],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "ru.adelf.idea.dotenv",
+      "pluginName": ".env files support",
+      "dependencyPluginIds": [
+        "com.intellij.modules.platform",
+        "com.jetbrains.php",
+        "com.intellij.modules.ruby",
+        "com.intellij.modules.python",
+        "JavaScript",
+        "org.jetbrains.plugins.go",
+        "Docker",
+        "org.jetbrains.plugins.yaml"
+      ],
+      "optionalDependencyPluginIds": [
+        "com.jetbrains.php",
+        "com.intellij.modules.ruby",
+        "com.intellij.modules.python",
+        "JavaScript",
+        "org.jetbrains.plugins.go",
+        "Docker",
+        "org.jetbrains.plugins.yaml"
+      ],
+      "isBundle": false,
+      "isEnable": true
+    }
+  ]
+}
