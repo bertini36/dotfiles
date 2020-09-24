@@ -14,10 +14,10 @@ set $mod Mod4
 set $rofi_theme ~/.dotfiles/extra/slate.rafi
 set $i3_blocks_conf ~/.dotfiles/extra/i3blocks.conf
 
-set $projects_folder ~/Dropbox/projects/
-set $skitude_folder ~/skitude/
-set $wallpapers_folder ~/Dropbox/pictures/wallpapers/
-set $screenshots_folder ~/Pictures/screenshots
+set $projects_folder /home/bertini36/Dropbox/projects/
+set $skitude_folder /home/bertini36/skitude/
+set $wallpapers_folder /home/bertini36/Dropbox/pictures/wallpapers/
+set $screenshots_folder /home/bertini36/Pictures/screenshots
 
 set $headphones_mac 28:11:A5:01:9A:E7
 
