@@ -5,13 +5,14 @@
     </a>
 </h3>
 <p align="center">
-  <a href="install.sh">Install</a>&nbsp;&nbsp;•&nbsp;
+  <a href="#-installation">Install</a>&nbsp;&nbsp;•&nbsp;
   <a href="shell">Shell</a>&nbsp;&nbsp;•&nbsp;
   <a href="scripts">Bash Scripts</a>&nbsp;&nbsp;•&nbsp;
   <a href="git/.gitconfig">Git configuration</a>
 </p>
 
 ## 🚀 Installation
+Check installation script [here](install.sh)
 ```bash
 git clone https://github.com/bertini36/dotfiles.git ~/.dotfiles/
 cd ~/.dotfiles
