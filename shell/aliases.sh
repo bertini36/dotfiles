@@ -38,6 +38,7 @@ alias bashrc="vim $DOTFILES_PATH/shell/bash/.bashrc"
 alias aliases="vim $DOTFILES_PATH/shell/aliases.sh"
 alias i3conf="vim $DOTFILES_PATH/linux/i3/.settings"
 alias p.="(pycharm $PWD &>/dev/null &)"
+alias settings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 
 # Roiback
 alias roi="cd $HOME/roi/"
