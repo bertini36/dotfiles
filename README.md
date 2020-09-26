@@ -1,6 +1,8 @@
 <h3 align="center">
     bertini36/dotfiles
-    <a href="linux"><img height="12" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linux.svg" /></a>
+    <a href="linux">
+        <img height="12" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linux.svg" />
+    </a>
 </h3>
 <p align="center">
   <a href="install.sh">Install</a>&nbsp;&nbsp;•&nbsp;
@@ -17,8 +19,13 @@ sh install.sh
 ```
 Finally reopen the terminal and enjoy! 
 
-## Other apps
-This apps require to configure them manually. Both are required by I3 conf
+## ✍️ Manual steps
+These apps require to configure them manually, both are required by I3 conf
 
 * <a href="https://github.com/altdesktop/playerctl">Player ctl</a>
 * <a href="https://github.com/jappeace/brightnessctl">Brightness</a> (check visudo to allow its execution)
+
+Don't forget to import Pycharm settings first time you open it (`editors/pycharm/settings`) 
+
+
+<p align="center">&mdash; Built with :heart: from Mallorca &mdash;</p>

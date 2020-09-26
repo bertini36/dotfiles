@@ -17,6 +17,11 @@ sudo snap install pycharm-professional --classic
 # Probably you need to move executable to ~/.local/bin/
 sudo snap install telegram-desktop
 
+# Node
+sudo apt install nodejs
+sudo apt install npm
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
+
 # Python apps installation
 pip install -r langs/python/requirements.txt
 echo "Python apps installed!"
