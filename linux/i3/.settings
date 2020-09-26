@@ -11,13 +11,13 @@
 set $mod Mod4
 
 # Some constants
-set $rofi_theme $DOTFILES_PATH/linux/i3/slate.rafi
-set $i3_blocks_conf $DOTFILES_PATH/linux/i3/i3blocks.conf
+set $rofi_theme ~/.dotfiles/linux/i3/slate.rafi
+set $i3_blocks_conf ~/.dotfiles/linux/i3/i3blocks.conf
 
-set $projects_folder $DROPBOX_PATH/projects/
-set $skitude_folder $HOME/skitude/
-set $wallpapers_folder $DROPBOX_PATH/pictures/wallpapers/
-set $screenshots_folder $HOME/Pictures/screenshots
+set $projects_folder ~/Dropbox/projects/
+set $skitude_folder ~/skitude/
+set $wallpapers_folder /home/bertini36/Dropbox/pictures/wallpapers/
+set $screenshots_folder ~/Pictures/screenshots
 
 set $headphones_mac 28:11:A5:01:9A:E7
 
