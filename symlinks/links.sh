@@ -1,7 +1,6 @@
-ln -s ~/.dotfiles/shell/.aliases ~/.aliases
+ln -s ~/.dotfiles/shell/bash/.bashrc ~/.bashrc
 ln -s ~/.dotfiles/shell/bash/.bash_profile ~/.bash_profile
 ln -s ~/.dotfiles/shell/bash/.custom_prompt ~/.custom_prompt
-ln -s ~/.dotfiles/shell/bash/.bashrc ~/.bashrc
 
 ln -s ~/.dotfiles/git/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/git/.gitignore_global ~/.gitignore_global

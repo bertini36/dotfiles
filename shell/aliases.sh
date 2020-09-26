@@ -7,11 +7,11 @@ alias la="ls -la"
 # Jumps alias
 alias ~="cd ~"
 alias tmp="cd /tmp/"
-alias projects="cd ~/Dropbox/projects/"
-alias dropbox="cd ~/Dropbox/"
-alias blog="cd ~/Dropbox/projects/bertini36.github.io/ && workon blog"
-alias dotfiles="cd ~/.dotfiles/"
-alias boatsandjoy="cd ~/Dropbox/projects/boatsandjoy/ && workon boatsandjoy"
+alias dropbox="cd $DROPBOX_PATH"
+alias projects="cd $DROPBOX_PATH/projects/"
+alias blog="cd $DROPBOX_PATH/projects/bertini36.github.io/ && workon blog"
+alias dotfiles="cd $DOTFILES_PATH"
+alias boatsandjoy="cd $DROPBOX_PATH/projects/boatsandjoy/ && workon boatsandjoy"
 alias home="cd $HOME"
 
 # Git alias
@@ -34,15 +34,16 @@ alias dcdo="dc; down"
 alias dcre="dc; restart"
 
 # Others
-alias bashrc="vim ~/.dotfiles/bashrc"
-alias aliases="vim ~/.dotfiles/.bash_aliases"
-alias i3conf="vim ~/.dotfiles/.config/i3/config"
+alias bashrc="vim $DOTFILES_PATH/shell/bash/.bashrc"
+alias aliases="vim $DOTFILES_PATH/shell/aliases.sh"
+alias i3conf="vim $DOTFILES_PATH/linux/i3/.settings"
 
 # Roiback
-alias roi="cd ~/roi/"
-alias bc="cd ~/roi/bookcore/ && workon bookcore"
-alias dbc="cd ~/roi/docker-bookcore/"
-alias bcconfs="cd ~/roi/configurations/"
+alias roi="cd $HOME/roi/"
+alias bc="cd $HOME/roi/bookcore/ && workon bookcore"
+alias dbc="cd $HOME/roi/docker-bookcore/"
+alias bcconfs="cd $HOME/roi/configurations/"
 
 # Skitude
-alias skitude="cd ~/skitude/"
+alias skitude="cd $HOME/skitude/"
+alias cm="cd $HOME/skitude/customer-management/"

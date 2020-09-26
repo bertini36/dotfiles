@@ -1,10 +1,12 @@
-EDITOR=vim
+# My custom prompt
+source ~/.custom_prompt
 
-# Required to write accents using Intellij IDE
-XMODIFIERS=""
-
-# Virtualenvwrapper
-. /usr/local/bin/virtualenvwrapper.sh
+# Dotfiles
+export DOTFILES_PATH=$HOME/.dotfiles
+source "$DOTFILES_PATH/shell/init.sh"
 
 # FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Virtualenvwrapper
+. /usr/local/bin/virtualenvwrapper.sh

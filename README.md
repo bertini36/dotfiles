@@ -4,7 +4,6 @@ My personal config files
 ## 🚀 Environment Setup
 
 ### ⬇️ Download code
-At your `$HOME` folder
 ```bash
  git clone https://github.com/bertini36/dotfiles.git ~/.dotfiles/
 ```
