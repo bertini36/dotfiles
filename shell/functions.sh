@@ -17,14 +17,14 @@ function export_apps() {
 function import_apps() {
 
     # Ubuntu apps
-    sudo xargs -a ~/.dotfiles/linux/apt/apt-installed.txt apt install
+    sudo xargs -a $DOTFILES_PATH/linux/apt/apt-installed.txt apt install
     echo "Ubuntu apps imported!"
 
     # Python apps
-    pip install -r ~/.dotfiles/langs/python/requirements.txt
+    pip install -r $DOTFILES_PATH/langs/python/requirements.txt
     echo "Python apps imported!"
 
     # Node apps
-    xargs -I_ npm install -g "_" < "/home/bertini36/.dotfiles/langs/js/global_modules.txt"
+    xargs -I_ npm install -g "_" < "$DOTFILES_PATH/langs/js/global_modules.txt"
 
 }

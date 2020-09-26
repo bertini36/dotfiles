@@ -9,4 +9,4 @@
 
 [core]
 	autocrlf = input
-	excludesfile = /home/bertini36/.gitignore_global
+	excludesfile = ~/.gitignore_global

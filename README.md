@@ -15,6 +15,7 @@ git clone https://github.com/bertini36/dotfiles.git ~/.dotfiles/
 cd ~/.dotfiles
 sh install.sh
 ```
+Finally reopen the terminal and enjoy! 
 
 ## Other apps
 This apps require to configure them manually. Both are required by I3 conf
