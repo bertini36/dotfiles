@@ -138,6 +138,7 @@
 
 ##### Change permisions
     chmod ugo+rwx
+    chmod -R 755 [folder]
 
 ##### Print file
     cat [filename]
@@ -333,7 +334,7 @@
 ##### Add user to docker group
     sudo usermod -a -G docker $USER
     
-##### Other
+##### Others
     docker-compose --project-name [projectname] up
     docker-compose --project-name [projectname] restart
     docker-compose --project-name [projectname] stop
@@ -350,7 +351,7 @@
     docker rm $(docker ps -aq)
 
 
-## Other
+## Others
 
 ##### Define alias (.bashrc)
     alias [alias]='[command]'
@@ -368,4 +369,4 @@
     Replace foo with bar in all .txt files: find . -name '*.txt' | xargs sed -i s/foo/bar/g
 
 ## IPDB
-    TODO SAMU
+    TODO
