@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTFILES_PATH/scripts/core/_main.sh"
+
+##? To import your Ubuntu, Python and Node apps
+##?
+##? Usage:
+##?   import_apps
+docs::eval "$@"
+
+# Ubuntu apps
+sudo xargs -a $DOTFILES_PATH/linux/apt/apt-installed.txt apt install
+echo "Ubuntu apps imported!"
+
+# Python apps
+pip install -r $DOTFILES_PATH/langs/python/requirements.txt
+echo "Python apps imported!"
+
+# Node apps
+xargs -I_ npm install -g "_" < "$DOTFILES_PATH/langs/js/global_modules.txt"
