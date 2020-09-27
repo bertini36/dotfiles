@@ -5,6 +5,7 @@ set -euo pipefail
 source "$DOTFILES_PATH/scripts/core/_main.sh"
 
 ##? To export your Ubuntu, Python and Node apps
+#?? 1.0.0
 ##?
 ##? Usage:
 ##?   export_apps

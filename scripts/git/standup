@@ -5,6 +5,7 @@ set -euo pipefail
 source "$DOTFILES_PATH/scripts/core/_main.sh"
 
 ##? Before the daily... If you have no memory
+#?? 1.0.0
 ##?
 ##? Usage:
 ##?   standup
