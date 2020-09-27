@@ -12,7 +12,7 @@
 </p>
 
 ## 🚀 Installation
-Check installation script [here](install.sh)
+Check installation script [here](installer)
 ```bash
 git clone https://github.com/bertini36/dotfiles.git ~/.dotfiles/
 cd ~/.dotfiles
