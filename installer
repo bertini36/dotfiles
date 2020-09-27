@@ -35,7 +35,7 @@ pip install -r langs/python/requirements.txt
 echo "Python apps installed!"
 
 # Global node apps
-xargs -I_ npm install -g "_" < "langs/js/global_modules.txt"
+xarg -I_ npm install -g "_" < "langs/js/global_modules.txt"
 echo "Node apps installed!"
 
 # Create symbolic links

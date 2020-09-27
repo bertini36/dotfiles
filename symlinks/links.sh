@@ -8,7 +8,6 @@ ln -sf ~/.dotfiles/git/.gitignore_global ~/.gitignore_global
 mkdir -p ~/.config
 mkdir -p ~/.config/i3
 ln -sf ~/.dotfiles/linux/i3/.settings .config/i3/config
-ln -sf ~/.dotfiles/linux/i3/rofi-power-menu ~/.local/bin/rofi-power-menu
 
 mkdir -p ~/.config/terminator
 ln -sf ~/.dotfiles/linux/terminator/.settings ~/.config/terminator/config

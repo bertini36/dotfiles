@@ -16,12 +16,12 @@ Check installation script [here](install.sh)
 ```bash
 git clone https://github.com/bertini36/dotfiles.git ~/.dotfiles/
 cd ~/.dotfiles
-sh install.sh
+./installer
 ```
 Finally reopen the terminal and enjoy! 
 
 ## ✍️ Manual steps
-These apps require to configure them manually, both are required by I3 conf
+These apps require to configure them manually, both are required by i3 conf
 
 * <a href="https://github.com/altdesktop/playerctl">Player ctl</a>
 * <a href="https://github.com/jappeace/brightnessctl">Brightness</a> (check visudo to allow its execution)

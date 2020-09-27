@@ -4,7 +4,7 @@ export EDITOR=vim
 export XMODIFIERS=""
 
 # Binary locations
-export PATH=:$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/.fzf/bin:$HOME/.nvm/versions/node/v13.11.0/bin
+export PATH=:$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/.fzf/bin:$HOME/.nvm/versions/node/v13.11.0/bin:$HOME/.dotfiles/bin
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
