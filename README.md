@@ -37,4 +37,5 @@ These apps require to configure them manually, both are required by i3 conf
 
 Don't forget to import Pycharm settings first time you open it (`editors/pycharm/settings`) 
 
-Based on https://github.com/rgomezcasas/dotfiles
+Based on <a href="https://github.com/rgomezcasas/dotfiles" target="_blank">Rafa Gomez dotfiles repo</a>
+<img src="https://camo.githubusercontent.com/6b5101963dca544460665cd73590c5f47273bb30/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f436f64656c7954562d50524f2d626c61636b2e7376673f7374796c653d666c61742d737175617265">
