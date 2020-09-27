@@ -17,7 +17,6 @@ sudo snap install pycharm-professional --classic
 echo "Pycharm installed!"
 
 # Telegram
-# Maybe you need to move executable to ~/.local/bin/
 sudo snap install telegram-desktop
 echo "Telegram installed!"
 
