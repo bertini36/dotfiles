@@ -27,6 +27,3 @@ These apps require to configure them manually, both are required by I3 conf
 * <a href="https://github.com/jappeace/brightnessctl">Brightness</a> (check visudo to allow its execution)
 
 Don't forget to import Pycharm settings first time you open it (`editors/pycharm/settings`) 
-
-
-<p align="center">&mdash; Built with :heart: from Mallorca &mdash;</p>

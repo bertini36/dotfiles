@@ -1,11 +1,11 @@
 # Multiple terminals
 terminator
 
-# Check command usages (better than man)
-tldr
-
 # Fuzzy search (https://github.com/junegunn/fzf)
 fzf
+
+# Check command usages (better than man)
+tldr
 
 # Git
 git
@@ -45,6 +45,3 @@ jq
 
 # Tree
 tree
-
-# Installations
-snap
