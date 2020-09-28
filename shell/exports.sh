@@ -18,6 +18,7 @@ paths=(
     "$HOME/.fzf/bin"
     "$HOME/.nvm/versions/node/v13.11.0/bin"
     "$HOME/.dotfiles/bin"
+    "$HOME/.pyenv/bin"
 )
 PATH=$(
     IFS=":"

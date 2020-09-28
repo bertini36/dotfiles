@@ -9,9 +9,9 @@ alias ~="cd ~"
 alias tmp="cd /tmp/"
 alias dropbox="cd $DROPBOX_PATH"
 alias projects="cd $DROPBOX_PATH/projects/"
-alias blog="cd $DROPBOX_PATH/projects/bertini36.github.io/ && workon blog"
+alias blog="cd $DROPBOX_PATH/projects/bertini36.github.io/"
 alias dotfiles="cd $DOTFILES_PATH"
-alias boatsandjoy="cd $DROPBOX_PATH/projects/boatsandjoy/ && workon boatsandjoy"
+alias boatsandjoy="cd $DROPBOX_PATH/projects/boatsandjoy/"
 alias home="cd $HOME"
 
 # Git alias

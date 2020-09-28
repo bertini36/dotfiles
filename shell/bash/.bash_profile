@@ -13,3 +13,7 @@ source "$DOTFILES_PATH/shell/init.sh"
 
 # Direnv
 eval "$(direnv hook bash)"
+
+# Pyenv
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"

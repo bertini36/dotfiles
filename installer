@@ -29,6 +29,9 @@ echo "Dropbox installed!"
 sudo apt install nodejs npm
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
 
+# Pyenv
+curl https://pyenv.run | bash
+
 # Python apps installation
 pip install -r langs/python/requirements.txt
 echo "Python apps installed!"

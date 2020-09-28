@@ -11,3 +11,5 @@ ln -sf ~/.dotfiles/linux/i3/.settings .config/i3/config
 
 mkdir -p ~/.config/terminator
 ln -sf ~/.dotfiles/linux/terminator/.settings ~/.config/terminator/config
+
+ln -sf ~/.dotfiles/langs/python/.direnvrc ~/.direnvrc
