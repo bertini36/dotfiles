@@ -10,3 +10,6 @@ source "$DOTFILES_PATH/shell/init.sh"
 
 # Virtualenvwrapper
 . /usr/local/bin/virtualenvwrapper.sh
+
+# Direnv
+eval "$(direnv hook bash)"
