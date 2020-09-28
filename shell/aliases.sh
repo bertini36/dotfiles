@@ -7,12 +7,13 @@ alias la="ls -la"
 # Jumps alias
 alias ~="cd ~"
 alias tmp="cd /tmp/"
-alias dropbox="cd $DROPBOX_PATH"
-alias projects="cd $DROPBOX_PATH/projects/"
-alias blog="cd $DROPBOX_PATH/projects/bertini36.github.io/"
-alias dotfiles="cd $DOTFILES_PATH"
-alias boatsandjoy="cd $DROPBOX_PATH/projects/boatsandjoy/"
 alias home="cd $HOME"
+alias dotfiles="cd $DOTFILES_PATH"
+alias projects="cd $HOME/projects/"
+alias boatsandjoy="cd $HOME/projects/boatsandjoy/"
+alias blog="cd $HOME/projects/bertini36.github.io/"
+alias quicopou="cd $HOME/projects/quicopou/"
+alias dropbox="cd $DROPBOX_PATH"
 
 # Git alias
 alias gaa="git add -A"
