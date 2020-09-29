@@ -14,7 +14,7 @@ set $mod Mod4
 set $rofi_theme ~/.dotfiles/linux/i3/slate.rafi
 set $i3_blocks_conf ~/.dotfiles/linux/i3/i3blocks.conf
 
-set $projects_folder ~/Dropbox/projects/
+set $projects_folder ~/projects/
 set $skitude_folder ~/skitude/
 set $wallpapers_folder /home/bertini36/Dropbox/pictures/wallpapers/
 set $screenshots_folder ~/Pictures/screenshots
