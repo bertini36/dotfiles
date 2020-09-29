@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTFILES_PATH/scripts/core/_main.sh"
+
+##? Interactive process kill
+#?? 1.0.0
+##?
+##? Usage:
+##?   kill
+docs::eval "$@"
+
+ps aux | fzf | awk '{print $2}' | xargs kill -9
+
+echo 'done!'

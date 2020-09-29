@@ -40,6 +40,8 @@ alias aliases="vim $DOTFILES_PATH/shell/aliases.sh"
 alias i3conf="vim $DOTFILES_PATH/linux/i3/.settings"
 alias p.="pycharm . &>/dev/null &"
 alias settings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
+alias wsettings="nmtui"
+alias fuck='sudo $(fc -ln -1)'
 
 # Roiback
 alias roi="cd $HOME/roi/"
