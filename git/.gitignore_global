@@ -7,6 +7,15 @@
 
 # Python
 *.pyc
+.direnv
+*.pyc
+__pycache__
+.mypy_cache
+.pytest_cache/
+
+# Others
+/dist/
+/build/
 
 # Custom
 .no-commit
