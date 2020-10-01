@@ -45,7 +45,10 @@ alias i3conf="vim $DOTFILES_PATH/linux/i3/.settings"
 alias p.="pycharm . &>/dev/null &"
 alias settings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 alias wsettings="nmtui"
-alias fuck='sudo $(fc -ln -1)'
+alias fuck="sudo $(fc -ln -1)"
+alias delpyc="find . -name '*.pyc' -exec rm -f {} \;"
+alias relaod="source ~/.bashrc"
+
 
 # Roiback
 alias roi="cd $HOME/roi/"
@@ -59,19 +62,19 @@ alias cm="cd $HOME/skitude/customer-management/"
 
 # Enable handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
+    alias ls="ls --color=auto"
+    alias dir="dir --color=auto"
+    alias vdir="vdir --color=auto"
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+    alias grep="grep --color=auto"
+    alias fgrep="fgrep --color=auto"
+    alias egrep="egrep --color=auto"
 fi
 
 # Some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+alias ll="ls -alF"
+alias la="ls -A"
+alias l="ls -CF"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
