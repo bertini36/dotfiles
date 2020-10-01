@@ -4,8 +4,10 @@ alias sudo="sudo "
 alias ..="cd .."
 alias ...="cd ../.."
 alias cdc="cd $HOME/code/"
-alias ll="ls -l"
-alias la="ls -la"
+alias ls="exa"
+alias ll="exa -l"
+alias la="exa -la"
+alias j="z"
 
 # Jumps alias
 alias ~="cd ~"

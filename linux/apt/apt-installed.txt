@@ -1,56 +1,56 @@
-# Multiple terminals
+# terminal emulator
 terminator
 
-# Fuzzy search (https://github.com/junegunn/fzf)
+# fuzzy search https://github.com/junegunn/fzf
 fzf
 
-# Check command usages (better than man)
+# check command usages https://github.com/tldr-pages/tldr
 tldr
 
-# Git
+# git
 git
 git-extras
 
-# Htop
+# htop
 htop
 
-# Windows manager
+# windows manager https://github.com/i3/i3
 i3
 
-# Screenshots requirements (required at i3 conf)
+# screenshots requirements (i3 requirement) https://github.com/astrand/xclip
 xclip
 scrot
 
-# Manage desktop wallpaper (required at i3 conf)
+# manage desktop wallpaper (i3 requirement) https://github.com/derf/feh
 feh
 
-# Manage multiple screens
+# manage multiple screens
 # Run xrandr, config the screens and generates a sh. sh command is pasted into i3 conf
 xrandr
 
 # Select fonts and styles
 lxapperance
 
-# Runner
+# Runner https://github.com/davatorium/rofi
 rofi
 
-# i3blocks
+# i3blocks https://github.com/vivien/i3blocks
 i3blocks
 
-# Wifi management
+# wifi management
 nmtui
 
-# JSON formatter
+# json formatter https://github.com/stedolan/jq
 jq
 
-# Tree
+# tree
 tree
 
-# Screen
+# screen
 screen
 
-# Direnv
+# direnv https://github.com/direnv/direnv
 direnv
 
-# Zsh
+# zsh https://github.com/zsh-users/zsh
 zsh
