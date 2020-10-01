@@ -1,4 +1,5 @@
 [global_config]
+  borderless = True
   suppress_multiple_term_dialog = True
   title_transmit_bg_color = "#2f343f"
 [keybindings]
@@ -19,4 +20,5 @@
     foreground_color = "#ebdbb2"
     palette = "#282828:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#a89984:#928374:#fb4934:#b8bb26:#fabd2f:#83a598:#d3869b:#8ec07c:#ebdbb2"
     scrollback_lines = 3000
+    scrollbar_position = hidden
     show_titlebar = False
