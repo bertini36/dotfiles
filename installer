@@ -25,6 +25,14 @@ cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 ~/.dropbox-dist/dropboxd
 echo "Dropbox installed!"
 
+# Slack
+sudo snap install slack --classic
+echo "Slack installed!"
+
+# Bat https://github.com/sharkdp/bat
+sudo dpkg -i bin/bat_0.15.4_amd64
+echo "Bat installed!"
+
 # Node
 sudo apt install nodejs npm
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
