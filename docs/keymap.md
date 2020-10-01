@@ -5,7 +5,7 @@
 * **MOD+ENTER**             &rarr;    Open terminal
 * **MOD+SHT+Q**             &rarr;    Close window
 * **MOD+A**                 &rarr;    Rofi apps
-* **MOD+O**                 &rarr;    Rofi open projects
+* **MOD+O**                 &rarr;    Rofi open code projects
 * **MOD+I**                 &rarr;    Rofi open Skitude projects
 * **MOD+P**                 &rarr;    Rofi power
 * **MOD+V**                 &rarr;    Vertical mode
