@@ -1,3 +1,5 @@
+alias sudo="sudo "
+
 # Dir alias
 alias ..="cd .."
 alias ...="cd ../.."
