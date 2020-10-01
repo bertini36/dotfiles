@@ -51,3 +51,6 @@ screen
 
 # Direnv
 direnv
+
+# Zsh
+zsh
