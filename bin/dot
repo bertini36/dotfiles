@@ -8,9 +8,9 @@ source "$DOTFILES_PATH/scripts/core/_main.sh"
 #?? 1.0.0
 ##?
 ##? Usage:
-##?    run
-##?    run <context>
-##?    run <context> <cmd> [<args>...]
+##?    dot
+##?    dot <context>
+##?    dot <context> <cmd> [<args>...]
 
 list_command_paths() {
   find "$DOTFILES_PATH/scripts" -maxdepth 2 -type f |
@@ -23,13 +23,13 @@ fzf_prompt() {
 
   match="$(echo "$paths" |
     awk -F"/" '{print $(NF-1) " " $NF}' |
-    fzf --height 100% --preview 'run $(echo {} | cut -d" " -f 1) $(echo {} | cut -d" " -f 2) -h')"
+    fzf --height 100% --preview 'dot $(echo {} | cut -d" " -f 1) $(echo {} | cut -d" " -f 2) -h')"
   printf "$match "
   read args
   if coll::is_empty "$args"; then
-    run $match
+    dot $match
   else
-    run $match "$args"
+    dot $match "$args"
   fi
 }
 

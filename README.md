@@ -20,13 +20,13 @@ cd ~/.dotfiles
 ```
 Finally reopen the terminal and enjoy! 
 
-## 🏃‍♀️ Run command
-Use `run` command to access, filter and execute all the scripts located at 
+## 💣️ Dot command
+Use `dot` command to access, filter and execute all the scripts located at 
 `scripts/`, for example:
 ```bash
-run
-run git
-run git standup
+dot
+dot git
+dot git standup
 ```
 
 ## ✍️ Manual steps
