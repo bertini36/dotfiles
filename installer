@@ -60,3 +60,6 @@ echo "Python apps installed!"
 # create symbolic links
 sudo sh symlinks/links.sh
 echo "Symbolic links created!"
+
+# make zsh default sh
+chsh -s $(which zsh)

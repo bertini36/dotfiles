@@ -77,3 +77,5 @@ prompt_bertini36_setup() {
 }
 
 prompt_bertini36_setup "${@}"
+clear
+figlet -f slant "bertini36" | lolcat
