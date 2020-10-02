@@ -111,9 +111,6 @@ source "$DOTFILES_PATH/shell/init.sh"
 
 # fpath=("$DOTFILES_PATH/shell/zsh/themes" $fpath)
 
-# fzf
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
 # virtualenvwrapper
 . /usr/local/bin/virtualenvwrapper.sh
 
