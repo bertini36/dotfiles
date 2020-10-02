@@ -64,7 +64,6 @@ alias cm="cd $HOME/skitude/customer-management/"
 
 # Enable handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    alias ls="ls --color=auto"
     alias dir="dir --color=auto"
     alias vdir="vdir --color=auto"
 

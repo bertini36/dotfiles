@@ -26,7 +26,7 @@ cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 echo "Dropbox installed!"
 
 # slack
-sudo snap install slack --classic
+sudo dpkg -i bin/slack-desktop-4.9.1-amd64.deb
 echo "Slack installed!"
 
 # bat https://github.com/sharkdp/bat
