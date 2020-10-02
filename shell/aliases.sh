@@ -48,7 +48,8 @@ alias p.="pycharm . &>/dev/null &"
 alias settings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 alias wsettings="nmtui"
 alias delpyc="find . -name '*.pyc' -exec rm -f {} \;"
-alias relaod="source ~/.bashrc"
+alias brelaod="source ~/.bashrc"
+alias zrelaod="source ~/.zshrc"
 alias cat="bat"
 
 
