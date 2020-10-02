@@ -1,0 +1,79 @@
+#!/usr/bin/env zsh
+
+prompt_pwd() {
+  prompt_short_dir=$(dot filesystem short_pwd)
+  print -n "%F{lightwhite}${prompt_short_dir}%F{lightwhite}"
+}
+
+# prompt_git() {
+#   [[ -n ${git_info} ]] && print -n "%F{white} on%{\x1b[3m%}${(e)git_info[prompt]}%{\x1b[0m%}"
+# }
+
+# Characters
+SEGMENT_SEPARATOR="\ue0b0"
+DIRTY="✗"
+NONE="✓"
+BRANCH="\ue0a0"
+DETACHED="\u27a6"
+
+# Begin a segment
+# Takes two arguments, background and foreground. Both can be omitted,
+# rendering default background/foreground.
+prompt_segment() {
+  local bg fg
+  [[ -n $1 ]] && bg="%K{$1}" || bg="%k"
+  [[ -n $2 ]] && fg="%F{$2}" || fg="%f"
+  if [[ $CURRENT_BG != 'NONE' && $1 != $CURRENT_BG ]]; then
+    print -n "%{$bg%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR%{$fg%}"
+  else
+    print -n "%{$bg%}%{$fg%}"
+  fi
+  CURRENT_BG=$1
+  [[ -n $3 ]] && print -n $3
+}
+
+# Git: branch/detached head, dirty status
+prompt_git() {
+  local color ref
+  is_dirty() {
+    test -n "$(git status --porcelain --ignore-submodules)"
+  }
+  ref="$vcs_info_msg_0_"
+  if [[ -n "$ref" ]]; then
+    if is_dirty; then
+      color=yellow
+      ref="%F{$color}${ref} $DIRTY%F{$color}"
+    else
+      color=green
+      ref="%F{$color}${ref} $NONE%F{$color}"
+    fi
+    if [[ "${ref/.../}" == "$ref" ]]; then
+      ref="%F{$color}$BRANCH%F{$color} $ref"
+    else
+      ref="%F{$color}$DETACHED%F{$color} ${ref/.../}"
+    fi
+    print -n " $ref"
+  fi
+}
+
+prompt_bertini36_precmd() {
+  vcs_info
+}
+
+prompt_bertini36_setup() {
+  local prompt_status='%(?:%F{green}❯❯❯%F{green}:%F{red}❯❯❯%F{red})'
+  autoload -Uz add-zsh-hook && add-zsh-hook precmd prompt_bertini36_precmd
+  autoload -Uz vcs_info
+
+  prompt_opts=(cr percent sp subst)
+
+  zstyle ':vcs_info:*' enable git
+  zstyle ':vcs_info:*' check-for-changes false
+  zstyle ':vcs_info:git*' formats '%b'
+  zstyle ':vcs_info:git*' actionformats '%b (%a)'
+
+  PS1="${prompt_status} \$(prompt_pwd)\$(prompt_git)%f "
+  RPS1=''
+}
+
+prompt_bertini36_setup "${@}"

@@ -5,10 +5,10 @@
 export ZSH="/home/bertini36/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
+# load a random theme each time  oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster"
+# ZSH_THEME="agnoster"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -30,7 +30,10 @@ ZSH_HIGHLIGHT_MAXLENGTH=300
 # dotfiles
 source "$DOTFILES_PATH/shell/init.sh"
 
-# fpath=("$DOTFILES_PATH/shell/zsh/themes" $fpath)
+# Prompt
+fpath=("$DOTFILES_PATH/shell/zsh/themes" $fpath)
+autoload -Uz promptinit && promptinit
+prompt bertini36
 
 # direnv
 eval "$(direnv hook zsh)"
