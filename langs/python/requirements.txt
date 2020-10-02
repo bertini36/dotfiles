@@ -4,5 +4,4 @@ numpy
 requests
 urllib3
 virtualenv
-virtualenvwrapper
 

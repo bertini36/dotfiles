@@ -50,20 +50,12 @@ curl https://sh.rustup.rs -sSf | sh
 sudo apt install -y cargo
 cargo install exa
 
-# node
-sudo apt install nodejs npm
-wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
-
 # pyenv https://github.com/pyenv/pyenv
 curl https://pyenv.run | bash
 
 # python apps installation
 pip install -r langs/python/requirements.txt
 echo "Python apps installed!"
-
-# global node apps
-xarg -I_ npm install -g "_" < "langs/js/global_modules.txt"
-echo "Node apps installed!"
 
 # create symbolic links
 sudo sh symlinks/links.sh

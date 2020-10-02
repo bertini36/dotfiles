@@ -8,9 +8,6 @@ source "$DOTFILES_PATH/shell/init.sh"
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# virtualenvwrapper
-. /usr/local/bin/virtualenvwrapper.sh
-
 # direnv
 eval "$(direnv hook bash)"
 
