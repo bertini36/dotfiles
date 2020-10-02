@@ -56,13 +56,13 @@ prompt_git() {
   fi
 }
 
-prompt_bertini36_precmd() {
+prompt_custom_precmd() {
   vcs_info
 }
 
-prompt_bertini36_setup() {
+prompt_custom_setup() {
   local prompt_status='%(?:%F{green}❯❯❯%F{green}:%F{red}❯❯❯%F{red})'
-  autoload -Uz add-zsh-hook && add-zsh-hook precmd prompt_bertini36_precmd
+  autoload -Uz add-zsh-hook && add-zsh-hook precmd prompt_custom_precmd
   autoload -Uz vcs_info
 
   prompt_opts=(cr percent sp subst)
@@ -76,6 +76,6 @@ prompt_bertini36_setup() {
   RPS1=''
 }
 
-prompt_bertini36_setup "${@}"
+prompt_custom_setup "${@}"
 clear
-figlet -f slant "bertini36" | lolcat
+figlet -f slant "$(whoami)" | lolcat

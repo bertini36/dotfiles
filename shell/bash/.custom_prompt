@@ -103,4 +103,4 @@ else \
 fi)'
 
 clear
-figlet -f slant "bertini36" | lolcat
+figlet -f slant "$(whoami)" | lolcat

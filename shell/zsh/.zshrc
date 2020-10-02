@@ -33,7 +33,7 @@ source "$DOTFILES_PATH/shell/init.sh"
 # Prompt
 fpath=("$DOTFILES_PATH/shell/zsh/themes" $fpath)
 autoload -Uz promptinit && promptinit
-prompt bertini36
+prompt custom
 
 # direnv
 eval "$(direnv hook zsh)"
