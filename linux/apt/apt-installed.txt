@@ -52,8 +52,5 @@ screen
 # direnv https://github.com/direnv/direnv
 direnv
 
-# zsh https://github.com/zsh-users/zsh
-zsh
-
 # prompt required
 figlet

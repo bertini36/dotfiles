@@ -33,18 +33,6 @@ echo "Slack installed!"
 sudo dpkg -i bin/bat_0.15.4_amd64
 echo "Bat installed!"
 
-# ohmyzsh https://github.com/ohmyzsh/ohmyzsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# zsh syntax hightlighting https://github.com/zsh-users/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
-# zsh autosuggestion https://github.com/zsh-users/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-
-# zsh z https://github.com/agkozak/zsh-z
-git clone https://github.com/agkozak/zsh-z ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-z
-
 # exa https://github.com/ogham/exa
 curl https://sh.rustup.rs -sSf | sh
 sudo apt install -y cargo
@@ -60,6 +48,21 @@ echo "Python apps installed!"
 # create symbolic links
 sudo sh symlinks/links.sh
 echo "Symbolic links created!"
+
+# zsh https://github.com/zsh-users/zsh
+sudo apt install zsh
+
+# ohmyzsh https://github.com/ohmyzsh/ohmyzsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# zsh syntax hightlighting https://github.com/zsh-users/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+# zsh autosuggestion https://github.com/zsh-users/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+# zsh z https://github.com/agkozak/zsh-z
+git clone https://github.com/agkozak/zsh-z ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-z
 
 # make zsh default sh
 chsh -s $(which zsh)
