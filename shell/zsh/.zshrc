@@ -68,7 +68,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-z)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-z pyenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -97,3 +97,27 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# zsh ops
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FCNTL_LOCK
+
+# async mode for autocompletion
+ZSH_AUTOSUGGEST_USE_ASYNC=true
+ZSH_HIGHLIGHT_MAXLENGTH=300
+
+# dotfiles
+source "$DOTFILES_PATH/shell/init.sh"
+
+# fpath=("$DOTFILES_PATH/shell/zsh/themes" $fpath)
+
+# fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# virtualenvwrapper
+. /usr/local/bin/virtualenvwrapper.sh
+
+# direnv
+eval "$(direnv hook zsh)"
+
+source $DOTFILES_PATH/shell/zsh/key-bindings.zsh

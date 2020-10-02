@@ -1,19 +1,19 @@
-# My custom prompt
+# custom prompt
 source ~/.custom_prompt
 
-# Dotfiles
+# dotfiles
 export DOTFILES_PATH=$HOME/.dotfiles
 source "$DOTFILES_PATH/shell/init.sh"
 
-# FZF
+# fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# Virtualenvwrapper
+# virtualenvwrapper
 . /usr/local/bin/virtualenvwrapper.sh
 
-# Direnv
+# direnv
 eval "$(direnv hook bash)"
 
-# Pyenv
+# pyenv
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"

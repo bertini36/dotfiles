@@ -24,15 +24,15 @@ alias gaa="git add -A"
 alias gc="git c"
 alias gca="git add --all && git commit --amend --no-edit"
 alias gco="git checkout"
-alias gd="run git pretty-diff"
+alias gd="dot git pretty-diff"
 alias gs="git status -sb"
 alias gf="git fetch --all -p"
 alias gps="git push"
 alias gpsf="git push --force"
 alias gpl="git pull --rebase --autostash"
 alias gb="git branch"
-alias ga="run git amend"
-alias glo="run git pretty-log"
+alias ga="dot git amend"
+alias glo="dot git pretty-log"
 
 # Docker alias
 alias dc="docker-compose $@"
@@ -47,9 +47,9 @@ alias i3conf="vim $DOTFILES_PATH/linux/i3/.settings"
 alias p.="pycharm . &>/dev/null &"
 alias settings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 alias wsettings="nmtui"
-alias fuck="sudo $(fc -ln -1)"
 alias delpyc="find . -name '*.pyc' -exec rm -f {} \;"
 alias relaod="source ~/.bashrc"
+alias cat="bat"
 
 
 # Roiback
@@ -72,11 +72,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep="fgrep --color=auto"
     alias egrep="egrep --color=auto"
 fi
-
-# Some more ls aliases
-alias ll="ls -alF"
-alias la="ls -A"
-alias l="ls -CF"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
