@@ -30,11 +30,6 @@ dot git standup
 ```
 
 ## ✍️ Manual steps
-These apps require to configure them manually, both are required by i3 conf
-
-* <a href="https://github.com/altdesktop/playerctl">Player ctl</a>
-* <a href="https://github.com/jappeace/brightnessctl">Brightness</a> (check visudo to allow its execution)
-
 Don't forget to import Pycharm settings first time you open it (`editors/pycharm/settings`) 
 
 Based on <a href="https://github.com/rgomezcasas/dotfiles" target="_blank">Rafa Gomez dotfiles repo</a>
