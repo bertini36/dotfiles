@@ -15,3 +15,25 @@ reverse-search() {
   typeset -f zle-line-init >/dev/null && zle zle-line-init
   return $ret
 }
+
+# Lazy loads
+nvm() {
+    unset -f nvm node npm
+    export NVM_DIR="$HOME/.nvm" [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    nvm "$@"
+}
+
+node() {
+    unset -f nvm node npm
+    export NVM_DIR=~/.nvm
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+    node "$@"
+}
+
+npm() {
+    unset -f nvm node npm
+    export NVM_DIR=~/.nvm
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+    npm "$@"
+}

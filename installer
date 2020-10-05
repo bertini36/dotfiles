@@ -67,6 +67,11 @@ git clone https://github.com/agkozak/zsh-z ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/pl
 # make zsh default sh
 chsh -s $(which zsh)
 
+# Node
+sudo apt install nodejs
+sudo apt install npm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
+
 # generate folders structure
 mkdir ~/code/ && cd "$_"
 git clone git@github.com:bertini36/bertini36.github.io.git
