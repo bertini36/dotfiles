@@ -106,7 +106,6 @@
 
 * **CTL+SHT+W** 	        &rarr;	    Close tab
 * **CTL+SHT+E**		        &rarr;	    Split screen
-* **SHT+F12**		        &rarr;	    Full screen
 * **ALT+[HARROWS]**         &rarr;      Change tab
 
 #### Navigation in file
@@ -175,7 +174,7 @@
 #### Others
 
 * **CTL+SHT+N**             &rarr;      New file
-* **CTL+F12**               &rarr;      Show file structure
+* **CTL+T**                 &rarr;      Show file structure
 * **CTL+SHT+V**             &rarr;      Copy from history
 * **ALT+ALT (keep)**        &rarr;      Show lateral menus
 * **CTL+H** 				&rarr;      Open file hierarchy
@@ -185,6 +184,7 @@
 * **CTL+SHT+R**             &rarr;      Open refactor window
 * **CTL+D**                 &rarr;      Open diff of a changelist
 * **ALT+9**                 &rarr;      Open Git menu
+* **ALT+ENTER**             &rarr;      Open terminal
 
 
 ## VIM
