@@ -33,6 +33,7 @@ alias gpl="git pull --rebase --autostash"
 alias gb="git branch"
 alias ga="dot git amend"
 alias glo="dot git pretty-log"
+alias gdis="git stash && git stash drop"
 
 # Docker alias
 alias dc="docker-compose $@"

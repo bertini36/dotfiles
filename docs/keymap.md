@@ -166,11 +166,6 @@
 * **CTL+ALT+SHT+L**         &rarr;      Open reformat code window
 * **ALT+ENTER**             &rarr;      Code style / context actions / suggestions menu
 
-#### Diagrams
-
-**F4**                      &rarr;      Jump to source (fe: from UML diagram)
-**Space**                   &rarr;      Add class to UML diagram
-
 #### Others
 
 * **CTL+SHT+N**             &rarr;      New file
