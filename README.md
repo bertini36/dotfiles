@@ -36,3 +36,5 @@ dot git standup
 Don't forget to import Pycharm settings first time you open it (`editors/pycharm/settings`) 
 
 Based on <a href="https://github.com/rgomezcasas/dotfiles" target="_blank">Rafa Gomez dotfiles repo</a>
+
+<p align="center">&mdash; Built with :heart: from Mallorca &mdash;</p>
