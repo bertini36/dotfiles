@@ -10,6 +10,9 @@
   <a href="scripts">Bash Scripts</a>&nbsp;&nbsp;•&nbsp;
   <a href="git/.gitconfig">Git configuration</a>
 </p>
+<p align="center">
+My personal Ubuntu config files
+</p>
 
 ## 🚀 Installation
 Check installation script [here](installer)
