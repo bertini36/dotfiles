@@ -29,6 +29,11 @@ echo "Dropbox installed!"
 sudo dpkg -i bin/slack-desktop-4.9.1-amd64.deb
 echo "Slack installed!"
 
+# docker
+sudo snap install docker
+sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
 # bat https://github.com/sharkdp/bat
 sudo dpkg -i bin/bat_0.15.4_amd64
 echo "Bat installed!"

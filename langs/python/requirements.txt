@@ -4,4 +4,5 @@ numpy
 requests
 urllib3
 virtualenv
+ipython
 
