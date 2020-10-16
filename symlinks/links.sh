@@ -19,7 +19,9 @@ ln -sf ~/.dotfiles/shell/zsh/.zlogin ~/.zlogin
 ln -sf ~/.dotfiles/shell/zsh/.zshenv ~/.zshenv
 
 # brightnessctl https://github.com/jappeace/brightnessctl
-ln -sf ~/.dotfiles/brightness /usr/local/bin/brightness
+ln -sf ~/.dotfiles/bin/brightnessctl/writebrightness.sh /usr/local/bin/brightness
+ln -sf ~/.dotfiles/bin/brightnessctl/increase.sh /usr/local/bin/brightness+
+ln -sf ~/.dotfiles/bin/brightnessctl/decrease.sh /usr/local/bin/brightness-
 
 # playerctl https://github.com/altdesktop/playerctl
 ln -sf ~/.dotfiles/playerctl /usr/bin/playerctl
