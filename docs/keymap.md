@@ -207,3 +207,4 @@
 * **TRANSLATE+TAB**         &rarr;      Translate from Google Bar
 * **CTL+L**                 &rarr;      Go to bar
 * **ALT+[NUMBER]**          &rarr;      Go to tab
+* **CTL+SHT+R**             &rarr;      Reload page

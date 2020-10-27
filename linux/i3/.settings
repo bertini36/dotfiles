@@ -17,6 +17,7 @@ set $i3_blocks_conf ~/.dotfiles/linux/i3/i3blocks.conf
 set $code_folder ~/code/
 set $skitude_folder ~/skitude/
 set $wallpapers_folder /home/bertini36/Dropbox/pictures/wallpapers/
+set $wallpaper /home/bertini36/Dropbox/pictures/wallpapers/monument_valley.jpg"
 set $screenshots_folder ~/Pictures/screenshots
 
 set $headphones_mac 28:11:A5:01:9A:E7
@@ -272,7 +273,7 @@ bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p $
 bindsym --release $mod+Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p $screenshots_folder && mv $f $screenshots_folder && xclip -selection clipboard -t image/png -i $screenshots_folder`ls -1 -t $screenshots_folder | head -1`' # Area selection
 
 # Fixed wallpaper
-exec_always feh --bg-scale "$wallpapers_folderIMG_20191114_131554.jpg"
+exec_always feh --bg-scale "$wallpaper"
 
 # Random wallpaper
 # exec --no-startup-id feh --randomize --bg-scale $wallpapers_folder
