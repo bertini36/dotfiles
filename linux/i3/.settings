@@ -17,7 +17,7 @@ set $i3_blocks_conf ~/.dotfiles/linux/i3/i3blocks.conf
 set $code_folder ~/code/
 set $skitude_folder ~/skitude/
 set $wallpapers_folder /home/bertini36/Dropbox/pictures/wallpapers/
-set $wallpaper /home/bertini36/Dropbox/pictures/wallpapers/monument_valley.jpg"
+set $wallpaper /home/bertini36/Dropbox/pictures/wallpapers/monument_valley.jpg
 set $screenshots_folder ~/Pictures/screenshots
 
 set $headphones_mac 28:11:A5:01:9A:E7
