@@ -15,7 +15,6 @@ set $rofi_theme ~/.dotfiles/linux/i3/slate.rafi
 set $i3_blocks_conf ~/.dotfiles/linux/i3/i3blocks.conf
 
 set $code_folder ~/code/
-set $skitude_folder ~/skitude/
 set $wallpapers_folder /home/bertini36/Dropbox/pictures/wallpapers/
 set $wallpaper /home/bertini36/Dropbox/pictures/wallpapers/monument_valley.jpg
 set $screenshots_folder ~/Pictures/screenshots
@@ -292,9 +291,6 @@ bindsym $mod+p exec rofi -show p -modi p:rofi-power-menu -lines 3 -theme $rofi_t
 
 # Open code projects (menu)
 bindsym $mod+o exec cd $code_folder && ls | rofi -show -dmenu -lines 7 -theme $rofi_theme | xargs -r printf -- "$code_folder%s" | xargs -r ~/.local/bin/pycharm
-
-# Open Skitude projects (menu)
-bindsym $mod+i exec cd $skitude_folder && ls | rofi -show -dmenu -lines 7 -theme $rofi_theme | xargs -r printf -- "$skitude_folder%s" | xargs -r ~/.local/bin/pycharm
 
 # Bluetooth
 exec_always pulseaudio --start
