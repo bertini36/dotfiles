@@ -271,6 +271,9 @@ bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p $
 # OSX-like area selection screenshots
 bindsym --release $mod+Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p $screenshots_folder && mv $f $screenshots_folder && xclip -selection clipboard -t image/png -i $screenshots_folder`ls -1 -t $screenshots_folder | head -1`' # Area selection
 
+# Screenshots with ansi keyboard
+bindsym --release $mod+i exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p $screenshots_folder && mv $f $screenshots_folder && xclip -selection clipboard -t image/png -i $screenshots_folder`ls -1 -t $screenshots_folder | head -1`' # Area selection
+
 # Fixed wallpaper
 exec_always feh --bg-scale "$wallpaper"
 
