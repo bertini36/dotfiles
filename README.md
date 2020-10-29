@@ -37,4 +37,5 @@ Don't forget to import Pycharm settings first time you open it (`editors/pycharm
 
 Based on <a href="https://github.com/rgomezcasas/dotfiles" target="_blank">Rafa Gomez dotfiles repo</a>
 
+<br />
 <p align="center">&mdash; Built with :heart: from Mallorca &mdash;</p>
