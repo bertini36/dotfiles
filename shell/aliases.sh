@@ -52,6 +52,8 @@ alias delpyc="find . -name '*.pyc' -exec rm -f {} \;"
 alias brelaod="source ~/.bashrc"
 alias zrelaod="source ~/.zshrc"
 alias cat="bat"
+alias eslayout="setxkbmap -layout es"
+alias uslayout="setxkbmap -layout us"
 
 
 # Roiback
