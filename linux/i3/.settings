@@ -16,7 +16,7 @@ set $i3_blocks_conf ~/.dotfiles/linux/i3/i3blocks.conf
 
 set $code_folder ~/code/
 set $wallpapers_folder /home/bertini36/Dropbox/pictures/wallpapers/
-set $wallpaper /home/bertini36/Dropbox/pictures/wallpapers/monument_valley.jpg
+set $wallpaper /home/bertini36/Dropbox/pictures/wallpapers/32139955053_ec2accf98f_o.jpg
 set $screenshots_folder ~/Pictures/screenshots
 
 set $headphones_mac 28:11:A5:01:9A:E7
@@ -101,12 +101,12 @@ bindsym $mod+space focus mode_toggle
 # bindsym $mod+d focus child
 
 # Workspaces
-set $navigator_workspace "1: Navigator "
-set $terminals_workspace "2: Terminals "
-set $ide_workspace "3: IDE "
-set $editions_workspace "4: Tips "
-set $chats_workspace "9: Chats "
-set $music_workspace "10: Music "
+set $navigator_workspace "1 Navigator "
+set $terminals_workspace "2 Terminals "
+set $ide_workspace "3 IDE "
+set $editions_workspace "4 Tips "
+set $chats_workspace "9 Chats "
+set $music_workspace "10 Music "
 
 # switch to workspace
 bindsym $mod+1 workspace $navigator_workspace
@@ -148,7 +148,7 @@ workspace $editions_workspace output $lg_monitor
 
 # Assign apps to workspaces
 for_window [class="Spotify"] move to workspace $music_workspace
-# assign [class="jetbrains-pycharm"] $ide_workspace
+assign [class="jetbrains-pycharm"] $ide_workspace
 assign [class="Slack"] $chats_workspace
 assign [class="Google-chrome"] $navigator_workspace
 assign [class="TelegramDesktop"] $chats_workspace

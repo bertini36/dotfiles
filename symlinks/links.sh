@@ -25,3 +25,6 @@ ln -sf ~/.dotfiles/bin/brightnessctl/decrease.sh /usr/local/bin/brightness-
 
 # playerctl https://github.com/altdesktop/playerctl
 ln -sf ~/.dotfiles/playerctl /usr/bin/playerctl
+
+# rofi-power-menu
+ln -sf ~/.dotfiles/bin/rofi-power-menu  ~/.local/bin/rofi-power-menu
