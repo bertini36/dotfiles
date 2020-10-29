@@ -15,8 +15,8 @@ set $rofi_theme ~/.dotfiles/linux/i3/slate.rafi
 set $i3_blocks_conf ~/.dotfiles/linux/i3/i3blocks.conf
 
 set $code_folder ~/code/
-set $wallpapers_folder /home/bertini36/Dropbox/pictures/wallpapers/
-set $wallpaper /home/bertini36/Dropbox/pictures/wallpapers/32139955053_ec2accf98f_o.jpg
+# set $wallpapers_folder /home/bertini36/Dropbox/pictures/wallpapers/
+set $wallpaper /home/bertini36/Dropbox/pictures/wallpapers/31858216753_616a160972_o.png
 set $screenshots_folder ~/Pictures/screenshots
 
 set $headphones_mac 28:11:A5:01:9A:E7
@@ -241,7 +241,7 @@ bar {
 }
 
 # Block command
-bindsym $mod+Shift+x exec i3lock --color "$bg-color"
+bindsym $mod+Shift+x exec i3lock -i $wallpaper
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
@@ -311,3 +311,6 @@ bindsym $mod+n exec echo "disconnect $headphones_mac" | bluetoothctl
 # exec --no-startup-id rm -rf ~/tmp/*
 # exec --no-startup-id rm -rf ~/tmp/.*
 # exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
+
+# Block screen delay
+exec --no-startup-id xautolock -time 60 -locker blurlock
