@@ -26,16 +26,18 @@ cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 echo "Dropbox installed!"
 
 # slack
-sudo dpkg -i bin/slack-desktop-4.9.1-amd64.deb
-echo "Slack installed!"
+# Upload it from slack.com or
+sudo dpkg -i ~/.dotfiles/bin/slack-desktop-4.9.1-amd64.deb
+# echo "Slack installed!"
 
 # docker
 sudo snap install docker
-sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
+# Install last version of Docker Compose
+# sudo curl -L "https://github.com/docker/compose/releases/download/x.y.z/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+# sudo chmod +x /usr/local/bin/docker-compose
 
 # bat https://github.com/sharkdp/bat
-sudo dpkg -i bin/bat_0.15.4_amd64
+sudo dpkg -i ~/.dotfiles/bin/bat_0.15.4_amd64
 echo "Bat installed!"
 
 # exa https://github.com/ogham/exa
@@ -47,12 +49,9 @@ cargo install exa
 curl https://pyenv.run | bash
 
 # python apps installation
-pip install -r langs/python/requirements.txt
+sudo apt install python3-pip
+pip3 install -r ~/.dotfiles/langs/python/requirements.txt
 echo "Python apps installed!"
-
-# create symbolic links
-sudo sh symlinks/links.sh
-echo "Symbolic links created!"
 
 # zsh https://github.com/zsh-users/zsh
 sudo apt install zsh
@@ -76,6 +75,10 @@ chsh -s $(which zsh)
 sudo apt install nodejs
 sudo apt install npm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
+
+# create symbolic links
+sudo sh ~/.dotfiles/symlinks/links.sh
+echo "Symbolic links created!"
 
 # generate folders structure
 mkdir ~/code/ && cd "$_"

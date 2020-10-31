@@ -26,10 +26,11 @@ feh
 
 # manage multiple screens
 # Run xrandr, config the screens and generates a sh. sh command is pasted into i3 conf
-xrandr
+# Already installed at Ubuntu 20
+# xrandr
 
 # Select fonts and styles
-lxapperance
+lxappearance
 
 # Runner https://github.com/davatorium/rofi
 rofi
@@ -38,7 +39,8 @@ rofi
 i3blocks
 
 # wifi management
-nmtui
+# Already installed at Ubuntu 20
+# nmtui
 
 # json formatter https://github.com/stedolan/jq
 jq
@@ -54,3 +56,6 @@ direnv
 
 # prompt required
 figlet
+
+# curl
+curl
