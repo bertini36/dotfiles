@@ -80,8 +80,12 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
 sudo sh ~/.dotfiles/symlinks/links.sh
 echo "Symbolic links created!"
 
+# Copy fonts
+mkdir ~/.fonts
+cp -a ~/.dotfiles/linux/fonts/. ~/.fonts
+
 # generate folders structure
 mkdir ~/code/ && cd "$_"
 git clone git@github.com:bertini36/bertini36.github.io.git
 git clone git@github.com:bertini36/boatsandjoy.git
-git clone https://github.com/bertini36/quicopou
+git clone git@github.com:bertini36/quicopou.git

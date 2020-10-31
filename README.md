@@ -16,6 +16,8 @@ My personal Ubuntu config files
 
 ## 🚀 Installation
 Check installation script [here](installer)
+
+In order to avoid errors it is preferable to run `installer` step by step
 ```bash
 git clone https://github.com/bertini36/dotfiles.git ~/.dotfiles/
 cd ~/.dotfiles
