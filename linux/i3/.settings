@@ -311,6 +311,3 @@ bindsym $mod+n exec echo "disconnect $headphones_mac" | bluetoothctl
 # exec --no-startup-id rm -rf ~/tmp/*
 # exec --no-startup-id rm -rf ~/tmp/.*
 # exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
-
-# Block screen delay
-exec --no-startup-id xautolock -time 60 -locker blurlock
