@@ -101,14 +101,15 @@ bindsym $mod+space focus mode_toggle
 # bindsym $mod+d focus child
 
 # Workspaces
+set $music_workspace "0 Music "
 set $navigator_workspace "1 Navigator "
 set $terminals_workspace "2 Terminals "
 set $ide_workspace "3 IDE "
 set $editions_workspace "4 Tips "
-set $chats_workspace "9 Chats "
-set $music_workspace "10 Music "
+set $chats_workspace "5 Chats "
 
 # switch to workspace
+bindsym $mod+0 workspace $music_workspace
 bindsym $mod+1 workspace $navigator_workspace
 bindsym $mod+2 workspace $terminals_workspace
 bindsym $mod+3 workspace $ide_workspace
@@ -118,9 +119,9 @@ bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace $chats_workspace
-bindsym $mod+0 workspace $music_workspace
 
 # move focused container to workspace
+bindsym $mod+Shift+0 move container to workspace $music_workspace
 bindsym $mod+Shift+1 move container to workspace $navigator_workspace
 bindsym $mod+Shift+2 move container to workspace $terminals_workspace
 bindsym $mod+Shift+3 move container to workspace $ide_workspace
@@ -130,7 +131,6 @@ bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace $chats_workspace
-bindsym $mod+Shift+0 move container to workspace $music_workspace
 
 # Monitors
 set $laptop_monitor eDP-1
@@ -139,20 +139,20 @@ set $lg_monitor DP-1
 # Assign workspaces to monitors
 
 workspace $music_workspace output $laptop_monitor
-workspace $chats_workspace output $laptop_monitor
-
 workspace $navigator_workspace output $lg_monitor
 workspace $terminals_workspace output $lg_monitor
 workspace $ide_workspace output $lg_monitor
 workspace $editions_workspace output $lg_monitor
+workspace $chats_workspace output $laptop_monitor
 
 # Assign apps to workspaces
+assign [class="Spotify"] $music_workspace
 for_window [class="Spotify"] move to workspace $music_workspace
-assign [class="jetbrains-pycharm"] $ide_workspace
 assign [class="Slack"] $chats_workspace
 assign [class="Google-chrome"] $navigator_workspace
 assign [class="TelegramDesktop"] $chats_workspace
 assign [class="RStudio"] $ide_workspace
+# assign [class="jetbrains-pycharm"] $ide_workspace
 
 # Reload the configuration file
 bindsym $mod+Shift+c reload
