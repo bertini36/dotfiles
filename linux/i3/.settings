@@ -298,9 +298,6 @@ bindsym $mod+b exec echo "connect $headphones_mac" | bluetoothctl
 # Disconnect headphones from Bluetooth
 bindsym $mod+n exec echo "disconnect $headphones_mac" | bluetoothctl
 
-# Don't block screen
-exec --no-startup-id xset -dpms s off
-
 # Fixed wallpaper
 exec_always feh --bg-scale "$wallpaper"
 
