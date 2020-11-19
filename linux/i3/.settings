@@ -274,12 +274,6 @@ bindsym --release $mod+Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mk
 # Screenshots with ansi keyboard
 bindsym --release $mod+i exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p $screenshots_folder && mv $f $screenshots_folder && xclip -selection clipboard -t image/png -i $screenshots_folder`ls -1 -t $screenshots_folder | head -1`' # Area selection
 
-# Fixed wallpaper
-exec_always feh --bg-scale "$wallpaper"
-
-# Random wallpaper
-# exec --no-startup-id feh --randomize --bg-scale $wallpapers_folder
-
 # Dropbox
 exec_always --no-startup-id dropbox start
 
@@ -303,6 +297,15 @@ bindsym $mod+b exec echo "connect $headphones_mac" | bluetoothctl
 
 # Disconnect headphones from Bluetooth
 bindsym $mod+n exec echo "disconnect $headphones_mac" | bluetoothctl
+
+# Don't block screen
+exec --no-startup-id xset -dpms s off
+
+# Fixed wallpaper
+exec_always feh --bg-scale "$wallpaper"
+
+# Random wallpaper
+# exec --no-startup-id feh --randomize --bg-scale $wallpapers_folder
 
 # Automount USB disks and drives
 # exec --no-startup-id udiskie --tray

@@ -28,3 +28,6 @@ ln -sf ~/.dotfiles/bin/playerctl /usr/bin/playerctl
 
 # rofi-power-menu
 ln -sf ~/.dotfiles/bin/rofi-power-menu ~/.local/bin/rofi-power-menu
+
+# Keyboard config
+ln -sf ~/.dotfiles/linux/.Xmodmap ~/.Xmodmap
