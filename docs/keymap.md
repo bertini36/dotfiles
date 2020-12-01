@@ -131,10 +131,11 @@
 
 #### Navigation helpers
 * **ALT+E**                 &rarr;      Recent files
-* **ALT+SHT+E**             &rarr;      Recent locations
+* **ALT+SHT+L**             &rarr;      Recent locations
 * **CTL+SHT+S**             &rarr;      Locate file in source
 * **CTL+UP**                &rarr;      Show file path
 * **CTL+ALT+SHT+O**         &rarr;      Open projects
+* **ALT+SHT+E**             &rarr;      Select from caret to end
 
 #### Edit
 
@@ -164,6 +165,11 @@
 * **CTL+ALT+L** 		    &rarr;  	Reformat code
 * **CTL+ALT+SHT+L**         &rarr;      Open reformat code window
 * **ALT+ENTER**             &rarr;      Code style / context actions / suggestions menu
+
+#### Refactoring
+* **CTL+CLICK**             &rarr;      Check variable reads and writes
+* **CTL+ALT+SHT+T**         &rarr;      Refactor this
+
 
 #### Others
 
