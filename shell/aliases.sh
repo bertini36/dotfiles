@@ -45,7 +45,8 @@ alias dcre="dc; restart"
 alias bashrc="vim $DOTFILES_PATH/shell/bash/.bashrc"
 alias aliases="vim $DOTFILES_PATH/shell/aliases.sh"
 alias i3conf="vim $DOTFILES_PATH/linux/i3/.settings"
-alias p.="pycharm . &>/dev/null &"
+alias pycharm.="pycharm . &>/dev/null &"
+alias p.="pycharm."
 alias settings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 alias wsettings="nmtui"
 alias delpyc="find . -name '*.pyc' -exec rm -f {} \;"
@@ -54,6 +55,8 @@ alias zrelaod="source ~/.zshrc"
 alias cat="bat"
 alias eslayout="setxkbmap -layout es"
 alias uslayout="setxkbmap -layout us"
+alias nautilus.="nautilus . &>/dev/null &"
+alias n.="nautilus."
 
 
 # Roiback
