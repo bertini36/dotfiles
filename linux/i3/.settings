@@ -16,7 +16,7 @@ set $i3_blocks_conf ~/.dotfiles/linux/i3/i3blocks.conf
 
 set $code_folder /home/bertini36/code/
 # set $wallpapers_folder /home/bertini36/Dropbox/pictures/wallpapers/
-set $wallpaper /home/bertini36/Dropbox/pictures/wallpapers/31858216753_616a160972_o.png
+set $wallpaper /home/bertini36/Dropbox/pictures/wallpapers/1192022.jpg
 set $screenshots_folder ~/Pictures/screenshots
 
 set $headphones_mac 28:11:A5:01:9A:E7
