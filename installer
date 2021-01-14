@@ -16,6 +16,10 @@ echo "Spotify installed!"
 sudo snap install pycharm-professional --classic
 echo "Pycharm installed!"
 
+# idea
+sudo snap install intellij-idea-community --classic
+echo "Idea installed!"
+
 # telegram
 sudo snap install telegram-desktop
 echo "Telegram installed!"
