@@ -65,9 +65,9 @@ alias bc="cd $HOME/roi/bookcore/ && workon bookcore"
 alias dbc="cd $HOME/roi/docker-bookcore/"
 alias bcconfs="cd $HOME/roi/configurations/"
 
-# Skitude
-alias skitude="cd $HOME/skitude/"
-alias cm="cd $HOME/skitude/customer-management/"
+# Skioo
+alias skioo="cd $HOME/skioo/"
+alias cm="cd $HOME/skioo/customer-management/"
 
 # Enable handy aliases
 if [ -x /usr/bin/dircolors ]; then
