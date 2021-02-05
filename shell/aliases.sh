@@ -50,13 +50,14 @@ alias p.="pycharm."
 alias settings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 alias wsettings="nmtui"
 alias delpyc="find . -name '*.pyc' -exec rm -f {} \;"
-alias brelaod="source ~/.bashrc"
+alias breload="source ~/.bashrc"
 alias zrelaod="source ~/.zshrc"
 alias cat="bat"
 alias eslayout="setxkbmap -layout es"
 alias uslayout="setxkbmap -layout us"
 alias nautilus.="nautilus . &>/dev/null &"
 alias n.="nautilus."
+# For Ubuntu 20: alias pip="pip3"
 
 
 # Roiback

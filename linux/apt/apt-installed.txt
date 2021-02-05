@@ -53,6 +53,7 @@ screen
 
 # direnv https://github.com/direnv/direnv
 direnv
+python3-venv
 
 # prompt required
 figlet
