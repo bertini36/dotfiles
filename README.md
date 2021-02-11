@@ -35,7 +35,9 @@ dot git standup
 ```
 
 ## ✍️ Manual steps
-Don't forget to import Pycharm settings first time you open it (`editors/pycharm/settings`) 
+Install <a href="https://www.jetbrains.com/toolbox-app/">Jetbrains Toolbox</a> to install
+Pycharm, Idea, Datagrip, ...
+And then import Jetbrains settings (`editors/jetbrains/settings`). 
 
 Based on <a href="https://github.com/rgomezcasas/dotfiles" target="_blank">Rafa Gomez dotfiles repo</a>
 

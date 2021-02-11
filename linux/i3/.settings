@@ -14,9 +14,9 @@ set $mod Mod4
 set $rofi_theme ~/.dotfiles/linux/i3/slate.rafi
 set $i3_blocks_conf ~/.dotfiles/linux/i3/i3blocks.conf
 
-set $code_folder /home/bertini36/code/
-# set $wallpapers_folder /home/bertini36/Dropbox/pictures/wallpapers/
-set $wallpaper /home/bertini36/Dropbox/pictures/wallpapers/1192022.jpg
+set $code_folder ~/code
+set $wallpaper /home/bertini36/.dotfiles/img/wallpaper.png
+set $lock_wallpaper /home/bertini36/.dotfiles/img/lock_wallpaper.png
 set $screenshots_folder ~/Pictures/screenshots
 
 set $headphones_mac 28:11:A5:01:9A:E7
@@ -152,8 +152,8 @@ assign [class="Slack"] $chats_workspace
 assign [class="Discord"] $chats_workspace
 assign [class="Google-chrome"] $navigator_workspace
 assign [class="TelegramDesktop"] $chats_workspace
-assign [class="RStudio"] $ide_workspace
 # assign [class="jetbrains-pycharm"] $ide_workspace
+# assign [class="RStudio"] $ide_workspace
 
 # Reload the configuration file
 bindsym $mod+Shift+c reload
@@ -241,8 +241,8 @@ bar {
     }
 }
 
-# Block command
-bindsym $mod+Shift+x exec i3lock -i $wallpaper
+# Block command (just work with pngs!)
+bindsym $mod+Shift+x exec i3lock -i $lock_wallpaper
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
@@ -302,9 +302,6 @@ bindsym $mod+n exec echo "disconnect $headphones_mac" | bluetoothctl
 # Fixed wallpaper
 exec_always feh --bg-scale "$wallpaper"
 
-# Random wallpaper
-# exec --no-startup-id feh --randomize --bg-scale $wallpapers_folder
-
 # Automount USB disks and drives
 # exec --no-startup-id udiskie --tray
 
@@ -312,3 +309,13 @@ exec_always feh --bg-scale "$wallpaper"
 # exec --no-startup-id rm -rf ~/tmp/*
 # exec --no-startup-id rm -rf ~/tmp/.*
 # exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
+
+# Autostart
+exec_always --no-startup-id i3-msg 'exec "~/.dotfiles/bin/autolock.sh"'
+exec_always --no-startup-id i3-msg 'exec "python ~/.dotfiles/bin/detect_monitors.py"'
+
+# Launch apps in workspaces
+exec --no-startup-id i3-msg 'workspace $chats_workspace;exec slack'
+exec --no-startup-id i3-msg 'workspace $music_workspace;exec spotify'
+exec --no-startup-id i3-msg 'workspace $terminals_workspace;exec terminator'
+exec --no-startup-id i3-msg 'workspace $navigator_workspace;exec google-chrome-stable mail.google.com/mail/u/0/#inbox calendar.google.com/calendar/r/week'

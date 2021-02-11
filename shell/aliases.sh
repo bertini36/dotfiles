@@ -59,7 +59,6 @@ alias nautilus.="nautilus . &>/dev/null &"
 alias n.="nautilus."
 # For Ubuntu 20: alias pip="pip3"
 
-
 # Roiback
 alias roi="cd $HOME/roi/"
 alias bc="cd $HOME/roi/bookcore/ && workon bookcore"

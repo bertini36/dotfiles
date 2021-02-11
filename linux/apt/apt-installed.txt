@@ -48,7 +48,7 @@ jq
 # tree
 tree
 
-# screen
+# screen (terminal multiplexer)
 screen
 
 # direnv https://github.com/direnv/direnv
@@ -64,8 +64,14 @@ curl
 # vim editor
 vim
 
-# lolcat
+# lolcat (cool name in the console)
 lolcat
 
-# ncdu
+# ncdu (check disk space)
 ncdu
+
+# filezilla (sftp)
+filezilla
+
+# autolock
+xautolock
