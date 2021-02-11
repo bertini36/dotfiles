@@ -2,33 +2,19 @@ sudo apt update -y
 echo "Ubuntu updated!"
 
 # ubuntu apps installation
-sudo apt install $(cat linux/apt/apt-installed.txt | grep "^[^#;]")
+sudo apt install $(cat linux/apt/packages.txt | grep "^[^#;]")
 echo "Ubuntu apps installed!"
 
-# snap installer
-sudo apt install snap
-
-# spotify
-sudo snap install spotify
-echo "Spotify installed!"
-
-# telegram
-sudo snap install telegram-desktop
-echo "Telegram installed!"
+# span apps installation
+sudo apt install $(cat linux/snap/packages.txt | grep "^[^#;]")
+echo "Snap apps installed!"
 
 # dropbox
 cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 ~/.dropbox-dist/dropboxd
 echo "Dropbox installed!"
 
-# slack
-# Upload it from slack.com or
-sudo dpkg -i ~/.dotfiles/bin/slack-desktop-4.9.1-amd64.deb
-# echo "Slack installed!"
-
-# docker
-sudo snap install docker
-# Install last version of Docker Compose
+# Docker Compose
 # sudo curl -L "https://github.com/docker/compose/releases/download/x.y.z/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 # sudo chmod +x /usr/local/bin/docker-compose
 
@@ -49,9 +35,6 @@ sudo apt install python3-pip
 pip3 install -r ~/.dotfiles/langs/python/requirements.txt
 echo "Python apps installed!"
 
-# zsh https://github.com/zsh-users/zsh
-sudo apt install zsh
-
 # ohmyzsh https://github.com/ohmyzsh/ohmyzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
@@ -67,9 +50,7 @@ git clone https://github.com/agkozak/zsh-z ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/pl
 # make zsh default sh
 chsh -s $(which zsh)
 
-# Node
-sudo apt install nodejs
-sudo apt install npm
+# Node nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
 
 # create symbolic links

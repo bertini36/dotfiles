@@ -75,3 +75,13 @@ filezilla
 
 # autolock
 xautolock
+
+# snap installer
+snap
+
+# zsh https://github.com/zsh-users/zsh
+zsh
+
+# node
+nodejs
+npm

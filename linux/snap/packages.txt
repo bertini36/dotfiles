@@ -1,0 +1,5 @@
+spotify
+telegram-desktop
+slack
+docker
+discord
