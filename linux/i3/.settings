@@ -16,7 +16,6 @@ set $i3_blocks_conf ~/.dotfiles/linux/i3/i3blocks.conf
 
 set $code_folder ~/code
 set $wallpaper /home/bertini36/.dotfiles/img/wallpaper.png
-set $lock_wallpaper /home/bertini36/.dotfiles/img/lock_wallpaper.png
 set $screenshots_folder ~/Pictures/screenshots
 
 set $headphones_mac 28:11:A5:01:9A:E7
@@ -242,7 +241,7 @@ bar {
 }
 
 # Block command (just work with pngs!)
-bindsym $mod+Shift+x exec i3lock -i $lock_wallpaper
+bindsym $mod+Shift+x exec i3lock -i $wallpaper
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
