@@ -41,7 +41,7 @@ sudo snap install docker
 # sudo chmod +x /usr/local/bin/docker-compose
 
 # bat https://github.com/sharkdp/bat
-sudo dpkg -i ~/.dotfiles/bin/bat_0.15.4_amd64
+sudo dpkg -i ~/.dotfiles/bin/bat_0.15.4_amd64.deb
 echo "Bat installed!"
 
 # exa https://github.com/ogham/exa
