@@ -65,3 +65,6 @@ vim
 
 # lolcat
 lolcat
+
+# ncdu
+ncdu
