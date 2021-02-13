@@ -53,6 +53,13 @@ chsh -s $(which zsh)
 # Node nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
 
+# i3 lock screen (required by bin/betterlockscreen)
+sudo apt install autoconf gcc make pkg-config libpam0g-dev libcairo2-dev libfontconfig1-dev libxcb-composite0-dev libev-dev libx11-xcb-dev libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev libjpeg-dev
+git clone https://github.com/Raymo111/i3lock-color.git
+cd i3lock-color
+chmod +x install-i3lock-color.sh
+./install-i3lock-color.sh
+
 # create symbolic links
 sudo sh ~/.dotfiles/symlinks/links.sh
 echo "Symbolic links created!"

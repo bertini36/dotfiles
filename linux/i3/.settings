@@ -102,8 +102,8 @@ bindsym $mod+space focus mode_toggle
 # Workspaces
 set $music_workspace "0 Music "
 set $navigator_workspace "1 Navigator "
-set $terminals_workspace "2 Terminals "
-set $ide_workspace "3 IDE "
+set $terminals_workspace "2 Consoles "
+set $ide_workspace "3 Editors "
 set $editions_workspace "4 Tips "
 set $chats_workspace "9 Chats "
 
@@ -241,7 +241,7 @@ bar {
 }
 
 # Block command (just work with pngs!)
-bindsym $mod+Shift+x exec i3lock -i $wallpaper
+bindsym $mod+Shift+x exec betterlockscreen -l dim
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
@@ -300,6 +300,12 @@ bindsym $mod+n exec echo "disconnect $headphones_mac" | bluetoothctl
 
 # Fixed wallpaper
 exec_always feh --bg-scale "$wallpaper"
+
+# Set desktop background with custom effect
+exec --no-startup-id betterlockscreen -w dim
+
+# Set last used background
+exec --no-startup-id source ~/.fehbg
 
 # Automount USB disks and drives
 # exec --no-startup-id udiskie --tray

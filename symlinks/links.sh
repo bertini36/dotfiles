@@ -31,3 +31,6 @@ ln -sf ~/.dotfiles/bin/rofi-power-menu ~/.local/bin/rofi-power-menu
 
 # Keyboard config
 ln -sf ~/.dotfiles/linux/.Xmodmap ~/.Xmodmap
+
+# Lock screen
+ln -sf ~/.dotfiles/bin/betterlockscreen ~/.local/bin/betterlockscreen
