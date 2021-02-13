@@ -240,6 +240,15 @@ bar {
     }
 }
 
+# Fixed wallpaper
+exec_always feh --bg-scale "$wallpaper"
+
+# Set desktop background with custom effect
+exec --no-startup-id betterlockscreen -w dim
+
+# Set last used background
+exec --no-startup-id source ~/.fehbg
+
 # Block command (just work with pngs!)
 bindsym $mod+Shift+x exec betterlockscreen -l dim
 
@@ -263,6 +272,15 @@ bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+
+# Bluetooth
+exec_always pulseaudio --start
+
+# Connect headphones to Bluetooth
+bindsym $mod+b exec echo "connect $headphones_mac" | bluetoothctl
+
+# Disconnect headphones from Bluetooth
+bindsym $mod+n exec echo "disconnect $headphones_mac" | bluetoothctl
 
 # Screen Shots
 # Multi-screen screenshots with scrot
@@ -289,23 +307,17 @@ bindsym $mod+p exec rofi -show p -modi p:rofi-power-menu -lines 3 -theme $rofi_t
 # Open code projects (menu)
 bindsym $mod+o exec cd $code_folder && ls | rofi -show -dmenu -lines 7 -theme $rofi_theme | xargs -r printf -- "$code_folder%s/" | xargs -r ~/.local/bin/pycharm
 
-# Bluetooth
-exec_always pulseaudio --start
+# Autolock
+exec --no-startup-id xautolock -time 10 -corners 0-0- -cornersize 10 -locker 'betterlockscreen -l dim' -detectsleep
 
-# Connect headphones to Bluetooth
-bindsym $mod+b exec echo "connect $headphones_mac" | bluetoothctl
+# Detect keyboard conf using monitors
+exec_always --no-startup-id i3-msg 'exec "python ~/.dotfiles/bin/detect_monitors.py"'
 
-# Disconnect headphones from Bluetooth
-bindsym $mod+n exec echo "disconnect $headphones_mac" | bluetoothctl
-
-# Fixed wallpaper
-exec_always feh --bg-scale "$wallpaper"
-
-# Set desktop background with custom effect
-exec --no-startup-id betterlockscreen -w dim
-
-# Set last used background
-exec --no-startup-id source ~/.fehbg
+# Launch apps in workspaces
+# exec --no-startup-id i3-msg 'workspace $chats_workspace;exec slack'
+exec --no-startup-id i3-msg 'workspace $terminals_workspace;exec terminator'
+exec --no-startup-id i3-msg 'workspace $music_workspace;exec "sleep 10; spotify"'
+exec --no-startup-id i3-msg 'workspace $navigator_workspace;exec google-chrome-stable mail.google.com/mail/u/0/#inbox calendar.google.com/calendar/r/week'
 
 # Automount USB disks and drives
 # exec --no-startup-id udiskie --tray
@@ -314,13 +326,3 @@ exec --no-startup-id source ~/.fehbg
 # exec --no-startup-id rm -rf ~/tmp/*
 # exec --no-startup-id rm -rf ~/tmp/.*
 # exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
-
-# Autostart
-exec_always --no-startup-id i3-msg 'exec "~/.dotfiles/bin/autolock.sh"'
-exec_always --no-startup-id i3-msg 'exec "python ~/.dotfiles/bin/detect_monitors.py"'
-
-# Launch apps in workspaces
-# exec --no-startup-id i3-msg 'workspace $chats_workspace;exec slack'
-# exec --no-startup-id i3-msg 'workspace $terminals_workspace;exec terminator'
-# exec --no-startup-id i3-msg 'workspace $music_workspace;exec spotify'
-exec --no-startup-id i3-msg 'workspace $navigator_workspace;exec google-chrome-stable mail.google.com/mail/u/0/#inbox calendar.google.com/calendar/r/week'
