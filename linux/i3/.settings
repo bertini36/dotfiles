@@ -305,7 +305,7 @@ bindsym $mod+a exec rofi -show run -lines 3 -theme $rofi_theme
 bindsym $mod+p exec rofi -show p -modi p:rofi-power-menu -lines 3 -theme $rofi_theme
 
 # Open code projects (menu)
-bindsym $mod+o exec cd $code_folder && ls | rofi -show -dmenu -lines 7 -theme $rofi_theme | xargs -r printf -- "$code_folder%s/" | xargs -r ~/.local/bin/pycharm
+bindsym $mod+o exec cd $code_folder && ls | rofi -show -dmenu -lines 7 -theme $rofi_theme | xargs -r printf -- "$code_folder%s/" | xargs -r /snap/bin/pycharm-professional
 
 # Autolock
 exec --no-startup-id xautolock -time 10 -corners 0-0- -cornersize 10 -locker 'betterlockscreen -l dim' -detectsleep
