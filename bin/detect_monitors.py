@@ -14,6 +14,3 @@ screens = get_screens()
 if len(screens) == 1:
     # Set keyboard es layout
     subprocess.call('setxkbmap -layout es', shell=True)
-else:
-    # Set keyboard us layout
-    subprocess.call('setxkbmap -layout us', shell=True)
