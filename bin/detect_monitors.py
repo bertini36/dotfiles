@@ -1,5 +1,4 @@
 import subprocess
-import os
 
 
 def get_screens():
