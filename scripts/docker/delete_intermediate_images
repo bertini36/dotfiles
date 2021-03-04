@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTFILES_PATH/scripts/core/_main.sh"
+
+##? Delete intermediate Docker images (images with <none> tag)
+#?? 1.0.0
+##?
+##? Usage:
+##?   delete_intermediate_images
+docs::eval "$@"
+
+docker rmi $(docker images -f 'dangling=true' -q)
