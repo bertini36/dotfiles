@@ -5,9 +5,11 @@ echo "Ubuntu updated!"
 sudo apt install $(cat linux/apt/packages.txt | grep "^[^#;]")
 echo "Ubuntu apps installed!"
 
-# span apps installation
-sudo apt install $(cat linux/snap/packages.txt | grep "^[^#;]")
+# snap apps installation
+sudo snap install $(cat linux/snap/packages.txt | grep "^[^#;]")
 echo "Snap apps installed!"
+
+# install slack via .deb because snap version has problem with slack notifications
 
 # dropbox
 cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
@@ -61,7 +63,7 @@ chmod +x install-i3lock-color.sh
 ./install-i3lock-color.sh
 
 # create symbolic links
-sudo sh ~/.dotfiles/symlinks/links.sh
+sh ~/.dotfiles/symlinks/links.sh
 echo "Symbolic links created!"
 
 # Copy fonts
