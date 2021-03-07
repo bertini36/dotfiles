@@ -133,15 +133,15 @@ bindsym $mod+Shift+9 move container to workspace $chats_workspace
 
 # Monitors
 set $laptop_monitor eDP-1
-set $lg_monitor DP-1
+set $external_monitor DP-1
 
 # Assign workspaces to monitors
 
 workspace $music_workspace output $laptop_monitor
-workspace $navigator_workspace output $lg_monitor
-workspace $terminals_workspace output $lg_monitor
-workspace $ide_workspace output $lg_monitor
-workspace $editions_workspace output $lg_monitor
+workspace $navigator_workspace output $external_monitor
+workspace $terminals_workspace output $external_monitor
+workspace $ide_workspace output $external_monitor
+workspace $editions_workspace output $external_monitor
 workspace $chats_workspace output $laptop_monitor
 
 # Assign apps to workspaces
@@ -296,10 +296,9 @@ bindsym --release $mod+i exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir 
 exec_always --no-startup-id dropbox start
 
 # Multiple screens
-exec_always xrandr --output DP-1 --primary --mode 2560x1440 --pos 1920x0 --rotate normal\
-                   --output eDP-1 --mode 1920x1080 --pos 0x0 --rotate normal\
-                   --output HDMI-1-1 --mode 2560x1440 --pos 192x0x0 --rotate normal\
-                   --output DP-2 --off
+exec_always xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --rotate normal\
+                   --output DP-1 --primary --mode 2560x1440 --pos 1920x0 --rotate normal
+
 
 # Rofi (overwrites dmenu) (previous: bindsym $mod+d exec dmenu_run)
 bindsym $mod+a exec rofi -show run -lines 3 -theme $rofi_theme
