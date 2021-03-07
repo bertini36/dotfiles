@@ -296,7 +296,7 @@ bindsym --release $mod+i exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir 
 exec_always --no-startup-id dropbox start
 
 # Multiple screens
-exec_always xrandr --output DP-1 --primary --mode 2560x1440 --pos 1920x0 --rotate normal --output eDP-1 --mode 1920x1080 --pos 0x128 --rotate normal --output DP-2 --off
+exec_always xrandr --output DP-1 --primary --mode 2560x1440 --pos 1920x0 --rotate normal --output eDP-1 --mode 1920x1080 --pos 0x128 --rotate normal --output HDMI-1-1 --mode 1920x1080 --pos 0x128 --rotate normal --output DP-2 --off
 
 # Rofi (overwrites dmenu) (previous: bindsym $mod+d exec dmenu_run)
 bindsym $mod+a exec rofi -show run -lines 3 -theme $rofi_theme
