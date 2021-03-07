@@ -28,7 +28,7 @@ init_filenames() {
 	loginbox=00000066
 	font="sans-serif"
 	locktext='Type password to unlock...'
-	wallpaper_cmd='feh --bg-fill --no-fehbg'
+	wallpaper_cmd='feh -bg-center --bg-scale'
 
 	# override defaults with config
 	theme_rc="$HOME/.config/betterlockscreenrc"
@@ -405,7 +405,7 @@ usage() {
 	echo
 	echo '	-wc --wallpaper_cmd <command>'
 	echo '		to set your custom wallpaper setter'
-	echo '		the default is "feh --bg-fill --no-fehbg"'
+	echo '		the default is "feh -bg-center --bg-scale"'
 	echo '		E.g: betterlockscreen -wc "xwallpaper --zoom" -w'
 }
 

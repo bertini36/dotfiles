@@ -241,7 +241,7 @@ bar {
 }
 
 # Fixed wallpaper
-exec_always feh --bg-scale "$wallpaper"
+exec_always feh -bg-center --bg-scale "$wallpaper"
 
 # Set desktop background with custom effect
 exec --no-startup-id betterlockscreen -w dim
