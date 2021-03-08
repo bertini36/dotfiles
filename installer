@@ -16,9 +16,9 @@ cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 ~/.dropbox-dist/dropboxd
 echo "Dropbox installed!"
 
-# Docker Compose
-# sudo curl -L "https://github.com/docker/compose/releases/download/x.y.z/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-# sudo chmod +x /usr/local/bin/docker-compose
+# Docker installation: https://docs.docker.com/engine/install/ubuntu/
+# run Docker as root: https://docs.docker.com/engine/install/linux-postinstall/
+# Docker Compose installation: https://docs.docker.com/compose/install/
 
 # bat https://github.com/sharkdp/bat
 sudo dpkg -i ~/.dotfiles/bin/bat_0.15.4_amd64.deb
