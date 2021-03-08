@@ -18,7 +18,7 @@ paths=(
     "$HOME/.fzf/bin"
     "$HOME/.dotfiles/bin"
     "$HOME/.pyenv/bin"
-    "$HOME/.cargo/bin/"
+    "$HOME/.cargo/bin"
 )
 PATH=$(
     IFS=":"
