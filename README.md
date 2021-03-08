@@ -35,7 +35,8 @@ dot git standup
 ```
 
 ## ✍️ Manual steps
-Install <a href="https://www.jetbrains.com/toolbox-app/">Jetbrains Toolbox</a> to install
+- Add en and es keyboard layouts (from Ubuntu settings).
+- Install <a href="https://www.jetbrains.com/toolbox-app/">Jetbrains Toolbox</a> to install
 Pycharm, Idea, Datagrip, ...
 And then import Jetbrains settings (`editors/jetbrains/settings`). 
 

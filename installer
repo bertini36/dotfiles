@@ -61,6 +61,8 @@ git clone https://github.com/Raymo111/i3lock-color.git
 cd i3lock-color
 chmod +x install-i3lock-color.sh
 ./install-i3lock-color.sh
+betterlockscreen -u .dotfiles/img/wallpaper.png -r 1920x1080
+betterlockscreen -u .dotfiles/img/wallpaper.png -r 2560x1440
 
 # create symbolic links
 sh ~/.dotfiles/symlinks/links.sh
