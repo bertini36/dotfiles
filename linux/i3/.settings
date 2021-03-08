@@ -310,7 +310,7 @@ bindsym $mod+p exec rofi -show p -modi p:rofi-power-menu -lines 3 -theme $rofi_t
 bindsym $mod+o exec cd $code_folder && ls | rofi -show -dmenu -lines 7 -theme $rofi_theme | xargs -r printf -- "$code_folder%s/" | xargs -r /local/bin/pycharm
 
 # Autolock
-exec --no-startup-id xautolock -time 10 -corners 0-0- -cornersize 10 -locker 'betterlockscreen -l dim' -detectsleep
+exec --no-startup-id xautolock -time 30 -corners 0-0- -cornersize 10 -locker 'betterlockscreen -l dim' -detectsleep
 
 # Detect keyboard conf using monitors
 exec_always --no-startup-id i3-msg 'exec "python ~/.dotfiles/bin/detect_monitors.py"'
