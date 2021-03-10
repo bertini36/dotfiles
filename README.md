@@ -39,6 +39,12 @@ dot git standup
 - Install <a href="https://www.jetbrains.com/toolbox-app/">Jetbrains Toolbox</a> to install
 Pycharm, Idea, Datagrip, ...
 And then import Jetbrains settings (`editors/jetbrains/settings`). 
+- <a href="https://askubuntu.com/questions/361268/how-to-set-compose-key-to-pause-in-13-10/367802#367802" target="_blank">Configure compose key as right alt (compose:ralt)</a>
+
+## 🕵️‍♂️ Known issues
+- <a href="https://askubuntu.com/questions/1021748/set-cpu-governor-to-performance-in-18-04" target="_blank">Ubuntu performance problem</a>
+- <a href="https://forum.snapcraft.io/t/slack-snap-window-has-no-icon/3589/59" target="_blank">Slack icon problem</a>
+
 
 Based on <a href="https://github.com/rgomezcasas/dotfiles" target="_blank">Rafa Gomez dotfiles repo</a>
 
