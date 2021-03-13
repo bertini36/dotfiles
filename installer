@@ -9,16 +9,10 @@ echo "Ubuntu apps installed!"
 sudo snap install $(cat linux/snap/packages.txt | grep "^[^#;]")
 echo "Snap apps installed!"
 
-# install slack via .deb because snap version has problem with slack notifications
-
 # dropbox
 cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 ~/.dropbox-dist/dropboxd
 echo "Dropbox installed!"
-
-# Docker installation: https://docs.docker.com/engine/install/ubuntu/
-# run Docker as root: https://docs.docker.com/engine/install/linux-postinstall/
-# Docker Compose installation: https://docs.docker.com/compose/install/
 
 # bat https://github.com/sharkdp/bat
 sudo dpkg -i ~/.dotfiles/bin/bat_0.15.4_amd64.deb
@@ -57,10 +51,12 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
 
 # i3 lock screen (required by bin/betterlockscreen)
 sudo apt install autoconf gcc make pkg-config libpam0g-dev libcairo2-dev libfontconfig1-dev libxcb-composite0-dev libev-dev libx11-xcb-dev libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev libjpeg-dev
+sudo apt install imagemagick
 git clone https://github.com/Raymo111/i3lock-color.git
 cd i3lock-color
 chmod +x install-i3lock-color.sh
 ./install-i3lock-color.sh
+cd ..
 betterlockscreen -u .dotfiles/img/wallpaper.png -r 1920x1080
 betterlockscreen -u .dotfiles/img/wallpaper.png -r 2560x1440
 
