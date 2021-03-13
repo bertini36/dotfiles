@@ -243,14 +243,11 @@ bar {
 # Fixed wallpaper
 exec_always feh -bg-center --bg-scale "$wallpaper"
 
-# Set desktop background with custom effect
-exec --no-startup-id betterlockscreen -w dim
-
 # Set last used background
 exec --no-startup-id source ~/.fehbg
 
 # Block command (just work with pngs!)
-bindsym $mod+Shift+x exec betterlockscreen -l dim
+bindsym $mod+Shift+x exec i3lock -i $wallpaper
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
@@ -308,9 +305,6 @@ bindsym $mod+p exec rofi -show p -modi p:rofi-power-menu -lines 3 -theme $rofi_t
 
 # Open code projects (menu)
 bindsym $mod+o exec cd $code_folder && ls | rofi -show -dmenu -lines 7 -theme $rofi_theme | xargs -r printf -- "$code_folder%s/" | xargs -r ~/.local/bin/pycharm
-
-# Autolock
-exec --no-startup-id xautolock -time 30 -corners 0-0- -cornersize 10 -locker 'betterlockscreen -l dim' -detectsleep
 
 # Detect keyboard conf using monitors
 exec_always --no-startup-id i3-msg 'exec "python ~/.dotfiles/bin/detect_monitors.py"'
