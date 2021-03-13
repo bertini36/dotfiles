@@ -36,15 +36,17 @@ dot git standup
 
 ## ✍️ Manual steps
 - Add en and es keyboard layouts (from Ubuntu settings).
+- <a href="https://askubuntu.com/questions/361268/how-to-set-compose-key-to-pause-in-13-10/367802#367802" target="_blank">Configure compose key as right alt (compose:ralt)</a>
 - Install <a href="https://www.jetbrains.com/toolbox-app/">Jetbrains Toolbox</a> to install
 Pycharm, Idea, Datagrip, ...
 And then import Jetbrains settings (`editors/jetbrains/settings`). 
-- <a href="https://askubuntu.com/questions/361268/how-to-set-compose-key-to-pause-in-13-10/367802#367802" target="_blank">Configure compose key as right alt (compose:ralt)</a>
+- <a href="https://docs.docker.com/engine/install/ubuntu/" target="_blank">Install Docker</a>,
+  <a href="https://docs.docker.com/engine/install/linux-postinstall/" target="_blank">run Docker as root</a> and 
+  <a href="https://docs.docker.com/compose/install/" target="_blank">install Docker compose</a> 
+- <a href="https://slack.com/intl/en-es/downloads/linux" target="_blank">Install Slack via .deb (snap version has problem with Slack notifications)</a>
 
 ## 🕵️‍♂️ Known issues
 - <a href="https://askubuntu.com/questions/1021748/set-cpu-governor-to-performance-in-18-04" target="_blank">Ubuntu performance problem</a>
-- <a href="https://forum.snapcraft.io/t/slack-snap-window-has-no-icon/3589/59" target="_blank">Slack icon problem</a>
-
 
 Based on <a href="https://github.com/rgomezcasas/dotfiles" target="_blank">Rafa Gomez dotfiles repo</a>
 
