@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTFILES_PATH/scripts/core/_main.sh"
+
+##? Show cpus frequencies in real time
+#?? 1.0.0
+##?
+##? Usage:
+##?   frequencies
+docs::eval "$@"
+
+watch -n 1 'cat /proc/cpuinfo | grep MHz'
