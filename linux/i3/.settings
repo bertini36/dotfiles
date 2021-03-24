@@ -309,6 +309,9 @@ bindsym $mod+o exec cd $code_folder && ls | rofi -show -dmenu -lines 7 -theme $r
 # Detect keyboard conf using monitors
 exec_always --no-startup-id i3-msg 'exec "python ~/.dotfiles/bin/detect_monitors.py"'
 
+# CPU frequencies indicator
+exec_always --no-startup-id i3-msg 'exec "indicator-cpufreq"'
+
 # Launch apps in workspaces
 exec --no-startup-id i3-msg 'workspace $music_workspace;exec "sleep 3; spotify"'
 exec --no-startup-id i3-msg 'workspace $chats_workspace;exec Telegram'
