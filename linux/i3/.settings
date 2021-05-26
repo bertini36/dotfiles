@@ -298,7 +298,6 @@ exec_always xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --rotate normal\
                    --output DP-1 --primary --mode 2560x1440 --pos 1920x0 --rotate normal\
                    --output DP-2 --mode 2560x1440 --pos 4480x0 --rotate normal
 
-
 # Rofi (overwrites dmenu) (previous: bindsym $mod+d exec dmenu_run)
 bindsym $mod+a exec rofi -show run -lines 3 -theme $rofi_theme
 
@@ -310,9 +309,6 @@ bindsym $mod+o exec cd $code_folder && ls | rofi -show -dmenu -lines 7 -theme $r
 
 # Detect keyboard conf using monitors
 exec_always --no-startup-id i3-msg 'exec "python ~/.dotfiles/bin/detect_monitors.py"'
-
-# CPU frequencies indicator
-exec_always --no-startup-id i3-msg 'exec "indicator-cpufreq"'
 
 # Launch apps in workspaces
 exec --no-startup-id i3-msg 'workspace $music_workspace;exec "sleep 3; spotify"'

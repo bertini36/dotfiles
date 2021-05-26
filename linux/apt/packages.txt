@@ -89,10 +89,6 @@ npm
 # i3lock
 i3lock
 
-# cpufreq
-indicator-cpufreq
-psensor
-
 # others
 autoconf
 gcc
