@@ -89,6 +89,9 @@ npm
 # i3lock
 i3lock
 
+# photo editor
+krita
+
 # others
 autoconf
 gcc
