@@ -1,3 +1,2 @@
 spotify
 telegram-desktop
-discord

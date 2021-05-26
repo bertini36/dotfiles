@@ -149,7 +149,6 @@ workspace $chats_workspace output $laptop_monitor
 assign [class="Spotify"] $music_workspace
 for_window [class="Spotify"] move to workspace $music_workspace
 assign [class="Slack"] $chats_workspace
-assign [class="discord"] $chats_workspace
 assign [class="TelegramDesktop"] $chats_workspace
 # assign [class="Google-chrome"] $navigator_workspace
 # assign [class="jetbrains-pycharm"] $ide_workspace
