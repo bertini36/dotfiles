@@ -68,6 +68,7 @@ alias bcconfs="cd $HOME/roi/configurations/"
 # Skioo
 alias skioo="cd $HOME/skioo/"
 alias cm="cd $HOME/skioo/customer-management/"
+alias pwa="cd $HOME/skioo/pwa/"
 
 # Enable handy aliases
 if [ -x /usr/bin/dircolors ]; then
