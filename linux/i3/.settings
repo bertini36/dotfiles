@@ -298,13 +298,13 @@ exec_always xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --rotate normal\
                    --output DP-2 --mode 2560x1440 --pos 4480x0 --rotate normal
 
 # Rofi (overwrites dmenu) (previous: bindsym $mod+d exec dmenu_run)
-bindsym $mod+a exec rofi -show run -lines 3 -theme $rofi_theme
+bindsym $mod+a exec rofi -show run -i -lines 3 -theme $rofi_theme
 
 # Manage power (menu)
-bindsym $mod+p exec rofi -show p -modi p:rofi-power-menu -lines 3 -theme $rofi_theme
+bindsym $mod+p exec rofi -show p -i -modi p:rofi-power-menu -lines 3 -theme $rofi_theme
 
 # Open code projects (menu)
-bindsym $mod+o exec cd $code_folder && ls | rofi -show -dmenu -lines 7 -theme $rofi_theme | xargs -r printf -- "$code_folder%s/" | xargs -r ~/.local/bin/pycharm
+bindsym $mod+o exec cd $code_folder && ls | rofi -show -dmenu -i -lines 7 -theme $rofi_theme | xargs -I_ pycharm "$code_folder/_"
 
 # Detect keyboard conf using monitors
 exec_always --no-startup-id i3-msg 'exec "python ~/.dotfiles/bin/detect_monitors.py"'
