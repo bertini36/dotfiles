@@ -15,6 +15,7 @@ set $rofi_theme ~/.dotfiles/linux/i3/slate.rafi
 set $i3_blocks_conf ~/.dotfiles/linux/i3/i3blocks.conf
 
 set $code_folder /home/bertini36/code/
+set $dotfiles_folder /home/bertini36/.dotfiles/
 set $wallpaper /home/bertini36/.dotfiles/img/wallpaper.png
 set $screenshots_folder ~/Pictures/screenshots
 
