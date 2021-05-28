@@ -92,6 +92,12 @@ i3lock
 # photo editor
 krita
 
+# emojis
+libxml2-utils
+xdotool
+xsel
+xdotool
+
 # others
 autoconf
 gcc
