@@ -152,7 +152,6 @@ assign [class="Slack"] $chats_workspace
 assign [class="TelegramDesktop"] $chats_workspace
 # assign [class="Google-chrome"] $navigator_workspace
 # assign [class="jetbrains-pycharm"] $ide_workspace
-# assign [class="RStudio"] $ide_workspace
 
 # Reload the configuration file
 bindsym $mod+Shift+c reload
