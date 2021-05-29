@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
-
 source "$DOTFILES_PATH/scripts/core/_main.sh"
-source "$DOTFILES_PATH/scripts/emoji/.env"
 
 ##? Pick an emoji using rofi
 ##?
@@ -12,21 +9,11 @@ source "$DOTFILES_PATH/scripts/emoji/.env"
 ##?
 ##? Usage:
 ##?    pick
-##?
-##? Notes:
-##?     - A font that supports emoji like "Noto Emoji" or "EmojiOne" is needed.
-##?     - Ctrl+C in rofi will copy it to the clipboard.
 docs::eval "$@"
 
-function notify() {
-    if [ "$(command -v notify-send)" ]; then
-        notify-send "$1" "$2"
-    fi
-}
-
 function display() {
-    emoji=$(cat "$EMOJI_FILE" | grep -v '#' | grep -v '^[[:space:]]*$')
-    line=$(echo "$emoji" | rofi -theme ~/.dotfiles/linux/i3/slate.rafi -dmenu -i -lines 7 -p emoji -kb-custom-1 Ctrl+c $@)
+    emoji=$(cat ".cache/emojis.txt" | grep -v '#' | grep -v '^[[:space:]]*$')
+    line=$(echo "$emoji" | rofi -theme ~/.dotfiles/linux/i3/slate.rafi -dmenu -i -lines 7 -p emoji -kb-custom-1)
     exit_code=$?
 
     line=($line)
@@ -37,8 +24,7 @@ function display() {
     fi
 }
 
-# Download all emoji if they don't exist yet
-if [ ! -f "$EMOJI_FILE" ]; then
+if [ ! -f ".cache/emojis.txt" ]; then
     dot emoji download
 fi
 

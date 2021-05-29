@@ -34,3 +34,6 @@ ln -sf ~/.dotfiles/linux/.Xmodmap ~/.Xmodmap
 
 # Lock screen
 ln -sf ~/.dotfiles/bin/betterlockscreen ~/.local/bin/betterlockscreen
+
+# pick emoji script
+sudo ln -sf ~/.dotfiles/scripts/emoji/pick /usr/bin/pick_emoji

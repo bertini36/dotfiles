@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
-
 source "$DOTFILES_PATH/scripts/core/_main.sh"
-source "$DOTFILES_PATH/scripts/emoji/.env"
 
 ##? Download all emoji from emojipedia
 ##?
@@ -38,7 +35,7 @@ function notify() {
 function download() {
     notify `basename "$0"` 'Downloading all emoji for your pleasure'
 
-    echo "" > "$EMOJI_FILE"
+    echo "" > ".cache/emojis.txt"
 
     for url in "${URLS[@]}"; do
         echo "Downloading: $url"
@@ -55,7 +52,7 @@ function download() {
         emojis=$(echo "$emojis" | \
                  sed -rn 's/.*<span class="emoji">(.*)<\/span> (.*)<\/a><\/li>/\1 \2/p')
 
-        echo "$emojis" >> "$EMOJI_FILE"
+        echo "$emojis" >> ".cache/emojis.txt"
     done
 
     notify `basename "$0"` "We're all set!"

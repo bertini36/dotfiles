@@ -297,22 +297,25 @@ exec_always xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --rotate normal\
                    --output DP-1 --primary --mode 2560x1440 --pos 1920x0 --rotate normal\
                    --output DP-2 --mode 2560x1440 --pos 4480x0 --rotate normal
 
-# Rofi (overwrites dmenu) (previous: bindsym $mod+d exec dmenu_run)
+# Rofi apps runner
 bindsym $mod+a exec rofi -show run -i -lines 3 -theme $rofi_theme
 
-# Manage power (menu)
+# Rofi manage power
 bindsym $mod+p exec rofi -show p -i -modi p:rofi-power-menu -lines 3 -theme $rofi_theme
 
-# Open code projects (menu)
-bindsym $mod+o exec cd $code_folder && ls | rofi -show -dmenu -i -lines 7 -theme $rofi_theme | xargs -I_ pycharm "$code_folder/_"
+# Rofi open projects
+bindsym $mod+o exec cd $code_folder && ls | rofi -show -dmenu -i -lines 7 -theme $rofi_theme -p project | xargs -I_ pycharm "$code_folder/_"
+
+# Rofi emojis
+bindsym $mod+u exec pick_emoji
 
 # Detect keyboard conf using monitors
 exec_always --no-startup-id i3-msg 'exec "python ~/.dotfiles/bin/detect_monitors.py"'
 
 # Launch apps in workspaces
 exec --no-startup-id i3-msg 'workspace $music_workspace;exec "sleep 3; spotify"'
-# exec --no-startup-id i3-msg 'workspace $chats_workspace;exec Telegram'
 exec --no-startup-id i3-msg 'workspace $navigator_workspace;exec google-chrome-stable --new-window mail.google.com/mail/u/0/#inbox calendar.google.com/calendar/r/week'
+# exec --no-startup-id i3-msg 'workspace $chats_workspace;exec Telegram'
 
 # Automount USB disks and drives
 # exec --no-startup-id udiskie --tray
