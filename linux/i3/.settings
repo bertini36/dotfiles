@@ -135,7 +135,7 @@ bindsym $mod+Shift+9 move container to workspace $chats_workspace
 # Monitors
 set $laptop_monitor eDP-1
 set $external_monitor DP-1
-set $external_monitor2 DP-2
+set $external_monitor2 HDMI-2
 
 # Assign workspaces to monitors
 
@@ -295,7 +295,7 @@ exec_always --no-startup-id dropbox start
 # Multiple screens
 exec_always xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --rotate normal\
                    --output DP-1 --primary --mode 2560x1440 --pos 1920x0 --rotate normal\
-                   --output DP-2 --mode 2560x1440 --pos 4480x0 --rotate normal
+                   --output HDMI-2 --mode 2560x1440 --pos 4480x0 --rotate normal
 
 # Rofi apps runner
 bindsym $mod+a exec rofi -show run -i -lines 3 -theme $rofi_theme
