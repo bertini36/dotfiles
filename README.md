@@ -35,6 +35,7 @@ dot git standup
 ```
 
 ## ✍️ Manual steps
+- Install Chrome and some plugins (ublock, momentum, dark reader and 1password)
 - Add en and es keyboard layouts (from Ubuntu settings).
 - Install <a href="https://www.jetbrains.com/toolbox-app/">Jetbrains Toolbox</a> to install
 Pycharm
