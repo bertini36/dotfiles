@@ -36,9 +36,8 @@ dot git standup
 
 ## ✍️ Manual steps
 - Add en and es keyboard layouts (from Ubuntu settings).
-- <a href="https://askubuntu.com/questions/361268/how-to-set-compose-key-to-pause-in-13-10/367802#367802" target="_blank">Configure compose key as right alt (compose:ralt)</a>
 - Install <a href="https://www.jetbrains.com/toolbox-app/">Jetbrains Toolbox</a> to install
-Pycharm, Idea, Datagrip, ...
+Pycharm
 And then import Jetbrains settings (`editors/jetbrains/settings`). 
 - <a href="https://docs.docker.com/engine/install/ubuntu/" target="_blank">Install Docker</a>,
   <a href="https://docs.docker.com/engine/install/linux-postinstall/" target="_blank">run Docker as root</a> and 
