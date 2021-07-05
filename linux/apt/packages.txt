@@ -89,6 +89,9 @@ npm
 # i3lock
 i3lock
 
+# cpufreq
+indicator-cpufreq
+
 # photo editor
 krita
 
