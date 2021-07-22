@@ -19,6 +19,7 @@ paths=(
     "$HOME/.dotfiles/bin"
     "$HOME/.pyenv/bin"
     "$HOME/.cargo/bin"
+    "/opt/"
 )
 PATH=$(
     IFS=":"
