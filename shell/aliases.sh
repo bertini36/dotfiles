@@ -71,6 +71,9 @@ alias skioo="cd $HOME/skioo/"
 alias cm="cd $HOME/skioo/customer-management/"
 alias pwa="cd $HOME/skioo/pwa/"
 
+# Abacum
+alias vpn="/opt/awsvpnclient/AWS\ VPN\ Client %u"
+
 # Enable handy aliases
 if [ -x /usr/bin/dircolors ]; then
     alias dir="dir --color=auto"
