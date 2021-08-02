@@ -1,2 +1,1 @@
-   keycode 108 = Alt_R
-   keysym Alt_R = Multi_key
+   keysym Control_R = Multi_key
