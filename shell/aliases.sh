@@ -59,6 +59,7 @@ alias n.="nautilus."
 alias dotfiles="pycharm $DOTFILES_PATH &>/dev/null &"
 alias pip="pip3"
 alias python="python3"
+alias update-zsh="omz update"
 
 # Roiback
 alias roi="cd $HOME/roi/"

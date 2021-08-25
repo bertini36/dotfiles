@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTFILES_PATH/scripts/core/_main.sh"
+
+##? Update Oh My ZSH plugins
+#?? 1.0.0
+##?
+##? Usage:
+##?   update_zsh
+docs::eval "$@"
+
+printf "Updating custom plugins"
+cd .oh-my-zsh/custom/plugins
+
+for plugin in */; do
+  if [ -d "$plugin/.git" ]; then
+     printf "${plugin%/}"
+     git -C "$plugin" pull
+  fi
+done
