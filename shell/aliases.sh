@@ -58,6 +58,7 @@ alias nautilus.="nautilus . &>/dev/null &"
 alias n.="nautilus."
 alias dotfiles="pycharm $DOTFILES_PATH &>/dev/null &"
 # For Ubuntu 20: alias pip="pip3"
+alias update-zsh="omz update"
 
 # Roiback
 alias roi="cd $HOME/roi/"
