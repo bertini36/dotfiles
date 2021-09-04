@@ -57,8 +57,9 @@ alias uslayout="setxkbmap -layout us"
 alias nautilus.="nautilus . &>/dev/null &"
 alias n.="nautilus."
 alias dotfiles="pycharm $DOTFILES_PATH &>/dev/null &"
-# For Ubuntu 20: alias pip="pip3"
+alias update="sudo apt update && sudo apt upgrade"
 alias update-zsh="omz update"
+# For Ubuntu 20: alias pip="pip3"
 
 # Roiback
 alias roi="cd $HOME/roi/"
