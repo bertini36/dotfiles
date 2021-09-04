@@ -1,4 +1,4 @@
-# for debugging times
+# for debugging time
 # zmodload zsh/zprof
 
 # Path to your oh-my-zsh installation.

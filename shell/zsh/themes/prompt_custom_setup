@@ -61,7 +61,7 @@ prompt_custom_precmd() {
 }
 
 prompt_custom_setup() {
-  local prompt_status='%(?:%F{green}❯❯❯%F{green}:%F{red}❯❯❯%F{red})'
+  local prompt_status='%(?:%F{green}❯%F{green}:%F{red}❯%F{red})'
   autoload -Uz add-zsh-hook && add-zsh-hook precmd prompt_custom_precmd
   autoload -Uz vcs_info
 
@@ -78,4 +78,6 @@ prompt_custom_setup() {
 
 prompt_custom_setup "${@}"
 clear
-figlet -f slant "$(whoami)" | lolcat
+
+# bertini36 title
+# figlet -f slant "$(whoami)" | lolcat
