@@ -274,6 +274,13 @@ bindsym XF86AudioPrev exec playerctl previous
 exec_always pulseaudio --start
 exec_always service bluetooth start
 
+# To discover headphones mac address do:
+# bluetoothctl
+# >> power on
+# >> agent on
+# >> scan on
+# >> pair AA:BB:CC:DD:EE:FF
+# >> connect AA:BB:CC:DD:EE:FF
 set $headphones_mac 60:AB:D2:77:61:14
 
 # Connect headphones to Bluetooth
