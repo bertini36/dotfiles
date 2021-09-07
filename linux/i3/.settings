@@ -19,8 +19,6 @@ set $dotfiles_folder /home/bertini36/.dotfiles/
 set $wallpaper /home/bertini36/.dotfiles/img/wallpaper.png
 set $screenshots_folder ~/Pictures/screenshots
 
-set $headphones_mac 28:11:A5:01:9A:E7
-
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:System San Francisco Display 8
@@ -274,6 +272,16 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # Bluetooth
 exec_always pulseaudio --start
+exec_always service bluetooth start
+
+# To discover headphones mac address do:
+# bluetoothctl
+# >> power on
+# >> agent on
+# >> scan on
+# >> pair AA:BB:CC:DD:EE:FF
+# >> connect AA:BB:CC:DD:EE:FF
+set $headphones_mac 60:AB:D2:77:61:14
 
 # Connect headphones to Bluetooth
 bindsym $mod+b exec echo "connect $headphones_mac" | bluetoothctl
