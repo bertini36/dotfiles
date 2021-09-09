@@ -7,7 +7,11 @@ echo "Ubuntu apps installed!"
 
 # snap apps installation
 sudo snap install $(cat linux/snap/packages.txt | grep "^[^#;]")
+sudo snap connect gotop-cjbassi:hardware-observe
+sudo snap connect gotop-cjbassi:mount-observe
+sudo snap connect gotop-cjbassi:system-observe
 echo "Snap apps installed!"
+
 
 # dropbox
 cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -

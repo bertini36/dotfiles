@@ -1,2 +1,3 @@
 spotify
 telegram-desktop
+gotop-cjbassi

@@ -60,6 +60,7 @@ alias dotfiles="pycharm $DOTFILES_PATH &>/dev/null &"
 alias update="sudo apt update && sudo apt upgrade"
 alias update-zsh="omz update"
 alias update-all="update && update-zsh"
+alias gotop="gotop-cjbassi"
 alias pip="pip3"
 alias python="python3"
 
