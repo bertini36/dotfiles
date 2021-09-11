@@ -35,11 +35,8 @@ dot git standup
 ```
 
 ## ✍️ Manual steps
-- Install Chrome and some plugins (ublock, momentum, dark reader and 1password)
-- Add en and es keyboard layouts (from Ubuntu settings).
-- Install <a href="https://www.jetbrains.com/toolbox-app/">Jetbrains Toolbox</a> to install
-Pycharm
-And then import Jetbrains settings (`editors/jetbrains/settings`). 
+- Install Chrome
+- Install <a href="https://www.jetbrains.com/toolbox-app/">Jetbrains Toolbox</a> and then Pycharm
 - <a href="https://docs.docker.com/engine/install/ubuntu/" target="_blank">Install Docker</a>,
   <a href="https://docs.docker.com/engine/install/linux-postinstall/" target="_blank">run Docker as root</a> and 
   <a href="https://docs.docker.com/compose/install/" target="_blank">install Docker compose</a> 
