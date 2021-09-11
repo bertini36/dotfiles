@@ -12,6 +12,9 @@ sudo snap connect gotop-cjbassi:mount-observe
 sudo snap connect gotop-cjbassi:system-observe
 echo "Snap apps installed!"
 
+# slack
+sudo apt install ./bin/slack-desktop-4.19.2-amd64.deb
+
 # bat https://github.com/sharkdp/bat
 sudo dpkg -i ~/.dotfiles/bin/bat_0.15.4_amd64.deb
 echo "Bat installed!"

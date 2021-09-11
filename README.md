@@ -35,18 +35,15 @@ dot git standup
 ```
 
 ## ✍️ Manual steps
-- Install Chrome and some plugins (ublock, momentum, dark reader and 1password)
-- Add en and es keyboard layouts (from Ubuntu settings).
-- Install <a href="https://www.jetbrains.com/toolbox-app/">Jetbrains Toolbox</a> to install
-Pycharm
-And then import Jetbrains settings (`editors/jetbrains/settings`). 
+- Install Chrome
+- Install <a href="https://www.jetbrains.com/toolbox-app/">Jetbrains Toolbox</a> and then Pycharm
 - <a href="https://docs.docker.com/engine/install/ubuntu/" target="_blank">Install Docker</a>,
   <a href="https://docs.docker.com/engine/install/linux-postinstall/" target="_blank">run Docker as root</a> and 
   <a href="https://docs.docker.com/compose/install/" target="_blank">install Docker compose</a> 
-- <a href="https://slack.com/intl/en-es/downloads/linux" target="_blank">Install Slack via .deb (snap version has problem with Slack notifications)</a>
 
 ## 🕵️‍♂️ Known issues
-- <a href="https://askubuntu.com/questions/1021748/set-cpu-governor-to-performance-in-18-04" target="_blank">Ubuntu performance problem</a>
+- <a href="https://askubuntu.com/questions/1021748/set-cpu-governor-to-performance-in-18-04" target="_blank">CPU gobernor performance problem</a>
+- <a href="https://github.com/erpalma/throttled">Fix Intel CPU Throttling on Linux</a>
 
 Based on <a href="https://github.com/rgomezcasas/dotfiles" target="_blank">Rafa Gomez dotfiles repo</a>
 
