@@ -60,7 +60,11 @@ alias dotfiles="pycharm $DOTFILES_PATH &>/dev/null &"
 alias update="sudo apt update && sudo apt upgrade"
 alias update-zsh="omz update"
 alias update-all="update && update-zsh"
-# For Ubuntu 20: alias pip="pip3"
+alias gotop="gotop-cjbassi"
+alias top="gotop"
+# For Ubuntu 20
+# alias pip="pip3"
+# alias python="python3"
 
 # Roiback
 alias roi="cd $HOME/roi/"
