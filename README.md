@@ -42,7 +42,8 @@ dot git standup
   <a href="https://docs.docker.com/compose/install/" target="_blank">install Docker compose</a> 
 
 ## 🕵️‍♂️ Known issues
-- <a href="https://askubuntu.com/questions/1021748/set-cpu-governor-to-performance-in-18-04" target="_blank">Ubuntu performance problem</a>
+- <a href="https://askubuntu.com/questions/1021748/set-cpu-governor-to-performance-in-18-04" target="_blank">CPU gobernor performance problem</a>
+- <a href="https://github.com/erpalma/throttled">Fix Intel CPU Throttling on Linux</a>
 
 Based on <a href="https://github.com/rgomezcasas/dotfiles" target="_blank">Rafa Gomez dotfiles repo</a>
 
