@@ -202,7 +202,6 @@
 ## Manage proceses
 
 ##### List
-    htop
     top
     ps aux
     

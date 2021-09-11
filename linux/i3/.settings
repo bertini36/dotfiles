@@ -299,9 +299,6 @@ bindsym --release $mod+Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mk
 # Screenshots with ansi keyboard
 bindsym --release $mod+i exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p $screenshots_folder && mv $f $screenshots_folder && xclip -selection clipboard -t image/png -i $screenshots_folder`ls -1 -t $screenshots_folder | head -1`' # Area selection
 
-# Dropbox
-exec_always --no-startup-id dropbox start
-
 # Multiple screens
 exec_always xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --rotate normal\
                    --output DP-1 --primary --mode 2560x1440 --pos 1920x0 --rotate normal\

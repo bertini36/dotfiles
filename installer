@@ -12,12 +12,6 @@ sudo snap connect gotop-cjbassi:mount-observe
 sudo snap connect gotop-cjbassi:system-observe
 echo "Snap apps installed!"
 
-
-# dropbox
-cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
-~/.dropbox-dist/dropboxd
-echo "Dropbox installed!"
-
 # bat https://github.com/sharkdp/bat
 sudo dpkg -i ~/.dotfiles/bin/bat_0.15.4_amd64.deb
 echo "Bat installed!"

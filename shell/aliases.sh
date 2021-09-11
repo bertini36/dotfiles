@@ -13,10 +13,8 @@ alias j="z"
 alias ~="cd ~"
 alias tmp="cd /tmp/"
 alias home="cd $HOME"
-alias boatsandjoy="cd $HOME/code/boatsandjoy/"
-alias blog="cd $HOME/code/bertini36.github.io/"
-alias quicopou="cd $HOME/code/quicopou/"
-alias dropbox="cd $DROPBOX_PATH"
+alias backend="cd $HOME/code/backend/"
+alias webapp="cd $HOME/code/webapp/"
 
 # Git alias
 alias gaa="git add -A"
@@ -61,19 +59,10 @@ alias update="sudo apt update && sudo apt upgrade"
 alias update-zsh="omz update"
 alias update-all="update && update-zsh"
 alias gotop="gotop-cjbassi"
+alias top="gotop"
+# For Ubuntu 20
 alias pip="pip3"
 alias python="python3"
-
-# Roiback
-alias roi="cd $HOME/roi/"
-alias bc="cd $HOME/roi/bookcore/ && workon bookcore"
-alias dbc="cd $HOME/roi/docker-bookcore/"
-alias bcconfs="cd $HOME/roi/configurations/"
-
-# Skioo
-alias skioo="cd $HOME/skioo/"
-alias cm="cd $HOME/skioo/customer-management/"
-alias pwa="cd $HOME/skioo/pwa/"
 
 # Abacum
 alias vpn="/opt/awsvpnclient/AWS\ VPN\ Client %u"

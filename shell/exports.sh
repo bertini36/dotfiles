@@ -26,6 +26,3 @@ PATH=$(
     echo "${paths[*]}"
 )
 export PATH
-
-# dropbox
-export DROPBOX_PATH=$HOME/Dropbox
