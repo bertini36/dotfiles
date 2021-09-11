@@ -65,3 +65,6 @@ cp -a ~/.dotfiles/linux/fonts/. ~/.fonts
 
 # generate folders structure
 mkdir ~/code/
+
+# download emojis
+dot emoji download
