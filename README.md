@@ -40,7 +40,6 @@ dot git standup
 - <a href="https://docs.docker.com/engine/install/ubuntu/" target="_blank">Install Docker</a>,
   <a href="https://docs.docker.com/engine/install/linux-postinstall/" target="_blank">run Docker as root</a> and 
   <a href="https://docs.docker.com/compose/install/" target="_blank">install Docker compose</a> 
-- <a href="https://slack.com/intl/en-es/downloads/linux" target="_blank">Install Slack via .deb (snap version has problem with Slack notifications)</a>
 
 ## 🕵️‍♂️ Known issues
 - <a href="https://askubuntu.com/questions/1021748/set-cpu-governor-to-performance-in-18-04" target="_blank">Ubuntu performance problem</a>
