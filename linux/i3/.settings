@@ -328,7 +328,7 @@ exec_always --no-startup-id i3-msg 'exec "indicator-cpufreq"'
 # Launch apps in workspaces
 exec --no-startup-id i3-msg 'workspace $music_workspace;exec "sleep 3; spotify"'
 exec --no-startup-id i3-msg 'workspace $navigator_workspace;exec google-chrome-stable --new-window'
-exec --no-startup-id i3-msg 'workspace $chats_workspace;exec discord'
+# exec --no-startup-id i3-msg 'workspace $chats_workspace;exec discord'
 # exec --no-startup-id i3-msg 'workspace $chats_workspace;exec Telegram'
 
 # Automount USB disks and drives
