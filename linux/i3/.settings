@@ -319,8 +319,8 @@ bindsym $mod+o exec cd $code_folder && ls | rofi -show -dmenu -i -lines 7 -theme
 # Rofi emojis
 bindsym $mod+u exec pick_emoji
 
-# Detect keyboard conf using monitors
-exec_always --no-startup-id i3-msg 'exec "python ~/.dotfiles/bin/detect_monitors.py"'
+# Set keyboard layout depending monitors
+exec_always --no-startup-id i3-msg 'exec "python ~/.dotfiles/bin/set_keyboard_layout.py"'
 
 # CPU frequencies indicator
 exec_always --no-startup-id i3-msg 'exec "indicator-cpufreq"'
