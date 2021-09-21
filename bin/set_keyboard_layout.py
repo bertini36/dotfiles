@@ -9,7 +9,8 @@ def get_screens():
     return [screen.split()[0] for screen in output if ' connected ' in screen]
 
 
+subprocess.call('setxkbmap -layout es', shell=True)
+
 screens = get_screens()
-if len(screens) == 1:
-    # Set keyboard es layout
-    subprocess.call('setxkbmap -layout es', shell=True)
+if len(screens) > 1:
+    subprocess.call('setxkbmap -layout us', shell=True)
