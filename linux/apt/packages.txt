@@ -92,6 +92,9 @@ indicator-cpufreq
 # photo editor
 krita
 
+# gnome-tweaks
+gnome-tweak-tool
+
 # emojis
 libxml2-utils
 xdotool

@@ -40,6 +40,7 @@ dot git standup
 - <a href="https://docs.docker.com/engine/install/ubuntu/" target="_blank">Install Docker</a>,
   <a href="https://docs.docker.com/engine/install/linux-postinstall/" target="_blank">run Docker as root</a> and 
   <a href="https://docs.docker.com/compose/install/" target="_blank">install Docker compose</a> 
+- Configure keyboard languages from Ubuntu settings
 
 ## 🕵️‍♂️ Known issues
 - <a href="https://askubuntu.com/questions/1021748/set-cpu-governor-to-performance-in-18-04" target="_blank">CPU gobernor performance problem</a>

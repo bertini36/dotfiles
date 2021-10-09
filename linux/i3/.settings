@@ -319,11 +319,11 @@ bindsym $mod+o exec cd $code_folder && ls | rofi -show -dmenu -i -lines 7 -theme
 # Rofi emojis
 bindsym $mod+u exec pick_emoji
 
-# Set keyboard layout depending monitors
-exec_always --no-startup-id i3-msg 'exec "python ~/.dotfiles/bin/set_keyboard_layout.py"'
-
 # CPU frequencies indicator
 exec_always --no-startup-id i3-msg 'exec "indicator-cpufreq"'
+
+# Activate us layout
+exec --no-startup-id "eslayout"
 
 # Launch apps in workspaces
 exec --no-startup-id i3-msg 'workspace $music_workspace;exec "sleep 3; spotify"'
