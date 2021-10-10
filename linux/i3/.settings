@@ -322,8 +322,8 @@ bindsym $mod+u exec pick_emoji
 # CPU frequencies indicator
 exec_always --no-startup-id i3-msg 'exec "indicator-cpufreq"'
 
-# Activate us layout
-exec --no-startup-id "eslayout"
+# Activate es layout
+exec --no-startup-id "setxkbmap -layout es"
 
 # Launch apps in workspaces
 exec --no-startup-id i3-msg 'workspace $music_workspace;exec "sleep 3; spotify"'
