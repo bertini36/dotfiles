@@ -134,7 +134,6 @@
 * **ALT+SHT+L**             &rarr;      Recent locations
 * **CTL+SHT+S**             &rarr;      Locate file in source
 * **CTL+UP**                &rarr;      Show file path
-* **CTL+ALT+SHT+O**         &rarr;      Open projects
 * **ALT+SHT+E**             &rarr;      Select from caret to end
 * **CTL+ALT+SHT+O**         &rarr;      Open recent projects
 
