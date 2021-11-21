@@ -101,6 +101,11 @@ xdotool
 xsel
 xdotool
 
+# espanso dependencies
+libxtst6
+libxdo3
+libnotify-bin
+
 # others
 autoconf
 gcc
