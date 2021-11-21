@@ -7,6 +7,7 @@
 * **MOD+A**                 &rarr;    Rofi apps
 * **MOD+O**                 &rarr;    Rofi open code projects
 * **MOD+P**                 &rarr;    Rofi power
+* **MOD+U**                 &rarr;    Rofi for emojis
 * **MOD+V**                 &rarr;    Vertical mode
 * **MOD+H**                 &rarr;    Horizontal mode
 * **MOD+ARROW or JKLÑ**     &rarr;    Move between windows
@@ -134,8 +135,8 @@
 * **ALT+SHT+L**             &rarr;      Recent locations
 * **CTL+SHT+S**             &rarr;      Locate file in source
 * **CTL+UP**                &rarr;      Show file path
-* **CTL+ALT+SHT+O**         &rarr;      Open projects
 * **ALT+SHT+E**             &rarr;      Select from caret to end
+* **CTL+ALT+SHT+O**         &rarr;      Open recent projects
 
 #### Edit
 

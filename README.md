@@ -25,7 +25,14 @@ cd ~/.dotfiles
 ```
 Finally reopen the terminal and enjoy! 
 
-## 💣️ Dot command
+## 👟 Quick launchers
+
+- Apps launcher: `Win+A`
+- Projects launcher: `Win+O`
+- Emojis launcher: `Win+U`
+- Power launcher: `Win+P`
+
+## 💣️ Scripts launcher
 Use `dot` command to access, filter and execute all the scripts located at 
 `scripts/`, for example:
 ```bash
@@ -34,12 +41,17 @@ dot git
 dot git standup
 ```
 
+## 🤖 Automatic text replacements 
+Tap `:today` everywhere to get the current date. Check the pre-configured rules and add
+more in `linux/espanso/config.yml`.
+
 ## ✍️ Manual steps
 - Install Chrome
 - Install <a href="https://www.jetbrains.com/toolbox-app/">Jetbrains Toolbox</a> and then Pycharm
 - <a href="https://docs.docker.com/engine/install/ubuntu/" target="_blank">Install Docker</a>,
   <a href="https://docs.docker.com/engine/install/linux-postinstall/" target="_blank">run Docker as root</a> and 
   <a href="https://docs.docker.com/compose/install/" target="_blank">install Docker compose</a> 
+- Configure keyboard languages from Ubuntu settings
 
 ## 🕵️‍♂️ Known issues
 - <a href="https://askubuntu.com/questions/1021748/set-cpu-governor-to-performance-in-18-04" target="_blank">CPU gobernor performance problem</a>

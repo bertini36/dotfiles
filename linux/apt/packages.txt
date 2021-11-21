@@ -92,11 +92,19 @@ indicator-cpufreq
 # photo editor
 krita
 
+# gnome-tweaks
+gnome-tweak-tool
+
 # emojis
 libxml2-utils
 xdotool
 xsel
 xdotool
+
+# espanso dependencies
+libxtst6
+libxdo3
+libnotify-bin
 
 # others
 autoconf
