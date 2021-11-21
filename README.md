@@ -25,7 +25,14 @@ cd ~/.dotfiles
 ```
 Finally reopen the terminal and enjoy! 
 
-## 💣️ Dot command
+## 👟 Quick launchers
+
+- Apps launcher: `Win+A`
+- Projects launcher: `Win+O`
+- Emojis launcher: `Win+U`
+- Power launcher: `Win+P`
+
+## 💣️ Scripts launcher
 Use `dot` command to access, filter and execute all the scripts located at 
 `scripts/`, for example:
 ```bash
@@ -33,6 +40,10 @@ dot
 dot git
 dot git standup
 ```
+
+## 🤖 Automatic text replacements 
+Tap `:today` everywhere to get the current date. Check the pre-configured rules and add
+more in `linux/espanso/config.yml`.
 
 ## ✍️ Manual steps
 - Install Chrome
