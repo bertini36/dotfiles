@@ -91,6 +91,7 @@
 * **CTL+ALT+SHT+N** 		&rarr;     Search symbols
 * **ALT+SHT+7** 			&rarr;     Find usages
 * **ALT+1**                 &rarr;     Open lateral menu
+* **SHT+ESC**               &rarr;     Close menus
 
 #### GIT
 
