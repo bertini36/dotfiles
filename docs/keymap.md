@@ -91,6 +91,7 @@
 * **CTL+ALT+SHT+N** 		&rarr;     Search symbols
 * **ALT+SHT+7** 			&rarr;     Find usages
 * **ALT+1**                 &rarr;     Open lateral menu
+* **SHT+ESC**               &rarr;     Close menus
 
 #### GIT
 
@@ -192,11 +193,30 @@
 
 * **:q**                    &rarr;      Quit
 * **:!q**                   &rarr;      Force quit
-* **:wq**                   &rarr;      Save and quit
-* **:/**                    &rarr;      Find
+* **:w**                    &rarr;      Save
+* **:wq or :x**             &rarr;      Save and quit
+* **/<whatever>**           &rarr;      Find
 * **n**                     &rarr;      Next occurence
 * **N**                     &rarr;      Previous occurrence
-
+* **gg**                    &rarr;      Go to the beginning of the file
+* **G**                     &rarr;      Go to the end of the file
+* **dd**                    &rarr;      Crop line (d2d multiple)
+* **yy**                    &rarr;      Copy line (y2y multiple)
+* **p**                     &rarr;      Paste line
+* **o**                     &rarr;      Create new line below and insert mode
+* **u**                     &rarr;      Undo
+* **CTL+R**                 &rarr;      Forward
+* **i**                     &rarr;      Insert mode
+* **v**                     &rarr;      Visual mode
+* **h**                     &rarr;      Move one character left
+* **j**                     &rarr;      Move one row down
+* **k**                     &rarr;      Move one row up
+* **l**                     &rarr;      Move one character right
+* **w**                     &rarr;      Move to beginning of next word
+* **b**                     &rarr;      Move to previous beginning of word
+* **e**                     &rarr;      Move to end of word
+* **0**                     &rarr;      Move to beginning of line
+* **$**                     &rarr;      Move to end of line
 
 ## Chrome
 

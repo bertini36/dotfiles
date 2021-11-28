@@ -16,6 +16,9 @@ ln -sf ~/.dotfiles/linux/i3/.settings ~/.config/i3/config
 mkdir -p ~/.config/terminator
 ln -sf ~/.dotfiles/linux/terminator/.settings ~/.config/terminator/config
 
+# vim
+ln -sf ~/.dotfiles/editors/vim/.vimrc ~/.vimrc
+
 # python env
 ln -sf ~/.dotfiles/langs/python/.direnvrc ~/.direnvrc
 
@@ -42,6 +45,7 @@ ln -sf ~/.dotfiles/linux/.Xmodmap ~/.Xmodmap
 ln -sf ~/.dotfiles/bin/betterlockscreen ~/.local/bin/betterlockscreen
 
 # espanso
+mkdir ~/.config/espanso/
 ln -sf ~/.dotfiles/linux/espanso/config.yml ~/.config/espanso/default.yml
 ln -sf ~/.dotfiles/langs/python/scripts ~/.config/espanso/scripts
 
