@@ -16,6 +16,9 @@ ln -sf ~/.dotfiles/linux/i3/.settings ~/.config/i3/config
 mkdir -p ~/.config/terminator
 ln -sf ~/.dotfiles/linux/terminator/.settings ~/.config/terminator/config
 
+# vim
+ln -sf ~/.dotfiles/editors/vim/.vimrc ~/.vimrc
+
 # python env
 ln -sf ~/.dotfiles/langs/python/.direnvrc ~/.direnvrc
 
