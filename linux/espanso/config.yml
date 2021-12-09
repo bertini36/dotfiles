@@ -42,12 +42,6 @@ matches:
   - trigger: ":div"
     replace: "<div>$|$</div>"
 
-  - trigger: ":a"
-    replace: "<a href='{{clipboard}}' />$|$</a>"
-    vars:
-      - name: "clipboard"
-        type: "clipboard"
-
   - trigger: ":ip"
     replace: "{{output}}"
     vars:
