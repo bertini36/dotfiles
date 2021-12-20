@@ -10,6 +10,7 @@ sudo snap install $(cat linux/snap/packages.txt | grep "^[^#;]")
 sudo snap connect gotop-cjbassi:hardware-observe
 sudo snap connect gotop-cjbassi:mount-observe
 sudo snap connect gotop-cjbassi:system-observe
+sudo snap install espanso --classic
 echo "Snap apps installed!"
 
 # slack
@@ -60,6 +61,3 @@ cp -a ~/.dotfiles/linux/fonts/. ~/.fonts
 
 # generate folders structure
 mkdir ~/code/
-
-# download emojis
-dot emoji download
