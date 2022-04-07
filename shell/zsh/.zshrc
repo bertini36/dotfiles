@@ -47,3 +47,8 @@ source $DOTFILES_PATH/shell/zsh/key-bindings.zsh
 
 # for debugging times
 # zprof
+
+# Backend exports
+export $(cat /home/bertini36/code/backend/config/docker.env )
+export $(cat /home/bertini36/code/backend/config/local.env )
+export $(cat /home/bertini36/code/backend/config/secret.env )
