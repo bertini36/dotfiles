@@ -73,6 +73,8 @@ alias python="python3"
 
 # Abacum
 alias vpn="/opt/awsvpnclient/AWS\ VPN\ Client %u"
+alias ssh-prod="/home/bertini36/code/backend/scripts/ssh_pod.sh prod"
+alias ssh-stg="/home/bertini36/code/backend/scripts/ssh_pod.sh stg"
 
 # Enable handy aliases
 if [ -x /usr/bin/dircolors ]; then
