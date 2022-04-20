@@ -44,10 +44,5 @@ ln -sf ~/.dotfiles/linux/.Xmodmap ~/.Xmodmap
 # lock screen
 ln -sf ~/.dotfiles/bin/betterlockscreen ~/.local/bin/betterlockscreen
 
-# espanso
-mkdir ~/.config/espanso/
-ln -sf ~/.dotfiles/linux/espanso/config.yml ~/.config/espanso/default.yml
-ln -sf ~/.dotfiles/langs/python/scripts ~/.config/espanso/scripts
-
 # pick emoji script
 sudo ln -sf ~/.dotfiles/scripts/emoji/pick /usr/bin/pick_emoji
