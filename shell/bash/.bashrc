@@ -88,9 +88,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
 # Custom bash profile
 source ~/.bash_profile
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Backend exports
+export $(cat /home/bertini36/code/backend/config/docker.env )
+export $(cat /home/bertini36/code/backend/config/local.env )
+export $(cat /home/bertini36/code/backend/config/secret.env )
