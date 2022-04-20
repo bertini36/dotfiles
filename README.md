@@ -41,10 +41,6 @@ dot git
 dot git standup
 ```
 
-## 🤖 Automatic text replacements 
-Tap `:today` everywhere to get the current date. Check the pre-configured rules and add
-more in `linux/espanso/config.yml`.
-
 ## ✍️ Manual steps
 - Install Chrome
 - Install <a href="https://www.jetbrains.com/toolbox-app/">Jetbrains Toolbox</a> and then Pycharm

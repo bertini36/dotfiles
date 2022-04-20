@@ -2,4 +2,3 @@ spotify
 telegram-desktop
 gotop-cjbassi
 discord
-espanso
