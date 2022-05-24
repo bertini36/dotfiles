@@ -281,7 +281,12 @@ exec_always service bluetooth start
 # >> scan on
 # >> pair AA:BB:CC:DD:EE:FF
 # >> connect AA:BB:CC:DD:EE:FF
-set $headphones_mac 60:AB:D2:77:61:14
+
+# Bose headphones
+# set $headphones_mac 60:AB:D2:77:61:14
+
+# Pixel Buds
+set $headphones_mac 0C:C4:13:FD:7B:A1
 
 # Connect headphones to Bluetooth
 bindsym $mod+b exec echo "connect $headphones_mac" | bluetoothctl
