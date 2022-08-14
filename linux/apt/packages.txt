@@ -89,9 +89,6 @@ i3lock
 # cpufreq
 indicator-cpufreq
 
-# photo editor
-krita
-
 # gnome-tweaks
 gnome-tweak-tool
 
