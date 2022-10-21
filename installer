@@ -61,7 +61,7 @@ echo "Symbolic links created!"
 
 # Copy fonts
 mkdir ~/.fonts
-cp -a ~/.dotfiles/linux/fonts/. ~/.fonts
+cp -a ~/.dotfiles/fonts/. ~/.fonts
 
 # generate folders structure
 mkdir ~/code/
