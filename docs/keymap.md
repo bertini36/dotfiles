@@ -85,13 +85,13 @@
 #### Search
 
 * **SHT+SHT**				&rarr;     Search all
-* **CTL+SHT+F** 			&rarr;     Find in path
-* **CTL+N** 				&rarr;     Search class
-* **CTL+SHT+A** 			&rarr;     Search shortcuts/actions
-* **CTL+ALT+SHT+N** 		&rarr;     Search symbols
+* **CTL+SHT+F** 			&rarr;     Find in Files
+* **CTL+N** 				&rarr;     Go to Class
+* **CTL+SHT+A** 			&rarr;     Find Action
+* **CTL+ALT+SHT+N** 		&rarr;     Go to Symbol
 * **ALT+SHT+7** 			&rarr;     Find usages
-* **ALT+1**                 &rarr;     Open lateral menu
-* **SHT+ESC**               &rarr;     Close menus
+* **ALT+1**                 &rarr;     Project
+* **SHT+ESC**               &rarr;     Hide menus
 
 #### GIT
 
@@ -100,32 +100,24 @@
 * **CTL+ALT+K**             &rarr;     Push
 * **CTL+ALT+S**             &rarr;     Shelve
 * **CTL+ALT+U** 		    &rarr;     Unshelve
-* **CTL+ALT+B**             &rarr;     Branches menu
-* **CTL+INTRO**             &rarr;     Accept when commit o push
+* **CTL+ALT+B**             &rarr;     Branches
+* **CTL+INTRO**             &rarr;     Submit
 
 #### Manage tabs
 
 * **CTL+SHT+W** 	        &rarr;	    Close tab
 * **CTL+SHT+E**		        &rarr;	    Split screen
-* **ALT+[HARROWS]**         &rarr;      Change tab
+* **ALT+[HARROWS]**         &rarr;      Select Next/Previous Tab
 
 #### Navigation in file
 
-* **CTL+I**                 &rarr;      Up
-* **CTL+J**                 &rarr;      Left
-* **CTL+K**                 &rarr;      Down
-* **CTL+L**                 &rarr;      Right
 * **CTL+G** 		        &rarr;	    Go to line
 * **CTL+A** 		        &rarr;		Caret to start line
 * **CTL+E**  		        &rarr;		Caret to end line
-* **CTL+SHT+M**             &rarr;      Go to the other brace
-* **CTL+INICIO**            &rarr;      Caret to file begin
-* **CTL+FIN**               &rarr;      Caret to file end
-* **CTL+REPAGE**            &rarr;      Caret to page begin
-* **CTL+AVPAGE**            &rarr;      Caret to page begin
+* **CTL+SHT+M**             &rarr;      Move Caret to Matching Brace
 * **CTL+ALT+SHT+[VARROWS]** &rarr;	    Next or previous change
-* **ALT+J**                 &rarr;      Caret to next occurrence
-* **ALT+DOWN** 			    &rarr;      Next function
+* **ALT+J**                 &rarr;      Add Selection For Next Occurrence
+* **ALT+DOWN** 			    &rarr;      Next method
 
 #### Navigation in code
 * **CTL+HARROWS**	    	&rarr;      Return in trace
@@ -134,29 +126,24 @@
 #### Navigation helpers
 * **ALT+E**                 &rarr;      Recent files
 * **ALT+SHT+L**             &rarr;      Recent locations
-* **CTL+SHT+S**             &rarr;      Locate file in source
-* **CTL+UP**                &rarr;      Show file path
-* **ALT+SHT+E**             &rarr;      Select from caret to end
-* **CTL+ALT+SHT+O**         &rarr;      Open recent projects
+* **CTL+SHT+S**             &rarr;      Select File in Project View
 
 #### Edit
 
 * **CTL+DELETE**            &rarr;      Delete left word
 * **CTL+SUP**				&rarr;      Delete right word
-* **CTL+SHT+[HARROWS]**     &rarr;      Select horizontal
-* **CTL+SHIFT+[VARROWS]**   &rarr;      Clone cursor vertical
-* **CTL+M**				    &rarr;      Select line
+* **CTL+SHT+[HARROWS]**     &rarr;      Move Caret to Previous Word With Selection
+* **CTL+SHIFT+[VARROWS]**   &rarr;      Clone Caret Below
+* **CTL+M**				    &rarr;      Extend Line Selection
 * **CTL+D** 				&rarr;      Duplicate line or word
 * **CTL+W** 				&rarr;      Select word
 * **CTL+-**				    &rarr;      Collapse
 * **CTL++**				    &rarr;      Uncollapse
 * **CTL+SHT+-** 	    	&rarr;      All collapse
-* **CTL+ALT+Z** 			&rarr;      Revert section
+* **CTL+ALT+Z** 			&rarr;      Revert Selected
 * **ALT+SHT+[VARROWS]**	    &rarr;      Move line up or down
-* **CTL+ALT+SHT+J**		    &rarr;      Cursor in all ocurrence selected by find
-* **ATL+J** 				&rarr;      Select next ocurrence
-* **CTL+ALT+SHT+J**         &rarr;      Select all occurrence
-* **CTL+Q**                 &rarr;      Select all
+* **CTL+ALT+SHT+J**		    &rarr;      Select All Occurrences
+* **CTL+Q**                 &rarr;      Select all 
 * **SHT+[VARROWS]**         &rarr;      Extended selection
 * **CTL+SHT+ENTER**         &rarr;      Complete current statement
 * **CTL+ALT+N**             &rarr;      New scratch file
@@ -166,27 +153,22 @@
 * **CTL+ALT+O**  		    &rarr;  	Optimize imports
 * **CTL+ALT+L** 		    &rarr;  	Reformat code
 * **CTL+ALT+SHT+L**         &rarr;      Open reformat code window
-* **ALT+ENTER**             &rarr;      Code style / context actions / suggestions menu
+* **ALT+ENTER**             &rarr;      Context actions
 
 #### Refactoring
 * **CTL+CLICK**             &rarr;      Check variable reads and writes
-* **CTL+ALT+SHT+T**         &rarr;      Refactor this
+* **CTL+SHT+R**             &rarr;      Refactor This
 
 
 #### Others
 
 * **CTL+SHT+N**             &rarr;      New file
-* **CTL+T**                 &rarr;      Show file structure
-* **CTL+SHT+V**             &rarr;      Copy from history
 * **ALT+ALT (keep)**        &rarr;      Show lateral menus
-* **CTL+H** 				&rarr;      Open file hierarchy
-* **ALT+1**                 &rarr;      Open project index
-* **CTL+ALT+SHT+C** 		&rarr;      Copy method path
+* **CTL+ALT+SHT+C** 		&rarr;      Copy path / reference
 * **ALT+7**				    &rarr;      Structure
 * **CTL+SHT+R**             &rarr;      Open refactor window
-* **CTL+D**                 &rarr;      Open diff of a changelist
+* **CTL+D**                 &rarr;      Show diff
 * **ALT+9**                 &rarr;      Open Git menu
-* **ALT+ENTER**             &rarr;      Open terminal
 
 
 ## VIM
