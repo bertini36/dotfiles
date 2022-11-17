@@ -16,7 +16,7 @@ set $i3_blocks_conf ~/.dotfiles/linux/i3/i3blocks.conf
 
 set $code_folder /home/bertini36/code/
 set $dotfiles_folder /home/bertini36/.dotfiles/
-set $wallpaper /home/bertini36/.dotfiles/img/wallpapers/jota.jpg
+set $wallpaper /home/bertini36/.dotfiles/img/wallpapers/tokyo2.jpg
 set $screenshots_folder ~/Pictures/screenshots
 
 # Font for window titles. Will also be used by the bar unless a different font
