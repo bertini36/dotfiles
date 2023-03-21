@@ -66,6 +66,7 @@ dot git standup
 - Disable Spotlight shortcut to enable Raycast one
 - Install [Pycharm](https://www.jetbrains.com/pycharm/download/#section=mac)
   - Set `Alberto mac` keymap
+- Enable auto-focus `defaults write com.apple.Terminal FocusFollowsMouse -bool true`
 
 Based on <a href="https://github.com/rgomezcasas/dotfiles" target="_blank">Rafa Gomez dotfiles repo</a>
 
