@@ -53,21 +53,6 @@ dot git standup
 - <a href="https://askubuntu.com/questions/1021748/set-cpu-governor-to-performance-in-18-04" target="_blank">CPU gobernor performance problem</a>
 - <a href="https://github.com/erpalma/throttled">Fix Intel CPU Throttling on Linux</a>
 
-
-##  Mac setup
-
-- Access mac directory: `cd mac/`
-- Brew packages installation: `brew bundle`
-- Install [Iterm2](https://iterm2.com/)
-  - Import config (`mac/Iterm2.json`) 
-  - Ensure color theme (`mac/nord.itemcolors`)
-  - Set Fira code font
-- Install [Oh My ZSH and auto-suggestion and syntax highlighting plugins](https://www.freecodecamp.org/news/how-to-configure-your-macos-terminal-with-zsh-like-a-pro-c0ab3f3c1156/)
-- Disable Spotlight shortcut to enable Raycast one
-- Install [Pycharm](https://www.jetbrains.com/pycharm/download/#section=mac)
-  - Set `Alberto mac` keymap
-- Enable auto-focus `defaults write com.apple.Terminal FocusFollowsMouse -bool true`
-
 Based on <a href="https://github.com/rgomezcasas/dotfiles" target="_blank">Rafa Gomez dotfiles repo</a>
 
 <br />
