@@ -131,5 +131,4 @@
 * `claude --resume` -> Resume a previous session
 * `claude --dangerously-skip-permissions` → Bypass all safety checks and permissions (use with caution)
 * `claude --worktree` → Enable automatic git worktree creation for each new conversation (experimental)
-* Consult claude-mem memories in `localhost:37777`
 * Double `option` key → Open Claude

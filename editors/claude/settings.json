@@ -26,7 +26,6 @@
     "context7@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
     "superpowers@claude-plugins-official": true,
-    "claude-mem@thedotmack": true,
     "sentry-skills@sentry-skills": true,
     "notion@claude-plugins-official": true,
     "figma@claude-plugins-official": true,
@@ -34,12 +33,6 @@
     "caveman@caveman": true
   },
   "extraKnownMarketplaces": {
-    "thedotmack": {
-      "source": {
-        "source": "github",
-        "repo": "thedotmack/claude-mem"
-      }
-    },
     "sentry-skills": {
       "source": {
         "source": "github",
