@@ -192,6 +192,7 @@ Install the following MCP server plugins in Claude:
 | [`caveman`](https://github.com/JuliusBrussee/caveman) | Caveman-speak mode that cuts ~75% of output tokens while keeping technical accuracy |
 | [`notion`](https://github.com/makenotion/notion-mcp-server) | Read and manage Notion pages and databases |
 | [`figma`](https://github.com/figma/mcp-server-guide) | Read Figma designs and generate code from them |
+| [`claude-seo`](https://github.com/AgriciDaniel/claude-seo) | Comprehensive SEO: technical audit, E-E-A-T, schema, GEO/AEO, local SEO, backlinks, Google APIs, and PDF reporting |
 | `datadog-mcp` | Datadog observability: logs, metrics, traces, incidents, monitors, and dashboards |
 
 Install Datadog MCP:
@@ -205,6 +206,13 @@ Install Caveman:
 ```bash
 claude plugin marketplace add JuliusBrussee/caveman
 claude plugin install caveman@caveman
+```
+
+Install [claude-seo](https://github.com/AgriciDaniel/claude-seo):
+
+```bash
+claude plugin marketplace add AgriciDaniel/claude-seo
+claude plugin install claude-seo@AgriciDaniel-claude-seo
 ```
 
 Activate [rtk](https://github.com/rtk-ai/rtk):
