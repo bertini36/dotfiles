@@ -212,7 +212,7 @@ Install [claude-seo](https://github.com/AgriciDaniel/claude-seo):
 
 ```bash
 claude plugin marketplace add AgriciDaniel/claude-seo
-claude plugin install claude-seo@AgriciDaniel-claude-seo
+claude plugin install claude-seo@agricidaniel-seo
 ```
 
 Activate [rtk](https://github.com/rtk-ai/rtk):
