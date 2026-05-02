@@ -28,6 +28,19 @@ Rules:
 - Use `gh` CLI for all GitHub operations
 - Run `pre-commit` hooks before claiming a commit is ready
 
+### Copilot PR Review Handling
+
+When user pastes PR link and asks to review/address Copilot comments, run full cycle:
+1. Fetch PR review comments via `gh api repos/{owner}/{repo}/pulls/{num}/comments` (filter author `copilot-pull-request-reviewer` / `Copilot`)
+2. Read each comment with file path, line, suggestion
+3. Checkout PR branch (`gh pr checkout <num>`)
+4. Apply fixes for each valid comment; skip only with explicit reasoning
+5. Commit fixes (conventional message, e.g. `fix: address Copilot review feedback`)
+6. Push to PR branch
+7. Reply to each comment via `gh api -X POST repos/{owner}/{repo}/pulls/{num}/comments/{comment_id}/replies` explaining fix or rejection
+8. Resolve each thread via GraphQL `resolveReviewThread` mutation
+9. Report summary: addressed, rejected, pushed commit SHA
+
 ## Guardrails
 
 - If 2+ interpretations exist, ask one clarifying question before proceeding
