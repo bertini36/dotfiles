@@ -110,7 +110,26 @@ git push origin HEAD --force-with-lease
 
 ## Create the Pull Request
 
-If the project has a `.github/pull_request_template.md` file, read it and use it as the PR body format — the body must **strictly match** the template structure. If no template exists, use a sensible default structure with sections for description, type of change, and testing notes.
+### 1. Check for a PR template
+
+Before drafting the body, check whether the repo provides a pull request template. GitHub looks in these locations (case-insensitive):
+
+```bash
+ls .github/PULL_REQUEST_TEMPLATE.md \
+   .github/pull_request_template.md \
+   PULL_REQUEST_TEMPLATE.md \
+   pull_request_template.md \
+   docs/PULL_REQUEST_TEMPLATE.md \
+   docs/pull_request_template.md 2>/dev/null
+```
+
+If multiple templates exist under `.github/PULL_REQUEST_TEMPLATE/`, list them and ask the user which one to use.
+
+### 2. Build the PR body
+
+If a template exists, read it and use it as the PR body format, the body must **strictly match** the template structure (sections, order, checkboxes, placeholders). Do not drop sections you cannot fill, leave them with a placeholder or empty value as the template intends.
+
+If no template exists, use a sensible default structure with sections for description, type of change, and testing notes.
 
 When filling out the template:
 - Replace `#XXXX` with the actual issue number, or keep as `#XXXX` if no issue exists (for small fixes)
