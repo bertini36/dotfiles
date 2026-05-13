@@ -69,10 +69,28 @@ This dispatches both the `code-reviewer` and `security-reviewer` agents.
 
 Uses the `create-pull-request` skill with `writing-clearly` for the description. The `superpowers:finishing-a-development-branch` skill guides the merge/PR decision.
 
+## 8. Address PR feedback
+
+After the PR is open and reviewers leave comments, dispatch the `pr-reviewer` agent:
+
+```
+Paste the PR link (e.g. https://github.com/owner/repo/pull/42)
+```
+
+The agent handles the full cycle: audits the diff, fetches all open review comments (humans and bots like Copilot, CodeRabbit), triages each comment (apply, reject, or defer), commits fixes, pushes, replies to threads, resolves them, verifies CI is green, and outputs a summary report.
+
+## 9. Finish
+
+```
+/end-feature
+```
+
+Switches to `main`, pulls latest, and removes the merged feature branch locally and remotely.
+
 ## Quick Reference
 
 ```
-Brainstorm  -->  Plan  -->  Evaluate  -->  Implement  -->  Verify  -->  Review  -->  PR
+Brainstorm --> Plan --> Evaluate --> Implement --> Verify --> Review --> PR --> Address feedback --> Finish
 ```
 
 Most steps trigger automatically through the `superpowers` plugin. The manual touchpoints are:
@@ -80,6 +98,8 @@ Most steps trigger automatically through the `superpowers` plugin. The manual to
 - `/review` to run code review
 - `/audit` to run full audit
 - `/create-pull-request` to open the PR
+- Paste a PR link to dispatch the `pr-reviewer` agent for handling review comments
+- `/end-feature` to clean up after merge
 
 ## Fixing Issues
 
