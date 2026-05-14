@@ -160,7 +160,7 @@ Avoid passing the PR body directly as a command-line argument, as this often fai
 cat > pr_body.txt <<'EOF'
 PR_BODY_CONTENT
 EOF
-gh pr create --title "PR_TITLE" --body-file pr_body.txt --base master --draft --assignee "@me"
+gh pr create --title "PR_TITLE" --body-file pr_body.txt --base master --draft --assignee "@me" --reviewer "Copilot"
 rm pr_body.txt # Clean up
 ```
 
@@ -170,7 +170,7 @@ If the project belongs to the Abacum organization (e.g., remote URL contains `ab
 cat > pr_body.txt <<'EOF'
 PR_BODY_CONTENT
 EOF
-gh pr create --title "PR_TITLE" --body-file pr_body.txt --base master --draft --assignee "@me" --label "Engine"
+gh pr create --title "PR_TITLE" --body-file pr_body.txt --base master --draft --assignee "@me" --reviewer "Copilot" --label "Engine"
 rm pr_body.txt # Clean up
 ```
 
