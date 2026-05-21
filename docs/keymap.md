@@ -13,6 +13,7 @@
 * See hidden files `CMD + Shift + .`
 * Open settings `CMD + ,`
 * Change keyboard layout `CTL + Space`
+* Open Gemini `OPT + Space`
 
 ## Raycast (Caps Lock based)
 
