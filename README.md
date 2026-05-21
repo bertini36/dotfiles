@@ -74,11 +74,15 @@ My personal Mac setup and configurations
     git clone https://github.com/agkozak/zsh-z ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-z
     ```
 
-- Install [Raycast](https://www.raycast.com/)
-  * Disable Spotlight shortcut to enable Raycast one (System Preferences -> Keyboard -> Shortcuts -> Spotlight -> Uncheck `Show Spotlight search`)
-  * Configure shortcuts following [keymap.md](docs/keymap.md)
-- Install [Iterm2](https://iterm2.com/)
-- Install [Docker](https://docs.docker.com/desktop/install/mac-install/)
+- Install [Chrome](https://www.google.com/chrome/)
+- Install [Youtube Music](https://music.youtube.com/) (as browser pwa)
+- Install [WhatsApp](https://www.whatsapp.com/download)
+- Install [Telegram](https://desktop.telegram.org/)
+- Install [Slack](https://slack.com/intl/en-gb/downloads/mac)
+- Install [Gemini](https://gemini.google/mac/)
+- Install [Claude](https://claude.ai/)
+- Install [Notion](https://www.notion.so/desktop)
+- Install [Notion Calendar](https://www.notion.com/product/calendar)
 - Install [Jetbrains Toolbox](https://www.jetbrains.com/toolbox-app/) and [Pycharm](https://www.jetbrains.com/pycharm/)
 - Install [Visual Studio Code](https://code.visualstudio.com/)
   * Install extensions:
@@ -96,6 +100,11 @@ My personal Mac setup and configurations
     - [shift shift](https://marketplace.visualstudio.com/items?itemName=ahebrank.shortcut-menu-bar)
     - [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
     - [Auto-interpreter for PEP723 (uv)](https://marketplace.visualstudio.com/items?itemName=nsarrazin.pep723-uv-interpreter)
+- Install [Iterm2](https://iterm2.com/)
+- Install [Docker](https://docs.docker.com/desktop/install/mac-install/)
+- Install [Raycast](https://www.raycast.com/)
+  * Disable Spotlight shortcut to enable Raycast one (System Preferences -> Keyboard -> Shortcuts -> Spotlight -> Uncheck `Show Spotlight search`)
+  * Configure shortcuts following [keymap.md](docs/keymap.md)
 
 - Enable auto-focus: `defaults write com.apple.Terminal FocusFollowsMouse -bool true`
 - Link the rest of configuration files (install Claude Code first so `~/.claude/` exists)

@@ -12,6 +12,7 @@
 * App settings `CMD + ,`
 * See hidden files `CMD + Shift + .`
 * Open settings `CMD + ,`
+* Change keyboard layout `CTL + Space`
 
 ## Raycast (Caps Lock based)
 
@@ -24,9 +25,9 @@
 * Terminal `Caps Lock + T`
 * Notion `Caps Lock + N`
 * Calendar `Caps Lock + S`
-* Wattsapp `Caps Lock + W`
+* WhatsApp `Caps Lock + W`
 * Telegram `Caps Lock + G`
-* Perplexity `Caps Lock + I`
+* AI `Caps Lock + I`
 * Open Downloads `Caps Lock + D`
 * Pomodoro `Caps Lock + O`
 * DeepL `Caps Lock + L`
