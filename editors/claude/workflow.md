@@ -35,6 +35,20 @@ Domain-specific rules load automatically based on the files you touch:
 | LangChain/LangGraph files | `langchain` | `langchain-architecture` |
 | Test files | `tests` | - |
 
+### Commit discipline
+
+The PR must read as a story when walked commit by commit. A reviewer should follow the chain of thought without ever needing the full diff.
+
+Rules:
+
+- **One logical change per commit.** A commit adds a model, or adds a view, or adds tests for that view, never all three at once.
+- **Self-contained.** Each commit compiles, passes its own tests, and makes sense in isolation. No "WIP" or "fixup" commits on the final branch; squash or rebase them away before the PR.
+- **Ordered as a narrative.** Foundations first (types, models, schemas), then behavior (services, views), then surface (routes, UI), then tests and docs. A later commit may depend on an earlier one; an earlier commit must not depend on a later one.
+- **Never mix refactors with feature work.** A rename, an extraction, or a reformat goes in its own commit before or after the feature change, not folded into it.
+- **Message describes intent, not mechanics.** `feat: cache user permissions per request` beats `feat: add LRU dict to middleware`. The subject answers *what changed for the user*; the body answers *why* when the reason is not obvious.
+
+Quick check before opening the PR: read your own `git log --oneline main..HEAD`. If the sequence does not tell a coherent story, rebase until it does.
+
 ## 5. Verify
 
 The `superpowers:verification-before-completion` skill runs before any success claim. Additionally, CLAUDE.md requires running three skills before marking a task complete:

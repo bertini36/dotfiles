@@ -27,6 +27,7 @@ Rules:
 - Conventional commit messages (`feat:`, `fix:`, `docs:`, etc.)
 - Use `gh` CLI for all GitHub operations
 - Run `pre-commit` hooks before claiming a commit is ready
+- One logical change per commit. Commits must be atomic, self-contained, and ordered so the sequence reads as a narrative: a reviewer walking the PR commit by commit should follow the chain of thought without needing the diff as a whole. Split unrelated changes into separate commits; never mix refactors with feature work.
 
 ### PR Review Handling
 
