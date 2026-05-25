@@ -105,6 +105,7 @@ My personal Mac setup and configurations
 - Install [Raycast](https://www.raycast.com/)
   * Disable Spotlight shortcut to enable Raycast one (System Preferences -> Keyboard -> Shortcuts -> Spotlight -> Uncheck `Show Spotlight search`)
   * Configure shortcuts following [keymap.md](docs/keymap.md)
+- Install [Amphetamine](https://apps.apple.com/app/amphetamine/id937984704) and set it to keep the computer awake indefinitely
 
 - Enable auto-focus: `defaults write com.apple.Terminal FocusFollowsMouse -bool true`
 - Link the rest of configuration files (install Claude Code first so `~/.claude/` exists)
