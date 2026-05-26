@@ -142,9 +142,12 @@ Reusable AI agent skills that Claude invokes autonomously when a task matches th
 | `create-pull-request` | Create a GitHub PR following project conventions using `gh` CLI |
 | `ddd-patterns` | DDD entities, aggregate roots, value objects, repositories, domain services, and specifications |
 | `django-patterns` | Django architecture, REST APIs with Pydantic, ORM best practices, caching, and signals |
+| `grill-me` | Stress-test a plan or design by interviewing one question at a time across the decision tree |
+| `handoff` | Compact the current conversation into a handoff document for another agent to pick up |
 | `langchain-architecture` | LangChain 1.x and LangGraph for agents, memory, and tool integration |
 | `production-code-audit` | Deep-scan a codebase and transform it to production-grade quality |
 | `python-code-style` | Python type safety, generics, protocols, and advanced type annotations |
+| `wiki-karpathy` | Initialize, ingest, query, and lint a Karpathy-style personal wiki inside an Obsidian vault |
 | `writing-clearly` | Clear prose for docs, commits, error messages, and UI text |
 
 #### Evals
