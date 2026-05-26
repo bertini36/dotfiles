@@ -18,6 +18,8 @@ This creates an isolated copy of the repo so your work doesn't interfere with th
 
 Describe what you want to build. The `superpowers:brainstorming` skill triggers automatically to explore requirements, edge cases, and design before any code is written.
 
+To stress-test the idea before formalizing it, ask Claude to `grill me`. The `grill-me` skill interviews you one question at a time, walking each branch of the decision tree with a recommended answer per question, until you reach shared understanding. Skip it for trivial changes; use it whenever the design space is open or the requirements feel fuzzy.
+
 ## 3. Plan
 
 The `superpowers:writing-plans` skill creates a step-by-step implementation plan. The `evaluator` agent then scores it on seven criteria (correctness, completeness, simplicity, consistency, testability, security, reversibility) and issues a GO/NO-GO verdict. Implementation only proceeds on GO.
