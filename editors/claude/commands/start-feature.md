@@ -6,8 +6,8 @@ Begin the feature development pipeline defined in `workflow.md`.
 
 Task: $ARGUMENTS
 
-Current branch: !`git branch --show-current`
-Uncommitted changes: !`git status --short`
+Current branch: !`git rev-parse --git-dir > /dev/null 2>&1 && git branch --show-current || echo "(no git repo)"`
+Uncommitted changes: !`git rev-parse --git-dir > /dev/null 2>&1 && git status --short || echo "(no git repo)"`
 
 Follow the pipeline strictly. Do not skip stages. Proceed stage-by-stage; pause between stages only when the pipeline requires user input or a GO verdict.
 
@@ -24,3 +24,4 @@ Rules:
 - Use `gh` CLI for GitHub operations.
 - Run `pre-commit` hooks before claiming a commit is ready.
 - No implementation before a GO verdict from `evaluator`.
+- If no `.git` repo is present, skip git/PR steps (branch creation, commits, PR). Still run Brainstorm, Plan, Evaluate, Implement, and Verify stages normally.
