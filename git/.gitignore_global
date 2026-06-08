@@ -37,6 +37,7 @@ tmp/
 
 # Custom
 .no-commit
+.claude_sessions.md
 
 # superpowers
 superpowers/

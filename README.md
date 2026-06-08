@@ -191,6 +191,7 @@ Custom slash commands for common workflows.
 | `/fix-issue <number>` | Fetch a GitHub issue and implement the fix |
 | `/audit` | Run full production audit with both agents |
 | `/start-feature` | Start the feature development pipeline from `workflow.md` |
+| `/save-session` | Save a high-density summary of the current session to `.claude_sessions.md` |
 
 ### 🔌 Claude Plugins
 
