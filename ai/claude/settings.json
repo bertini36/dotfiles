@@ -28,7 +28,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash ~/.dotfiles/editors/claude/hooks/python-worktree-venv.sh"
+            "command": "bash ~/.dotfiles/ai/claude/hooks/python-worktree-venv.sh"
           }
         ]
       }
