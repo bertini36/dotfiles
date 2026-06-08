@@ -169,6 +169,7 @@ Specialized subagents that run in isolated context windows with restricted tools
 | `code-reviewer` | Read-only production code audit with A-F graded report (architecture, security, performance, quality, testing) |
 | `security-reviewer` | OWASP Top 10 and Django-specific security vulnerability scanner |
 | `evaluator` | Quality gate that scores implementation plans on 7 criteria with GO/NO-GO verdict |
+| `pr-reviewer` | End-to-end PR review: audits diff, fetches open comments, applies fixes, commits, pushes, replies, resolves threads, and verifies CI |
 
 ### Rules
 
@@ -191,6 +192,7 @@ Custom slash commands for common workflows.
 | `/fix-issue <number>` | Fetch a GitHub issue and implement the fix |
 | `/audit` | Run full production audit with both agents |
 | `/start-feature` | Start the feature development pipeline from `workflow.md` |
+| `/end-feature` | Finalize a merged PR: switch to main, pull, and remove the merged feature branch locally and remotely |
 | `/save-session` | Save a high-density summary of the current session to `.claude_sessions.md` |
 
 ### 🔌 Claude Plugins
@@ -227,6 +229,12 @@ Install [claude-seo](https://github.com/AgriciDaniel/claude-seo):
 ```bash
 claude plugin marketplace add AgriciDaniel/claude-seo
 claude plugin install claude-seo@agricidaniel-seo
+```
+
+Update all plugins:
+
+```
+Update installed plugins
 ```
 
 Activate [rtk](https://github.com/rtk-ai/rtk):
