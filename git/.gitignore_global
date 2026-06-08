@@ -41,3 +41,6 @@ tmp/
 
 # superpowers
 superpowers/
+
+# Worktrees
+.worktrees/
