@@ -119,6 +119,7 @@ My personal Mac setup and configurations
   ln -s ~/.dotfiles/ai/claude/settings.json ~/.claude/settings.json
   ln -s ~/.dotfiles/ai/claude/statusline-command.sh ~/.claude/statusline-command.sh
   ln -s ~/.dotfiles/ai/claude/CLAUDE.md ~/.claude/CLAUDE.md
+  ln -s ~/.dotfiles/ai/claude/RTK.md ~/.claude/RTK.md
   ln -s ~/.dotfiles/ai/claude/skills ~/.claude/skills
   ln -s ~/.dotfiles/ai/claude/rules ~/.claude/rules
   ln -s ~/.dotfiles/ai/claude/agents ~/.claude/agents
@@ -152,7 +153,7 @@ Reusable AI agent skills that Claude invokes autonomously when a task matches th
 
 #### Evals
 
-Each skill has an `evals/evals.json` file that defines test cases to measure skill effectiveness. To run the evals paste the following command your AI agent prompt.
+Most skills have an `evals/evals.json` file that defines test cases to measure skill effectiveness. To run the evals, paste the following steps into your AI agent prompt.
 
 1. Read the eval definitions in `ai/claude/skills/<skill>/evals/evals.json`
 2. Generate outputs - run each eval prompt twice per skill (once with the skill loaded, once without) and save the results to `ai/claude/skills-workspace/iteration-1/<eval-id>/with_skill/outputs/` and `without_skill/outputs/`
@@ -191,7 +192,7 @@ Custom slash commands for common workflows.
 | `/review-branch` | Review current branch changes for quality and security |
 | `/fix-issue <number>` | Fetch a GitHub issue and implement the fix |
 | `/audit` | Run full production audit with both agents |
-| `/start-feature` | Start the feature development pipeline from `workflow.md` |
+| `/start-feature <task>` | Start the feature development pipeline from `workflow.md` |
 | `/end-feature` | Finalize a merged PR: switch to main, pull, and remove the merged feature branch locally and remotely |
 | `/save-session` | Save a high-density summary of the current session to `.claude_sessions.md` |
 
