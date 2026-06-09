@@ -209,12 +209,20 @@ Install the following MCP server plugins in Claude:
 | [`notion`](https://github.com/makenotion/notion-mcp-server) | Read and manage Notion pages and databases |
 | [`figma`](https://github.com/figma/mcp-server-guide) | Read Figma designs and generate code from them |
 | [`claude-seo`](https://github.com/AgriciDaniel/claude-seo) | Comprehensive SEO: technical audit, E-E-A-T, schema, GEO/AEO, local SEO, backlinks, Google APIs, and PDF reporting |
+| [`last30days`](https://github.com/mvanhorn/last30days-skill) | Research any topic across Reddit, X, YouTube, HN, Polymarket, and the web, scored by upvotes, likes, and real money |
 | `datadog-mcp` | Datadog observability: logs, metrics, traces, incidents, monitors, and dashboards |
 
 Install Datadog MCP:
 
 ```bash
 claude mcp add --transport http datadog-mcp https://mcp.datadoghq.eu/api/unstable/mcp-server/mcp
+```
+
+Install [last30days](https://github.com/mvanhorn/last30days-skill):
+
+```
+/plugin marketplace add mvanhorn/last30days-skill
+/plugin install last30days
 ```
 
 Install Caveman:
