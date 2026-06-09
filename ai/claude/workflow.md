@@ -60,7 +60,7 @@ The `superpowers:verification-before-completion` skill runs before any success c
 Review your branch changes:
 
 ```
-/review
+/review-branch
 ```
 
 This dispatches the `code-reviewer` agent on the diff against `main`.
@@ -107,7 +107,7 @@ Brainstorm --> Plan --> Evaluate --> Implement --> Verify --> Review --> PR --> 
 
 Most steps trigger automatically through the `superpowers` plugin. The manual touchpoints are:
 
-- `/review` to run code review
+- `/review-branch` to run code review
 - `/audit` to run full audit
 - `/create-pull-request` to open the PR
 - Paste a PR link to dispatch the `pr-reviewer` agent for handling review comments
