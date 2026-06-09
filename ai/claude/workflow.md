@@ -53,11 +53,7 @@ Quick check before opening the PR: read your own `git log --oneline main..HEAD`.
 
 ## 5. Verify
 
-The `superpowers:verification-before-completion` skill runs before any success claim. Additionally, CLAUDE.md requires running three skills before marking a task complete:
-
-- `production-code-audit`
-- `django-patterns`
-- `python-code-style`
+The `superpowers:verification-before-completion` skill runs before any success claim: run the tests and `pre-commit` hooks and confirm the output. Domain pattern skills (`django-patterns`, `python-code-style`, etc.) already applied during implementation via the rules; reviews happen in the next step. Do not run `production-code-audit` here; it rewrites code rather than verifying it.
 
 ## 6. Review
 

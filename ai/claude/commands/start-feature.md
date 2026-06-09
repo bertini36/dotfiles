@@ -15,7 +15,7 @@ Follow the pipeline strictly. Do not skip stages. Proceed stage-by-stage; pause 
 2. **Plan** - invoke `superpowers:writing-plans` to produce a step-by-step implementation plan.
 3. **Evaluate** - dispatch the `evaluator` agent to score the plan (correctness, completeness, simplicity, consistency, testability, security, reversibility). Stop on NO-GO. Only proceed on GO.
 4. **Implement** - invoke `superpowers:executing-plans`. Use `superpowers:dispatching-parallel-agents` when tasks are independent. Domain rules (`python`, `django`, `langchain`, `tests`) load automatically based on files touched.
-5. **Verify** - invoke `superpowers:verification-before-completion`. Run `production-code-audit`, `django-patterns`, and `python-code-style` skills before claiming completion.
+5. **Verify** - invoke `superpowers:verification-before-completion`. Run the tests and `pre-commit` hooks before claiming completion.
 6. **Review** - run `/review` for code review, or `/audit` for a full code + security review.
 7. **PR** - run `/create-pull-request`. Apply `superpowers:finishing-a-development-branch` for the merge/PR decision.
 

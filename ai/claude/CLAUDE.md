@@ -37,7 +37,6 @@ When user pastes a PR link and asks to review or address comments, dispatch the 
 
 - If 2+ interpretations exist, ask one clarifying question before proceeding
 - Read existing patterns from `main` before coding; ask before inventing new variants
-- Tool priority: LSP > semantic code search > Grep/Glob
 
 ## AI Assistance Preferences
 
