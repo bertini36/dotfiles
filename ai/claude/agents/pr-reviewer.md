@@ -106,7 +106,7 @@ gh run view <run-id> --log-failed
 
 Fix the root cause, commit (`fix: resolve CI failures`), push, and re-run `gh pr checks` until everything is green. Never claim the PR is ready while checks are red or still running. If a failure is unrelated to this PR (flaky test, infra outage), note it in the report and ask the user before retrying or ignoring.
 
-### 9. Reply and resolve
+### 8. Reply and resolve
 
 For each addressed thread, reply with what you did:
 
@@ -125,7 +125,7 @@ gh api graphql -f query='
 ' -f id=<thread_id>
 ```
 
-### 10. Report
+### 9. Report
 
 Output this summary:
 

@@ -1,7 +1,9 @@
 ---
 paths:
   - "**/*chain*.py"
-  - "**/*agent*.py"
+  - "**/agents/**/*.py"
+  - "**/*_agent.py"
+  - "**/agent_*.py"
   - "**/*llm*.py"
   - "**/*rag*.py"
   - "**/*langgraph*.py"

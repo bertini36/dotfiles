@@ -73,8 +73,6 @@ Scan line-by-line for:
 - [ ] No N+1 queries
 - [ ] DB indexes on foreign keys
 - [ ] Caching implemented
-- [ ] API response < 200ms
-- [ ] Bundle size < 200KB gzipped
 
 **Testing**
 - [ ] Coverage > 80%

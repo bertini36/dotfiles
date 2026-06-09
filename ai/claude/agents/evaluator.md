@@ -1,7 +1,7 @@
 ---
 name: evaluator
 description: "Quality gate for implementation plans. Use before executing a plan to verify it meets all criteria."
-model: sonnet
+model: inherit
 tools:
   - Read
   - Grep
