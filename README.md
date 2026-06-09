@@ -188,7 +188,7 @@ Custom slash commands for common workflows.
 
 | Command | Usage |
 |---|---|
-| `/review` | Review current branch changes for quality and security |
+| `/review-branch` | Review current branch changes for quality and security |
 | `/fix-issue <number>` | Fetch a GitHub issue and implement the fix |
 | `/audit` | Run full production audit with both agents |
 | `/start-feature` | Start the feature development pipeline from `workflow.md` |
@@ -197,20 +197,45 @@ Custom slash commands for common workflows.
 
 ### 🔌 Claude Plugins
 
-Install the following MCP server plugins in Claude:
+Plugins are split into two tiers to keep session context lean: a small global
+set enabled in `ai/claude/settings.json`, and domain-specific plugins enabled
+per project only where they are needed.
+
+Global plugins (enabled in `enabledPlugins` of the global settings):
 
 | Plugin | Description |
 |---|---|
 | [`superpowers`](https://github.com/obra/superpowers) | Spec driven development (SDD) based on brainstorming, planning, subagent-driven execution, TDD, and code review skills |
 | `skill-creator` | Create, modify, and benchmark custom skills, including eval runs and description optimization |
 | [`context7`](https://github.com/upstash/context7) | Up-to-date documentation and code examples for any library |
-| [`sentry-skills`](https://github.com/getsentry/skills) | Sentry engineering skills: PR writing, code review, Django patterns, security review, and more |
 | [`caveman`](https://github.com/JuliusBrussee/caveman) | Caveman-speak mode that cuts ~75% of output tokens while keeping technical accuracy |
+| `chrome-devtools-mcp` | Chrome DevTools automation: debugging, performance traces, network inspection |
+| [`last30days`](https://github.com/mvanhorn/last30days-skill) | Research any topic across Reddit, X, YouTube, HN, Polymarket, and the web, scored by upvotes, likes, and real money |
+
+Per-project plugins (marketplaces stay registered globally in
+`extraKnownMarketplaces`; enable the plugin in the project's
+`.claude/settings.json`):
+
+| Plugin | Description |
+|---|---|
+| [`sentry-skills`](https://github.com/getsentry/skills) | Sentry engineering skills: PR writing, code review, Django patterns, security review, and more |
 | [`notion`](https://github.com/makenotion/notion-mcp-server) | Read and manage Notion pages and databases |
 | [`figma`](https://github.com/figma/mcp-server-guide) | Read Figma designs and generate code from them |
+| `atlassian` | Jira and Confluence: issues, backlogs, status reports, and knowledge search |
 | [`claude-seo`](https://github.com/AgriciDaniel/claude-seo) | Comprehensive SEO: technical audit, E-E-A-T, schema, GEO/AEO, local SEO, backlinks, Google APIs, and PDF reporting |
-| [`last30days`](https://github.com/mvanhorn/last30days-skill) | Research any topic across Reddit, X, YouTube, HN, Polymarket, and the web, scored by upvotes, likes, and real money |
 | `datadog-mcp` | Datadog observability: logs, metrics, traces, incidents, monitors, and dashboards |
+
+To enable one of these in a project, add it to the project's
+`.claude/settings.json`:
+
+```json
+{
+  "enabledPlugins": {
+    "figma@claude-plugins-official": true,
+    "sentry-skills@sentry-skills": true
+  }
+}
+```
 
 Install Datadog MCP:
 

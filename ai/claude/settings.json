@@ -50,13 +50,8 @@
     "context7@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
     "superpowers@claude-plugins-official": true,
-    "sentry-skills@sentry-skills": true,
-    "notion@claude-plugins-official": true,
-    "figma@claude-plugins-official": true,
-    "atlassian@claude-plugins-official": true,
     "caveman@caveman": true,
     "chrome-devtools-mcp@claude-plugins-official": true,
-    "claude-seo@agricidaniel-seo": true,
     "last30days@last30days-skill": true
   },
   "extraKnownMarketplaces": {
