@@ -65,7 +65,11 @@ My personal Mac setup and configurations
   - Change `Caps Lock` to `CMD + CTL + Option + Shift`
   - Map F4 to `CMD + Space` (Raycast)
 - Install [Oh My ZSH](https://ohmyz.sh/)
-  * Link `shell/.zshrc` to `~/.zshrc`: `ln ~/.dotfiles/shell/.zshrc ~/.zshrc`
+  * Source `shell/.zshrc` from `~/.zshrc` so installer appends and machine-specific aliases stay out of the repo:
+
+  ```bash
+  echo 'source ~/.dotfiles/shell/.zshrc' > ~/.zshrc
+  ```
   * Install plugins
 
     ```bash
