@@ -269,5 +269,14 @@ Activate [rtk](https://github.com/rtk-ai/rtk):
 rtk init -g
 ```
 
+Install [claude-auto-retry](https://github.com/cheapestinference/claude-auto-retry) to auto-resume Claude Code sessions when subscription rate limits reset:
+
+```bash
+npm i -g claude-auto-retry
+claude-auto-retry install
+```
+
+It injects a shell function into `~/.zshrc` (not tracked here: the function embeds the machine's Node path). Re-run `claude-auto-retry install` after switching Node versions with `nvm`.
+
 <br />
 <p align="center">Built with ❤️ from Mallorca</p>
