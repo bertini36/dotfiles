@@ -87,6 +87,7 @@ My personal Mac setup and configurations
 - Install [Claude](https://claude.ai/)
 - Install [Notion](https://www.notion.so/desktop)
 - Install [Notion Calendar](https://www.notion.com/product/calendar)
+- Install [Obsidian](https://obsidian.md/)
 - Install [Jetbrains Toolbox](https://www.jetbrains.com/toolbox-app/) and [Pycharm](https://www.jetbrains.com/pycharm/)
 - Install [Visual Studio Code](https://code.visualstudio.com/)
   * Install extensions:
@@ -287,6 +288,15 @@ claude [args]           # plain Claude Code, no wrapper
 ```
 
 Do not run `claude-auto-retry install`; it would inject a second, always-on wrapper into `~/.zshrc`. The tracked function hardcodes the global `node_modules` path of the npm install, so update it if that path changes (e.g. after switching Node versions with `nvm`).
+
+Install [graphify](https://github.com/safishamsi/graphify) to turn any folder of code, docs, or papers into a queryable knowledge graph (`/graphify` skill):
+
+```bash
+uv tool install graphifyy   # PyPI package is graphifyy; the CLI is graphify
+graphify install
+```
+
+`graphify install` generates the skill in `~/.claude/skills/graphify/` and registers it in `~/.claude/CLAUDE.md`. The skill directory is tool-managed, so it is gitignored; only the `CLAUDE.md` registration is tracked.
 
 <br />
 <p align="center">Built with ❤️ from Mallorca</p>
