@@ -277,10 +277,16 @@ Install [claude-auto-retry](https://github.com/cheapestinference/claude-auto-ret
 
 ```bash
 npm i -g claude-auto-retry
-claude-auto-retry install
 ```
 
-It injects a shell function into `~/.zshrc` (not tracked here: the function embeds the machine's Node path). Re-run `claude-auto-retry install` after switching Node versions with `nvm`.
+Auto-retry is opt-in per session, via a `claude` wrapper function in `shell/.zshrc`. The `--retry` flag works in any position; the wrapper strips it before forwarding the remaining arguments:
+
+```bash
+claude --retry [args]   # run through the auto-retry launcher; resumes when limits reset
+claude [args]           # plain Claude Code, no wrapper
+```
+
+Do not run `claude-auto-retry install`; it would inject a second, always-on wrapper into `~/.zshrc`. The tracked function hardcodes the global `node_modules` path of the npm install, so update it if that path changes (e.g. after switching Node versions with `nvm`).
 
 <br />
 <p align="center">Built with ❤️ from Mallorca</p>
