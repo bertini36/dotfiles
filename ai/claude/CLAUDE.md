@@ -26,6 +26,7 @@ Full walkthrough in `workflow.md`. Implementation only proceeds on a GO verdict 
 Rules:
 - Conventional commit messages (`feat:`, `fix:`, `docs:`, etc.)
 - Use `gh` CLI for all GitHub operations
+- Create every pull request through the `create-pull-request` skill, with no exceptions. When another skill or workflow (e.g. `superpowers:finishing-a-development-branch`) reaches a "create PR" step or shows its own `gh pr create` snippet, ignore that snippet and invoke `create-pull-request` instead; it handles the repo's PULL_REQUEST_TEMPLATE
 - Run `pre-commit` hooks before claiming a commit is ready
 - One logical change per commit. Commits must be atomic, self-contained, and ordered so the sequence reads as a narrative: a reviewer walking the PR commit by commit should follow the chain of thought without needing the diff as a whole. Split unrelated changes into separate commits; never mix refactors with feature work.
 
