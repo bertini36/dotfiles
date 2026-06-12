@@ -121,6 +121,7 @@ My personal Mac setup and configurations
 
   ln -s ~/.dotfiles/editors/vim/.vimrc ~/.vimrc
 
+  ln -s ~/.dotfiles/ai/claude/.claude-auto-retry.json ~/.claude-auto-retry.json
   ln -s ~/.dotfiles/ai/claude/settings.json ~/.claude/settings.json
   ln -s ~/.dotfiles/ai/claude/statusline-command.sh ~/.claude/statusline-command.sh
   ln -s ~/.dotfiles/ai/claude/CLAUDE.md ~/.claude/CLAUDE.md
@@ -288,6 +289,8 @@ claude [args]           # plain Claude Code, no wrapper
 ```
 
 Do not run `claude-auto-retry install`; it would inject a second, always-on wrapper into `~/.zshrc`. The tracked function hardcodes the global `node_modules` path of the npm install, so update it if that path changes (e.g. after switching Node versions with `nvm`).
+
+The tool reads `~/.claude-auto-retry.json` (symlinked from `ai/claude/.claude-auto-retry.json`). The tracked config adds `"session limit"` as a custom pattern because the built-in patterns of v0.2.2 do not match the current Claude Code message ("You've hit your session limit · resets ..."), so without it the monitor never retries.
 
 Install [graphify](https://github.com/safishamsi/graphify) to turn any folder of code, docs, or papers into a queryable knowledge graph (`/graphify` skill):
 
