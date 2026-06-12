@@ -52,7 +52,6 @@
     "skill-creator@claude-plugins-official": true,
     "superpowers@claude-plugins-official": true,
     "caveman@caveman": true,
-    "chrome-devtools-mcp@claude-plugins-official": true,
     "last30days@last30days-skill": true
   },
   "extraKnownMarketplaces": {

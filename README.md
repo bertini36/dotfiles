@@ -129,7 +129,6 @@ My personal Mac setup and configurations
   ln -s ~/.dotfiles/ai/claude/skills ~/.claude/skills
   ln -s ~/.dotfiles/ai/claude/rules ~/.claude/rules
   ln -s ~/.dotfiles/ai/claude/agents ~/.claude/agents
-  ln -s ~/.dotfiles/ai/claude/commands ~/.claude/commands
   ```
 
 ## 🧠 Claude Configuration
@@ -138,15 +137,17 @@ All Claude Code configuration lives under `ai/claude/` and is symlinked into `~/
 
 ### Workflow
 
-See `ai/claude/workflow.md` for detailed documentation of the development workflow using Claude, Superpowers, and the custom skills, agents, rules, and commands defined in this repository.
+See `ai/claude/workflow.md` for detailed documentation of the development workflow using Claude, Superpowers, and the custom skills, agents, and rules defined in this repository.
 
 ### Skills
 
-Reusable AI agent skills that Claude invokes autonomously when a task matches their description.
+Reusable AI agent skills that Claude invokes autonomously when a task matches their description. Any skill can also be invoked explicitly as a slash command (`/skill-name`).
 
 | Skill | Description |
 |---|---|
+| `audit` | Run a full production audit with the `code-reviewer` and `security-reviewer` agents |
 | `create-pull-request` | Create a GitHub PR following project conventions using `gh` CLI |
+| `end-feature` | Finalize a merged PR: switch to main, pull, remove the merged feature branch, and update the graphify graph |
 | `ddd-patterns` | DDD entities, aggregate roots, value objects, repositories, domain services, and specifications |
 | `django-patterns` | Django architecture, REST APIs with Pydantic, ORM best practices, caching, and signals |
 | `grill-me` | Stress-test a plan or design by interviewing one question at a time across the decision tree |
@@ -154,6 +155,9 @@ Reusable AI agent skills that Claude invokes autonomously when a task matches th
 | `langchain-architecture` | LangChain 1.x and LangGraph for agents, memory, and tool integration |
 | `production-code-audit` | Deep-scan a codebase and transform it to production-grade quality |
 | `python-code-style` | Python type safety, generics, protocols, and advanced type annotations |
+| `review-branch` | Review current branch changes for quality and security |
+| `save-session` | Save a high-density summary of the current session to `.claude_sessions.md` |
+| `start-feature` | Start the feature development pipeline from `workflow.md` |
 | `wiki-karpathy` | Initialize, ingest, query, and lint a Karpathy-style personal wiki inside an Obsidian vault |
 | `writing-clearly` | Clear prose for docs, commits, error messages, and UI text |
 
@@ -189,25 +193,16 @@ Path-scoped rules that load automatically only when working on matching files.
 | `tests` | Test files - no comments, self-explanatory naming |
 | `langchain` | LangChain/LangGraph files |
 
-### Commands
-
-Custom slash commands for common workflows.
-
-| Command | Usage |
-|---|---|
-| `/review-branch` | Review current branch changes for quality and security |
-| `/audit` | Run full production audit with both agents |
-| `/start-feature <task>` | Start the feature development pipeline from `workflow.md` |
-| `/end-feature` | Finalize a merged PR: switch to main, pull, and remove the merged feature branch locally and remotely |
-| `/save-session` | Save a high-density summary of the current session to `.claude_sessions.md` |
-
 ### 🔌 Claude Plugins
 
 Plugins are split into two tiers to keep session context lean: a small global
-set enabled in `ai/claude/settings.json`, and domain-specific plugins enabled
-per project only where they are needed.
+set enabled for every session, and domain-specific plugins enabled only in the
+projects that need them. All marketplaces are registered globally in
+`extraKnownMarketplaces` of `ai/claude/settings.json`.
 
-Global plugins (enabled in `enabledPlugins` of the global settings):
+#### Global plugins
+
+Enabled in `enabledPlugins` of the global settings:
 
 | Plugin | Description |
 |---|---|
@@ -215,12 +210,11 @@ Global plugins (enabled in `enabledPlugins` of the global settings):
 | `skill-creator` | Create, modify, and benchmark custom skills, including eval runs and description optimization |
 | [`context7`](https://github.com/upstash/context7) | Up-to-date documentation and code examples for any library |
 | [`caveman`](https://github.com/JuliusBrussee/caveman) | Caveman-speak mode that cuts ~75% of output tokens while keeping technical accuracy |
-| `chrome-devtools-mcp` | Chrome DevTools automation: debugging, performance traces, network inspection |
 | [`last30days`](https://github.com/mvanhorn/last30days-skill) | Research any topic across Reddit, X, YouTube, HN, Polymarket, and the web, scored by upvotes, likes, and real money |
 
-Per-project plugins (marketplaces stay registered globally in
-`extraKnownMarketplaces`; enable the plugin in the project's
-`.claude/settings.json`):
+#### Per-project plugins
+
+Enable these in the project's `.claude/settings.json`:
 
 | Plugin | Description |
 |---|---|
@@ -229,9 +223,6 @@ Per-project plugins (marketplaces stay registered globally in
 | [`figma`](https://github.com/figma/mcp-server-guide) | Read Figma designs and generate code from them |
 | `atlassian` | Jira and Confluence: issues, backlogs, status reports, and knowledge search |
 | `datadog-mcp` | Datadog observability: logs, metrics, traces, incidents, monitors, and dashboards |
-
-To enable one of these in a project, add it to the project's
-`.claude/settings.json`:
 
 ```json
 {
@@ -242,63 +233,88 @@ To enable one of these in a project, add it to the project's
 }
 ```
 
-Install Datadog MCP:
+#### Installing and updating
+
+On a fresh machine, install the third-party plugins (the marketplaces are
+already registered through the tracked settings):
+
+```bash
+claude plugin marketplace add JuliusBrussee/caveman
+claude plugin install caveman@caveman
+
+claude plugin marketplace add mvanhorn/last30days-skill
+claude plugin install last30days@last30days-skill
+```
+
+`datadog-mcp` is an MCP server rather than a plugin; install it with:
 
 ```bash
 claude mcp add --transport http datadog-mcp https://mcp.datadoghq.eu/api/unstable/mcp-server/mcp
 ```
 
-Install [last30days](https://github.com/mvanhorn/last30days-skill):
+To update everything, ask Claude in a session: `Update installed plugins`.
 
-```
-/plugin marketplace add mvanhorn/last30days-skill
-/plugin install last30days
-```
+### 🧰 Companion Tools
 
-Install Caveman:
+CLI tools that complement Claude Code. They are installed outside the plugin
+system but configured from this repository.
 
-```bash
-claude plugin marketplace add JuliusBrussee/caveman
-claude plugin install caveman@caveman
-```
+#### rtk
 
-Update all plugins:
-
-```
-Update installed plugins
-```
-
-Activate [rtk](https://github.com/rtk-ai/rtk):
+[rtk](https://github.com/rtk-ai/rtk) proxies common dev commands and strips
+their output down to what the model needs (60-90% token savings). A
+`PreToolUse` hook in the global settings rewrites Bash commands through it
+transparently. Activate with:
 
 ```bash
 rtk init -g
 ```
 
-Install [claude-auto-retry](https://github.com/cheapestinference/claude-auto-retry) to auto-resume Claude Code sessions when subscription rate limits reset:
+#### claude-auto-retry
+
+[claude-auto-retry](https://github.com/cheapestinference/claude-auto-retry)
+resumes Claude Code sessions automatically when subscription rate limits
+reset:
 
 ```bash
 npm i -g claude-auto-retry
 ```
 
-Auto-retry is opt-in per session, via a `claude` wrapper function in `shell/.zshrc`. The `--retry` flag works in any position; the wrapper strips it before forwarding the remaining arguments:
+Auto-retry is opt-in per session through a `claude` wrapper function in
+`shell/.zshrc`. The `--retry` flag works in any position; the wrapper strips
+it before forwarding the remaining arguments:
 
 ```bash
 claude --retry [args]   # run through the auto-retry launcher; resumes when limits reset
 claude [args]           # plain Claude Code, no wrapper
 ```
 
-Do not run `claude-auto-retry install`; it would inject a second, always-on wrapper into `~/.zshrc`. The tracked function hardcodes the global `node_modules` path of the npm install, so update it if that path changes (e.g. after switching Node versions with `nvm`).
+Two caveats:
 
-The tool reads `~/.claude-auto-retry.json` (symlinked from `ai/claude/.claude-auto-retry.json`). The tracked config adds `"session limit"` as a custom pattern because the built-in patterns of v0.2.2 do not match the current Claude Code message ("You've hit your session limit · resets ..."), so without it the monitor never retries.
+- Do not run `claude-auto-retry install`; it would inject a second, always-on
+  wrapper into `~/.zshrc`. The tracked function hardcodes the global
+  `node_modules` path of the npm install, so update it if that path changes
+  (e.g. after switching Node versions with `nvm`).
+- The tool reads `~/.claude-auto-retry.json` (symlinked from
+  `ai/claude/.claude-auto-retry.json`). The tracked config adds
+  `"session limit"` as a custom pattern because the built-in patterns of
+  v0.2.2 do not match the current Claude Code message ("You've hit your
+  session limit · resets ..."); without it the monitor never retries.
 
-Install [graphify](https://github.com/safishamsi/graphify) to turn any folder of code, docs, or papers into a queryable knowledge graph (`/graphify` skill):
+#### graphify
+
+[graphify](https://github.com/safishamsi/graphify) turns any folder of code,
+docs, or papers into a queryable knowledge graph, exposed as the `/graphify`
+skill:
 
 ```bash
 uv tool install graphifyy   # PyPI package is graphifyy; the CLI is graphify
 graphify install
 ```
 
-`graphify install` generates the skill in `~/.claude/skills/graphify/` and registers it in `~/.claude/CLAUDE.md`. The skill directory is tool-managed, so it is gitignored; only the `CLAUDE.md` registration is tracked.
+`graphify install` generates the skill in `~/.claude/skills/graphify/` and
+registers it in `~/.claude/CLAUDE.md`. The skill directory is tool-managed,
+so it is gitignored; only the `CLAUDE.md` registration is tracked.
 
 <br />
 <p align="center">Built with ❤️ from Mallorca</p>
