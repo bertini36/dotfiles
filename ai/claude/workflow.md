@@ -113,16 +113,6 @@ Most steps trigger automatically through the `superpowers` plugin. The manual to
 - Paste a PR link to dispatch the `pr-reviewer` agent for handling review comments
 - `/end-feature` to clean up after merge
 
-## Fixing Issues
-
-To pick up a GitHub issue and fix it directly:
-
-```
-/fix-issue 42
-```
-
-Fetches the issue, implements the fix, runs tests and pre-commit hooks, and creates a conventional commit referencing the issue.
-
 ## Handing off a session
 
 When a session runs long or you need to swap agents mid-feature, ask Claude to `handoff`. The `handoff` skill writes a compact transition document to the OS temp dir, summarising state, referencing existing artifacts (PRDs, plans, diffs) by path, redacting secrets, and listing suggested skills for the next agent. Pass a one-line argument describing what the next session should focus on.

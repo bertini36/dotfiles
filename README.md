@@ -196,7 +196,6 @@ Custom slash commands for common workflows.
 | Command | Usage |
 |---|---|
 | `/review-branch` | Review current branch changes for quality and security |
-| `/fix-issue <number>` | Fetch a GitHub issue and implement the fix |
 | `/audit` | Run full production audit with both agents |
 | `/start-feature <task>` | Start the feature development pipeline from `workflow.md` |
 | `/end-feature` | Finalize a merged PR: switch to main, pull, and remove the merged feature branch locally and remotely |
