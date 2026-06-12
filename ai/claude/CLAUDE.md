@@ -51,7 +51,6 @@ When user pastes a PR link and asks to review or address comments, dispatch the 
 - Use ASCII art for schemas, diagrams, and tables when it helps clarify a concept or structure
 
 @RTK.md
-
 # graphify
 - **graphify** (`~/.claude/skills/graphify/SKILL.md`) - any input to knowledge graph. Trigger: `/graphify`
 When the user types `/graphify`, invoke the Skill tool with `skill: "graphify"` before doing anything else.
