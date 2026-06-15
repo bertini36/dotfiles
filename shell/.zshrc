@@ -171,22 +171,3 @@ export PATH="$HOME/.local/bin:$PATH"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-# >>> claude-auto-retry >>>
-# `claude --retry [args]` (any position) runs through the auto-retry launcher; plain `claude` runs the CLI directly.
-claude() {
-  local arg args=() retry=false
-  for arg in "$@"; do
-    if [ "$arg" = "--retry" ]; then
-      retry=true
-    else
-      args+=("$arg")
-    fi
-  done
-  if $retry; then
-    node "/opt/homebrew/lib/node_modules/claude-auto-retry/src/launcher.js" "${args[@]}"
-  else
-    command claude "${args[@]}"
-  fi
-}
-# <<< claude-auto-retry <<<
-

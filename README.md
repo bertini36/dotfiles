@@ -121,7 +121,6 @@ My personal Mac setup and configurations
 
   ln -s ~/.dotfiles/editors/vim/.vimrc ~/.vimrc
 
-  ln -s ~/.dotfiles/ai/claude/.claude-auto-retry.json ~/.claude-auto-retry.json
   ln -s ~/.dotfiles/ai/claude/settings.json ~/.claude/settings.json
   ln -s ~/.dotfiles/ai/claude/statusline-command.sh ~/.claude/statusline-command.sh
   ln -s ~/.dotfiles/ai/claude/CLAUDE.md ~/.claude/CLAUDE.md
@@ -269,37 +268,6 @@ transparently. Activate with:
 ```bash
 rtk init -g
 ```
-
-#### claude-auto-retry
-
-[claude-auto-retry](https://github.com/cheapestinference/claude-auto-retry)
-resumes Claude Code sessions automatically when subscription rate limits
-reset:
-
-```bash
-npm i -g claude-auto-retry
-```
-
-Auto-retry is opt-in per session through a `claude` wrapper function in
-`shell/.zshrc`. The `--retry` flag works in any position; the wrapper strips
-it before forwarding the remaining arguments:
-
-```bash
-claude --retry [args]   # run through the auto-retry launcher; resumes when limits reset
-claude [args]           # plain Claude Code, no wrapper
-```
-
-Two caveats:
-
-- Do not run `claude-auto-retry install`; it would inject a second, always-on
-  wrapper into `~/.zshrc`. The tracked function hardcodes the global
-  `node_modules` path of the npm install, so update it if that path changes
-  (e.g. after switching Node versions with `nvm`).
-- The tool reads `~/.claude-auto-retry.json` (symlinked from
-  `ai/claude/.claude-auto-retry.json`). The tracked config adds
-  `"session limit"` as a custom pattern because the built-in patterns of
-  v0.2.2 do not match the current Claude Code message ("You've hit your
-  session limit · resets ..."); without it the monitor never retries.
 
 #### graphify
 
