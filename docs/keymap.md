@@ -130,7 +130,10 @@
 * `/compact` → Reduce context usage when the context window fills up
 * `/effort` → Toggle effort mode for more thorough responses
 * `/rename` -> Name the current session to resume it later with `claude --resume <session-name>`
+* `/usage` -> Show token usage for the current session
+* `/clear` -> Clear the current session
+* `/btw` -> "By the way" - add a side note to the conversation without interrupting the main flow
+* `!` -> Bash mode for executing shell commands directly from the chat
 * `claude --resume` -> Resume a previous session
-* `claude --dangerously-skip-permissions` → Bypass all safety checks and permissions (use with caution)
-* `claude --worktree` → Enable automatic git worktree creation for each new conversation (experimental)
-* Double `option` key → Open Claude
+* `claude --dangerously-skip-permissions` → Bypass all safety checks and permissions
+* `claude --worktree` → Enable automatic git worktree creation for each new conversation
