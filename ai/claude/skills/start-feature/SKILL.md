@@ -18,7 +18,7 @@ Follow the pipeline strictly. Do not skip stages. Proceed stage-by-stage; pause 
 4. **Implement** - invoke `superpowers:executing-plans`. Use `superpowers:dispatching-parallel-agents` when tasks are independent. Domain rules (`python`, `django`, `langchain`, `tests`) load automatically based on files touched.
 5. **Verify** - invoke `superpowers:verification-before-completion`. Run the tests and `pre-commit` hooks before claiming completion.
 6. **Review** - run `/review-branch` for code review, or `/audit` for a full code + security review.
-7. **PR** - run `/create-pull-request`. Apply `superpowers:finishing-a-development-branch` for the merge/PR decision.
+7. **PR** - run `/create-pull-request`. Apply `superpowers:finishing-a-development-branch` for the merge/PR decision. If the task above included a Jira ticket, pass it along so it lands in the PR description.
 
 Rules:
 - Conventional commit messages (`feat:`, `fix:`, `docs:`, ...).

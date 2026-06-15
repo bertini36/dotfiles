@@ -68,9 +68,10 @@ If any critical information is missing, use `ask_followup_question` to ask the u
 ### Required Information
 
 1. **Related Issue Number**: Look for patterns like `#123`, `fixes #123`, or `closes #123` in commit messages
-2. **Description**: What problem does this solve? Why were these changes made?
-3. **Type of Change**: Bug fix, new feature, breaking change, refactor, cosmetic, documentation, or workflow
-4. **Test Procedure**: How was this tested? What could break?
+2. **Jira Ticket**: If the feature was started with a Jira ticket (e.g. passed to `/start-feature`) or the branch name/commits reference a Jira key (e.g. `ENGN-2900`), the PR description **must** include a link to it. Never omit a ticket that was provided.
+3. **Description**: What problem does this solve? Why were these changes made?
+4. **Type of Change**: Bug fix, new feature, breaking change, refactor, cosmetic, documentation, or workflow
+5. **Test Procedure**: How was this tested? What could break?
 
 ## Git Best Practices
 
@@ -133,6 +134,7 @@ If no template exists, use a sensible default structure with sections for descri
 
 When filling out the template:
 - Replace `#XXXX` with the actual issue number, or keep as `#XXXX` if no issue exists (for small fixes)
+- Include the Jira ticket link whenever one was provided when the feature started or is referenced in the branch/commits
 - Fill in all sections with relevant information gathered from commits and context
 - Mark the appropriate "Type of Change" checkbox(es)
 - Complete the "Pre-flight Checklist" items that apply
@@ -212,6 +214,7 @@ Before finalizing, ensure:
 - [ ] All commits are pushed
 - [ ] Branch is up-to-date with base branch
 - [ ] Related issue number is identified, or placeholder is used
+- [ ] Jira ticket link is included if one was provided when the feature started
 - [ ] PR description follows the template exactly
 - [ ] Appropriate type of change is selected
 - [ ] Pre-flight checklist items are addressed
