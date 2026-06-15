@@ -134,6 +134,11 @@ My personal Mac setup and configurations
 
 All Claude Code configuration lives under `ai/claude/` and is symlinked into `~/.claude/`.
 
+> [!NOTE]
+> Remote control is enabled via `remoteControlAtStartup` in the global settings.
+> Each session auto-starts the bridge, so it can be driven from
+> [claude.ai/code](https://claude.ai/code) or the Claude mobile app.
+
 ### Workflow
 
 See `ai/claude/workflow.md` for detailed documentation of the development workflow using Claude, Superpowers, and the custom skills, agents, and rules defined in this repository.
