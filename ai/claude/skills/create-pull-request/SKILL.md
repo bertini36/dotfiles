@@ -149,6 +149,9 @@ If the PR introduces non-trivial logic (e.g., algorithmic changes, architectural
 Avoid vague summaries. A reviewer should be able to understand the intent and trade-offs without reading every line of code.
 
 ### Create PR with gh CLI
+
+When the PR is opened in draft mode (`--draft`), prefix the title with `🚧 ` (e.g. `🚧 feat: add user authentication`). Drop the prefix when the PR is marked ready for review.
+
 Avoid passing the PR body directly as a command-line argument, as this often fails with complex text (newlines, quotes, etc.). Instead, use a temporary file or a here-doc/heredoc approach.
 
 **Recommended approach (File-based):**
@@ -160,7 +163,7 @@ Avoid passing the PR body directly as a command-line argument, as this often fai
 cat > pr_body.txt <<'EOF'
 PR_BODY_CONTENT
 EOF
-gh pr create --title "PR_TITLE" --body-file pr_body.txt --base master --draft --assignee "@me" --reviewer "Copilot"
+gh pr create --title "🚧 PR_TITLE" --body-file pr_body.txt --base master --draft --assignee "@me" --reviewer "Copilot"
 rm pr_body.txt # Clean up
 ```
 
@@ -170,7 +173,7 @@ If the project belongs to the Abacum organization (e.g., remote URL contains `ab
 cat > pr_body.txt <<'EOF'
 PR_BODY_CONTENT
 EOF
-gh pr create --title "PR_TITLE" --body-file pr_body.txt --base master --draft --assignee "@me" --reviewer "Copilot" --label "Engine"
+gh pr create --title "🚧 PR_TITLE" --body-file pr_body.txt --base master --draft --assignee "@me" --reviewer "Copilot" --label "Engine"
 rm pr_body.txt # Clean up
 ```
 
