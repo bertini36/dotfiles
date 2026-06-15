@@ -19,7 +19,7 @@
       "Read(~/.ssh/**)"
     ]
   },
-  "model": "claude-fable-5[1m]",
+  "model": "opus",
   "hooks": {
     "SessionStart": [
       {
