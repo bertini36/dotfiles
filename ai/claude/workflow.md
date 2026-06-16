@@ -22,9 +22,7 @@ Describe what you want to build. The `superpowers:brainstorming` skill triggers 
 
 The `superpowers:writing-plans` skill creates a step-by-step implementation plan.
 
-Once the plan looks complete, ask Claude to `grill me` to stress-test it. Where brainstorming is for when you do not yet know what you want, grilling is for when you think you already know: the `grill-me` skill turns the model into a relentless interviewer that walks the plan branch by branch, one question at a time, challenges each decision, and recommends an answer for every question. It surfaces the delta between the plan in your head and the plan on the page (unstated assumptions, edge cases, internal contradictions) while they are still words instead of code. Use it precisely because you believe the plan is done; that belief is what it tests. Skip it for trivial changes.
-
-The `evaluator` agent then scores the plan on seven criteria (correctness, completeness, simplicity, consistency, testability, security, reversibility) and issues a GO/NO-GO verdict. Implementation only proceeds on GO.
+Once the plan looks complete, dispatch the `plan-evaluator` agent. With fresh context that has no stake in the plan being right, it grills you on the plan (`grill-me`, one question at a time) and then scores it on seven criteria, issuing a GO/NO-GO verdict. Implementation only proceeds on GO.
 
 ## 4. Implement
 

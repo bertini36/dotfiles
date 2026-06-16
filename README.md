@@ -183,7 +183,7 @@ Specialized subagents that run in isolated context windows with restricted tools
 |---|---|
 | `code-reviewer` | Read-only production code audit with A-F graded report (architecture, security, performance, quality, testing) |
 | `security-reviewer` | OWASP Top 10 and Django-specific security vulnerability scanner |
-| `evaluator` | Quality gate that scores implementation plans on 7 criteria with GO/NO-GO verdict |
+| `plan-evaluator` | Quality gate that scores implementation plans on 7 criteria with GO/NO-GO verdict |
 | `pr-reviewer` | End-to-end PR review: audits diff, fetches open comments, applies fixes, commits, pushes, replies, resolves threads, and verifies CI |
 
 ### Rules

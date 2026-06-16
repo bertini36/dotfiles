@@ -19,6 +19,7 @@
       "Read(~/.ssh/**)"
     ]
   },
+  "model": "opus[1m]",
   "hooks": {
     "SessionStart": [
       {
@@ -79,6 +80,5 @@
   },
   "effortLevel": "xhigh",
   "skipDangerousModePermissionPrompt": true,
-  "remoteControlAtStartup": true,
-  "model": "sonnet"
+  "remoteControlAtStartup": true
 }

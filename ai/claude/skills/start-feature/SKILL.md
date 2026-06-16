@@ -14,7 +14,7 @@ Follow the pipeline strictly. Do not skip stages. Proceed stage-by-stage; pause 
 
 1. **Brainstorm** - invoke `superpowers:brainstorming` to explore requirements, edge cases, and design.
 2. **Plan** - invoke `superpowers:writing-plans` to produce a step-by-step implementation plan.
-3. **Evaluate** - dispatch the `evaluator` agent to score the plan (correctness, completeness, simplicity, consistency, testability, security, reversibility). Stop on NO-GO. Only proceed on GO.
+3. **Evaluate** - dispatch the `plan-evaluator` agent to score the plan (correctness, completeness, simplicity, consistency, testability, security, reversibility). Stop on NO-GO. Only proceed on GO.
 4. **Implement** - invoke `superpowers:executing-plans`. Use `superpowers:dispatching-parallel-agents` when tasks are independent. Domain rules (`python`, `django`, `langchain`, `tests`) load automatically based on files touched.
 5. **Verify** - invoke `superpowers:verification-before-completion`. Run the tests and `pre-commit` hooks before claiming completion.
 6. **Review** - run `/review-branch` for code review, or `/audit` for a full code + security review.
@@ -24,5 +24,5 @@ Rules:
 - Conventional commit messages (`feat:`, `fix:`, `docs:`, ...).
 - Use `gh` CLI for GitHub operations.
 - Run `pre-commit` hooks before claiming a commit is ready.
-- No implementation before a GO verdict from `evaluator`.
+- No implementation before a GO verdict from `plan-evaluator`.
 - If no `.git` repo is present, skip git/PR steps (branch creation, commits, PR). Still run Brainstorm, Plan, Evaluate, Implement, and Verify stages normally.

@@ -21,7 +21,7 @@
 ## Workflow
 
 Pipeline: Brainstorm, Plan, Evaluate, Implement, Verify, Review, PR, Finish.
-Full walkthrough in `workflow.md`. Implementation only proceeds on a GO verdict from the `evaluator` agent.
+Full walkthrough in `workflow.md`. Implementation only proceeds on a GO verdict from the `plan-evaluator` agent.
 
 Rules:
 - Conventional commit messages (`feat:`, `fix:`, `docs:`, etc.)
