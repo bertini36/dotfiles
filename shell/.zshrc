@@ -145,6 +145,7 @@ alias top="gotop"
 alias pip="pip3"
 alias g="gemini"
 alias c="copilot"
+alias ccusage="npx ccusage@latest"
 alias workon="source .venv/bin/activate"
 alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
 
