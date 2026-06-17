@@ -51,6 +51,7 @@ This is the core of the investigation. The stack trace names files and lines; re
 2. Read the failing function and its callers until you can explain how the bad state arrived there, not just where it exploded. The frame that raised is rarely the frame that is wrong.
 3. Use breadcrumbs and event tags to reconstruct the request: what endpoint, what input, what user action preceded the error.
 4. Check git history of the suspect files around the first-seen date (`git log --since`/`git log -p <file>`). A regression that started with a release almost always maps to a commit in that release.
+5. Scan the repo's latest commits (`git log -n 20 --oneline`, then `git show` the candidates) and judge whether any could have introduced the exception. A recently deployed commit touching the failing code path, its callers, or shared dependencies is a prime suspect, especially when the issue first appeared right after a release. Reconcile the commit dates with the first-seen date before blaming one.
 
 If the repository for the failing service is not the current working directory, ask the user where it lives before guessing.
 
