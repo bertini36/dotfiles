@@ -32,7 +32,7 @@ Bail if the PR is closed or merged unless the user explicitly asks to proceed.
 
 ### 2. Review the diff
 
-Read every changed file end-to-end. Do not rely on the diff alone, you need surrounding context. Score each of these and flag concrete `file:line` findings:
+First scan and classify: count changed files and diff size, read the PR body, and judge whether the change is scoped before deciding review depth. Then read every changed file end-to-end. Do not rely on the diff alone, you need surrounding context. Score each of these and flag concrete `file:line` findings:
 
 - **Correctness** - logic errors, off-by-one, null handling, race conditions
 - **Architecture** - coupling, layering violations, misplaced responsibility
@@ -40,6 +40,16 @@ Read every changed file end-to-end. Do not rely on the diff alone, you need surr
 - **Performance** - N+1 queries, missing indexes, hot-path allocations
 - **Testing** - missing critical-path tests, weak assertions, flaky patterns
 - **Style** - matches project conventions, dead code, unused imports
+
+#### Agent-authored red flags
+
+Many PRs are now written by coding agents, which fail in characteristic ways. Check each one explicitly, because they pass mechanical review and slip through unless looked for:
+
+- **CI gaming** - tests removed, renamed, or skipped; lowered coverage thresholds; weakened assertions; workflow or build-config changes that make checks easier to pass or gate steps behind new conditions. Treat any change to CI config or test infrastructure as suspect and demand a justification before accepting it.
+- **Reinvented code** - new utilities, validators, or middleware that duplicate something already in the repo under a different name. Grep the codebase for an existing equivalent before accepting any new helper; require consolidation, since duplicated logic becomes prior art the next agent copies.
+- **Hallucinated correctness** - code that passes existing tests but breaks on an untested edge case (off-by-one pagination, a permission check missing on one branch, a validation short-circuit, a race at scale). Trace the critical path input -> transforms -> output by hand and verify boundaries, permissions, and branching. For any such bug, add or demand a test that fails on the pre-change behavior.
+- **Oversized or unexplained scope** - more than ~5 unrelated files, a purpose that does not fit in one sentence, or an empty PR body with no implementation plan. Flag it and recommend splitting instead of reviewing deeply.
+- **Untrusted input in LLM workflows** - PR body, issue, or commit text interpolated into a prompt without sanitization; over-privileged `GITHUB_TOKEN` write access; model output executed as a shell command; secrets reachable by an agent step. Require least-privilege permissions, quoted or sanitized input, analysis separated from execution, and a human approval gate for production actions.
 
 ### 3. Fetch every open review comment
 
@@ -166,6 +176,7 @@ Output this summary:
 - Conventional commit messages only (`fix:`, `refactor:`, `test:`, etc.).
 - Never reply on or resolve a thread opened by a human; the user answers those himself. Only act on a human comment in code, and only after the user has replied on that thread. Full autonomous reply/resolve is for bot threads only.
 - Never force-push, never skip hooks (`--no-verify`), never amend after a failed hook.
+- When fixing review comments, never weaken tests, lower coverage, or relax CI config to make checks pass. Fix the root cause; gaming CI is the exact failure you flag in others.
 - If the PR has merge conflicts, stop and ask the user before resolving.
 - If CI is red on the base branch (not caused by this PR), mention it in the report but do not try to fix unrelated failures.
 - The PR is only "done" when every CI check is green and every addressed bot thread is resolved. Human threads stay open for the user.
