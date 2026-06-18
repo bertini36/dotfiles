@@ -30,7 +30,6 @@ My personal Mac setup and configurations
     | [`jq`](https://github.com/jqlang/jq) | JSON processor |
     | [`libmagic`](https://github.com/file/file) | File type detection library |
     | [`gotop`](https://github.com/xxxserxxx/gotop) | Terminal system monitor |
-    | [`gemini-cli`](https://github.com/google-gemini/gemini-cli) | Google Gemini AI CLI |
     | [`copilot-cli`](https://github.com/github/copilot-cli) | GitHub Copilot CLI (cask) |
     | [`mole`](https://github.com/tw93/Mole) | macOS disk space cleaner and system optimizer |
     | [`postgresql@18`](https://github.com/postgres/postgres) | PostgreSQL database |
