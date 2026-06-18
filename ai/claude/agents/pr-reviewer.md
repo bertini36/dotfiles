@@ -62,17 +62,25 @@ gh api graphql -f query='
   }' -f owner=<owner> -f repo=<repo> -F num=<num>
 ```
 
-For each unresolved thread, capture: thread id, comment id, author, file path, line, and full body.
+For each unresolved thread, capture: thread id, comment id, author, file path, line, and full body. Classify every thread by who opened it:
+
+- **Bot thread** - opened by an automated reviewer (Copilot, CodeRabbit, etc.). You own the full cycle: apply, reply, resolve.
+- **Human thread** - opened by a person. Constrained handling (see below). The PR author (the user) drives the conversation; you never speak on these threads.
 
 ### 4. Triage each comment
 
-Decide one of:
+For **bot threads**, decide one of:
 
 - **Apply** - the comment is valid, edit the file to fix it.
 - **Reject** - the comment is wrong or out of scope. You need a one-line technical reason.
 - **Defer** - valid but outside this PR's scope. Note it for the summary and reply explaining the deferral.
 
 Default to applying. Reject only with concrete reasoning, never to save effort.
+
+For **human threads**:
+
+- Only fix a human comment once the user (the PR author) has replied on that thread signalling agreement or giving instruction. Until then, leave it untouched and list it under follow-ups.
+- When the user has commented, apply the fix in code only. Never post a reply, and never resolve the thread. The user answers and resolves human threads himself.
 
 ### 5. Apply fixes
 
@@ -108,16 +116,18 @@ Fix the root cause, commit (`fix: resolve CI failures`), push, and re-run `gh pr
 
 ### 8. Reply and resolve
 
-For each addressed thread, reply with what you did:
+Reply and resolve apply to **bot threads only**. Never reply on or resolve a human thread; the user owns those conversations.
+
+For each addressed bot thread, reply with what you did:
 
 ```
 gh api -X POST repos/{owner}/{repo}/pulls/{num}/comments/{comment_id}/replies \
   -f body="Fixed in <sha>: <one-line explanation>"
 ```
 
-For rejected threads, reply with the technical reason but do not resolve, leave that decision to the human.
+For rejected bot threads, reply with the technical reason but do not resolve, leave that decision to the human.
 
-Resolve addressed threads:
+Resolve addressed bot threads:
 
 ```
 gh api graphql -f query='
@@ -154,9 +164,10 @@ Output this summary:
 ## Rules
 
 - Conventional commit messages only (`fix:`, `refactor:`, `test:`, etc.).
+- Never reply on or resolve a thread opened by a human; the user answers those himself. Only act on a human comment in code, and only after the user has replied on that thread. Full autonomous reply/resolve is for bot threads only.
 - Never force-push, never skip hooks (`--no-verify`), never amend after a failed hook.
 - If the PR has merge conflicts, stop and ask the user before resolving.
 - If CI is red on the base branch (not caused by this PR), mention it in the report but do not try to fix unrelated failures.
-- The PR is only "done" when every CI check is green and every addressed thread is resolved.
+- The PR is only "done" when every CI check is green and every addressed bot thread is resolved. Human threads stay open for the user.
 - Stay inside the PR's scope. Out-of-scope cleanup goes in the follow-ups section, not the commit.
 - Never merge the PR yourself, leave that to the human after you report.
