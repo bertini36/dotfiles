@@ -132,6 +132,8 @@ If a template exists, read it and use it as the PR body format, the body must **
 
 If no template exists, use a sensible default structure with sections for description, type of change, and testing notes.
 
+Never append a "🤖 Generated with Claude Code" footer (or any similar attribution line) to the PR body.
+
 When filling out the template:
 - Replace `#XXXX` with the actual issue number, or keep as `#XXXX` if no issue exists (for small fixes)
 - Include the Jira ticket link whenever one was provided when the feature started or is referenced in the branch/commits
