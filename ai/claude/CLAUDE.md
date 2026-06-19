@@ -10,6 +10,10 @@
   - `python-code-style`
   - `langchain-architecture`
 
+## Testing
+
+- Run `pytest` with `-n auto` to parallelise across cores (requires `pytest-xdist`)
+
 ## Docstrings and Comments
 
 - Apply the `writing-clearly` skill to all prose, including code comments and docstrings
