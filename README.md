@@ -288,5 +288,33 @@ graphify install
 registers it in `~/.claude/CLAUDE.md`. The skill directory is tool-managed,
 so it is gitignored; only the `CLAUDE.md` registration is tracked.
 
+#### headroom
+
+[headroom](https://github.com/chopratejas/headroom) is a context-compression
+layer for AI agents. It compresses everything Claude reads (tool output, files,
+conversation history) before it reaches the API, cutting token usage 60-95%.
+The standard integration wraps the agent, so `shell/.zshrc` aliases `claude` to
+`headroom wrap claude` when headroom is installed. Install with:
+
+```bash
+uv tool install "headroom-ai[all]"   # or: pip install "headroom-ai[all]"
+```
+
+After installing, run `claude --version` once to confirm the wrapped command
+launches normally. The alias is guarded, so a machine without headroom keeps a
+working `claude`; run `command claude` to launch Claude without headroom.
+
+Only the interactive terminal `claude` is wrapped. Bridge-launched sessions
+(remote control, mobile, claude.ai) start outside the shell, so they are not
+compressed.
+
+headroom proxies the full API payload (prompts, files, tool output, history)
+through third-party code on your machine before it reaches Anthropic, a larger
+trust surface than rtk or graphify. Install it as an informed choice; pin a
+version (`"headroom-ai[all]==<version>"`) to freeze the supply-chain surface.
+
+rtk and headroom stack at different layers: rtk trims Bash output at the hook,
+headroom compresses the full payload at the API.
+
 <br />
 <p align="center">Built with ❤️ from Mallorca</p>
