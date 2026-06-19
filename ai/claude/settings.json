@@ -2,7 +2,8 @@
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
     "ENABLE_TOOL_SEARCH": "auto",
-    "CAVEMAN_DEFAULT_MODE": "lite"
+    "CAVEMAN_DEFAULT_MODE": "lite",
+    "AGENT_NATIVE_PLANS_MODE": "local-files"
   },
   "permissions": {
     "deny": [

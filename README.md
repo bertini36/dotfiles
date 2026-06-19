@@ -160,8 +160,20 @@ Reusable AI agent skills that Claude invokes autonomously when a task matches th
 | `review-branch` | Review current branch changes for quality and security |
 | `save-session` | Save a high-density summary of the current session to `.claude_sessions.md` |
 | `start-feature` | Start the feature development pipeline from `workflow.md` |
+| `visual-plan` | Turn a text plan into an interactive visual plan with diagrams, file maps, annotated code, and open questions ([BuilderIO/skills](https://github.com/BuilderIO/skills), MIT) |
+| `visual-recap` | Turn a PR, branch, or diff into a visual recap with file maps, API/schema summaries, and annotated diffs ([BuilderIO/skills](https://github.com/BuilderIO/skills), MIT) |
 | `wiki-karpathy` | Initialize, ingest, query, and lint a Karpathy-style personal wiki inside an Obsidian vault |
 | `writing-clearly` | Clear prose for docs, commits, error messages, and UI text |
+
+> [!NOTE]
+> `visual-plan` and `visual-recap` are Agent-Native Plan clients, not standalone
+> skills. They run in **local-files mode** (`AGENT_NATIVE_PLANS_MODE=local-files`
+> in the global settings): plans are written as local MDX and served from a
+> localhost bridge, with no account or hosted database. They require
+> [Node.js](https://nodejs.org) (the `@agent-native/core` CLI is fetched on
+> demand via `npx`) and a Chromium-based browser to view rendered plans (Safari
+> is blocked from the localhost bridge). To update them, re-pull the two folders
+> from `BuilderIO/skills`.
 
 #### Evals
 
