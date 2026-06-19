@@ -58,7 +58,9 @@
     "skill-creator@claude-plugins-official": true,
     "superpowers@claude-plugins-official": true,
     "caveman@caveman": true,
-    "last30days@last30days-skill": true
+    "last30days@last30days-skill": true,
+    "notion@claude-plugins-official": true,
+    "sentry-skills@sentry-skills": true
   },
   "extraKnownMarketplaces": {
     "sentry-skills": {
@@ -82,6 +84,7 @@
   },
   "effortLevel": "xhigh",
   "skipDangerousModePermissionPrompt": true,
+  "enableWorkflows": true,
   "remoteControlAtStartup": true,
   "cleanupPeriodDays": 90
 }
