@@ -10,10 +10,6 @@
   - `python-code-style`
   - `langchain-architecture`
 
-## Testing
-
-- Run `pytest` with `-n auto` to parallelise across cores (requires `pytest-xdist`)
-
 ## Docstrings and Comments
 
 - Apply the `writing-clearly` skill to all prose, including code comments and docstrings
@@ -37,6 +33,10 @@ Rules:
 ### PR Review Handling
 
 When user pastes a PR link and asks to review or address comments, dispatch the `pr-reviewer` agent. It handles the full cycle: audit the diff, fetch all open review comments (humans and bots), apply or reject fixes, commit, push, reply, resolve threads, verify CI, and report a summary.
+
+## Testing
+
+- Run `pytest` with `-n auto` to parallelise across cores (requires `pytest-xdist`)
 
 ## Guardrails
 
