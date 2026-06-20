@@ -22,7 +22,9 @@ Describe what you want to build. The `superpowers:brainstorming` skill triggers 
 
 The `superpowers:writing-plans` skill creates a step-by-step implementation plan.
 
-Once the plan looks complete, dispatch the `plan-evaluator` agent. With fresh context that has no stake in the plan being right, it grills you on the plan (`grill-me`, one question at a time) and then scores it on seven criteria, issuing a GO/NO-GO verdict. Implementation only proceeds on GO.
+Once the plan looks complete, the `grill-me` skill runs: it interviews you one question at a time, anchored in the plan's concrete decisions, until you reach shared understanding.
+
+Then dispatch the `plan-evaluator` agent. With fresh context that has no stake in the plan being right, it scores the grilled plan on seven criteria and issues a GO/NO-GO verdict. Implementation only proceeds on GO.
 
 ## 4. Implement
 
@@ -102,7 +104,7 @@ Switches to `main`, pulls latest, and removes the merged feature branch locally 
 ## Quick Reference
 
 ```
-Brainstorm --> Plan --> Evaluate --> Implement --> Verify --> Review --> PR --> Address feedback --> Finish
+Brainstorm --> Plan --> Grill --> Evaluate --> Implement --> Verify --> Review --> PR --> Address feedback --> Finish
 ```
 
 Most steps trigger automatically through the `superpowers` plugin. The manual touchpoints are:
