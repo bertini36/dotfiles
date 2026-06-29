@@ -188,8 +188,41 @@ If the `gh pr create` command asks for a project to push the changes, abort and 
 After creating the PR:
 
 1. **Display the PR URL** so the user can review it
-2. **Remind about CI checks**: Tests and linting will run automatically
-3. **Suggest next steps**:
+2. **Add Copilot as reviewer** — always do this after every PR creation:
+
+   First try the CLI:
+   ```bash
+   gh pr edit <number> --add-reviewer "Copilot"
+   ```
+
+   If that fails (e.g. "Could not resolve user"), use browser automation as a fallback — open the PR, open the Reviewers menu, search for "copilot", and click it:
+   ```javascript
+   // Open reviewers menu
+   document.querySelector('#reviewers-select-menu summary')?.click();
+   // Wait, then type in the filter
+   await new Promise(r => setTimeout(r, 800));
+   const input = document.querySelector('#review-filter-field');
+   input.value = 'copilot';
+   input.dispatchEvent(new Event('input', { bubbles: true }));
+   await new Promise(r => setTimeout(r, 1200));
+   // Click the Copilot item
+   const item = [...document.querySelectorAll('#reviewers-select-menu [role="menuitemcheckbox"]')]
+     .find(i => i.textContent.includes('Copilot'));
+   item?.click();
+   // Close menu
+   await new Promise(r => setTimeout(r, 500));
+   document.querySelector('#reviewers-select-menu summary')?.click();
+   ```
+   Run this via `mcp__claude-in-chrome__javascript_tool` on the PR page. Verify by checking for "Copilot" in the reviewers sidebar after.
+
+3. **Open the PR in Chrome** — navigate to the PR URL using the `claude-in-chrome` skill:
+   ```
+   invoke skill: claude-in-chrome
+   then: mcp__claude-in-chrome__navigate to the PR URL
+   ```
+
+4. **Remind about CI checks**: Tests and linting will run automatically
+5. **Suggest next steps**:
    - Add labels if needed: `gh pr edit --add-label "bug"`
 
 ## Error Handling
@@ -221,3 +254,5 @@ Before finalizing, ensure:
 - [ ] Appropriate type of change is selected
 - [ ] Pre-flight checklist items are addressed
 - [ ] PR is created in draft mode (`--draft`)
+- [ ] Copilot added as reviewer
+- [ ] PR opened in Chrome
