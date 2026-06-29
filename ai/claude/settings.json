@@ -22,7 +22,6 @@
       "Read(~/.ssh/**)"
     ]
   },
-  "model": "opus",
   "hooks": {
     "SessionStart": [
       {
@@ -85,7 +84,8 @@
       }
     }
   },
-  "effortLevel": "xhigh",
+  "effortLevel": "high",
+  "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
   "remoteControlAtStartup": true
 }
