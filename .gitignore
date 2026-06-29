@@ -5,3 +5,4 @@ Desktop.ini
 .vscode/
 agents/skills-workspace/
 ai/claude/skills/graphify/
+.claude/worktrees/
