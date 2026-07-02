@@ -152,6 +152,19 @@ If the PR introduces non-trivial logic (e.g., algorithmic changes, architectural
 
 Avoid vague summaries. A reviewer should be able to understand the intent and trade-offs without reading every line of code.
 
+### Post-deploy Steps — Only When Required
+
+If the change needs ANY manual action after deploy, add a `## Post-deploy steps` section to the PR body (after Test Procedure, before the checklist). Omit the section entirely when nothing is required — do not add an empty "N/A" section.
+
+Actions that qualify:
+- One-time commands: seed/backfill management commands, data migrations that must be run by hand, cache invalidation
+- New or changed env vars, secrets, or feature flags that must be set in the hosting dashboard
+- Cron/scheduled-task additions or changes
+- Cross-repo dependencies (e.g. a companion frontend/backend PR that must be merged and deployed for the feature to be visible)
+- Manual verification worth doing right after deploy (what to check, and what "looks broken but is expected" behavior to not misread)
+
+Write the steps as a numbered list, in execution order, each with the exact command and its expected output where applicable. Explicitly mark steps that are automatic (e.g. "migration runs via the build command — nothing to do") so the operator doesn't hunt for work that isn't theirs. Note idempotency where a command is safe to re-run.
+
 ### Create PR with gh CLI
 
 When the PR is opened in draft mode (`--draft`), prefix the title with `🚧 ` (e.g. `🚧 feat: add user authentication`). Drop the prefix when the PR is marked ready for review.
@@ -252,6 +265,7 @@ Before finalizing, ensure:
 - [ ] Jira ticket link is included if one was provided when the feature started
 - [ ] PR description follows the template exactly
 - [ ] Appropriate type of change is selected
+- [ ] Post-deploy steps section included if any manual action is required after deploy (omitted otherwise)
 - [ ] Pre-flight checklist items are addressed
 - [ ] PR is created in draft mode (`--draft`)
 - [ ] Copilot added as reviewer
