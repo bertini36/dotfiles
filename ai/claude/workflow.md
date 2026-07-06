@@ -30,6 +30,8 @@ Then dispatch the `plan-evaluator` agent. With fresh context that has no stake i
 
 The `superpowers:executing-plans` skill drives implementation with review checkpoints. For independent tasks, `superpowers:dispatching-parallel-agents` runs multiple agents in parallel.
 
+For plans made of independent tasks, `superpowers:subagent-driven-development` is an alternative: each task goes to a fresh implementer subagent, and a per-task reviewer checks the work before moving on. Its scratch files (task briefs, reports, progress ledger) live in a git-ignored `.superpowers/sdd/` directory; `git clean -fdx` deletes the progress ledger, so recover from `git log` if that happens.
+
 Domain-specific rules load automatically based on the files you touch:
 
 | File pattern | Rule loaded | Skill available |
