@@ -24,11 +24,11 @@ The `superpowers:writing-plans` skill creates a step-by-step implementation plan
 
 Once the plan looks complete, the `grill-me` skill runs: it interviews you one question at a time, anchored in the plan's concrete decisions, until you reach shared understanding.
 
-Then dispatch the `plan-evaluator` agent. With fresh context that has no stake in the plan being right, it scores the grilled plan on seven criteria and issues a GO/NO-GO verdict. Implementation only proceeds on GO.
+Then dispatch the `plan-evaluator` agent. With fresh context that has no stake in the plan being right, it checks the grilled plan against the actual codebase (simplicity, consistency, security, reversibility) and issues a GO/NO-GO verdict. Implementation only proceeds on GO. On NO-GO, loop back to the plan with the blockers as input, then re-grill only the parts that changed.
 
 ## 4. Implement
 
-The `superpowers:executing-plans` skill drives implementation with review checkpoints. For independent tasks, `superpowers:dispatching-parallel-agents` runs multiple agents in parallel.
+The `superpowers:executing-plans` skill drives implementation with review checkpoints. Each task follows `superpowers:test-driven-development`: a failing test pins the behavior before any implementation code. For independent tasks, `superpowers:dispatching-parallel-agents` runs multiple agents in parallel.
 
 For plans made of independent tasks, `superpowers:subagent-driven-development` is an alternative: each task goes to a fresh implementer subagent, and a per-task reviewer checks the work before moving on. Its scratch files (task briefs, reports, progress ledger) live in a git-ignored `.superpowers/sdd/` directory; `git clean -fdx` deletes the progress ledger, so recover from `git log` if that happens.
 
@@ -57,7 +57,7 @@ Quick check before opening the PR: read your own `git log --oneline main..HEAD`.
 
 ## 5. Verify
 
-The `superpowers:verification-before-completion` skill runs before any success claim: run the tests and `pre-commit` hooks and confirm the output. Domain pattern skills (`django-patterns`, `python-code-style`, etc.) already applied during implementation via the rules; reviews happen in the next step. Do not run `production-code-audit` here; it rewrites code rather than verifying it.
+The `superpowers:verification-before-completion` skill runs before any success claim: run the tests and `pre-commit` hooks and confirm the output. When a test fails or behavior surprises, use `superpowers:systematic-debugging` before proposing fixes; the same applies to bugs found in the Review step. Domain pattern skills (`django-patterns`, `python-code-style`, etc.) already applied during implementation via the rules; reviews happen in the next step. Do not run `production-code-audit` here; it rewrites code rather than verifying it.
 
 ## 6. Review
 

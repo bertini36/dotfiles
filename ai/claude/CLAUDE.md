@@ -20,7 +20,7 @@
 
 ## Workflow
 
-Pipeline: Brainstorm, Plan, Evaluate, Implement, Verify, Review, PR, Finish.
+Pipeline: Brainstorm, Plan, Grill, Evaluate, Implement, Verify, Review, PR, Address feedback, Finish.
 Full walkthrough in `workflow.md`. Implementation only proceeds on a GO verdict from the `plan-evaluator` agent.
 
 Rules:
