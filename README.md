@@ -46,6 +46,7 @@ My personal Mac setup and configurations
     | [`pnpm`](https://github.com/pnpm/pnpm) | Fast Node package manager |
     | [`claude`](https://claude.ai) | Anthropic Claude desktop app (cask) |
     | [`claude-code`](https://github.com/anthropics/claude-code) | Anthropic Claude CLI (cask) |
+    | [`granola`](https://www.granola.ai) | AI meeting notepad that captures and summarizes meetings (cask) |
     | [`rtk`](https://github.com/rtk-ai/rtk) | CLI proxy that reduces LLM token consumption by 60-90% |
     | [`handy`](https://github.com/cjpais/Handy) | Speech-to-text utility |
 
@@ -254,6 +255,16 @@ claude plugin install last30days@last30days-skill
 
 ```bash
 claude mcp add --transport http datadog-mcp https://mcp.datadoghq.eu/api/unstable/mcp-server/mcp
+```
+
+[Granola](https://www.granola.ai) (installed via the Brewfile cask) also ships
+an official MCP server that exposes meeting notes and transcripts. Register it
+globally; the first connection opens an OAuth flow in the browser, no API key
+needed. Requires a signed-in Granola app (macOS 12+, Google or Microsoft
+account, microphone permission):
+
+```bash
+claude mcp add --transport http --scope user granola https://mcp.granola.ai/mcp
 ```
 
 To update everything, ask Claude in a session: `Update installed plugins`.
