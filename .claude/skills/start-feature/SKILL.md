@@ -32,9 +32,9 @@ Then dispatch the `plan-evaluator` agent. With fresh context that has no stake i
 
 ## 4. Implement
 
-The `superpowers:executing-plans` skill drives implementation with review checkpoints. Each task follows `superpowers:test-driven-development`: a failing test pins the behavior before any implementation code. For independent tasks, `superpowers:dispatching-parallel-agents` runs multiple agents in parallel.
+For small plans, the `superpowers:executing-plans` skill drives implementation with review checkpoints. Each task follows `superpowers:test-driven-development`: a failing test pins the behavior before any implementation code. For independent tasks, `superpowers:dispatching-parallel-agents` runs multiple agents in parallel.
 
-For plans made of independent tasks, `superpowers:subagent-driven-development` is an alternative: each task goes to a fresh implementer subagent, and a per-task reviewer checks the work before moving on. Its scratch files (task briefs, reports, progress ledger) live in a git-ignored `.superpowers/sdd/` directory; `git clean -fdx` deletes the progress ledger, so recover from `git log` if that happens.
+When the plan has 3 or more independent tasks, implement with `superpowers:subagent-driven-development` (preferred): each task goes to a fresh implementer subagent, and a per-task reviewer checks the work before moving on. Each subagent brief names the domain skills relevant to the files it touches (for example `django-patterns`, `python-code-style`). Its scratch files (task briefs, reports, progress ledger) live in a git-ignored `.superpowers/sdd/` directory; `git clean -fdx` deletes the progress ledger permanently, since git-ignored files are never in commit history and cannot be recovered unless backed up elsewhere.
 
 Domain-specific rules load automatically based on the files touched:
 
@@ -61,7 +61,7 @@ Quick check before opening the PR: read `git log --oneline main..HEAD`. If the s
 
 ## 5. Verify
 
-The `superpowers:verification-before-completion` skill runs before any success claim: run the tests and `pre-commit` hooks and confirm the output. When a test fails or behavior surprises, use `superpowers:systematic-debugging` before proposing fixes; the same applies to bugs found in the Review step. Domain pattern skills (`django-patterns`, `python-code-style`, etc.) already applied during implementation via the rules; reviews happen in the next step. Do not run `production-code-audit` here; it rewrites code rather than verifying it.
+The `superpowers:verification-before-completion` skill runs before any success claim: run the tests and `pre-commit` hooks and confirm the output. When checks fail, run the `fix-until-green` skill: it loops the project checks and `pre-commit`, dispatching a fixer subagent per failure, capped at 5 iterations, and reports honestly if it cannot converge. When a test fails or behavior surprises, use `superpowers:systematic-debugging` before proposing fixes; the same applies to bugs found in the Review step. Domain pattern skills (`django-patterns`, `python-code-style`, etc.) already applied during implementation via the rules; reviews happen in the next step. Do not run `production-code-audit` here; it rewrites code rather than verifying it.
 
 ## 6. Review
 

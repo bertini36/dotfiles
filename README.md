@@ -46,6 +46,7 @@ My personal Mac setup and configurations
     | [`pnpm`](https://github.com/pnpm/pnpm) | Fast Node package manager |
     | [`claude`](https://claude.ai) | Anthropic Claude desktop app (cask) |
     | [`claude-code`](https://github.com/anthropics/claude-code) | Anthropic Claude CLI (cask) |
+    | [`granola`](https://www.granola.ai) | AI meeting notepad that captures and summarizes meetings (cask) |
     | [`rtk`](https://github.com/rtk-ai/rtk) | CLI proxy that reduces LLM token consumption by 60-90% |
     | [`handy`](https://github.com/cjpais/Handy) | Speech-to-text utility |
 
@@ -119,18 +120,18 @@ My personal Mac setup and configurations
 
   ln -s ~/.dotfiles/editors/vim/.vimrc ~/.vimrc
 
-  ln -s ~/.dotfiles/ai/claude/settings.json ~/.claude/settings.json
-  ln -s ~/.dotfiles/ai/claude/statusline-command.sh ~/.claude/statusline-command.sh
-  ln -s ~/.dotfiles/ai/claude/CLAUDE.md ~/.claude/CLAUDE.md
-  ln -s ~/.dotfiles/ai/claude/RTK.md ~/.claude/RTK.md
-  ln -s ~/.dotfiles/ai/claude/skills ~/.claude/skills
-  ln -s ~/.dotfiles/ai/claude/rules ~/.claude/rules
-  ln -s ~/.dotfiles/ai/claude/agents ~/.claude/agents
+  ln -s ~/.dotfiles/.claude/settings.json ~/.claude/settings.json
+  ln -s ~/.dotfiles/.claude/statusline-command.sh ~/.claude/statusline-command.sh
+  ln -s ~/.dotfiles/.claude/CLAUDE.md ~/.claude/CLAUDE.md
+  ln -s ~/.dotfiles/.claude/RTK.md ~/.claude/RTK.md
+  ln -s ~/.dotfiles/.claude/skills ~/.claude/skills
+  ln -s ~/.dotfiles/.claude/rules ~/.claude/rules
+  ln -s ~/.dotfiles/.claude/agents ~/.claude/agents
   ```
 
 ## 🧠 Claude Configuration
 
-All Claude Code configuration lives under `ai/claude/` and is symlinked into `~/.claude/`.
+All Claude Code configuration lives under `.claude/` and is symlinked into `~/.claude/`.
 
 > [!NOTE]
 > Remote control is enabled via `remoteControlAtStartup` in the global settings.
@@ -139,7 +140,7 @@ All Claude Code configuration lives under `ai/claude/` and is symlinked into `~/
 
 ### Workflow
 
-See the `start-feature` skill (`ai/claude/skills/start-feature/SKILL.md`) for detailed documentation of the development workflow using Claude, Superpowers, and the custom skills, agents, and rules defined in this repository.
+See the `start-feature` skill (`.claude/skills/start-feature/SKILL.md`) for detailed documentation of the development workflow using Claude, Superpowers, and the custom skills, agents, and rules defined in this repository.
 
 ### Skills
 
@@ -152,34 +153,24 @@ Reusable AI agent skills that Claude invokes autonomously when a task matches th
 | `end-feature` | Finalize a merged PR: switch to main, pull, remove the merged feature branch, and update the graphify graph |
 | `ddd-patterns` | DDD entities, aggregate roots, value objects, repositories, domain services, and specifications |
 | `django-patterns` | Django architecture, REST APIs with Pydantic, ORM best practices, caching, and signals |
+| `fix-until-green` | Loop project checks and pre-commit, dispatching a fixer subagent per failure, until green or 5 iterations |
 | `grill-me` | Stress-test a plan or design by interviewing one question at a time across the decision tree |
+| `investigate-sentry` | Investigate a Sentry exception down to root cause and propose a fix |
 | `langchain-architecture` | LangChain 1.x and LangGraph for agents, memory, and tool integration |
 | `production-code-audit` | Deep-scan a codebase and transform it to production-grade quality |
 | `python-code-style` | Python type safety, generics, protocols, and advanced type annotations |
 | `review-branch` | Review current branch changes for quality and security |
 | `save-session` | Save a high-density summary of the current session to `.claude_sessions.md` |
 | `start-feature` | Start the feature development pipeline |
-| `visual-plan` | Turn a text plan into an interactive visual plan with diagrams, file maps, annotated code, and open questions ([BuilderIO/skills](https://github.com/BuilderIO/skills), MIT) |
-| `visual-recap` | Turn a PR, branch, or diff into a visual recap with file maps, API/schema summaries, and annotated diffs ([BuilderIO/skills](https://github.com/BuilderIO/skills), MIT) |
 | `wiki-karpathy` | Initialize, ingest, query, and lint a Karpathy-style personal wiki inside an Obsidian vault |
 | `writing-clearly` | Clear prose for docs, commits, error messages, and UI text |
-
-> [!NOTE]
-> `visual-plan` and `visual-recap` are Agent-Native Plan clients, not standalone
-> skills. They run in **local-files mode** (`AGENT_NATIVE_PLANS_MODE=local-files`
-> in the global settings): plans are written as local MDX and served from a
-> localhost bridge, with no account or hosted database. They require
-> [Node.js](https://nodejs.org) (the `@agent-native/core` CLI is fetched on
-> demand via `npx`) and a Chromium-based browser to view rendered plans (Safari
-> is blocked from the localhost bridge). To update them, re-pull the two folders
-> from `BuilderIO/skills`.
 
 #### Evals
 
 Most skills have an `evals/evals.json` file that defines test cases to measure skill effectiveness. To run the evals, paste the following steps into your AI agent prompt.
 
-1. Read the eval definitions in `ai/claude/skills/<skill>/evals/evals.json`
-2. Generate outputs - run each eval prompt twice per skill (once with the skill loaded, once without) and save the results to `ai/claude/skills-workspace/iteration-1/<eval-id>/with_skill/outputs/` and `without_skill/outputs/`
+1. Read the eval definitions in `.claude/skills/<skill>/evals/evals.json`
+2. Generate outputs - run each eval prompt twice per skill (once with the skill loaded, once without) and save the results to `.claude/skills-workspace/iteration-1/<eval-id>/with_skill/outputs/` and `without_skill/outputs/`
 3. Create `eval_metadata.json` - record the assertions from each eval's expectations array alongside references to the output files
 4. Compare outputs in `with_skill/outputs/` vs `without_skill/outputs/`
 5. Verify each assertion from `eval_metadata.json` against the corresponding output
@@ -202,6 +193,7 @@ Path-scoped rules that load automatically only when working on matching files.
 | Rule | Scope |
 |---|---|
 | `python` | `**/*.py` - Python 3.12+ conventions, ruff, uv, naming, imports |
+| `performance` | `**/*.py` - N+1 prevention, batch writes, query-count guards, no premature caching |
 | `django` | Django files (views, models, urls, admin, etc.) |
 | `tests` | Test files - no comments, self-explanatory naming |
 | `langchain` | LangChain/LangGraph files |
@@ -211,7 +203,7 @@ Path-scoped rules that load automatically only when working on matching files.
 Plugins are split into two tiers to keep session context lean: a small global
 set enabled for every session, and domain-specific plugins enabled only in the
 projects that need them. All marketplaces are registered globally in
-`extraKnownMarketplaces` of `ai/claude/settings.json`.
+`extraKnownMarketplaces` of `.claude/settings.json`.
 
 #### Global plugins
 
@@ -263,6 +255,16 @@ claude plugin install last30days@last30days-skill
 
 ```bash
 claude mcp add --transport http datadog-mcp https://mcp.datadoghq.eu/api/unstable/mcp-server/mcp
+```
+
+[Granola](https://www.granola.ai) (installed via the Brewfile cask) also ships
+an official MCP server that exposes meeting notes and transcripts. Register it
+globally; the first connection opens an OAuth flow in the browser, no API key
+needed. Requires a signed-in Granola app (macOS 12+, Google or Microsoft
+account, microphone permission):
+
+```bash
+claude mcp add --transport http --scope user granola https://mcp.granola.ai/mcp
 ```
 
 To update everything, ask Claude in a session: `Update installed plugins`.
