@@ -26,7 +26,7 @@
 * Notion `Caps Lock + N`
 * Calendar `Caps Lock + S`
 * WhatsApp `Caps Lock + W`
-* Telegram `Caps Lock + G`
+* Granola `Caps Lock + G`
 * Claude `Caps Lock + I`
 * Open Downloads `Caps Lock + D`
 * Pomodoro `Caps Lock + O`
