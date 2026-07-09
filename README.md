@@ -82,7 +82,6 @@ My personal Mac setup and configurations
 - Install [WhatsApp](https://www.whatsapp.com/download)
 - Install [Telegram](https://desktop.telegram.org/)
 - Install [Slack](https://slack.com/intl/en-gb/downloads/mac)
-- Install [Gemini](https://gemini.google/mac/)
 - Install [Claude](https://claude.ai/)
 - Install [Notion](https://www.notion.so/desktop)
 - Install [Notion Calendar](https://www.notion.com/product/calendar)

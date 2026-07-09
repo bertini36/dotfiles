@@ -13,7 +13,6 @@
 * See hidden files `CMD + Shift + .`
 * Open settings `CMD + ,`
 * Change keyboard layout `CTL + Space`
-* Open Gemini `OPT + Space`
 
 ## Raycast (Caps Lock based)
 
@@ -28,7 +27,7 @@
 * Calendar `Caps Lock + S`
 * WhatsApp `Caps Lock + W`
 * Telegram `Caps Lock + G`
-* AI `Caps Lock + I`
+* Claude `Caps Lock + I`
 * Open Downloads `Caps Lock + D`
 * Pomodoro `Caps Lock + O`
 * DeepL `Caps Lock + L`
