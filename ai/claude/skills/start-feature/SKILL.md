@@ -34,7 +34,7 @@ Then dispatch the `plan-evaluator` agent. With fresh context that has no stake i
 
 For small plans, the `superpowers:executing-plans` skill drives implementation with review checkpoints. Each task follows `superpowers:test-driven-development`: a failing test pins the behavior before any implementation code. For independent tasks, `superpowers:dispatching-parallel-agents` runs multiple agents in parallel.
 
-When the plan has 3 or more independent tasks, implement with `superpowers:subagent-driven-development` (preferred): each task goes to a fresh implementer subagent, and a per-task reviewer checks the work before moving on. Each subagent brief names the domain skills relevant to the files it touches (for example `django-patterns`, `sinsesgo-agent-pattern`). Its scratch files (task briefs, reports, progress ledger) live in a git-ignored `.superpowers/sdd/` directory; `git clean -fdx` deletes the progress ledger, so recover from `git log` if that happens.
+When the plan has 3 or more independent tasks, implement with `superpowers:subagent-driven-development` (preferred): each task goes to a fresh implementer subagent, and a per-task reviewer checks the work before moving on. Each subagent brief names the domain skills relevant to the files it touches (for example `django-patterns`, `python-code-style`). Its scratch files (task briefs, reports, progress ledger) live in a git-ignored `.superpowers/sdd/` directory; `git clean -fdx` deletes the progress ledger permanently, since git-ignored files are never in commit history and cannot be recovered unless backed up elsewhere.
 
 Domain-specific rules load automatically based on the files touched:
 
