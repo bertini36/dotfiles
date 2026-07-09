@@ -51,12 +51,18 @@ no explanatory comment: `test_renders_markdown_when_answer_present`,
 Add a comment only when the logic is genuinely non-obvious — a subtle edge case or a
 non-intuitive expected value. Descriptive names and the blank-line structure carry the
 rest. No comments that restate the code, and no phase labels.
+
 ## One behavior, one level
 
 Every behavior is tested at exactly one level:
 
-- **Unit** covers the logic you wrote: branches, transformations, computed properties.
-- **Integration** covers only the wiring unit tests cannot reach: real API contracts, serialization boundaries, external services.
-- **Evals** cover output quality against labeled data, never correctness already asserted below.
+- **Unit** covers the logic you wrote: branches, transformations, computed
+  properties.
+- **Integration** covers only the wiring unit tests cannot reach: real API
+  contracts, serialization boundaries, external services.
+- **Evals** cover output quality against labeled data, never correctness
+  already asserted below.
 
-Before writing a test, check whether a lower level already asserts the same behavior. If it does, do not write the test. When a higher-level test duplicates a lower-level assertion, delete the duplicate.
+Before writing a test, check whether a lower level already asserts the same
+behavior. If it does, do not write the test. When a higher-level test
+duplicates a lower-level assertion, delete the duplicate.
