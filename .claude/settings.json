@@ -27,11 +27,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash ~/.dotfiles/ai/claude/hooks/python-worktree-venv.sh"
+            "command": "bash ~/.dotfiles/.claude/hooks/python-worktree-venv.sh"
           },
           {
             "type": "command",
-            "command": "bash ~/.dotfiles/ai/claude/hooks/graphify-worktree-link.sh"
+            "command": "bash ~/.dotfiles/.claude/hooks/graphify-worktree-link.sh"
           }
         ]
       }

@@ -119,18 +119,18 @@ My personal Mac setup and configurations
 
   ln -s ~/.dotfiles/editors/vim/.vimrc ~/.vimrc
 
-  ln -s ~/.dotfiles/ai/claude/settings.json ~/.claude/settings.json
-  ln -s ~/.dotfiles/ai/claude/statusline-command.sh ~/.claude/statusline-command.sh
-  ln -s ~/.dotfiles/ai/claude/CLAUDE.md ~/.claude/CLAUDE.md
-  ln -s ~/.dotfiles/ai/claude/RTK.md ~/.claude/RTK.md
-  ln -s ~/.dotfiles/ai/claude/skills ~/.claude/skills
-  ln -s ~/.dotfiles/ai/claude/rules ~/.claude/rules
-  ln -s ~/.dotfiles/ai/claude/agents ~/.claude/agents
+  ln -s ~/.dotfiles/.claude/settings.json ~/.claude/settings.json
+  ln -s ~/.dotfiles/.claude/statusline-command.sh ~/.claude/statusline-command.sh
+  ln -s ~/.dotfiles/.claude/CLAUDE.md ~/.claude/CLAUDE.md
+  ln -s ~/.dotfiles/.claude/RTK.md ~/.claude/RTK.md
+  ln -s ~/.dotfiles/.claude/skills ~/.claude/skills
+  ln -s ~/.dotfiles/.claude/rules ~/.claude/rules
+  ln -s ~/.dotfiles/.claude/agents ~/.claude/agents
   ```
 
 ## 🧠 Claude Configuration
 
-All Claude Code configuration lives under `ai/claude/` and is symlinked into `~/.claude/`.
+All Claude Code configuration lives under `.claude/` and is symlinked into `~/.claude/`.
 
 > [!NOTE]
 > Remote control is enabled via `remoteControlAtStartup` in the global settings.
@@ -139,7 +139,7 @@ All Claude Code configuration lives under `ai/claude/` and is symlinked into `~/
 
 ### Workflow
 
-See the `start-feature` skill (`ai/claude/skills/start-feature/SKILL.md`) for detailed documentation of the development workflow using Claude, Superpowers, and the custom skills, agents, and rules defined in this repository.
+See the `start-feature` skill (`.claude/skills/start-feature/SKILL.md`) for detailed documentation of the development workflow using Claude, Superpowers, and the custom skills, agents, and rules defined in this repository.
 
 ### Skills
 
@@ -168,8 +168,8 @@ Reusable AI agent skills that Claude invokes autonomously when a task matches th
 
 Most skills have an `evals/evals.json` file that defines test cases to measure skill effectiveness. To run the evals, paste the following steps into your AI agent prompt.
 
-1. Read the eval definitions in `ai/claude/skills/<skill>/evals/evals.json`
-2. Generate outputs - run each eval prompt twice per skill (once with the skill loaded, once without) and save the results to `ai/claude/skills-workspace/iteration-1/<eval-id>/with_skill/outputs/` and `without_skill/outputs/`
+1. Read the eval definitions in `.claude/skills/<skill>/evals/evals.json`
+2. Generate outputs - run each eval prompt twice per skill (once with the skill loaded, once without) and save the results to `.claude/skills-workspace/iteration-1/<eval-id>/with_skill/outputs/` and `without_skill/outputs/`
 3. Create `eval_metadata.json` - record the assertions from each eval's expectations array alongside references to the output files
 4. Compare outputs in `with_skill/outputs/` vs `without_skill/outputs/`
 5. Verify each assertion from `eval_metadata.json` against the corresponding output
@@ -202,7 +202,7 @@ Path-scoped rules that load automatically only when working on matching files.
 Plugins are split into two tiers to keep session context lean: a small global
 set enabled for every session, and domain-specific plugins enabled only in the
 projects that need them. All marketplaces are registered globally in
-`extraKnownMarketplaces` of `ai/claude/settings.json`.
+`extraKnownMarketplaces` of `.claude/settings.json`.
 
 #### Global plugins
 
