@@ -140,7 +140,7 @@ All Claude Code configuration lives under `ai/claude/` and is symlinked into `~/
 
 ### Workflow
 
-See `ai/claude/workflow.md` for detailed documentation of the development workflow using Claude, Superpowers, and the custom skills, agents, and rules defined in this repository.
+See the `start-feature` skill (`ai/claude/skills/start-feature/SKILL.md`) for detailed documentation of the development workflow using Claude, Superpowers, and the custom skills, agents, and rules defined in this repository.
 
 ### Skills
 
@@ -159,7 +159,7 @@ Reusable AI agent skills that Claude invokes autonomously when a task matches th
 | `python-code-style` | Python type safety, generics, protocols, and advanced type annotations |
 | `review-branch` | Review current branch changes for quality and security |
 | `save-session` | Save a high-density summary of the current session to `.claude_sessions.md` |
-| `start-feature` | Start the feature development pipeline from `workflow.md` |
+| `start-feature` | Start the feature development pipeline |
 | `visual-plan` | Turn a text plan into an interactive visual plan with diagrams, file maps, annotated code, and open questions ([BuilderIO/skills](https://github.com/BuilderIO/skills), MIT) |
 | `visual-recap` | Turn a PR, branch, or diff into a visual recap with file maps, API/schema summaries, and annotated diffs ([BuilderIO/skills](https://github.com/BuilderIO/skills), MIT) |
 | `wiki-karpathy` | Initialize, ingest, query, and lint a Karpathy-style personal wiki inside an Obsidian vault |

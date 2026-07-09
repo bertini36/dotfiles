@@ -25,7 +25,7 @@ Calibration: flag only issues that would cause real problems during implementati
 
 ## Process
 
-1. Read the implementation plan doc produced by the `superpowers:writing-plans` step of `workflow.md`, plus its referenced Spec and all files it touches.
+1. Read the implementation plan doc produced by the `superpowers:writing-plans` step of the `start-feature` pipeline, plus its referenced Spec and all files it touches.
 2. Answer each criterion yes/no with a one-line justification grounded in a file or pattern you read.
 3. Any yes is a blocker. No blockers means GO.
 
