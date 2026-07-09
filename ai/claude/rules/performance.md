@@ -18,7 +18,12 @@ ORM at hand elsewhere.
 
 ## Tests as query guards
 
-- Any test covering a list endpoint or a serializer with relations asserts the query count with the `django_assert_num_queries` fixture, so a future N+1 fails a test instead of production.
+- Django: any test covering a list endpoint or a serializer with relations
+  asserts the query count with the `django_assert_num_queries` fixture, so a
+  future N+1 fails a test instead of production.
+- Other ORMs: assert the query/call count with whatever mechanism the stack
+  exposes (e.g. SQLAlchemy's `before_cursor_execute` event, or a query-log
+  context manager), applying the same guard on any hot list/relation path.
 
 ## Caching
 
