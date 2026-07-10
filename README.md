@@ -150,7 +150,7 @@ Reusable AI agent skills that Claude invokes autonomously when a task matches th
 |---|---|
 | `audit` | Run a full production audit with the `code-reviewer` and `security-reviewer` agents |
 | `create-pull-request` | Create a GitHub PR following project conventions using `gh` CLI |
-| `end-feature` | Finalize a merged PR: switch to main, pull, remove the merged feature branch, and update the graphify graph |
+| `end-feature` | Finalize a merged PR: switch to main, pull, and remove the merged feature branch |
 | `ddd-patterns` | DDD entities, aggregate roots, value objects, repositories, domain services, and specifications |
 | `django-patterns` | Django architecture, REST APIs with Pydantic, ORM best practices, caching, and signals |
 | `fix-until-green` | Loop project checks and pre-commit, dispatching a fixer subagent per failure, until green or 5 iterations |
@@ -284,21 +284,6 @@ transparently. Activate with:
 ```bash
 rtk init -g
 ```
-
-#### graphify
-
-[graphify](https://github.com/safishamsi/graphify) turns any folder of code,
-docs, or papers into a queryable knowledge graph, exposed as the `/graphify`
-skill:
-
-```bash
-uv tool install graphifyy   # PyPI package is graphifyy; the CLI is graphify
-graphify install
-```
-
-`graphify install` generates the skill in `~/.claude/skills/graphify/` and
-registers it in `~/.claude/CLAUDE.md`. The skill directory is tool-managed,
-so it is gitignored; only the `CLAUDE.md` registration is tracked.
 
 <br />
 <p align="center">Built with ❤️ from Mallorca</p>

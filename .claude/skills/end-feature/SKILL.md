@@ -9,7 +9,6 @@ Current branch: !`git branch --show-current`
 Default branch: !`git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'`
 Uncommitted changes: !`git status --short`
 Worktrees: !`git worktree list`
-Graphify graph: !`test -d "$(git rev-parse --show-toplevel)/graphify-out" && echo present || echo absent`
 
 Steps:
 
@@ -22,8 +21,7 @@ Steps:
 7. **Delete local branch** - `git branch -d $FEATURE_BRANCH`. If git refuses (not fully merged into base via fast-forward, e.g. squash merge), confirm the PR was merged via step 2 then use `git branch -D $FEATURE_BRANCH`.
 8. **Delete remote branch** - first check whether the remote branch still exists with `git ls-remote --exit-code --heads origin $FEATURE_BRANCH`. If it exists, ask the user for explicit confirmation before running `git push origin --delete $FEATURE_BRANCH`. Skip silently if the remote branch was already deleted by GitHub auto-delete.
 9. **Prune stale refs** - `git fetch --prune && git worktree prune`.
-10. **Update knowledge graph** - if the graphify graph is present (see context above), invoke the `graphify` skill with `--update` on the repo root so the graph re-extracts only the files changed by the merged feature. Run this after step 5 has landed the merged changes on `$BASE_BRANCH`. Skip silently when absent.
-11. **Report** - confirm: worktree removed (if applicable), branch deleted locally and remotely, on `$BASE_BRANCH` at latest commit, and graph updated (if applicable).
+10. **Report** - confirm: worktree removed (if applicable), branch deleted locally and remotely, and on `$BASE_BRANCH` at latest commit.
 
 Rules:
 - Never run destructive deletes without confirming PR merge state via `gh`.
