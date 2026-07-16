@@ -128,6 +128,7 @@
 * `/context` → Visualize context usage in your current chat
 * `/compact` → Reduce context usage when the context window fills up
 * `/effort` → Toggle effort mode for more thorough responses
+* `/goal <condition>` → Set a goal; Claude keeps working across turns until the condition is met. No argument shows the current goal, `/goal clear` removes it
 * `/rename` -> Name the current session to resume it later with `claude --resume <session-name>`
 * `/usage` -> Show token usage for the current session
 * `/clear` -> Clear the current session
@@ -136,3 +137,16 @@
 * `claude --resume` -> Resume a previous session
 * `claude --dangerously-skip-permissions` → Bypass all safety checks and permissions
 * `claude --worktree` → Enable automatic git worktree creation for each new conversation
+
+### Repo skills (invoke with `/skill-name`)
+
+* `/start-feature` → Start the feature development pipeline (brainstorm, plan, grill, evaluate, implement, verify, review, PR)
+* `/grill-me` → Get interviewed about a plan or design until reaching shared understanding
+* `/fix-until-green` → Loop project checks and pre-commit, fixing each failure until everything passes
+* `/review-branch` → Review current branch changes for quality and security
+* `/create-pull-request` → Create a GitHub PR following project conventions and the repo template
+* `/end-feature` → Finalize a merged PR: switch to main, pull, delete the feature branch locally and remotely
+* `/save-session` → Save a high-density summary of the current session to `.claude_sessions.md`
+* `/tldr <url>` → Quick bullet summary of an article, blog post, YouTube video, or web page
+* `/investigate-sentry <issue>` → Root-cause a Sentry exception and propose a fix
+* `/audit` → Run a full production audit on the current project
