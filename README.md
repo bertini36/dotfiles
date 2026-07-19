@@ -162,6 +162,7 @@ Reusable AI agent skills that Claude invokes autonomously when a task matches th
 | `review-branch` | Review current branch changes for quality and security |
 | `save-session` | Save a high-density summary of the current session to `.claude_sessions.md` |
 | `start-feature` | Start the feature development pipeline |
+| `tldr` | Quick bullet summary of a URL (article, blog post, video) via `/tldr` |
 | `wiki-karpathy` | Initialize, ingest, query, and lint a Karpathy-style personal wiki inside an Obsidian vault |
 | `writing-clearly` | Clear prose for docs, commits, error messages, and UI text |
 
