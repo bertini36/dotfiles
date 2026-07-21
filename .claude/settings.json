@@ -6,6 +6,7 @@
     "CAVEMAN_DEFAULT_MODE": "lite"
   },
   "permissions": {
+    "defaultMode": "auto",
     "deny": [
       "Bash(rm -rf *)",
       "Bash(dd *)",
