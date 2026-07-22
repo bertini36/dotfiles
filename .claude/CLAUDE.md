@@ -34,6 +34,10 @@ Rules:
 
 When user pastes a PR link and asks to review or address comments, dispatch the `pr-reviewer` agent. It handles the full cycle: audit the diff, fetch all open review comments (humans and bots), apply or reject fixes, commit, push, reply, resolve threads, verify CI, and report a summary.
 
+Reply/resolve policy, binding for the main session and every agent:
+- Never reply to or resolve a review thread opened by another human reviewer, even when I instructed the fix. Apply the fix in code, then leave the conversation to me; I answer humans myself.
+- Replying and resolving is only allowed on threads opened by me (bertini36) or by bots (Copilot, CodeRabbit, etc.).
+
 ## Testing
 
 - Run `pytest` with `-n auto` to parallelise across cores (requires `pytest-xdist`)

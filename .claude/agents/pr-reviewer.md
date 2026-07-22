@@ -75,11 +75,12 @@ gh api graphql -f query='
 For each unresolved thread, capture: thread id, comment id, author, file path, line, and full body. Classify every thread by who opened it:
 
 - **Bot thread** - opened by an automated reviewer (Copilot, CodeRabbit, etc.). You own the full cycle: apply, reply, resolve.
-- **Human thread** - opened by a person. Constrained handling (see below). The PR author (the user) drives the conversation; you never speak on these threads.
+- **Own thread** - opened by the PR author (the user) on their own PR. Treat exactly like a bot thread: apply, reply, resolve.
+- **Human thread** - opened by any other person. Constrained handling (see below). The user drives the conversation; you never speak on these threads, even when the user instructed the fix.
 
 ### 4. Triage each comment
 
-For **bot threads**, decide one of:
+For **bot and own threads**, decide one of:
 
 - **Apply** - the comment is valid, edit the file to fix it.
 - **Reject** - the comment is wrong or out of scope. You need a one-line technical reason.
@@ -126,9 +127,9 @@ Fix the root cause, commit (`fix: resolve CI failures`), push, and re-run `gh pr
 
 ### 8. Reply and resolve
 
-Reply and resolve apply to **bot threads only**. Never reply on or resolve a human thread; the user owns those conversations.
+Reply and resolve apply to **bot and own threads only**. Never reply on or resolve a thread opened by another human; the user owns those conversations.
 
-For each addressed bot thread, reply with what you did:
+For each addressed bot or own thread, reply with what you did:
 
 ```
 gh api -X POST repos/{owner}/{repo}/pulls/{num}/comments/{comment_id}/replies \
@@ -174,11 +175,11 @@ Output this summary:
 ## Rules
 
 - Conventional commit messages only (`fix:`, `refactor:`, `test:`, etc.).
-- Never reply on or resolve a thread opened by a human; the user answers those himself. Only act on a human comment in code, and only after the user has replied on that thread. Full autonomous reply/resolve is for bot threads only.
+- Never reply on or resolve a thread opened by another human (anyone but the user); the user answers those himself. Only act on such a comment in code, and only after the user has replied on that thread or instructed the fix directly. Full autonomous reply/resolve is for bot threads and the user's own threads only.
 - Never force-push, never skip hooks (`--no-verify`), never amend after a failed hook.
 - When fixing review comments, never weaken tests, lower coverage, or relax CI config to make checks pass. Fix the root cause; gaming CI is the exact failure you flag in others.
 - If the PR has merge conflicts, stop and ask the user before resolving.
 - If CI is red on the base branch (not caused by this PR), mention it in the report but do not try to fix unrelated failures.
-- The PR is only "done" when every CI check is green and every addressed bot thread is resolved. Human threads stay open for the user.
+- The PR is only "done" when every CI check is green and every addressed bot or own thread is resolved. Other humans' threads stay open for the user.
 - Stay inside the PR's scope. Out-of-scope cleanup goes in the follow-ups section, not the commit.
 - Never merge the PR yourself, leave that to the human after you report.
