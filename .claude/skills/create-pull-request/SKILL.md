@@ -142,6 +142,15 @@ When filling out the template:
 - Complete the "Pre-flight Checklist" items that apply
 - Ask for confirmation of the generated PR_BODY
 
+### Description Content — Intent and Highlights
+
+The description gives the reviewer exactly two things:
+
+1. **Intent**: the problem or motivation behind the change, in one or two sentences
+2. **Highlights**: the few changes that matter, grouped by theme or behavior
+
+The reviewer reads the diff for the details; the description exists to explain what the diff cannot: why the change exists and where its center of gravity is. A file-by-file or commit-by-commit enumeration of changes restates the diff and belongs nowhere in the body. Name a specific file only when it is the centerpiece of the change.
+
 ### Complex Logic — Deeper Descriptions
 
 If the PR introduces non-trivial logic (e.g., algorithmic changes, architectural decisions, subtle bug fixes, or multi-step workflows), the description must go deeper. Apply the `writing-clearly` skill to write a clear, precise explanation that covers:
@@ -264,6 +273,7 @@ Before finalizing, ensure:
 - [ ] Related issue number is identified, or placeholder is used
 - [ ] Jira ticket link is included if one was provided when the feature started
 - [ ] PR description follows the template exactly
+- [ ] Description states intent and highlights; no file-by-file change list
 - [ ] Appropriate type of change is selected
 - [ ] Post-deploy steps section included if any manual action is required after deploy (omitted otherwise)
 - [ ] Pre-flight checklist items are addressed
