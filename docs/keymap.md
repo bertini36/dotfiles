@@ -150,3 +150,8 @@
 * `/tldr <url>` → Quick bullet summary of an article, blog post, YouTube video, or web page
 * `/investigate-sentry <issue>` → Root-cause a Sentry exception and propose a fix
 * `/audit` → Run a full production audit on the current project
+
+## Vim 
+
+* `gg` → Go to the beginning of the file
+* `dG` → Delete from the current line to the end of the file
