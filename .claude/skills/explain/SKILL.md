@@ -91,7 +91,7 @@ The section contract, in order. Omit any section with nothing real to say; never
 
 #### How much text each element gets
 
-**REQUIRED SUB-SKILL:** apply `superpowers`-adjacent `writing-clearly` to every string on the page, in particular its rule 13, omit needless words, and rule 12, use definite and concrete language. Read `elements-of-style/03-elementary-principles-of-composition.md` from that skill if you need the detail.
+**REQUIRED SUB-SKILL:** apply `writing-clearly` to every string on the page, in particular its rule 13, omit needless words, and rule 12, use definite and concrete language. Its `elements-of-style/03-elementary-principles-of-composition.md` has the detail.
 
 The page explains through structure. Text labels the structure; it does not carry the argument in paragraphs. Each element holds one idea, in this much room:
 
