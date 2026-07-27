@@ -196,7 +196,7 @@ p code, li code, td code, .mean code {
 
 /* ---------- tables ---------- */
 
-table { width: 100%; border-collapse: collapse; font-size: 13.5px;
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 0 0 18px;
         background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); }
 th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line);
          vertical-align: top; }
