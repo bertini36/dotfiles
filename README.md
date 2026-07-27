@@ -153,11 +153,12 @@ Reusable AI agent skills that Claude invokes autonomously when a task matches th
 | `end-feature` | Finalize a merged PR: switch to main, pull, and remove the merged feature branch |
 | `ddd-patterns` | DDD entities, aggregate roots, value objects, repositories, domain services, and specifications |
 | `django-patterns` | Django architecture, REST APIs with Pydantic, ORM best practices, caching, and signals |
+| `explain` | Turn a link into a local HTML page that explains it visually, with diagrams built from pure CSS and inline SVG, then open it in Chrome via `/explain` |
 | `fix-until-green` | Loop project checks and pre-commit, dispatching a fixer subagent per failure, until green or 5 iterations |
 | `grill-me` | Stress-test a plan or design by interviewing one question at a time across the decision tree |
 | `investigate-sentry` | Investigate a Sentry exception down to root cause and propose a fix |
 | `langchain-architecture` | LangChain 1.x and LangGraph for agents, memory, and tool integration |
-| `memento` | Morning briefing from the previous working day's Granola meetings: up to 5 importance-sorted points, action-flagged, resolved against Google Calendar |
+| `memento` | Morning briefing from the previous working day's Granola meetings and Slack conversations: up to 5 importance-sorted points, action-flagged, with the review window resolved against Google Calendar |
 | `production-code-audit` | Deep-scan a codebase and transform it to production-grade quality |
 | `python-code-style` | Python type safety, generics, protocols, and advanced type annotations |
 | `review-branch` | Review current branch changes for quality and security |
