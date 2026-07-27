@@ -6,7 +6,6 @@
     "CAVEMAN_DEFAULT_MODE": "lite"
   },
   "permissions": {
-    "defaultMode": "auto",
     "deny": [
       "Bash(rm -rf *)",
       "Bash(dd *)",
@@ -20,7 +19,8 @@
       "Bash(cat /etc/ssh/**)",
       "Bash(cat ~/.ssh/*)",
       "Read(~/.ssh/**)"
-    ]
+    ],
+    "defaultMode": "auto"
   },
   "hooks": {
     "SessionStart": [
@@ -83,6 +83,5 @@
   "effortLevel": "xhigh",
   "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
-  "remoteControlAtStartup": true,
-  "model": "claude-fable-5[1m]"
+  "remoteControlAtStartup": true
 }
