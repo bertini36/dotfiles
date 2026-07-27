@@ -147,9 +147,19 @@
 * `/create-pull-request` → Create a GitHub PR following project conventions and the repo template
 * `/end-feature` → Finalize a merged PR: switch to main, pull, delete the feature branch locally and remotely
 * `/save-session` → Save a high-density summary of the current session to `.claude_sessions.md`
+* `/socratic <topic>` → Question-only mode: Claude asks rather than answers, until told to stop
 * `/tldr <url>` → Quick bullet summary of an article, blog post, YouTube video, or web page
 * `/investigate-sentry <issue>` → Root-cause a Sentry exception and propose a fix
 * `/audit` → Run a full production audit on the current project
+* `/ddd-patterns` → DDD patterns: entities, aggregate roots, value objects, repositories, domain services, domain events
+* `/django-patterns` → Django architecture, REST API design with Pydantic, ORM, caching, signals, middleware
+* `/explain <url>` → Visual explainer or diagram for a Jira/Confluence/Notion page, GitHub PR/issue, design doc, or article
+* `/langchain-architecture` → Design LLM apps with LangChain 1.x and LangGraph: agents, memory, tool integration
+* `/memento` → Build today's memory list from yesterday's Granola meetings and Slack conversations
+* `/production-code-audit` → Deep-scan the codebase and systematically transform it to production-grade quality
+* `/python-code-style` → Python type safety patterns: generics, protocols, advanced type annotations
+* `/wiki-karpathy` → Initialize, ingest, query, and lint a Karpathy-style personal wiki in Obsidian
+* `/writing-clearly` → Apply Strunk's rules for clearer prose to docs, commit messages, and explanations
 
 ## Vim 
 
