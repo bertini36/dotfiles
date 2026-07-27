@@ -155,7 +155,7 @@ Reusable AI agent skills that Claude invokes autonomously when a task matches th
 | `django-patterns` | Django architecture, REST APIs with Pydantic, ORM best practices, caching, and signals |
 | `explain` | Turn a link into a local HTML page that explains it visually, with diagrams built from pure CSS and inline SVG, then open it in Chrome via `/explain` |
 | `fix-until-green` | Loop project checks and pre-commit, dispatching a fixer subagent per failure, until green or 5 iterations |
-| `grill-me` | Stress-test a plan or design by interviewing one question at a time across the decision tree |
+| `grill-me` | Stress-test a plan or design by interviewing one question at a time across the decision tree, recording each resolved decision into the plan file |
 | `investigate-sentry` | Investigate a Sentry exception down to root cause and propose a fix |
 | `langchain-architecture` | LangChain 1.x and LangGraph for agents, memory, and tool integration |
 | `memento` | Morning briefing from the previous working day's Granola meetings and Slack conversations: up to 5 importance-sorted points, action-flagged, with the review window resolved against Google Calendar |
@@ -163,6 +163,7 @@ Reusable AI agent skills that Claude invokes autonomously when a task matches th
 | `python-code-style` | Python type safety, generics, protocols, and advanced type annotations |
 | `review-branch` | Review current branch changes for quality and security |
 | `save-session` | Save a high-density summary of the current session to `.claude_sessions.md` |
+| `socratic` | Question-only mode on any topic via `/socratic`: the agent asks rather than answers, with narrow exceptions for facts and safety, until told to stop |
 | `start-feature` | Start the feature development pipeline |
 | `tldr` | Quick bullet summary of a URL (article, blog post, video) via `/tldr` |
 | `wiki-karpathy` | Initialize, ingest, query, and lint a Karpathy-style personal wiki inside an Obsidian vault |
