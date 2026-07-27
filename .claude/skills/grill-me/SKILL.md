@@ -20,3 +20,26 @@ If a superpowers implementation plan was produced in this session (from `superpo
 - **Internal consistency:** Do the types, signatures, and names defined in early tasks match their uses in later ones?
 
 Surface the delta between the plan in my head and the plan on the page: unstated assumptions, unhandled edge cases, and internal contradictions, while they are still words instead of code.
+
+## Recording decisions
+
+Write each decision into the plan file as soon as it is resolved, not in a batch at the end. A grilling runs long enough that the conversation holding the answers gets compacted before implementation starts, and an implementer subagent opens with none of this context: it reads the plan file and nothing else.
+
+Append to a `## Decisions` section in the plan produced by `superpowers:writing-plans` (`docs/superpowers/plans/<name>.md`), placed directly after `## Global Constraints` so every task inherits it. If the plan has no `## Global Constraints` header, create `## Decisions` near the top instead, right after the title. One entry per resolved question:
+
+```markdown
+### The question, phrased as the decision it settled
+
+**Decided:** what we are doing.
+**Because:** the reason, only when it is not obvious from the decision.
+**Ruled out:** the alternative and what kills it, only when I rejected a recommendation or we considered a real fork.
+```
+
+Rules:
+
+- **Append after each answer.** A decision that lives only in the conversation is lost.
+- **Record what was ruled out, not just what was chosen.** Without it an implementer re-proposes the option we already killed.
+- **Skip the trivia.** A question answered by reading the codebase produced a fact, not a decision. Facts belong in the task that needs them.
+- **Amend in place when a later answer contradicts an earlier one.** The section is the current state of the design, not a transcript.
+
+If no plan file exists, because the grilling is on a design or spec rather than a plan, ask once where to record and default to the document under discussion. Do not create a new file for it.
