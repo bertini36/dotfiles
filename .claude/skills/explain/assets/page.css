@@ -1,0 +1,235 @@
+/* explain: page styles and diagram primitives. No JavaScript anywhere. */
+
+:root {
+  --bg: #fbfaf8;
+  --panel: #ffffff;
+  --ink: #16150f;
+  --muted: #6b675c;
+  --line: #e2ded4;
+  --accent: #b4531a;
+  --accent-soft: #fdf1e7;
+  --ok: #2f6b4f;
+  --ok-soft: #eef5f1;
+  --warn: #9a6b12;
+  --warn-soft: #fdf5e4;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+  --sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+  --radius: 8px;
+  color-scheme: light;
+}
+
+/* Dark palette, applied three ways: system preference, the JS-free toggle
+   inverting whatever the system says, and an explicit attribute the build
+   script sets to screenshot each theme deterministically. */
+@media (prefers-color-scheme: dark) {
+  :root { color-scheme: dark; }
+  :root:not([data-theme]) { --bg:#14140f; --panel:#1c1c16; --ink:#f0ede4; --muted:#9a958a;
+    --line:#2f2e26; --accent:#e8894f; --accent-soft:#2a1d13; --ok:#7fc4a0; --ok-soft:#17251d;
+    --warn:#d9ab52; --warn-soft:#261e0e; }
+}
+html:has(#theme:checked) { --bg:#14140f; --panel:#1c1c16; --ink:#f0ede4; --muted:#9a958a;
+  --line:#2f2e26; --accent:#e8894f; --accent-soft:#2a1d13; --ok:#7fc4a0; --ok-soft:#17251d;
+  --warn:#d9ab52; --warn-soft:#261e0e; color-scheme: dark; }
+@media (prefers-color-scheme: dark) {
+  html:has(#theme:checked) { --bg:#fbfaf8; --panel:#fff; --ink:#16150f; --muted:#6b675c;
+    --line:#e2ded4; --accent:#b4531a; --accent-soft:#fdf1e7; --ok:#2f6b4f; --ok-soft:#eef5f1;
+    --warn:#9a6b12; --warn-soft:#fdf5e4; color-scheme: light; }
+}
+html[data-theme="light"] { --bg:#fbfaf8; --panel:#fff; --ink:#16150f; --muted:#6b675c;
+  --line:#e2ded4; --accent:#b4531a; --accent-soft:#fdf1e7; --ok:#2f6b4f; --ok-soft:#eef5f1;
+  --warn:#9a6b12; --warn-soft:#fdf5e4; color-scheme: light; }
+html[data-theme="dark"] { --bg:#14140f; --panel:#1c1c16; --ink:#f0ede4; --muted:#9a958a;
+  --line:#2f2e26; --accent:#e8894f; --accent-soft:#2a1d13; --ok:#7fc4a0; --ok-soft:#17251d;
+  --warn:#d9ab52; --warn-soft:#261e0e; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 56px 32px 96px;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 860px; margin: 0 auto; }
+
+/* ---------- typography ---------- */
+
+h1 { font-size: clamp(28px, 4.4vw, 36px); line-height: 1.14; letter-spacing: -.021em;
+     margin: 0 0 10px; font-weight: 680; text-wrap: balance; }
+.lede { font-size: 19px; line-height: 1.5; color: var(--muted); margin: 0; text-wrap: pretty; }
+
+h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .11em; color: var(--muted);
+     font-weight: 640; margin: 52px 0 18px; }
+h3 { font-size: 17px; font-weight: 620; margin: 28px 0 8px; letter-spacing: -.006em; }
+
+p { margin: 0 0 14px; text-wrap: pretty; }
+p:last-child { margin-bottom: 0; }
+
+/* Only unclassed lists. A bare `.wrap > ul` would outrank every list
+   primitive below it on specificity and override their own padding. */
+.wrap > ul:not([class]), .wrap > ol:not([class]) { margin: 0 0 14px; padding-left: 22px; }
+.wrap > ul:not([class]) > li, .wrap > ol:not([class]) > li { margin-bottom: 6px; }
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+
+code, .mono { font-family: var(--mono); font-size: .89em; }
+p code, li code, td code, .mean code {
+  background: var(--accent-soft); color: var(--accent);
+  padding: 1px 5px; border-radius: 4px;
+}
+
+.source {
+  font-size: 12.5px; color: var(--muted); margin: 0 0 34px;
+  padding-bottom: 22px; border-bottom: 1px solid var(--line);
+}
+.source a { color: var(--muted); }
+
+/* ---------- JS-free theme toggle ---------- */
+
+#theme { position: absolute; opacity: 0; pointer-events: none; }
+.toggle {
+  position: fixed; top: 18px; right: 18px; z-index: 9;
+  width: 34px; height: 34px; border-radius: 50%;
+  display: grid; place-items: center; cursor: pointer;
+  background: var(--panel); border: 1px solid var(--line);
+  color: var(--muted); font-size: 15px; line-height: 1; user-select: none;
+}
+.toggle:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ---------- primitive: flow (sequential process) ---------- */
+
+.flow { display: flex; align-items: stretch; flex-wrap: wrap; gap: 0; }
+.flow > .step {
+  flex: 1 1 150px; min-width: 150px;
+  background: var(--panel); border: 1px solid var(--line);
+  padding: 14px 16px 14px 28px;
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%, 14px 50%);
+}
+.flow > .step:first-child { padding-left: 16px;
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%); }
+.flow > .step:last-child {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 14px 50%); }
+.step .k { display: block; font-family: var(--mono); font-size: 11px; color: var(--accent); margin-bottom: 4px; }
+.step .v { display: block; font-size: 14px; font-weight: 600; line-height: 1.35; }
+.step .n { display: block; font-size: 12.5px; color: var(--muted); margin-top: 4px; line-height: 1.4; }
+
+/* ---------- primitive: layers (stacked architecture) ---------- */
+
+.layers { display: grid; gap: 8px; }
+.layer {
+  display: grid; grid-template-columns: 150px 1fr; gap: 18px; align-items: baseline;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 15px 18px;
+}
+.layer .name { font-weight: 620; font-size: 14px; }
+.layer .desc { font-size: 13.5px; color: var(--muted); }
+.layer.hot { border-color: var(--accent); background: var(--accent-soft); }
+.layer.hot .desc { color: var(--ink); }
+
+/* ---------- primitive: cards (concepts) ---------- */
+
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(235px, 1fr)); gap: 12px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 17px; }
+.card .term { font-family: var(--mono); font-size: 12px; color: var(--accent); margin-bottom: 7px; }
+.card .mean { font-size: 13.5px; line-height: 1.5; }
+
+/* ---------- primitive: stats (key numbers) ---------- */
+
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(158px, 1fr)); gap: 12px; }
+.stat { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 17px; }
+.stat b { display: block; font-size: 27px; font-weight: 660; letter-spacing: -.022em;
+          font-variant-numeric: tabular-nums; line-height: 1.1; }
+.stat b small { font-size: 15px; font-weight: 560; letter-spacing: 0; }
+.stat span { display: block; font-size: 12.5px; color: var(--muted); margin-top: 5px; }
+
+/* ---------- primitive: compare (before / after, option A / B) ---------- */
+
+.compare { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.compare > .side { background: var(--panel); border: 1px solid var(--line);
+                   border-radius: var(--radius); padding: 17px; }
+.compare > .side > h4 { margin: 0 0 10px; font-size: 12px; text-transform: uppercase;
+                        letter-spacing: .08em; color: var(--muted); font-weight: 640; }
+.compare > .side ul { margin: 0; padding-left: 18px; font-size: 13.5px; }
+.compare > .side.good { border-color: var(--ok); background: var(--ok-soft); }
+.compare > .side.bad { border-color: var(--warn); background: var(--warn-soft); }
+
+/* ---------- primitive: timeline (ordered events) ---------- */
+
+.timeline { list-style: none; margin: 0; padding: 0 0 0 26px; position: relative; }
+.timeline::before { content: ""; position: absolute; left: 5px; top: 6px; bottom: 6px;
+                    width: 1px; background: var(--line); }
+.timeline > li { position: relative; margin: 0 0 18px; }
+.timeline > li::before { content: ""; position: absolute; left: -26px; top: 6px;
+  width: 11px; height: 11px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--line); }
+.timeline > li.mark::before { border-color: var(--accent); background: var(--accent); }
+.timeline .when { display: block; font-family: var(--mono); font-size: 11.5px; color: var(--accent); }
+.timeline .what { display: block; font-size: 14px; line-height: 1.4; }
+.timeline .why { display: block; font-size: 13px; color: var(--muted); line-height: 1.45; }
+
+/* ---------- primitive: tree (hierarchy) ---------- */
+/* The nested list draws the spine with a border; each child adds one tick.
+   Root items get neither, so the hierarchy starts flush. */
+
+.tree, .tree ul { list-style: none; margin: 0; padding: 0; }
+.tree ul { padding-left: 20px; margin-left: 5px; border-left: 1px solid var(--line); }
+.tree li { position: relative; padding: 4px 0; font-size: 14px; }
+.tree ul > li::before { content: ""; position: absolute; left: -20px; top: 15px;
+                        width: 14px; height: 1px; background: var(--line); }
+.tree .node { font-family: var(--mono); font-size: 12.5px; color: var(--accent); }
+.tree .gloss { color: var(--muted); font-size: 13px; }
+
+/* ---------- primitive: swimlane (who does what, in order) ---------- */
+
+.swimlane { display: grid; gap: 8px; }
+.lane { display: grid; grid-template-columns: 130px 1fr; gap: 14px; align-items: center; }
+.lane > .who { font-size: 13px; font-weight: 620; color: var(--muted); text-align: right; }
+.lane > .acts { display: flex; flex-wrap: wrap; gap: 8px; }
+.lane .act { background: var(--panel); border: 1px solid var(--line); border-radius: 6px;
+             padding: 8px 12px; font-size: 13px; }
+.lane .act.key { border-color: var(--accent); background: var(--accent-soft); }
+
+/* ---------- tables ---------- */
+
+table { width: 100%; border-collapse: collapse; font-size: 13.5px;
+        background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line);
+         vertical-align: top; }
+th { font-size: 11.5px; text-transform: uppercase; letter-spacing: .07em;
+     color: var(--muted); font-weight: 640; }
+tr:last-child td { border-bottom: none; }
+td.num { font-variant-numeric: tabular-nums; text-align: right; }
+
+/* ---------- callouts ---------- */
+
+.note, .warn {
+  border-left: 3px solid var(--accent); background: var(--accent-soft);
+  padding: 14px 18px; border-radius: 0 var(--radius) var(--radius) 0; font-size: 14px;
+  margin: 16px 0;
+}
+.warn { border-left-color: var(--warn); background: var(--warn-soft); }
+.note > :last-child, .warn > :last-child { margin-bottom: 0; }
+
+/* ---------- figures and inline SVG ---------- */
+
+figure { margin: 0; }
+figcaption { font-size: 12.5px; color: var(--muted); margin-top: 11px; font-style: italic; }
+svg { display: block; width: 100%; height: auto; overflow: visible; }
+
+/* ---------- open questions ---------- */
+
+.open { list-style: none; margin: 0; padding: 0; }
+.open > li { position: relative; padding: 0 0 10px 24px; font-size: 14px; }
+.open > li::before { content: "?"; position: absolute; left: 0; top: 0;
+  font-family: var(--mono); color: var(--accent); font-weight: 700; }
+
+@media (max-width: 620px) {
+  body { padding: 40px 18px 72px; }
+  .layer, .lane { grid-template-columns: 1fr; gap: 4px; }
+  .lane > .who { text-align: left; }
+}
