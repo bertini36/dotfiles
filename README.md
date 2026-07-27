@@ -163,6 +163,7 @@ Reusable AI agent skills that Claude invokes autonomously when a task matches th
 | `python-code-style` | Python type safety, generics, protocols, and advanced type annotations |
 | `review-branch` | Review current branch changes for quality and security |
 | `save-session` | Save a high-density summary of the current session to `.claude_sessions.md` |
+| `socratic` | Question-only mode on any topic via `/socratic`: the agent asks rather than answers, with narrow exceptions for facts and safety, until told to stop |
 | `start-feature` | Start the feature development pipeline |
 | `tldr` | Quick bullet summary of a URL (article, blog post, video) via `/tldr` |
 | `wiki-karpathy` | Initialize, ingest, query, and lint a Karpathy-style personal wiki inside an Obsidian vault |
