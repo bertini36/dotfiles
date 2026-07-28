@@ -24,14 +24,24 @@ Core principle: the LLM bears the maintenance burden (cross-references, consiste
 
 ---
 
+## Resolving the vault
+
+Every path in this skill is relative to `{VAULT}`, the Obsidian vault root. Resolve it before any read or write, on every command, not just on init:
+
+1. Use the path the user names in the request.
+2. Otherwise read `wiki-vault` from `~/.claude/wiki-karpathy.json` if that file exists.
+3. Otherwise ask the user for the vault path and offer to save it to that file for next time.
+
+Never fall back to the current working directory. The session usually sits in a code repo, and scaffolding `raw/`, `wiki/`, `log.md`, and a second `CLAUDE.md` into someone's project is a mess to undo. If `{VAULT}` is inside a git repository, say so and confirm before writing.
+
 ## COMMAND: Initialize the wiki
 
-When the user says **"initialize the wiki"** or similar:
+When the user says **"initialize the wiki"** or similar, after resolving `{VAULT}`:
 
 ### 1. Create the folder structure
 
 ```
-vault/
+{VAULT}/
 ├── raw/              ← raw sources (user drops documents here)
 ├── wiki/
 │   ├── concepts/     ← ideas, definitions, frameworks
@@ -43,7 +53,7 @@ vault/
 └── log.md            ← operation history
 ```
 
-### 2. Generate `CLAUDE.md` in the vault root
+### 2. Generate `CLAUDE.md` in `{VAULT}`
 
 Exact content to write in `CLAUDE.md`:
 
@@ -309,6 +319,7 @@ When the user says **"do maintenance"**, **"lint the wiki"**, or similar:
 
 ## GENERAL RULES
 
+- Resolve `{VAULT}` before any read or write. Never write wiki files into the current working directory.
 - Never delete files from `raw/`. They are immutable original sources.
 - Always use `[[wikilinks]]` for internal links, never relative paths.
 - Links should be bidirectional. If A links to B, B should link back to A from a relevant section.

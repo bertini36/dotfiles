@@ -197,7 +197,7 @@ def cmd_build(args):
     page = fill(shell.read_text(encoding="utf-8"), {
         "CSS": css.read_text(encoding="utf-8"),
         "TITLE": html.escape(args.title),
-        "LEDE": args.lede,
+        "LEDE": html.escape(args.lede),
         "SOURCE": source,
         "DATE": date,
         "CONTENT": content,

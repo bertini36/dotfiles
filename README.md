@@ -171,7 +171,7 @@ Reusable AI agent skills that Claude invokes autonomously when a task matches th
 
 #### Evals
 
-Most skills have an `evals/evals.json` file that defines test cases to measure skill effectiveness. To run the evals, paste the following steps into your AI agent prompt.
+Some skills carry an `evals/evals.json` file that defines test cases to measure skill effectiveness: `create-pull-request`, `django-patterns`, `langchain-architecture`, `production-code-audit`, `python-code-style`, and `writing-clearly`. To run the evals, paste the following steps into your AI agent prompt.
 
 1. Read the eval definitions in `.claude/skills/<skill>/evals/evals.json`
 2. Generate outputs - run each eval prompt twice per skill (once with the skill loaded, once without) and save the results to `.claude/skills-workspace/iteration-1/<eval-id>/with_skill/outputs/` and `without_skill/outputs/`
@@ -187,7 +187,7 @@ Specialized subagents that run in isolated context windows with restricted tools
 |---|---|
 | `code-reviewer` | Read-only production code audit with A-F graded report (architecture, security, performance, quality, testing) |
 | `security-reviewer` | OWASP Top 10 and Django-specific security vulnerability scanner |
-| `plan-evaluator` | Quality gate that scores implementation plans on 7 criteria with GO/NO-GO verdict |
+| `plan-evaluator` | Quality gate that checks implementation plans on 4 criteria (simplicity, consistency, security, reversibility) with GO/NO-GO verdict |
 | `pr-reviewer` | End-to-end PR review: audits diff, fetches open comments, applies fixes, commits, pushes, replies, resolves threads, and verifies CI |
 
 ### Rules

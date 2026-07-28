@@ -27,20 +27,22 @@ If there are uncommitted changes, ask the user whether to:
 git branch --show-current
 ```
 
-Ensure you're not on `master`. If so, ask the user to create or switch to a feature branch.
+Ensure you're not on the base branch resolved below. If so, ask the user to create or switch to a feature branch.
 
 ### 2. Find the base branch
 
+Resolve it once, then use `$BASE` in every command that follows. Never hardcode `main` or `master`: repos differ, and a wrong `--base` makes `gh pr create` fail.
+
 ```bash
-git remote show origin | grep "HEAD branch"
+BASE=$(gh repo view --json defaultBranchRef -q .defaultBranchRef.name)
 ```
 
-This is typically `main` or `master`.
+If `gh` is unavailable, fall back to `git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'`.
 
 ### 3. Analyze recent commits relevant to this PR
 
 ```bash
-git log origin/master..HEAD --oneline --no-decorate
+git log "origin/$BASE..HEAD" --oneline --no-decorate
 ```
 
 Review these commits to understand:
@@ -51,7 +53,7 @@ Review these commits to understand:
 ### 4. Review the diff
 
 ```bash
-git diff origin/master..HEAD --stat
+git diff "origin/$BASE..HEAD" --stat
 ```
 
 This shows which files changed and helps identify the type of change.
@@ -63,7 +65,7 @@ Before creating the PR, you need the following information. Check if it can be i
 - Branch name (e.g., `fix/issue-123`, `feature/new-login`)
 - Changed files and their content
 
-If any critical information is missing, use `ask_followup_question` to ask the user:
+If any critical information is missing, use `AskUserQuestion` to ask the user:
 
 ### Required Information
 
@@ -85,15 +87,15 @@ Before creating the PR, consider these best practices:
 
 ### Branch Management
 
-1. **Rebase on latest master** (if needed):
+1. **Rebase on the latest base branch** (if needed):
    ```bash
    git fetch origin
-   git rebase origin/master
+   git rebase "origin/$BASE"
    ```
 
 2. **Squash if appropriate**: If there are many small "WIP" commits, consider interactive rebase:
    ```bash
-   git rebase -i origin/master
+   git rebase -i "origin/$BASE"
    ```
    Only suggest this if commits appear messy and the user is comfortable with rebasing.
 
@@ -189,7 +191,7 @@ Avoid passing the PR body directly as a command-line argument, as this often fai
 cat > pr_body.txt <<'EOF'
 PR_BODY_CONTENT
 EOF
-gh pr create --title "🚧 PR_TITLE" --body-file pr_body.txt --base master --draft --assignee "@me" --reviewer "Copilot"
+gh pr create --title "🚧 PR_TITLE" --body-file pr_body.txt --base "$BASE" --draft --assignee "@me" --reviewer "Copilot"
 rm pr_body.txt # Clean up
 ```
 
@@ -199,7 +201,7 @@ If the project belongs to the Abacum organization (e.g., remote URL contains `ab
 cat > pr_body.txt <<'EOF'
 PR_BODY_CONTENT
 EOF
-gh pr create --title "🚧 PR_TITLE" --body-file pr_body.txt --base master --draft --assignee "@me" --reviewer "Copilot" --label "Engine"
+gh pr create --title "🚧 PR_TITLE" --body-file pr_body.txt --base "$BASE" --draft --assignee "@me" --reviewer "Copilot" --label "Engine"
 rm pr_body.txt # Clean up
 ```
 
@@ -210,37 +212,17 @@ If the `gh pr create` command asks for a project to push the changes, abort and 
 After creating the PR:
 
 1. **Display the PR URL** so the user can review it
-2. **Add Copilot as reviewer** — always do this after every PR creation:
+2. **Add Copilot as reviewer**, always do this after every PR creation:
 
-   First try the CLI:
    ```bash
    gh pr edit <number> --add-reviewer "Copilot"
    ```
 
-   If that fails (e.g. "Could not resolve user"), use browser automation as a fallback — open the PR, open the Reviewers menu, search for "copilot", and click it:
-   ```javascript
-   // Open reviewers menu
-   document.querySelector('#reviewers-select-menu summary')?.click();
-   // Wait, then type in the filter
-   await new Promise(r => setTimeout(r, 800));
-   const input = document.querySelector('#review-filter-field');
-   input.value = 'copilot';
-   input.dispatchEvent(new Event('input', { bubbles: true }));
-   await new Promise(r => setTimeout(r, 1200));
-   // Click the Copilot item
-   const item = [...document.querySelectorAll('#reviewers-select-menu [role="menuitemcheckbox"]')]
-     .find(i => i.textContent.includes('Copilot'));
-   item?.click();
-   // Close menu
-   await new Promise(r => setTimeout(r, 500));
-   document.querySelector('#reviewers-select-menu summary')?.click();
-   ```
-   Run this via `mcp__claude-in-chrome__javascript_tool` on the PR page. Verify by checking for "Copilot" in the reviewers sidebar after.
+   If it fails with "Could not resolve user", Copilot review is not enabled on the repo. Say so in one line and move on; do not drive the browser to force it.
 
-3. **Open the PR in Chrome** — navigate to the PR URL using the `claude-in-chrome` skill:
-   ```
-   invoke skill: claude-in-chrome
-   then: mcp__claude-in-chrome__navigate to the PR URL
+3. **Open the PR in the browser**:
+   ```bash
+   gh pr view <number> --web
    ```
 
 4. **Remind about CI checks**: Tests and linting will run automatically
@@ -251,7 +233,7 @@ After creating the PR:
 
 ### Common Issues
 
-1. **No commits ahead of master**: The branch has no changes to submit
+1. **No commits ahead of the base branch**: The branch has no changes to submit
    - Ask if the user meant to work on a different branch
 
 2. **Branch not pushed**: Remote doesn't have the branch
@@ -279,4 +261,4 @@ Before finalizing, ensure:
 - [ ] Pre-flight checklist items are addressed
 - [ ] PR is created in draft mode (`--draft`)
 - [ ] Copilot added as reviewer
-- [ ] PR opened in Chrome
+- [ ] PR opened in the browser
