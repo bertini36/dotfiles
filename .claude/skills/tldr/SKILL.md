@@ -5,7 +5,7 @@ description: Use when the user runs /tldr with a URL or asks for a quick bullet 
 
 # TL;DR
 
-Fetch the URL's content and return a fixed-shape summary: a title line plus 5-7 single-sentence bullets. Nothing else.
+Fetch the URL's content and return a fixed-shape summary: a title line plus exactly 5 single-sentence bullets. Nothing else.
 
 ## Getting the content
 
