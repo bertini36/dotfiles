@@ -146,28 +146,34 @@ See the `start-feature` skill (`.claude/skills/start-feature/SKILL.md`) for deta
 
 Reusable AI agent skills that Claude invokes autonomously when a task matches their description. Any skill can also be invoked explicitly as a slash command (`/skill-name`).
 
-| Skill | Description |
-|---|---|
-| `audit` | Run a full production audit with the `code-reviewer` and `security-reviewer` agents |
-| `create-pull-request` | Create a GitHub PR following project conventions using `gh` CLI |
-| `end-feature` | Finalize a merged PR: switch to main, pull, and remove the merged feature branch |
-| `ddd-patterns` | DDD entities, aggregate roots, value objects, repositories, domain services, and specifications |
-| `django-patterns` | Django architecture, REST APIs with Pydantic, ORM best practices, caching, and signals |
-| `explain` | Turn a link into a local HTML page that explains it visually, with diagrams built from pure CSS and inline SVG, then open it in Chrome via `/explain` |
-| `fix-until-green` | Loop project checks and pre-commit, dispatching a fixer subagent per failure, until green or 5 iterations |
-| `grill-me` | Stress-test a plan or design by interviewing one question at a time across the decision tree, recording each resolved decision into the plan file |
-| `investigate-sentry` | Investigate a Sentry exception down to root cause and propose a fix |
-| `langchain-architecture` | LangChain 1.x and LangGraph for agents, memory, and tool integration |
-| `memento` | Morning briefing from the previous working day's Granola meetings and Slack conversations: up to 5 importance-sorted points, action-flagged, with the review window resolved against Google Calendar |
-| `production-code-audit` | Deep-scan a codebase and transform it to production-grade quality |
-| `python-code-style` | Python type safety, generics, protocols, and advanced type annotations |
-| `review-branch` | Review current branch changes for quality and security |
-| `save-session` | Save a high-density summary of the current session to `.claude_sessions.md` |
-| `socratic` | Question-only mode on any topic via `/socratic`: the agent asks rather than answers, with narrow exceptions for facts and safety, until told to stop |
-| `start-feature` | Start the feature development pipeline |
-| `tldr` | Quick bullet summary of a URL (article, blog post, video) via `/tldr` |
-| `wiki-karpathy` | Initialize, ingest, query, and lint a Karpathy-style personal wiki inside an Obsidian vault |
-| `writing-clearly` | Clear prose for docs, commits, error messages, and UI text |
+The **MCPs** column lists the MCP servers a skill needs. **Required** servers must be
+connected before the skill runs, otherwise it stops. **Optional** servers only add
+enrichment, or cover one input type among several, and the skill degrades gracefully
+without them. See [Per-project plugins](#per-project-plugins) and
+[Installing and updating](#installing-and-updating) for how to connect each one.
+
+| Skill | Description | MCPs |
+|---|---|---|
+| `audit` | Run a full production audit with the `code-reviewer` and `security-reviewer` agents | None |
+| `create-pull-request` | Create a GitHub PR following project conventions using `gh` CLI | None |
+| `end-feature` | Finalize a merged PR: switch to main, pull, and remove the merged feature branch | None |
+| `ddd-patterns` | DDD entities, aggregate roots, value objects, repositories, domain services, and specifications | None |
+| `django-patterns` | Django architecture, REST APIs with Pydantic, ORM best practices, caching, and signals | None |
+| `explain` | Turn a link into a local HTML page that explains it visually, with diagrams built from pure CSS and inline SVG, then open it in Chrome via `/explain` | Optional: `atlassian` for Jira and Confluence links, `notion` for Notion links. Other link types use WebFetch and `gh` |
+| `fix-until-green` | Loop project checks and pre-commit, dispatching a fixer subagent per failure, until green or 5 iterations | None |
+| `grill-me` | Stress-test a plan or design by interviewing one question at a time across the decision tree, recording each resolved decision into the plan file | None |
+| `investigate-sentry` | Investigate a Sentry exception down to root cause and propose a fix | Required: `sentry`. Optional: `datadog-mcp` to correlate the request behind the exception |
+| `langchain-architecture` | LangChain 1.x and LangGraph for agents, memory, and tool integration | None |
+| `memento` | Morning briefing from the previous working day's Granola meetings and Slack conversations: up to 5 importance-sorted points, action-flagged, with the review window resolved against Google Calendar | Required: `granola`, `slack`, `google-calendar` (all three checked in a preflight gate) |
+| `production-code-audit` | Deep-scan a codebase and transform it to production-grade quality | None |
+| `python-code-style` | Python type safety, generics, protocols, and advanced type annotations | None |
+| `review-branch` | Review current branch changes for quality and security | None |
+| `save-session` | Save a high-density summary of the current session to `.claude_sessions.md` | None |
+| `socratic` | Question-only mode on any topic via `/socratic`: the agent asks rather than answers, with narrow exceptions for facts and safety, until told to stop | None |
+| `start-feature` | Start the feature development pipeline | None |
+| `tldr` | Quick bullet summary of a URL (article, blog post, video) via `/tldr` | None |
+| `wiki-karpathy` | Initialize, ingest, query, and lint a Karpathy-style personal wiki inside an Obsidian vault | Optional: `notion` for Notion-backed sources; other sources are local files |
+| `writing-clearly` | Clear prose for docs, commits, error messages, and UI text | None |
 
 #### Evals
 
@@ -270,6 +276,11 @@ account, microphone permission):
 ```bash
 claude mcp add --transport http --scope user granola https://mcp.granola.ai/mcp
 ```
+
+`sentry`, `slack`, and `google-calendar` are hosted connectors rather than local
+plugins. Enable them from the connectors directory at
+[claude.ai](https://claude.ai) and authenticate once; they then appear as MCP
+tools in Claude Code sessions.
 
 To update everything, ask Claude in a session: `Update installed plugins`.
 
