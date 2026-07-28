@@ -20,7 +20,7 @@ Show the memento directly in the conversation. Do not write it to a file; the me
 Rules for filling it in:
 
 - Up to 5 points, ordered from most to least important. If the window holds fewer than 5 substantive, traceable points, show only the real ones and add a line noting the window was light.
-- Prefix the topic with `[Action]` when the point requires the lead to act (send, decide, review, message, unblock, arrange). Leave purely informational points unflagged.
+- Prefix the topic with `[Action]` when the point requires the user to act (send, decide, review, message, unblock, arrange). Leave purely informational points unflagged.
 - Every point ends with at least one source tag, in one of three forms:
   - Granola: `{MEETING_TITLE} ({MEETING_DATE})`
   - Slack channel: `#{CHANNEL_NAME} ({MESSAGE_DATE})`
