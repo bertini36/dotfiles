@@ -5,7 +5,9 @@ description: Review current branch changes for quality and security
 
 ## Changes to Review
 
-!`git diff --name-only main...HEAD`
+Base branch: !`git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@' || echo main`
+
+!`BASE=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@'); git diff --name-only "${BASE:-main}...HEAD"`
 
 Review the above changes for:
 1. Code quality issues (naming, complexity, duplication)
