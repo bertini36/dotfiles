@@ -5,7 +5,7 @@ paths:
 
 # Python Conventions
 
-- Python 3.12+ syntax; use modern features (`match`, `|` union types, `tomllib`, `dataclasses`, etc.)
+- Python 3.13+ syntax; use modern features (`match`, `|` union types, `tomllib`, `dataclasses`, etc.)
 - Package management with `uv` (not `pip` directly)
 - Linting and formatting with `ruff` (replaces flake8, isort, black)
 - Naming: `snake_case` for functions/variables, `PascalCase` for classes, `SCREAMING_SNAKE_CASE` for constants. Never prepend constants with `_` (e.g. `SECRET_KEY`, not `_SECRET_KEY`)
