@@ -5,7 +5,7 @@
 - Favour simplicity, avoid premature abstractions, unnecessary error handling, or over-engineering
 - Always delete dead/unused code
 - Use available skills for patterns and best practices:
-  - `ddd-patterns`
+  - `domain-service-layer`
   - `django-patterns`
   - `python-code-style`
   - `langchain-architecture`
