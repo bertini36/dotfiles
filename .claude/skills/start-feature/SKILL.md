@@ -9,6 +9,7 @@ Task: $ARGUMENTS
 
 Current branch: !`git rev-parse --git-dir > /dev/null 2>&1 && git branch --show-current || echo "(no git repo)"`
 Uncommitted changes: !`git rev-parse --git-dir > /dev/null 2>&1 && git status --short || echo "(no git repo)"`
+In a worktree: !`git rev-parse --git-dir 2>/dev/null | grep -q '/worktrees/' && echo "yes" || echo "no"`
 
 Additional rules:
 - If the task above includes a Jira ticket, pass it along so it lands in the PR description.
@@ -16,7 +17,16 @@ Additional rules:
 
 ## 1. Start a worktree
 
-Work in an isolated worktree so the feature doesn't interfere with the main branch. If the session is not already in one, use the `superpowers:using-git-worktrees` skill to create it.
+A worktree isolates the feature from the main working tree, so the current checkout stays usable while the feature is in progress.
+
+If the context above says the session is already in a worktree, say so and move to Brainstorm without asking.
+
+Otherwise ask the user, with `AskUserQuestion`, before any other work:
+
+- **Yes, use a worktree** (recommended): create it with the `superpowers:using-git-worktrees` skill, then run the rest of the pipeline inside it.
+- **No, work here**: create a descriptive branch off `main` (for example `feat/add-user-authentication`) and continue in the current working tree.
+
+Take the answer at face value; do not re-ask later in the pipeline.
 
 ## 2. Brainstorm
 
