@@ -7,7 +7,10 @@
   },
   "permissions": {
     "deny": [
-      "Bash(rm -rf *)",
+      "Bash(rm -rf /)",
+      "Bash(rm -rf ~)",
+      "Bash(rm -rf ~/)",
+      "Bash(sudo rm *)",
       "Bash(dd *)",
       "Bash(mkfs *)",
       "Bash(shred *)",
@@ -21,6 +24,9 @@
       "Read(~/.ssh/**)",
       "Read(~/.aws/**)",
       "Read(**/.env)"
+    ],
+    "ask": [
+      "Bash(rm *)"
     ],
     "defaultMode": "auto"
   },
