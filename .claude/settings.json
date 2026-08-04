@@ -54,6 +54,17 @@
             "command": "rtk hook claude"
           }
         ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "if": "Bash(git push*)",
+            "command": "bash ~/.dotfiles/.claude/hooks/git-push-protected-branch.sh",
+            "statusMessage": "Checking push target"
+          }
+        ]
       }
     ]
   },
