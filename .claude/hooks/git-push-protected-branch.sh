@@ -3,7 +3,8 @@
 # Emits no output for any other push, letting normal permission rules decide.
 set -uo pipefail
 
-command=$(jq -r '.tool_input.command // ""')
+[[ -t 0 ]] && exit 0
+command=$(jq -r '.tool_input.command // ""' 2>/dev/null) || exit 0
 branch=$(git symbolic-ref --quiet --short HEAD 2>/dev/null || echo "")
 
 if [[ "$branch" =~ ^(main|master)$ ]] ||
