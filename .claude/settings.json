@@ -26,7 +26,10 @@
       "Read(**/.env)"
     ],
     "ask": [
-      "Bash(rm *)"
+      "Bash(rm *)",
+      "Bash(git reset --hard*)",
+      "Bash(git clean -*)",
+      "Bash(gh pr merge *)"
     ],
     "defaultMode": "auto"
   },
