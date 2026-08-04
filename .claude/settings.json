@@ -45,7 +45,7 @@
       "Never merge, close, or delete a pull request, release, or repository"
     ]
   },
-  "model": "sonnet",
+  "model": "opus",
   "hooks": {
     "SessionStart": [
       {
