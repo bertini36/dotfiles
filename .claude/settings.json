@@ -33,6 +33,18 @@
     ],
     "defaultMode": "auto"
   },
+  "autoMode": {
+    "hard_deny": [
+      "$defaults",
+      "Never read, print, copy, or transmit SSH keys, cloud credentials, or .env contents, by any means including cat, head, grep, cp, base64, or a script"
+    ],
+    "soft_deny": [
+      "$defaults",
+      "Never discard uncommitted work (git reset --hard, git clean, git checkout --)",
+      "Never rewrite published history, force-push, or delete a remote branch",
+      "Never merge, close, or delete a pull request, release, or repository"
+    ]
+  },
   "model": "sonnet",
   "hooks": {
     "SessionStart": [
