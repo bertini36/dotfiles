@@ -18,7 +18,9 @@
       "Bash(cat /etc/shadow)",
       "Bash(cat /etc/ssh/**)",
       "Bash(cat ~/.ssh/*)",
-      "Read(~/.ssh/**)"
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)",
+      "Read(**/.env)"
     ],
     "defaultMode": "auto"
   },
