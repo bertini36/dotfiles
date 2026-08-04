@@ -7,7 +7,10 @@
   },
   "permissions": {
     "deny": [
-      "Bash(rm -rf *)",
+      "Bash(rm -rf /)",
+      "Bash(rm -rf ~)",
+      "Bash(rm -rf ~/)",
+      "Bash(sudo rm *)",
       "Bash(dd *)",
       "Bash(mkfs *)",
       "Bash(shred *)",
@@ -18,11 +21,31 @@
       "Bash(cat /etc/shadow)",
       "Bash(cat /etc/ssh/**)",
       "Bash(cat ~/.ssh/*)",
-      "Read(~/.ssh/**)"
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)",
+      "Read(**/.env)"
+    ],
+    "ask": [
+      "Bash(rm *)",
+      "Bash(git reset --hard*)",
+      "Bash(git clean -*)",
+      "Bash(gh pr merge *)"
     ],
     "defaultMode": "auto"
   },
-  "model": "sonnet",
+  "autoMode": {
+    "hard_deny": [
+      "$defaults",
+      "Never read, print, copy, or transmit SSH keys, cloud credentials, or .env contents, by any means including cat, head, grep, cp, base64, or a script"
+    ],
+    "soft_deny": [
+      "$defaults",
+      "Never discard uncommitted work (git reset --hard, git clean, git checkout --)",
+      "Never rewrite published history, force-push, or delete a remote branch",
+      "Never merge, close, or delete a pull request, release, or repository"
+    ]
+  },
+  "model": "opus",
   "hooks": {
     "SessionStart": [
       {
@@ -41,6 +64,17 @@
           {
             "type": "command",
             "command": "rtk hook claude"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "if": "Bash(git push*)",
+            "command": "bash ~/.dotfiles/.claude/hooks/git-push-protected-branch.sh",
+            "statusMessage": "Checking push target"
           }
         ]
       }
