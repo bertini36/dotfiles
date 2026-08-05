@@ -25,8 +25,18 @@
       "Read(~/.aws/**)",
       "Read(**/.env)"
     ],
+    "allow": [
+      "Bash(rm /tmp/**)",
+      "Bash(rm -r /tmp/**)",
+      "Bash(rm -rf /tmp/**)",
+      "Bash(rm /private/tmp/**)",
+      "Bash(rm -r /private/tmp/**)",
+      "Bash(rm -rf /private/tmp/**)"
+    ],
     "ask": [
-      "Bash(rm *)",
+      "Bash(rm -r *)",
+      "Bash(rm -rf *)",
+      "Bash(rm -fr *)",
       "Bash(git reset --hard*)",
       "Bash(git clean -*)",
       "Bash(gh pr merge *)"
@@ -34,12 +44,17 @@
     "defaultMode": "auto"
   },
   "autoMode": {
+    "allow": [
+      "$defaults",
+      "Delete files the assistant itself created earlier in this session (scratch scripts, temp fixtures, generated test artifacts, build output) without asking"
+    ],
     "hard_deny": [
       "$defaults",
       "Never read, print, copy, or transmit SSH keys, cloud credentials, or .env contents, by any means including cat, head, grep, cp, base64, or a script"
     ],
     "soft_deny": [
       "$defaults",
+      "Never delete a file the assistant did not create in this session, and never delete a tracked file, even when the deletion looks like cleanup",
       "Never discard uncommitted work (git reset --hard, git clean, git checkout --)",
       "Never rewrite published history, force-push, or delete a remote branch",
       "Never merge, close, or delete a pull request, release, or repository"
