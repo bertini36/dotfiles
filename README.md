@@ -127,6 +127,7 @@ My personal Mac setup and configurations
   ln -s ~/.dotfiles/.claude/skills ~/.claude/skills
   ln -s ~/.dotfiles/.claude/rules ~/.claude/rules
   ln -s ~/.dotfiles/.claude/agents ~/.claude/agents
+  ln -s ~/.dotfiles/.claude/hooks ~/.claude/hooks
   ```
 
 ## 🧠 Claude Configuration
@@ -207,6 +208,19 @@ Path-scoped rules that load automatically only when working on matching files.
 | `django` | Django files (views, models, urls, admin, etc.) |
 | `tests` | Test files - no comments, self-explanatory naming |
 | `langchain` | LangChain/LangGraph files |
+
+### Hooks
+
+Shell scripts in `.claude/hooks/` that the harness runs around tool calls and
+session events. Registered in the `hooks` block of `.claude/settings.json`.
+
+| Hook | Event | Description |
+|---|---|---|
+| `python-worktree-venv.sh` | `SessionStart` | Provisions the virtualenv when a session starts inside a Python git worktree |
+| `git-push-protected-branch.sh` | `PreToolUse` (`Bash`, `git push*`) | Asks for confirmation when a push targets `main` or `master`; stays silent for any other push |
+
+`rtk hook claude` also runs on every `Bash` call to rewrite commands through the
+[rtk](#rtk) proxy.
 
 ### 🔌 Claude Plugins
 
