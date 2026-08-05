@@ -52,7 +52,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash ~/.dotfiles/.claude/hooks/python-worktree-venv.sh"
+            "command": "bash ~/.claude/hooks/python-worktree-venv.sh"
           }
         ]
       }
@@ -73,7 +73,7 @@
           {
             "type": "command",
             "if": "Bash(git push*)",
-            "command": "bash ~/.dotfiles/.claude/hooks/git-push-protected-branch.sh",
+            "command": "bash ~/.claude/hooks/git-push-protected-branch.sh",
             "statusMessage": "Checking push target"
           }
         ]
