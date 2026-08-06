@@ -31,6 +31,17 @@
     ],
     "defaultMode": "auto"
   },
+  "autoMode": {
+    "soft_deny": [
+      "$defaults",
+      "Never rewrite published history, force-push, or delete a remote branch",
+      "Never merge, close, or delete a pull request, release, or repository"
+    ],
+    "hard_deny": [
+      "$defaults",
+      "Never read, print, copy, or transmit SSH keys, cloud credentials, or .env contents, by any means including cat, head, grep, cp, base64, or a script"
+    ]
+  },
   "model": "opus",
   "hooks": {
     "SessionStart": [
@@ -103,16 +114,5 @@
   },
   "effortLevel": "high",
   "tui": "fullscreen",
-  "remoteControlAtStartup": true,
-  "autoMode": {
-    "soft_deny": [
-      "$defaults",
-      "Never rewrite published history, force-push, or delete a remote branch",
-      "Never merge, close, or delete a pull request, release, or repository"
-    ],
-    "hard_deny": [
-      "$defaults",
-      "Never read, print, copy, or transmit SSH keys, cloud credentials, or .env contents, by any means including cat, head, grep, cp, base64, or a script"
-    ]
-  }
+  "remoteControlAtStartup": true
 }
