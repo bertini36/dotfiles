@@ -10,7 +10,6 @@
       "Bash(rm -rf /)",
       "Bash(rm -rf ~)",
       "Bash(rm -rf ~/)",
-      "Bash(sudo rm *)",
       "Bash(dd *)",
       "Bash(mkfs *)",
       "Bash(shred *)",
@@ -26,7 +25,6 @@
       "Read(**/.env)"
     ],
     "ask": [
-      "Bash(rm *)",
       "Bash(git reset --hard*)",
       "Bash(git clean -*)",
       "Bash(gh pr merge *)"
@@ -109,7 +107,6 @@
   "autoMode": {
     "soft_deny": [
       "$defaults",
-      "Never discard uncommitted work (git reset --hard, git clean, git checkout --)",
       "Never rewrite published history, force-push, or delete a remote branch",
       "Never merge, close, or delete a pull request, release, or repository"
     ],
