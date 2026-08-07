@@ -137,6 +137,7 @@
 * `claude --resume` -> Resume a previous session
 * `claude --dangerously-skip-permissions` → Bypass all safety checks and permissions
 * `claude --worktree` → Enable automatic git worktree creation for each new conversation
+* `/branch <branch-name>` → Fork conversation
 
 ### Repo skills (invoke with `/skill-name`)
 
