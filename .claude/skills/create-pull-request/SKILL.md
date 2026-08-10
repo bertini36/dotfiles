@@ -144,24 +144,42 @@ When filling out the template:
 - Complete the "Pre-flight Checklist" items that apply
 - Ask for confirmation of the generated PR_BODY
 
-### Description Content — Intent and Highlights
+### Description Content — Short and Concrete
 
-The description gives the reviewer exactly two things:
+Apply the `writing-clearly` skill to every word of the PR body, without exception: the why, the bullets, the type of change, the test procedure, and any post-deploy steps. Invoke it before drafting, not as a cleanup pass afterwards. Prefer the active voice, cut needless words, put the statement in positive form, and keep related words together.
 
-1. **Intent**: the problem or motivation behind the change, in one or two sentences
-2. **Highlights**: the few changes that matter, grouped by theme or behavior
+The description explains what the diff cannot: why the change exists, and any decision a reviewer would otherwise have to reverse-engineer. Everything the reviewer can read in the diff is already written; do not write it twice.
 
-The reviewer reads the diff for the details; the description exists to explain what the diff cannot: why the change exists and where its center of gravity is. A file-by-file or commit-by-commit enumeration of changes restates the diff and belongs nowhere in the body. Name a specific file only when it is the centerpiece of the change.
+Default shape, and the whole description in most PRs:
 
-### Complex Logic — Deeper Descriptions
+1. **Why**: the problem or motivation, one or two sentences
+2. **What changed**: at most 3 bullets, one line each, phrased as behavior or outcome, not as code edits
 
-If the PR introduces non-trivial logic (e.g., algorithmic changes, architectural decisions, subtle bug fixes, or multi-step workflows), the description must go deeper. Apply the `writing-clearly` skill to write a clear, precise explanation that covers:
+Hard limits:
+- The description body stays under 150 words unless a non-obvious decision needs explaining
+- One bullet per behavior change, never one per file, commit, function, or class
+- Name a file, class, or function only when it is the centerpiece of the change
 
-- **Why**: The problem or motivation behind the change
-- **What**: The approach taken and why it was chosen over alternatives
-- **How**: Key implementation details a reviewer needs to understand the code
+Never write:
+- A file-by-file or commit-by-commit walkthrough
+- "Added method `x` to `Y`", "renamed `a` to `b`", "extracted helper", or any other narration of an edit visible in the diff
+- Restated test names, restated type annotations, or a list of touched modules
+- Sections padded to look thorough: no "Summary" that repeats the title, no bullets that say nothing a reader could not guess
 
-Avoid vague summaries. A reviewer should be able to understand the intent and trade-offs without reading every line of code.
+Write bullets that carry information a reviewer cannot get from the diff:
+
+```
+Bad:  Added `resolve_base_branch()` to `pr_utils.py` and updated 4 call sites to use it.
+Good: Base branch is now resolved from the remote instead of hardcoded, so forks with a `develop` default stop failing.
+```
+
+### Non-obvious Decisions — Add Only What Is Needed
+
+Go deeper only when the change carries something a careful reviewer would still get wrong after reading the diff: an algorithmic trade-off, an architectural choice with rejected alternatives, a subtle bug's root cause, or a constraint imposed from outside the repo.
+
+When that applies, add one short paragraph, or up to 3 bullets, covering the decision and why the alternative was rejected. Stop there: implementation detail belongs in code comments, not in the PR body.
+
+If nothing about the change is non-obvious, skip this entirely. A three-line description for a three-line PR is correct, not lazy.
 
 ### Post-deploy Steps — Only When Required
 
@@ -255,7 +273,10 @@ Before finalizing, ensure:
 - [ ] Related issue number is identified, or placeholder is used
 - [ ] Jira ticket link is included if one was provided when the feature started
 - [ ] PR description follows the template exactly
-- [ ] Description states intent and highlights; no file-by-file change list
+- [ ] `writing-clearly` skill applied to the whole PR body
+- [ ] Description is under 150 words: why, plus at most 3 outcome bullets
+- [ ] No file-by-file, commit-by-commit, or edit-narrating content anywhere in the body
+- [ ] Extra explanation present only where a decision is genuinely non-obvious
 - [ ] Appropriate type of change is selected
 - [ ] Post-deploy steps section included if any manual action is required after deploy (omitted otherwise)
 - [ ] Pre-flight checklist items are addressed
