@@ -146,6 +146,8 @@ When filling out the template:
 
 ### Description Content — Short and Concrete
 
+Apply the `writing-clearly` skill to every word of the PR body, without exception: the why, the bullets, the type of change, the test procedure, and any post-deploy steps. Invoke it before drafting, not as a cleanup pass afterwards. Prefer the active voice, cut needless words, put the statement in positive form, and keep related words together.
+
 The description explains what the diff cannot: why the change exists, and any decision a reviewer would otherwise have to reverse-engineer. Everything the reviewer can read in the diff is already written; do not write it twice.
 
 Default shape, and the whole description in most PRs:
@@ -175,7 +177,7 @@ Good: Base branch is now resolved from the remote instead of hardcoded, so forks
 
 Go deeper only when the change carries something a careful reviewer would still get wrong after reading the diff: an algorithmic trade-off, an architectural choice with rejected alternatives, a subtle bug's root cause, or a constraint imposed from outside the repo.
 
-When that applies, add one short paragraph, or up to 3 bullets, covering the decision and why the alternative was rejected. Apply the `writing-clearly` skill. Stop there: implementation detail belongs in code comments, not in the PR body.
+When that applies, add one short paragraph, or up to 3 bullets, covering the decision and why the alternative was rejected. Stop there: implementation detail belongs in code comments, not in the PR body.
 
 If nothing about the change is non-obvious, skip this entirely. A three-line description for a three-line PR is correct, not lazy.
 
@@ -271,6 +273,7 @@ Before finalizing, ensure:
 - [ ] Related issue number is identified, or placeholder is used
 - [ ] Jira ticket link is included if one was provided when the feature started
 - [ ] PR description follows the template exactly
+- [ ] `writing-clearly` skill applied to the whole PR body
 - [ ] Description is under 150 words: why, plus at most 3 outcome bullets
 - [ ] No file-by-file, commit-by-commit, or edit-narrating content anywhere in the body
 - [ ] Extra explanation present only where a decision is genuinely non-obvious
