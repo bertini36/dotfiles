@@ -4,6 +4,7 @@
 
 - Favour simplicity, avoid premature abstractions, unnecessary error handling, or over-engineering
 - Always delete dead/unused code
+- Declare variables as close as possible to where they are used; do not hoist them to the top of a function or block
 - Use available skills for patterns and best practices:
   - `domain-service-layer`
   - `django-patterns`
