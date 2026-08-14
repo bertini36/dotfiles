@@ -22,7 +22,8 @@
 
 ## Workflow
 
-Pipeline: Brainstorm, Plan, Grill, Evaluate, Implement, Verify, Review, PR, Address feedback, Finish.
+Pipeline: Route, Brainstorm, Plan, Grill, Evaluate, Implement, Verify, Review, PR, Address feedback, Finish.
+Route classifies the task first; Quick Change and Standard Implementation skip straight to Verify, everything else goes through Brainstorm onward.
 Full walkthrough in the `start-feature` skill. Implementation only proceeds on a GO verdict from the `plan-evaluator` agent.
 
 Rules:
