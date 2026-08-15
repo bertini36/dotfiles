@@ -98,7 +98,7 @@ The agent handles the full cycle: audits the diff, fetches all open review comme
 
 ## 10. Finish
 
-Run `/end-feature`: switches to `main`, pulls latest, and removes the merged feature branch locally and remotely.
+Run `/end-feature`: switches to `main`, pulls latest, and removes the worktree and the merged feature branch locally and remotely.
 
 ## Quick Reference
 
