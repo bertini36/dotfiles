@@ -387,7 +387,8 @@ cp ~/.dotfiles/mac/claude/mcp_servers.json \
   ~/Library/Application\ Support/Claude/claude_desktop_config.json
 
 # File already exists: merge mcpServers into it instead of overwriting
-jq -s '.[1] * {mcpServers: ((.[1].mcpServers // {}) * .[0].mcpServers)}' \
+# (shallow merge, so a tracked server entry fully replaces any stale match)
+jq -s '.[1] + {mcpServers: ((.[1].mcpServers // {}) + .[0].mcpServers)}' \
   ~/.dotfiles/mac/claude/mcp_servers.json \
   ~/Library/Application\ Support/Claude/claude_desktop_config.json \
   > /tmp/claude_desktop_config.json \
