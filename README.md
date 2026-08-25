@@ -368,5 +368,60 @@ transparently. Activate with:
 rtk init -g
 ```
 
+## 🖥️ Claude Desktop
+
+Only the `mcpServers` block is tracked. The rest of
+`claude_desktop_config.json` (account UUIDs, window state, onboarding flags)
+is local runtime state that shouldn't be versioned.
+
+- Real config: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- Tracked copy: `desktop/claude/mcp_servers.json`
+
+Setup on a fresh machine:
+
+```bash
+mkdir -p ~/Library/Application\ Support/Claude
+
+# File doesn't exist yet:
+cp ~/.dotfiles/desktop/claude/mcp_servers.json \
+  ~/Library/Application\ Support/Claude/claude_desktop_config.json
+
+# File already exists: merge mcpServers into it instead of overwriting
+jq -s '.[1] * {mcpServers: ((.[1].mcpServers // {}) * .[0].mcpServers)}' \
+  ~/.dotfiles/desktop/claude/mcp_servers.json \
+  ~/Library/Application\ Support/Claude/claude_desktop_config.json \
+  > /tmp/claude_desktop_config.json \
+  && mv /tmp/claude_desktop_config.json \
+  ~/Library/Application\ Support/Claude/claude_desktop_config.json
+```
+
+Restart Claude Desktop for the change to take effect. After adding a new MCP
+server by hand, copy the updated `mcpServers` block back into
+`desktop/claude/mcp_servers.json` to keep it tracked.
+
+#### google_health
+
+[`google-health-mcp-unofficial`](https://github.com/davidmosiah/google-health-mcp)
+reads user-authorized Google Health API v4 data (Fitbit, Pixel Watch)
+locally over OAuth; tokens never leave the machine and live at
+`~/.google-health-mcp/tokens.json`.
+
+Setup on a fresh machine, after the MCP entry above is in place:
+
+1. Create a Google Cloud OAuth client, enable the Google Health API, and add
+   the redirect `http://127.0.0.1:3000/callback`.
+2. Run:
+
+   ```bash
+   npx -y google-health-mcp-unofficial setup --scope-preset full
+   npx -y google-health-mcp-unofficial auth
+   npx -y google-health-mcp-unofficial doctor
+   ```
+
+   On a headless host (SSH, no browser) use `auth --manual` instead; see
+   [docs/oauth.md](https://github.com/davidmosiah/google-health-mcp/blob/main/docs/oauth.md).
+3. `doctor --live` calls safe Google Health identity/profile endpoints to
+   confirm the API is reachable end to end.
+
 <br />
 <p align="center">Built with ❤️ from Mallorca</p>
