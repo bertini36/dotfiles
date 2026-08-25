@@ -375,7 +375,7 @@ Only the `mcpServers` block is tracked. The rest of
 is local runtime state that shouldn't be versioned.
 
 - Real config: `~/Library/Application Support/Claude/claude_desktop_config.json`
-- Tracked copy: `desktop/claude/mcp_servers.json`
+- Tracked copy: `mac/claude/mcp_servers.json`
 
 Setup on a fresh machine:
 
@@ -383,12 +383,12 @@ Setup on a fresh machine:
 mkdir -p ~/Library/Application\ Support/Claude
 
 # File doesn't exist yet:
-cp ~/.dotfiles/desktop/claude/mcp_servers.json \
+cp ~/.dotfiles/mac/claude/mcp_servers.json \
   ~/Library/Application\ Support/Claude/claude_desktop_config.json
 
 # File already exists: merge mcpServers into it instead of overwriting
 jq -s '.[1] * {mcpServers: ((.[1].mcpServers // {}) * .[0].mcpServers)}' \
-  ~/.dotfiles/desktop/claude/mcp_servers.json \
+  ~/.dotfiles/mac/claude/mcp_servers.json \
   ~/Library/Application\ Support/Claude/claude_desktop_config.json \
   > /tmp/claude_desktop_config.json \
   && mv /tmp/claude_desktop_config.json \
@@ -397,7 +397,7 @@ jq -s '.[1] * {mcpServers: ((.[1].mcpServers // {}) * .[0].mcpServers)}' \
 
 Restart Claude Desktop for the change to take effect. After adding a new MCP
 server by hand, copy the updated `mcpServers` block back into
-`desktop/claude/mcp_servers.json` to keep it tracked.
+`mac/claude/mcp_servers.json` to keep it tracked.
 
 #### google_health
 
