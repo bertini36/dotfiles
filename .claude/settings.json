@@ -21,9 +21,7 @@
       "Bash(cat /etc/ssh/**)",
       "Bash(cat ~/.ssh/*)",
       "Read(~/.ssh/**)",
-      "Read(~/.aws/**)",
-      "Read(./.env)",
-      "Read(./.env.local)"
+      "Read(~/.aws/**)"
     ],
     "ask": [
       "Bash(git reset --hard*)",
@@ -32,18 +30,7 @@
     ],
     "defaultMode": "auto"
   },
-  "autoMode": {
-    "soft_deny": [
-      "$defaults",
-      "Never rewrite published history, force-push, or delete a remote branch",
-      "Never merge, close, or delete a pull request, release, or repository"
-    ],
-    "hard_deny": [
-      "$defaults",
-      "Never read, print, copy, or transmit SSH keys, cloud credentials, by any means including cat, head, grep, cp, base64, or a script"
-    ]
-  },
-  "model": "opus",
+  "model": "sonnet",
   "hooks": {
     "SessionStart": [
       {
@@ -115,5 +102,16 @@
   },
   "effortLevel": "high",
   "tui": "fullscreen",
-  "remoteControlAtStartup": true
+  "remoteControlAtStartup": true,
+  "autoMode": {
+    "soft_deny": [
+      "$defaults",
+      "Never rewrite published history, force-push, or delete a remote branch",
+      "Never merge, close, or delete a pull request, release, or repository"
+    ],
+    "hard_deny": [
+      "$defaults",
+      "Never read, print, copy, or transmit SSH keys, cloud credentials, by any means including cat, head, grep, cp, base64, or a script"
+    ]
+  }
 }
