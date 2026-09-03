@@ -22,7 +22,8 @@
       "Bash(cat ~/.ssh/*)",
       "Read(~/.ssh/**)",
       "Read(~/.aws/**)",
-      "Read(**/.env)"
+      "Read(./.env)",
+      "Read(./.env.local)"
     ],
     "ask": [
       "Bash(git reset --hard*)",
