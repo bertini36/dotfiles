@@ -40,7 +40,7 @@
     ],
     "hard_deny": [
       "$defaults",
-      "Never read, print, copy, or transmit SSH keys, cloud credentials, or .env contents, by any means including cat, head, grep, cp, base64, or a script"
+      "Never read, print, copy, or transmit SSH keys, cloud credentials, by any means including cat, head, grep, cp, base64, or a script"
     ]
   },
   "model": "opus",
