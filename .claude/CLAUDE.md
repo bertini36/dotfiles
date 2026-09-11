@@ -22,7 +22,7 @@
 
 ## Workflow
 
-Pipeline: Route, Brainstorm, Plan, Grill, Implement, Verify, Review, PR, Address feedback, Finish.
+Pipeline: Route, Branch or worktree, Brainstorm, Plan, Grill, Implement, Verify, Review, PR, Address feedback, Finish.
 Route classifies the task first; Quick Change and Standard Implementation skip straight to Verify, everything else goes through Brainstorm onward.
 Full walkthrough in the `start-feature` skill. The `grill-me` interview is the gate on a plan: it asks in rounds, and implementation starts when I confirm no decision in it is still fuzzy.
 
