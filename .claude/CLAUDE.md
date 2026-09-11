@@ -43,7 +43,7 @@ Before opening a PR, read `git log --oneline main..HEAD`. If the sequence does n
 
 ### PR Review Handling
 
-When user pastes a PR link and asks to review or address comments, dispatch the `pr-reviewer` agent. It handles the full cycle: audit the diff, fetch all open review comments (humans and bots), apply or reject fixes, commit, push, reply, resolve threads, verify CI, and report a summary.
+When user pastes a PR link and asks to review or address comments, dispatch the `pr-reviewer` agent. It owns the open threads, not a second audit of the diff: it fetches all open review comments (humans and bots), applies or rejects fixes, commits, pushes, replies, resolves threads, verifies CI, and reports a summary.
 
 Reply/resolve policy, binding for the main session and every agent:
 - Never reply to or resolve a review thread opened by another human reviewer, even when I instructed the fix. Apply the fix in code, then leave the conversation to me; I answer humans myself.
