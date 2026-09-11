@@ -32,7 +32,7 @@ Take the answer at face value; do not re-ask later in the pipeline. Worktree or 
 
 Invoke the `feature-router` skill. It classifies the task and asks for confirmation.
 
-- **Quick Change or Standard Implementation confirmed:** implement per the router's recommendation, following the commit discipline and domain-specific rules under stage 5 (Implement) below, then skip ahead to stage 6 (Verify) and continue the rest of the pipeline (Review, PR, Address feedback, Finish) as normal. Do not run Brainstorm, Plan, Grill, or Evaluate.
+- **Quick Change or Standard Implementation confirmed:** implement per the router's recommendation, following the commit discipline and domain-specific rules under stage 5 (Implement) below, then skip ahead to stage 6 (Verify) and continue the rest of the pipeline (Review, PR, Address feedback, Finish) as normal. Do not run Brainstorm, Plan, or Grill.
 - **Needs Grill/Plan:** continue to Brainstorm below, unchanged.
 
 ## 3. Brainstorm
@@ -43,9 +43,7 @@ The user describes what they want to build. The `superpowers:brainstorming` skil
 
 The `superpowers:writing-plans` skill creates a step-by-step implementation plan.
 
-Once the plan looks complete, the `grill-me` skill runs: it interviews the user one question at a time, anchored in the plan's concrete decisions, until reaching shared understanding.
-
-Then dispatch the `plan-evaluator` agent. With fresh context that has no stake in the plan being right, it checks the grilled plan against the actual codebase (simplicity, consistency, security, reversibility) and issues a GO/NO-GO verdict. Implementation only proceeds on GO. On NO-GO, loop back to the plan with the blockers as input, then re-grill only the parts that changed.
+Once the plan looks complete, the `grill-me` skill runs: it interviews the user one question at a time, anchored in the plan's concrete decisions, until reaching shared understanding. The interview is the gate. When it ends with no fuzzy decisions left, implementation starts.
 
 ## 5. Implement
 
@@ -109,7 +107,7 @@ Worktree --> Route
               |
               +-- Quick Change / Standard Implementation -----------------------------------------+
               |                                                                                   |
-              +-- Needs Grill/Plan --> Brainstorm --> Plan --> Grill --> Evaluate --> Implement --+
+              +-- Needs Grill/Plan --> Brainstorm --> Plan --> Grill --> Implement ------------+
                                                                                                   |
                                                                                                   v
                                                                                                 Verify --> Review --> PR --> Address feedback --> Finish

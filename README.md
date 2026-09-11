@@ -156,9 +156,9 @@ All Claude Code configuration lives under `.claude/` and is symlinked into `~/.c
 
 ### Workflow
 
-This is spec-driven development (SDD): no code before a spec you approved and a plan that passed a GO. The `superpowers` plugin supplies the SDD stages; this repo supplies the gates around them, `feature-router`, `grill-me`, `plan-evaluator` and `fix-until-green`. Full walkthrough in `.claude/skills/start-feature/SKILL.md`.
+This is spec-driven development (SDD): no code before a spec you approved and a plan that passed a GO. The `superpowers` plugin supplies the SDD stages; this repo supplies the gates around them, `feature-router`, `grill-me` and `fix-until-green`. Full walkthrough in `.claude/skills/start-feature/SKILL.md`.
 
-`/start-feature "<task>"` walks the pipeline, stopping where it needs you. Route classifies the task first, so a one-line fix skips the Brainstorm/Plan/Grill/Evaluate ceremony and lands straight on the same Verify → Review → PR tail as everything else.
+`/start-feature "<task>"` walks the pipeline, stopping where it needs you. Route classifies the task first, so a one-line fix skips the Brainstorm/Plan/Grill ceremony and lands straight on the same Verify → Review → PR tail as everything else.
 
 🙋 orange waits for you · 🤖 gray runs alone · ❓ blue runs alone but can interrupt · 📄 green are the documents it writes.
 
@@ -172,8 +172,6 @@ flowchart TD
     P["🙋 4 · Plan<br><b>superpowers:writing-plans</b>"]
     PLAN[/"📄 PLAN · how, task by task<br>docs/superpowers/plans/&lt;date&gt;-&lt;feature&gt;.md<br><i>you read it</i>"/]
     G["🙋 4 · Grill<br><b>grill-me</b><br><i>you answer the interview until<br>no decision in the plan is fuzzy</i>"]
-    E["🙋 4 · Evaluate<br><b>plan-evaluator</b> agent<br><i>checks the plan against the real codebase;<br>you read the verdict and its blockers</i>"]
-    V{"verdict"}
     I["❓ 5 · Implement<br><b>superpowers:executing-plans</b> · small plans<br><b>superpowers:subagent-driven-development</b> · 3+ tasks<br><b>superpowers:test-driven-development</b> · every task<br><i>runs task to task without checking in;<br>reviewer subagents, not you, gate each task</i>"]
     Y["🤖 6 · Verify<br><b>superpowers:verification-before-completion</b><br>fix-until-green · on failing checks<br>superpowers:systematic-debugging · on surprises<br><i>you get the evidence: tests + pre-commit output</i>"]
     R["🙋 7 · Review<br><b>code-reviewer</b> agent on the diff<br><i>plus /security-review when the change<br>touches auth, secrets, or user input</i>"]
@@ -186,9 +184,7 @@ flowchart TD
     RT -- "Needs Grill/Plan" --> B
     B --> SPEC --> P
     P --> PLAN --> G
-    G --> E --> V
-    V -- "NO-GO: back with the blockers,<br>re-grill only what changed" --> P
-    V -- GO --> I
+    G --> I
     I -- "stops only on a plan conflict,<br>an implementer question, or BLOCKED" --> Y
     Y --> R --> PR --> F --> Z
 
@@ -196,18 +192,17 @@ flowchart TD
     classDef auto fill:#E5E7EB,stroke:#6B7280,color:#111827
     classDef ask fill:#DBEAFE,stroke:#1D4ED8,color:#111827
     classDef doc fill:#DCFCE7,stroke:#15803D,color:#111827
-    class K,RT,B,P,G,E,R,PR,F,Z you
+    class K,RT,B,P,G,R,PR,F,Z you
     class W,Y auto
     class I ask
     class SPEC,PLAN doc
-    class V you
 ```
 
 Only the Needs Grill/Plan route reaches the spec and plan at all. Route (stage 2) sends Quick Change and Standard Implementation straight to Verify (stage 6) instead, so there is one verification path, not two.
 
 Two rules never bend:
 
-- **GO only.** `plan-evaluator` runs with fresh context and no stake in the plan. NO-GO sends the blockers back to the plan.
+- **No fuzzy decisions.** `grill-me` interviews you until every decision in the plan is settled, and writes each one into the plan file so the implementer reads it instead of re-deriving it.
 - **Humans answer humans.** `pr-reviewer` handles your threads and bot threads. Another person's thread stays yours, even when you asked for the fix.
 
 ### Skills
@@ -260,7 +255,6 @@ Specialized subagents that run in isolated context windows with restricted tools
 | Agent | Description |
 |---|---|
 | `code-reviewer` | Read-only production code audit with A-F graded report (architecture, security, performance, quality, testing) |
-| `plan-evaluator` | Quality gate that checks implementation plans on 4 criteria (simplicity, consistency, security, reversibility) with GO/NO-GO verdict |
 | `pr-reviewer` | End-to-end PR review: audits diff, fetches open comments, applies fixes, commits, pushes, replies, resolves threads, and verifies CI |
 
 ### Rules
