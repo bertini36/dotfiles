@@ -203,6 +203,7 @@ Only the Needs Grill/Plan route reaches the spec and plan at all. Route (stage 1
 Four rules never bend:
 
 - **No fuzzy decisions.** `grill-me` interviews you until every decision in the plan is settled, and writes each one into the plan file so the implementer reads it instead of re-deriving it.
+- **A plan names its harness.** Every behavior the plan promises says which test fails when it breaks. A spec is only as solid as the thing that checks it.
 - **Subagents fan out, they do not relay.** A dependent chain stays in one session. Subagents take work that shares no state and no ordering: sweeping for references, auditing an area, getting oriented.
 - **The diff is reviewed once.** `code-reviewer` audits it at stage 7. `pr-reviewer` then owns the open threads, not a second pass over the same code.
 - **Humans answer humans.** `pr-reviewer` closes your threads and bot threads. Another person's thread stays yours, even when you asked for the fix.
