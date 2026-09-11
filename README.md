@@ -223,7 +223,7 @@ without them. See [Per-project plugins](#per-project-plugins) and
 | `django-patterns` | Django architecture, REST APIs with Pydantic, ORM best practices, caching, and signals | None |
 | `explain` | Turn a link into a local HTML page that explains it visually, with diagrams built from pure CSS and inline SVG, then open it in Chrome via `/explain` | Optional: `atlassian` for Jira and Confluence links, `notion` for Notion links. Other link types use WebFetch and `gh` |
 | `feature-router` | Classifies a `start-feature` task as Quick Change, Standard Implementation, or Needs Grill/Plan, and routes the pipeline accordingly | None |
-| `fix-until-green` | Loop project checks and pre-commit, dispatching a fixer subagent per failure, until green or 5 iterations | None |
+| `fix-until-green` | Loop project checks and pre-commit until green or 5 iterations, fixing each failure against its full output | None |
 | `grill-me` | Stress-test a plan or design by interviewing one question at a time across the decision tree, recording each resolved decision into the plan file | None |
 | `herdr` | Drive [herdr](https://herdr.dev) through its CLI: inspect panes, tabs and workspaces, split layout, start sibling agents and read their output ([source](https://github.com/herdrdev/herdr/tree/master/skills/herdr)) | None |
 | `investigate-sentry` | Investigate a Sentry exception down to root cause and propose a fix | Required: `sentry`. Optional: `datadog-mcp` to correlate the request behind the exception |
