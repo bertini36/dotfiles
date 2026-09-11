@@ -1,6 +1,6 @@
 ---
 name: django-patterns
-description: Django architecture patterns, REST API design with Pydantic for validation and serialization, ORM best practices, caching, signals, middleware, and production-grade Django apps.
+description: Django architecture patterns, REST API design with Pydantic for validation and serialization, ORM best practices, caching, signals, middleware, and production-grade Django apps. Use when writing or reviewing a Django view, model, serializer, queryset, signal or middleware, designing a REST endpoint, or optimizing ORM access.
 effort: high
 ---
 
