@@ -50,7 +50,7 @@ The routing response is the implementation preview. After confirmation: follow t
 
 Choose when scope is large, risk is high, the change crosses subsystems, important product or design decisions belong to the user, or it changes architecture, persistent data, public contracts, security boundaries, or other difficult-to-reverse behavior.
 
-Do not implement anything. Hand off to `start-feature`'s existing Brainstorm stage, which continues through Plan, Grill, and Evaluate.
+Do not implement anything. Hand off to `start-feature`'s Brainstorm stage, which continues through Plan and Grill.
 
 Complete the routing decision when exactly one route is selected.
 

@@ -158,15 +158,15 @@ All Claude Code configuration lives under `.claude/` and is symlinked into `~/.c
 
 This is spec-driven development (SDD): no code before a spec you approved and a plan that passed a GO. The `superpowers` plugin supplies the SDD stages; this repo supplies the gates around them, `feature-router`, `grill-me` and `fix-until-green`. Full walkthrough in `.claude/skills/start-feature/SKILL.md`.
 
-`/start-feature "<task>"` walks the pipeline, stopping where it needs you. Route classifies the task first, so a one-line fix skips the Brainstorm/Plan/Grill ceremony and lands straight on the same Verify → Review → PR tail as everything else.
+`/start-feature "<task>"` walks the pipeline, stopping where it needs you. Route classifies the task first, so a one-line fix gets a plain branch instead of a worktree and skips the Brainstorm/Plan/Grill ceremony and lands straight on the same Verify → Review → PR tail as everything else.
 
 🙋 orange waits for you · 🤖 gray runs alone · ❓ blue runs alone but can interrupt · 📄 green are the documents it writes.
 
 ```mermaid
 flowchart TD
     K["🙋 0 · Kick off<br><b>/start-feature</b><br><i>you describe the task, plus the Jira ticket</i>"]
-    W["🤖 1 · Worktree<br><b>superpowers:using-git-worktrees</b><br><i>the hook provisions the virtualenv<br>in Python worktrees</i>"]
-    RT["🙋 2 · Route<br><b>feature-router</b><br><i>classifies the task; you confirm the route</i>"]
+    RT["🙋 1 · Route<br><b>feature-router</b><br><i>classifies the task; you confirm the route</i>"]
+    W["🙋 2 · Branch or worktree<br><b>superpowers:using-git-worktrees</b><br><i>a Quick Change just gets a branch;<br>the hook provisions the virtualenv<br>in Python worktrees</i>"]
     B["🙋 3 · Brainstorm<br><b>superpowers:brainstorming</b><br><i>you answer questions one at a time,<br>then approve the design section by section</i>"]
     SPEC[/"📄 SPEC · what and why<br>docs/superpowers/specs/&lt;date&gt;-&lt;topic&gt;-design.md<br><i>you review the file</i>"/]
     P["🙋 4 · Plan<br><b>superpowers:writing-plans</b>"]
@@ -179,8 +179,8 @@ flowchart TD
     F["🙋 9 · Feedback<br><b>pr-reviewer</b> agent<br><i>you paste the PR link; it closes threads,<br>and you answer human reviewers yourself</i>"]
     Z["🙋 10 · Finish<br><b>/end-feature</b><br><i>you merge the PR first, then run it</i>"]
 
-    K --> W --> RT
-    RT -- "Quick Change / Standard Implementation:<br>implement per the router's preview" --> Y
+    K --> RT --> W
+    W -- "Quick Change / Standard Implementation:<br>implement per the router's preview" --> Y
     RT -- "Needs Grill/Plan" --> B
     B --> SPEC --> P
     P --> PLAN --> G
@@ -192,13 +192,13 @@ flowchart TD
     classDef auto fill:#E5E7EB,stroke:#6B7280,color:#111827
     classDef ask fill:#DBEAFE,stroke:#1D4ED8,color:#111827
     classDef doc fill:#DCFCE7,stroke:#15803D,color:#111827
-    class K,RT,B,P,G,R,PR,F,Z you
-    class W,Y auto
+    class K,RT,W,B,P,G,R,PR,F,Z you
+    class Y auto
     class I ask
     class SPEC,PLAN doc
 ```
 
-Only the Needs Grill/Plan route reaches the spec and plan at all. Route (stage 2) sends Quick Change and Standard Implementation straight to Verify (stage 6) instead, so there is one verification path, not two.
+Only the Needs Grill/Plan route reaches the spec and plan at all. Route (stage 1) sends Quick Change and Standard Implementation straight to Verify (stage 6) instead, so there is one verification path, not two.
 
 Two rules never bend:
 

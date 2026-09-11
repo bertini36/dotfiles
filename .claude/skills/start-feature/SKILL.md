@@ -3,7 +3,7 @@ name: start-feature
 description: Start the feature development pipeline
 ---
 
-Follow this pipeline strictly, stage by stage, without skipping stages, except where stage 2 (Route) directs a shorter path. Pause between stages only when the pipeline requires user input or a GO verdict.
+Follow this pipeline strictly, stage by stage, without skipping stages, except where stage 1 (Route) directs a shorter path. Pause between stages only when the pipeline asks the user something.
 
 Task: $ARGUMENTS
 
@@ -13,27 +13,29 @@ In a worktree: !`git rev-parse --git-dir 2>/dev/null | grep -q '/worktrees/' && 
 
 Additional rules:
 - If the task above includes a Jira ticket, pass it along so it lands in the PR description.
-- If no `.git` repo is present, skip git/PR stages (worktree, branch creation, commits, PR). Route still classifies the task, then whichever path it selects continues normally through Verify.
+- If no `.git` repo is present, skip the git and PR stages (branch or worktree creation, commits, PR). Route still classifies the task, then whichever path it selects continues normally through Verify.
 
-## 1. Start a worktree
+## 1. Route
 
-A worktree isolates the feature from the main working tree, so the current checkout stays usable while the feature is in progress.
-
-If the context above says the session is already in a worktree, say so and move to Route without asking.
-
-Otherwise ask the user, with `AskUserQuestion`, before any other work:
-
-- **Yes, use a worktree** (recommended): create it with the `superpowers:using-git-worktrees` skill, then run the rest of the pipeline inside it.
-- **No, work here**: create a descriptive branch off `main` (for example `feat/add-user-authentication`) and continue in the current working tree.
-
-Take the answer at face value; do not re-ask later in the pipeline. Worktree or branch creation happens before classification because it is cheap and reversible (`git worktree remove`, or deleting the branch); Route, next, decides how much of the rest of the pipeline the work actually needs.
-
-## 2. Route
-
-Invoke the `feature-router` skill. It classifies the task and asks for confirmation.
+Invoke the `feature-router` skill first, before touching git. It reads only enough of the repository to classify the task, and asks for confirmation.
 
 - **Quick Change or Standard Implementation confirmed:** implement per the router's recommendation, following the commit discipline and domain-specific rules under stage 5 (Implement) below, then skip ahead to stage 6 (Verify) and continue the rest of the pipeline (Review, PR, Address feedback, Finish) as normal. Do not run Brainstorm, Plan, or Grill.
 - **Needs Grill/Plan:** continue to Brainstorm below, unchanged.
+
+## 2. Start a branch or worktree
+
+Classification comes first because it decides what isolation the work is worth. A one-line fix does not need its own checkout and its own virtualenv.
+
+If the context above says the session is already in a worktree, say so and move on without asking.
+
+On a **Quick Change**, create a descriptive branch off `main` (for example `fix/resolve-base-branch-from-remote`) and stay in the current working tree.
+
+Otherwise ask the user, with `AskUserQuestion`:
+
+- **Yes, use a worktree** (recommended): create it with the `superpowers:using-git-worktrees` skill, then run the rest of the pipeline inside it. It isolates the feature so the current checkout stays usable.
+- **No, work here**: create a descriptive branch off `main` (for example `feat/add-user-authentication`) and continue in the current working tree.
+
+Take the answer at face value; do not re-ask later in the pipeline.
 
 ## 3. Brainstorm
 
@@ -109,14 +111,14 @@ Run `/end-feature`: switches to `main`, pulls latest, and removes the worktree a
 ## Quick Reference
 
 ```
-Worktree --> Route
+Route --> Branch or worktree
               |
-              +-- Quick Change / Standard Implementation -----------------------------------------+
-              |                                                                                   |
-              +-- Needs Grill/Plan --> Brainstorm --> Plan --> Grill --> Implement ------------+
-                                                                                                  |
-                                                                                                  v
-                                                                                                Verify --> Review --> PR --> Address feedback --> Finish
+              +-- Quick Change / Standard Implementation ------------------------+
+              |                                                                  |
+              +-- Needs Grill/Plan --> Brainstorm --> Plan --> Grill --> Implement
+                                                                                 |
+                                                                                 v
+                                     Verify --> Review --> PR --> Address feedback --> Finish
 ```
 
 Most steps trigger automatically through the `superpowers` plugin. The manual touchpoints are:
