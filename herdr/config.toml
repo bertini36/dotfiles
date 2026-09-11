@@ -61,3 +61,8 @@ close_pane = "prefix+w"
 # Displaced by close_pane, which took herdr's workspace_picker. f reads as find
 # and is one of the letters no chord above wants.
 workspace_picker = "prefix+f"
+
+# Maximize the focused pane. Herdr binds this to z; m is the letter the action
+# is filed under everywhere else, including the window maximize in
+# docs/keymap.md, and no herdr default or override above wants it.
+zoom = "prefix+m"
