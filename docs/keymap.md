@@ -108,10 +108,13 @@ deleting with Backspace is unaffected.
 * Split the pane side by side `prefix + E`
 * Split the pane stacked `prefix + O`
 * Close the pane, and the agent inside it `prefix + W`
+* Maximize the pane `prefix + M`
 
 The split pair is `E` and `O` to match the Terminal and IDE splits above, and
-`W` closes a pane the way `CMD + W` closes a tab everywhere else. All three are
-Herdr defaults themselves, so the actions they displace move elsewhere:
+`W` closes a pane the way `CMD + W` closes a tab everywhere else. `M` replaces
+Herdr's `Z` because maximize is what this list calls the action above, and no
+Herdr default wants `M`. `E`, `O` and `W` are Herdr defaults themselves, so the
+actions they displace move elsewhere:
 
 * Edit the scrollback `prefix + Shift + E`
 * Open the notification target `prefix + Shift + O`
