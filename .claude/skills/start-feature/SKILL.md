@@ -47,7 +47,7 @@ The `superpowers:writing-plans` skill creates a step-by-step implementation plan
 
 The plan must name how the work will be proven: which tests pin each behavior, and what has to pass before the change is done. A spec is only as solid as the harness that checks it; without one, the plan states an intention and nothing measures whether the code met it.
 
-Once the plan looks complete, the `grill-me` skill runs: it interviews the user one question at a time, anchored in the plan's concrete decisions, until reaching shared understanding. The interview is the gate. When it ends with no fuzzy decisions left, implementation starts.
+Once the plan looks complete, the `grill-me` skill runs: it interviews the user in rounds, each round asking only the decisions whose prerequisites are already settled, anchored in the plan's concrete decisions. The interview is the gate. Running out of questions does not open it; the user confirming that the understanding is shared does.
 
 ## 5. Implement
 

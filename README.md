@@ -171,7 +171,7 @@ flowchart TD
     SPEC[/"📄 SPEC · what and why<br>docs/superpowers/specs/&lt;date&gt;-&lt;topic&gt;-design.md<br><i>you review the file</i>"/]
     P["🙋 4 · Plan<br><b>superpowers:writing-plans</b>"]
     PLAN[/"📄 PLAN · how, task by task<br>docs/superpowers/plans/&lt;date&gt;-&lt;feature&gt;.md<br><i>you read it</i>"/]
-    G["🙋 4 · Grill<br><b>grill-me</b><br><i>you answer the interview until<br>no decision in the plan is fuzzy</i>"]
+    G["🙋 4 · Grill<br><b>grill-me</b><br><i>you answer a round at a time until<br>no decision in the plan is fuzzy,<br>then you confirm</i>"]
     I["❓ 5 · Implement<br><b>superpowers:executing-plans</b> · in session<br><b>superpowers:test-driven-development</b> · every task<br><b>superpowers:dispatching-parallel-agents</b> · fan-out only<br><i>runs task to task without checking in</i>"]
     Y["🤖 6 · Verify<br><b>superpowers:verification-before-completion</b><br>fix-until-green · on failing checks<br>superpowers:systematic-debugging · on surprises<br><i>you get the evidence: tests + pre-commit output</i>"]
     R["🙋 7 · Review<br><b>code-reviewer</b> agent on the diff<br><i>plus /security-review when the change<br>touches auth, secrets, or user input</i>"]
@@ -227,7 +227,7 @@ without them. See [Per-project plugins](#per-project-plugins) and
 | `explain` | Turn a link into a local HTML page that explains it visually, with diagrams built from pure CSS and inline SVG, then open it in Chrome via `/explain` | Optional: `atlassian` for Jira and Confluence links, `notion` for Notion links. Other link types use WebFetch and `gh` |
 | `feature-router` | Classifies a `start-feature` task as Quick Change, Standard Implementation, or Needs Grill/Plan, and routes the pipeline accordingly | None |
 | `fix-until-green` | Loop project checks and pre-commit until green or 5 iterations, fixing each failure against its full output | None |
-| `grill-me` | Stress-test a plan or design by interviewing one question at a time across the decision tree, recording each resolved decision into the plan file | None |
+| `grill-me` | Stress-test a plan or design by interviewing in rounds across the decision tree, recording each resolved decision into the plan file | None |
 | `herdr` | Drive [herdr](https://herdr.dev) through its CLI: inspect panes, tabs and workspaces, split layout, start sibling agents and read their output ([source](https://github.com/herdrdev/herdr/tree/master/skills/herdr)) | None |
 | `investigate-sentry` | Investigate a Sentry exception down to root cause and propose a fix | Required: `sentry`. Optional: `datadog-mcp` to correlate the request behind the exception |
 | `langchain-architecture` | LangChain 1.x and LangGraph for agents, memory, and tool integration | None |
