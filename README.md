@@ -172,7 +172,7 @@ flowchart TD
     P["🙋 4 · Plan<br><b>superpowers:writing-plans</b>"]
     PLAN[/"📄 PLAN · how, task by task<br>docs/superpowers/plans/&lt;date&gt;-&lt;feature&gt;.md<br><i>you read it</i>"/]
     G["🙋 4 · Grill<br><b>grill-me</b><br><i>you answer the interview until<br>no decision in the plan is fuzzy</i>"]
-    I["❓ 5 · Implement<br><b>superpowers:executing-plans</b> · small plans<br><b>superpowers:subagent-driven-development</b> · 3+ tasks<br><b>superpowers:test-driven-development</b> · every task<br><i>runs task to task without checking in;<br>reviewer subagents, not you, gate each task</i>"]
+    I["❓ 5 · Implement<br><b>superpowers:executing-plans</b> · in session<br><b>superpowers:test-driven-development</b> · every task<br><b>superpowers:dispatching-parallel-agents</b> · fan-out only<br><i>runs task to task without checking in</i>"]
     Y["🤖 6 · Verify<br><b>superpowers:verification-before-completion</b><br>fix-until-green · on failing checks<br>superpowers:systematic-debugging · on surprises<br><i>you get the evidence: tests + pre-commit output</i>"]
     R["🙋 7 · Review<br><b>code-reviewer</b> agent on the diff<br><i>plus /security-review when the change<br>touches auth, secrets, or user input</i>"]
     PR["🙋 8 · PR<br><b>create-pull-request</b> skill<br>writing-clearly · superpowers:finishing-a-development-branch<br><i>you read the title and body before they go out</i>"]
@@ -203,6 +203,7 @@ Only the Needs Grill/Plan route reaches the spec and plan at all. Route (stage 2
 Two rules never bend:
 
 - **No fuzzy decisions.** `grill-me` interviews you until every decision in the plan is settled, and writes each one into the plan file so the implementer reads it instead of re-deriving it.
+- **Subagents fan out, they do not relay.** A dependent chain stays in one session. Subagents take work that shares no state and no ordering: sweeping for references, auditing an area, getting oriented.
 - **Humans answer humans.** `pr-reviewer` closes your threads and bot threads. Another person's thread stays yours, even when you asked for the fix.
 
 ### Skills

@@ -47,9 +47,15 @@ Once the plan looks complete, the `grill-me` skill runs: it interviews the user 
 
 ## 5. Implement
 
-For small plans, the `superpowers:executing-plans` skill drives implementation with review checkpoints. Each task follows `superpowers:test-driven-development`: a failing test pins the behavior before any implementation code. For independent tasks, `superpowers:dispatching-parallel-agents` runs multiple agents in parallel.
+Implement in this session with `superpowers:executing-plans`. Each task follows `superpowers:test-driven-development`: a failing test pins the behavior before any implementation code.
 
-When the plan has 3 or more independent tasks, implement with `superpowers:subagent-driven-development` (preferred): each task goes to a fresh implementer subagent, and a per-task reviewer checks the work before moving on. Each subagent brief names the domain skills relevant to the files it touches (for example `django-patterns`, `python-code-style`). Its scratch files (task briefs, reports, progress ledger) live in a git-ignored `.superpowers/sdd/` directory; `git clean -fdx` deletes the progress ledger permanently, since git-ignored files are never in commit history and cannot be recovered unless backed up elsewhere.
+Subagents are for fan-out, not for relay. Dispatch them with `superpowers:dispatching-parallel-agents` when the work splits into pieces that share no state and depend on no ordering, so each one can be handed a self-contained brief and judged on what it returns:
+
+- Sweeping the repository for every reference to a symbol, pattern, or convention
+- Auditing an area against a checklist (security, tests, dependencies)
+- Getting oriented in an unfamiliar subsystem before the plan touches it
+
+Do not split a dependent chain across subagents. Explore, then plan, then code, then test is sequential: every handoff summarises away the context the next step needs, and the summary of a test failure is exactly the information required to fix it. A per-task implementer plus a per-task reviewer is that same relay with extra hops. Keep the chain in one session, where the context is already loaded.
 
 Domain-specific rules load automatically based on the files touched:
 
