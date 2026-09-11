@@ -176,7 +176,7 @@ Everything else keeps its Herdr default behind the same prefix.
 ### Repo skills (invoke with `/skill-name`)
 
 * `/start-feature` → Start the feature development pipeline (brainstorm, plan, grill, implement, verify, review, PR)
-* `/grill-me` → Get interviewed about a plan or design until reaching shared understanding
+* `/grill-me` → Get interviewed in rounds about a plan or design until the understanding is shared
 * `/fix-until-green` → Loop project checks and pre-commit, fixing each failure until everything passes
 * `/create-pull-request` → Create a GitHub PR following project conventions and the repo template
 * `/end-feature` → Finalize a merged PR: switch to main, pull, delete the feature branch locally and remotely

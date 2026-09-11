@@ -165,7 +165,7 @@ Spec-driven development, sized to the task. Work that changes architecture, pers
 ```mermaid
 flowchart TD
     K["🙋 0 · Kick off<br><b>/start-feature</b><br><i>you describe the task, plus the Jira ticket</i>"]
-    RT["🙋 1 · Route<br><b>feature-router</b><br><i>classifies the task; you confirm the route</i>"]
+    RT["🙋 1 · Route<br><b>feature-router</b><br><i>1 Quick Change · 2 Standard Implementation ·<br>3 Needs Grill/Plan; you confirm the route</i>"]
     W["🙋 2 · Branch or worktree<br><b>superpowers:using-git-worktrees</b><br><i>a Quick Change just gets a branch;<br>the hook provisions the virtualenv<br>in Python worktrees</i>"]
     B["🙋 3 · Brainstorm<br><b>superpowers:brainstorming</b><br><i>you answer questions one at a time,<br>then approve the design section by section</i>"]
     SPEC[/"📄 SPEC · what and why<br>docs/superpowers/specs/&lt;date&gt;-&lt;topic&gt;-design.md<br><i>you review the file</i>"/]
@@ -180,8 +180,8 @@ flowchart TD
     Z["🙋 10 · Finish<br><b>/end-feature</b><br><i>you merge the PR first, then run it</i>"]
 
     K --> RT --> W
-    W -- "Quick Change / Standard Implementation:<br>implement per the router's preview" --> Y
-    W -- "Needs Grill/Plan" --> B
+    W -- "route 1 or 2:<br>branch, then implement per<br>the router's preview" --> Y
+    W -- "route 3:<br>worktree, then design it first" --> B
     B --> SPEC --> P
     P --> PLAN --> G
     G --> I
@@ -200,9 +200,9 @@ flowchart TD
 
 Only the Needs Grill/Plan route reaches the spec and plan at all. Route (stage 1) sends Quick Change and Standard Implementation straight to Verify (stage 6) instead, so there is one verification path, not two.
 
-Four rules never bend:
+Five rules never bend:
 
-- **No fuzzy decisions.** `grill-me` interviews you until every decision in the plan is settled, and writes each one into the plan file so the implementer reads it instead of re-deriving it.
+- **No fuzzy decisions.** `grill-me` interviews you in rounds until every decision in the plan is settled, and writes each one into the plan file so the implementer reads it instead of re-deriving it. It ends when you say the understanding is shared, not when it runs out of questions.
 - **A plan names its harness.** Every behavior the plan promises says which test fails when it breaks. A spec is only as solid as the thing that checks it.
 - **Subagents fan out, they do not relay.** A dependent chain stays in one session. Subagents take work that shares no state and no ordering: sweeping for references, auditing an area, getting oriented.
 - **The diff is reviewed once.** `code-reviewer` audits it at stage 7. `pr-reviewer` then owns the open threads, not a second pass over the same code.
@@ -221,9 +221,9 @@ without them. See [Per-project plugins](#per-project-plugins) and
 | Skill | Description | MCPs |
 |---|---|---|
 | `create-pull-request` | Create a GitHub PR following project conventions using `gh` CLI | None |
-| `end-feature` | Finalize a merged PR: switch to main, pull, and remove the merged feature branch | None |
-| `ddd-patterns` | DDD entities, aggregate roots, value objects, repositories, domain services, and specifications | None |
 | `django-patterns` | Django architecture, REST APIs with Pydantic, ORM best practices, caching, and signals | None |
+| `domain-service-layer` | Where business logic lives in a Django app: domain services own the rules, views do HTTP, factories wire the dependencies | None |
+| `end-feature` | Finalize a merged PR: switch to main, pull, and remove the merged feature branch | None |
 | `explain` | Turn a link into a local HTML page that explains it visually, with diagrams built from pure CSS and inline SVG, then open it in Chrome via `/explain` | Optional: `atlassian` for Jira and Confluence links, `notion` for Notion links. Other link types use WebFetch and `gh` |
 | `feature-router` | Classifies a `start-feature` task as Quick Change, Standard Implementation, or Needs Grill/Plan, and routes the pipeline accordingly | None |
 | `fix-until-green` | Loop project checks and pre-commit until green or 5 iterations, fixing each failure against its full output | None |
