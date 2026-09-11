@@ -94,7 +94,7 @@ Use the `create-pull-request` skill with `writing-clearly` for the description. 
 
 After the PR is open and reviewers leave comments, the user pastes the PR link (e.g. https://github.com/owner/repo/pull/42). Dispatch the `pr-reviewer` agent.
 
-The agent handles the full cycle: audits the diff, fetches all open review comments (humans and bots like Copilot, CodeRabbit), triages each comment (apply, reject, or defer), commits fixes, pushes, replies to threads, resolves them, verifies CI is green, and outputs a summary report.
+The agent fetches all open review comments (humans and bots like Copilot, CodeRabbit), triages each one (apply, reject, or defer), commits fixes, pushes, replies to threads, resolves them, verifies CI is green, and reports. It does not re-audit the diff; stage 7 already did.
 
 ## 10. Finish
 

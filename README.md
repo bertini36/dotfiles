@@ -176,7 +176,7 @@ flowchart TD
     Y["🤖 6 · Verify<br><b>superpowers:verification-before-completion</b><br>fix-until-green · on failing checks<br>superpowers:systematic-debugging · on surprises<br><i>you get the evidence: tests + pre-commit output</i>"]
     R["🙋 7 · Review<br><b>code-reviewer</b> agent on the diff<br><i>plus /security-review when the change<br>touches auth, secrets, or user input</i>"]
     PR["🙋 8 · PR<br><b>create-pull-request</b> skill<br>writing-clearly · superpowers:finishing-a-development-branch<br><i>you read the title and body before they go out</i>"]
-    F["🙋 9 · Feedback<br><b>pr-reviewer</b> agent<br><i>you paste the PR link,<br>and you answer human reviewers yourself</i>"]
+    F["🙋 9 · Feedback<br><b>pr-reviewer</b> agent<br><i>you paste the PR link; it closes threads,<br>and you answer human reviewers yourself</i>"]
     Z["🙋 10 · Finish<br><b>/end-feature</b><br><i>you merge the PR first, then run it</i>"]
 
     K --> W --> RT
@@ -203,7 +203,7 @@ Only the Needs Grill/Plan route reaches the spec and plan at all. Route (stage 2
 Two rules never bend:
 
 - **No fuzzy decisions.** `grill-me` interviews you until every decision in the plan is settled, and writes each one into the plan file so the implementer reads it instead of re-deriving it.
-- **Humans answer humans.** `pr-reviewer` handles your threads and bot threads. Another person's thread stays yours, even when you asked for the fix.
+- **Humans answer humans.** `pr-reviewer` closes your threads and bot threads. Another person's thread stays yours, even when you asked for the fix.
 
 ### Skills
 
@@ -254,8 +254,8 @@ Specialized subagents that run in isolated context windows with restricted tools
 
 | Agent | Description |
 |---|---|
-| `code-reviewer` | Read-only production code audit with A-F graded report (architecture, security, performance, quality, testing) |
-| `pr-reviewer` | End-to-end PR review: audits diff, fetches open comments, applies fixes, commits, pushes, replies, resolves threads, and verifies CI |
+| `code-reviewer` | Read-only diff audit with an A-F graded report (architecture, security, performance, quality, testing) and explicit agent-authored red flags |
+| `pr-reviewer` | Closes out a PR's open review comments: fetches, triages, fixes, commits, pushes, replies, resolves threads, and verifies CI |
 
 ### Rules
 
