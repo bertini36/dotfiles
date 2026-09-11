@@ -156,7 +156,7 @@ All Claude Code configuration lives under `.claude/` and is symlinked into `~/.c
 
 ### Workflow
 
-This is spec-driven development (SDD): no code before a spec you approved and a plan that passed a GO. The `superpowers` plugin supplies the SDD stages; this repo supplies the gates around them, `feature-router`, `grill-me`, `plan-evaluator`, `fix-until-green` and `/audit`. Full walkthrough in `.claude/skills/start-feature/SKILL.md`.
+This is spec-driven development (SDD): no code before a spec you approved and a plan that passed a GO. The `superpowers` plugin supplies the SDD stages; this repo supplies the gates around them, `feature-router`, `grill-me`, `plan-evaluator` and `fix-until-green`. Full walkthrough in `.claude/skills/start-feature/SKILL.md`.
 
 `/start-feature "<task>"` walks the pipeline, stopping where it needs you. Route classifies the task first, so a one-line fix skips the Brainstorm/Plan/Grill/Evaluate ceremony and lands straight on the same Verify → Review → PR tail as everything else.
 
@@ -176,7 +176,7 @@ flowchart TD
     V{"verdict"}
     I["❓ 5 · Implement<br><b>superpowers:executing-plans</b> · small plans<br><b>superpowers:subagent-driven-development</b> · 3+ tasks<br><b>superpowers:test-driven-development</b> · every task<br><i>runs task to task without checking in;<br>reviewer subagents, not you, gate each task</i>"]
     Y["🤖 6 · Verify<br><b>superpowers:verification-before-completion</b><br>fix-until-green · on failing checks<br>superpowers:systematic-debugging · on surprises<br><i>you get the evidence: tests + pre-commit output</i>"]
-    R["🙋 7 · Review<br><b>/review-branch</b> · code-reviewer<br><b>/audit</b> · code-reviewer + security-reviewer<br><i>you pick the depth and judge each finding</i>"]
+    R["🙋 7 · Review<br><b>code-reviewer</b> agent on the diff<br><i>plus /security-review when the change<br>touches auth, secrets, or user input</i>"]
     PR["🙋 8 · PR<br><b>create-pull-request</b> skill<br>writing-clearly · superpowers:finishing-a-development-branch<br><i>you read the title and body before they go out</i>"]
     F["🙋 9 · Feedback<br><b>pr-reviewer</b> agent<br><i>you paste the PR link,<br>and you answer human reviewers yourself</i>"]
     Z["🙋 10 · Finish<br><b>/end-feature</b><br><i>you merge the PR first, then run it</i>"]
@@ -222,7 +222,6 @@ without them. See [Per-project plugins](#per-project-plugins) and
 
 | Skill | Description | MCPs |
 |---|---|---|
-| `audit` | Run a full production audit with the `code-reviewer` and `security-reviewer` agents | None |
 | `create-pull-request` | Create a GitHub PR following project conventions using `gh` CLI | None |
 | `end-feature` | Finalize a merged PR: switch to main, pull, and remove the merged feature branch | None |
 | `ddd-patterns` | DDD entities, aggregate roots, value objects, repositories, domain services, and specifications | None |
@@ -235,9 +234,7 @@ without them. See [Per-project plugins](#per-project-plugins) and
 | `investigate-sentry` | Investigate a Sentry exception down to root cause and propose a fix | Required: `sentry`. Optional: `datadog-mcp` to correlate the request behind the exception |
 | `langchain-architecture` | LangChain 1.x and LangGraph for agents, memory, and tool integration | None |
 | `memento` | Morning briefing from the previous working day's Granola meetings and Slack conversations: up to 5 importance-sorted points, action-flagged, with the review window resolved against Google Calendar | Required: `granola`, `slack`, `google-calendar` (all three checked in a preflight gate) |
-| `production-code-audit` | Deep-scan a codebase and transform it to production-grade quality | None |
 | `python-code-style` | Python type safety, generics, protocols, and advanced type annotations | None |
-| `review-branch` | Review current branch changes for quality and security | None |
 | `save-session` | Save a high-density summary of the current session to `.claude_sessions.md` | None |
 | `socratic` | Question-only mode on any topic via `/socratic`: the agent asks rather than answers, with narrow exceptions for facts and safety, until told to stop | None |
 | `start-feature` | Start the feature development pipeline | None |
@@ -248,7 +245,7 @@ without them. See [Per-project plugins](#per-project-plugins) and
 
 #### Evals
 
-Some skills carry an `evals/evals.json` file that defines test cases to measure skill effectiveness: `create-pull-request`, `django-patterns`, `langchain-architecture`, `production-code-audit`, `python-code-style`, and `writing-clearly`. To run the evals, paste the following steps into your AI agent prompt.
+Some skills carry an `evals/evals.json` file that defines test cases to measure skill effectiveness: `create-pull-request`, `django-patterns`, `langchain-architecture`, `python-code-style`, and `writing-clearly`. To run the evals, paste the following steps into your AI agent prompt.
 
 1. Read the eval definitions in `.claude/skills/<skill>/evals/evals.json`
 2. Generate outputs - run each eval prompt twice per skill (once with the skill loaded, once without) and save the results to `.claude/skills-workspace/iteration-1/<eval-id>/with_skill/outputs/` and `without_skill/outputs/`
@@ -263,7 +260,6 @@ Specialized subagents that run in isolated context windows with restricted tools
 | Agent | Description |
 |---|---|
 | `code-reviewer` | Read-only production code audit with A-F graded report (architecture, security, performance, quality, testing) |
-| `security-reviewer` | OWASP Top 10 and Django-specific security vulnerability scanner |
 | `plan-evaluator` | Quality gate that checks implementation plans on 4 criteria (simplicity, consistency, security, reversibility) with GO/NO-GO verdict |
 | `pr-reviewer` | End-to-end PR review: audits diff, fetches open comments, applies fixes, commits, pushes, replies, resolves threads, and verifies CI |
 

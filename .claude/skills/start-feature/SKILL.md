@@ -78,13 +78,15 @@ Quick check before opening the PR: read `git log --oneline main..HEAD`. If the s
 
 ## 6. Verify
 
-The `superpowers:verification-before-completion` skill runs before any success claim: run the tests and `pre-commit` hooks and confirm the output. When checks fail, run the `fix-until-green` skill: it loops the project checks and `pre-commit`, dispatching a fixer subagent per failure, capped at 5 iterations, and reports honestly if it cannot converge. When a test fails or behavior surprises, use `superpowers:systematic-debugging` before proposing fixes; the same applies to bugs found in the Review step. Domain pattern skills (`django-patterns`, `python-code-style`, etc.) already applied during implementation via the rules; reviews happen in the next step. Do not run `production-code-audit` here; it rewrites code rather than verifying it.
+The `superpowers:verification-before-completion` skill runs before any success claim: run the tests and `pre-commit` hooks and confirm the output. When checks fail, run the `fix-until-green` skill: it loops the project checks and `pre-commit`, dispatching a fixer subagent per failure, capped at 5 iterations, and reports honestly if it cannot converge. When a test fails or behavior surprises, use `superpowers:systematic-debugging` before proposing fixes; the same applies to bugs found in the Review step. Domain pattern skills (`django-patterns`, `python-code-style`, etc.) already applied during implementation via the rules; reviews happen in the next step.
 
 ## 7. Review
 
-Review the branch changes with `/review-branch`, which dispatches the `code-reviewer` agent on the diff against `main`.
+Dispatch the `code-reviewer` agent on the diff against `main`. It reports; it does not fix. Judge each finding yourself before acting on it.
 
-For a full audit including security, `/audit` dispatches both the `code-reviewer` and `security-reviewer` agents.
+Review the diff once. The PR feedback stage handles reviewer comments, not a second audit of the same code.
+
+When the change touches authentication, authorization, secrets, user input, or serialization, run `/security-review` as well.
 
 ## 8. Create PR
 
@@ -115,8 +117,6 @@ Worktree --> Route
 
 Most steps trigger automatically through the `superpowers` plugin. The manual touchpoints are:
 
-- `/review-branch` to run code review
-- `/audit` to run full audit
 - `/create-pull-request` to open the PR
 - Paste a PR link to dispatch the `pr-reviewer` agent for handling review comments
 - `/end-feature` to clean up after merge
