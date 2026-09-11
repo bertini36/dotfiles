@@ -234,9 +234,7 @@ without them. See [Per-project plugins](#per-project-plugins) and
 | `memento` | Morning briefing from the previous working day's Granola meetings and Slack conversations: up to 5 importance-sorted points, action-flagged, with the review window resolved against Google Calendar | Required: `granola`, `slack`, `google-calendar` (all three checked in a preflight gate) |
 | `python-code-style` | Python type safety, generics, protocols, and advanced type annotations | None |
 | `save-session` | Save a high-density summary of the current session to `.claude_sessions.md` | None |
-| `socratic` | Question-only mode on any topic via `/socratic`: the agent asks rather than answers, with narrow exceptions for facts and safety, until told to stop | None |
 | `start-feature` | Start the feature development pipeline | None |
-| `teach` | Turn the current directory into a stateful teaching workspace via `/teach`: mission, resources, HTML lessons, reference sheets, and learning records ([source](https://github.com/mattpocock/skills/tree/main/skills/productivity/teach)) | None |
 | `tldr` | Quick bullet summary of a URL (article, blog post, video) via `/tldr` | None |
 | `wiki-karpathy` | Initialize, ingest, query, and lint a Karpathy-style personal wiki inside an Obsidian vault | Optional: `notion` for Notion-backed sources; other sources are local files |
 | `writing-clearly` | Clear prose for docs, commits, error messages, and UI text | None |
