@@ -19,7 +19,7 @@ Additional rules:
 
 Invoke the `feature-router` skill first, before touching git. It reads only enough of the repository to classify the task, and asks for confirmation.
 
-- **Quick Change or Standard Implementation confirmed:** implement per the router's recommendation, following the commit discipline and domain-specific rules under stage 5 (Implement) below, then skip ahead to stage 6 (Verify) and continue the rest of the pipeline (Review, PR, Address feedback, Finish) as normal. Do not run Brainstorm, Plan, or Grill.
+- **Quick Change or Standard Implementation confirmed:** implement per the router's recommendation, following the commit discipline in `CLAUDE.md` and the domain-specific rules under stage 5 (Implement) below, then skip ahead to stage 6 (Verify) and continue the rest of the pipeline (Review, PR, Address feedback, Finish) as normal. Do not run Brainstorm, Plan, or Grill.
 - **Needs Grill/Plan:** continue to Brainstorm below, unchanged.
 
 ## 2. Start a branch or worktree
@@ -70,17 +70,7 @@ Domain-specific rules load automatically based on the files touched:
 
 ### Commit discipline
 
-The PR must read as a story when walked commit by commit. A reviewer should follow the chain of thought without ever needing the full diff.
-
-Rules:
-
-- **One logical change per commit.** A commit adds a model, or adds a view, or adds tests for that view, never all three at once.
-- **Self-contained.** Each commit compiles, passes its own tests, and makes sense in isolation. No "WIP" or "fixup" commits on the final branch; squash or rebase them away before the PR.
-- **Ordered as a narrative.** Foundations first (types, models, schemas), then behavior (services, views), then surface (routes, UI), then tests and docs. A later commit may depend on an earlier one; an earlier commit must not depend on a later one.
-- **Never mix refactors with feature work.** A rename, an extraction, or a reformat goes in its own commit before or after the feature change, not folded into it.
-- **Message describes intent, not mechanics.** `feat: cache user permissions per request` beats `feat: add LRU dict to middleware`. The subject answers *what changed for the user*; the body answers *why* when the reason is not obvious.
-
-Quick check before opening the PR: read `git log --oneline main..HEAD`. If the sequence does not tell a coherent story, rebase until it does.
+The rules live in `CLAUDE.md` and apply to every commit, inside this pipeline and out of it. Follow them here; do not restate them.
 
 ## 6. Verify
 
