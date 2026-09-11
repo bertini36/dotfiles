@@ -43,7 +43,7 @@ typeCheckingMode = "strict"
 
 Every public function, method, and class should have type annotations.
 
-**Never annotate `-> None`.** Omit the return annotation entirely when a function returns nothing — it adds noise without value.
+**Never annotate `-> None`.** Omit the return annotation entirely when a function returns nothing; it adds noise without value.
 
 ```python
 # Bad: -> None is redundant and noisy

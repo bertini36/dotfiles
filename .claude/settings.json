@@ -30,7 +30,6 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "sonnet",
   "hooks": {
     "SessionStart": [
       {
@@ -89,7 +88,11 @@
     "last30days@last30days-skill": true,
     "notion@claude-plugins-official": true,
     "sentry-skills@sentry-skills": true,
-    "chrome-devtools-mcp@claude-plugins-official": true
+    "chrome-devtools-mcp@claude-plugins-official": true,
+    "abacum@abacum-claude-plugins": true,
+    "engine@abacum-claude-plugins": true,
+    "abacum-em@abacum-em-claude-plugins": true,
+    "data-input@abacum-claude-plugins": true
   },
   "extraKnownMarketplaces": {
     "sentry-skills": {
@@ -109,6 +112,20 @@
         "source": "github",
         "repo": "mvanhorn/last30days-skill"
       }
+    },
+    "abacum-claude-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "abacum-io/abacum-claude-plugins"
+      },
+      "autoUpdate": true
+    },
+    "abacum-em-claude-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "abacum-io/abacum-em-claude-plugins"
+      },
+      "autoUpdate": true
     }
   },
   "effortLevel": "high",

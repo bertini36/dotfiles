@@ -14,9 +14,9 @@ You are the manager of a persistent knowledge system based on Andrej Karpathy's 
 The wiki is a **persistent, compounding artifact**, not on-demand retrieval. Each ingestion synthesizes new sources into existing structured pages, so prior context does not need re-deriving.
 
 Three layers:
-1. **Raw sources** — immutable input (`raw/`). Never edited.
-2. **The wiki** — generated, structured Markdown (`wiki/`). Written and updated.
-3. **The schema** — configuration (`CLAUDE.md`). Defines structure, conventions, workflows.
+1. **Raw sources**: immutable input (`raw/`). Never edited.
+2. **The wiki**: generated, structured Markdown (`wiki/`). Written and updated.
+3. **The schema**: configuration (`CLAUDE.md`). Defines structure, conventions, workflows.
 
 Three operations: **Ingest**, **Query**, **Lint**.
 
@@ -58,7 +58,7 @@ When the user says **"initialize the wiki"** or similar, after resolving `{VAULT
 Exact content to write in `CLAUDE.md`:
 
 ```markdown
-# Personal Wiki System — Rules for Claude
+# Personal Wiki System: Rules for Claude
 
 ## Structure
 - `raw/` → raw sources. Claude does NOT edit here.
@@ -143,16 +143,16 @@ date: YYYY-MM-DD (current date)
 
 `log.md` is append-only, chronological. Each entry uses a parseable prefix so future tooling can grep by operation type:
 
-- `INIT` — initialization
-- `INGEST` — source ingestion
-- `QUERY` — query answered (and any synthesis filed back)
-- `LINT` — maintenance pass
-- `EDIT` — manual structural change
+- `INIT`: initialization
+- `INGEST`: source ingestion
+- `QUERY`: query answered (and any synthesis filed back)
+- `LINT`: maintenance pass
+- `EDIT`: manual structural change
 
 ```markdown
 # System Log
 
-YYYY-MM-DDTHH:MM INIT — wiki initialized; folder structure, CLAUDE.md, index.md created
+YYYY-MM-DDTHH:MM INIT: wiki initialized; folder structure, CLAUDE.md, index.md created
 ```
 
 ### 5. Confirm to the user
@@ -266,8 +266,8 @@ tags: [tags]
 [How it relates to other concepts]
 
 ## Sources
-- [[source-1]] — context
-- [[source-2]] — context
+- [[source-1]]: context
+- [[source-2]]: context
 
 ## 🔗 Related
 - [[related concept]]
@@ -309,7 +309,7 @@ When the user says **"do maintenance"**, **"lint the wiki"**, or similar:
 1. **Orphan pages:** list files in `wiki/` that receive no `[[]]` links from other pages → propose merging or deleting them
 2. **Missing cross-references:** for each page, scan body text for names of concepts/entities that already have a page but are not linked → add `[[]]` links. Also detect bidirectional gaps (page A links to B but B does not link back to A where it should)
 3. **Contradictions:** find opposing statements about the same concept on different pages → resolve by updating to the most recent information
-4. **Outdated information:** detect dates or data that may have become stale → mark them with a note `> [!warning] Review — information from YYYY-MM-DD`
+4. **Outdated information:** detect dates or data that may have become stale → mark them with a note `> [!warning] Review: information from YYYY-MM-DD`
 5. **Duplicates:** detect pages with very similar content → merge into one
 6. **Data gaps:** identify concept or entity pages with thin content (e.g. only a one-line definition, no sources, no connections) → flag as candidates for deeper ingestion or research
 7. **Broken index:** verify that `wiki/index.md` lists all existing pages and reflects current categories → update if any are missing or miscategorized
