@@ -156,9 +156,9 @@ All Claude Code configuration lives under `.claude/` and is symlinked into `~/.c
 
 ### Workflow
 
-This is spec-driven development (SDD): no code before a spec you approved and a plan that passed a GO. The `superpowers` plugin supplies the SDD stages; this repo supplies the gates around them, `feature-router`, `grill-me` and `fix-until-green`. Full walkthrough in `.claude/skills/start-feature/SKILL.md`.
+Spec-driven development, sized to the task. Work that changes architecture, persistent data, or a public contract earns a spec and a grilled plan before any code. Everything else does not, because the ceremony costs more than it catches. The `superpowers` plugin supplies the stages; this repo supplies `feature-router`, `grill-me` and `fix-until-green` around them. Full walkthrough in `.claude/skills/start-feature/SKILL.md`.
 
-`/start-feature "<task>"` walks the pipeline, stopping where it needs you. Route classifies the task first, so a one-line fix gets a plain branch instead of a worktree and skips the Brainstorm/Plan/Grill ceremony and lands straight on the same Verify → Review → PR tail as everything else.
+`/start-feature "<task>"` walks the pipeline, stopping where it needs you. Route classifies the task before anything else is paid for, so a one-line fix gets a plain branch instead of a worktree, skips Brainstorm, Plan and Grill, and lands on the same Verify → Review → PR tail as everything else.
 
 🙋 orange waits for you · 🤖 gray runs alone · ❓ blue runs alone but can interrupt · 📄 green are the documents it writes.
 
@@ -181,7 +181,7 @@ flowchart TD
 
     K --> RT --> W
     W -- "Quick Change / Standard Implementation:<br>implement per the router's preview" --> Y
-    RT -- "Needs Grill/Plan" --> B
+    W -- "Needs Grill/Plan" --> B
     B --> SPEC --> P
     P --> PLAN --> G
     G --> I
@@ -200,10 +200,11 @@ flowchart TD
 
 Only the Needs Grill/Plan route reaches the spec and plan at all. Route (stage 1) sends Quick Change and Standard Implementation straight to Verify (stage 6) instead, so there is one verification path, not two.
 
-Two rules never bend:
+Four rules never bend:
 
 - **No fuzzy decisions.** `grill-me` interviews you until every decision in the plan is settled, and writes each one into the plan file so the implementer reads it instead of re-deriving it.
 - **Subagents fan out, they do not relay.** A dependent chain stays in one session. Subagents take work that shares no state and no ordering: sweeping for references, auditing an area, getting oriented.
+- **The diff is reviewed once.** `code-reviewer` audits it at stage 7. `pr-reviewer` then owns the open threads, not a second pass over the same code.
 - **Humans answer humans.** `pr-reviewer` closes your threads and bot threads. Another person's thread stays yours, even when you asked for the fix.
 
 ### Skills
