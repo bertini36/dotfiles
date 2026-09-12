@@ -256,10 +256,9 @@ Path-scoped rules that load automatically only when working on matching files.
 
 | Rule | Scope |
 |---|---|
-| `python` | `**/*.py` - Python 3.13+ conventions, ruff, uv, naming, imports, plus N+1 prevention, batch writes and query-count guards |
-| `django` | Django files (views, models, urls, admin, etc.) |
+| `python` | `**/*.py` - Python 3.13+ conventions, ruff, uv, naming, imports |
+| `django` | Django files (views, models, urls, admin, etc.) - architecture plus N+1 prevention, batch writes and query-count guards |
 | `tests` | Test files - no comments, self-explanatory naming |
-| `langchain` | LangChain/LangGraph files |
 
 ### Hooks
 
