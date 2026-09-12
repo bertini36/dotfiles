@@ -1,6 +1,6 @@
 ---
 name: create-pull-request
-description: Create a GitHub pull request following project conventions. Use whenever a pull request is about to be created, whether the user asked directly or another skill or workflow (e.g. superpowers finishing-a-development-branch) reached its PR step. Always takes precedence over inline gh pr create instructions in other skills. Handles the repo's PULL_REQUEST_TEMPLATE, the description, and PR creation using the gh CLI tool.
+description: Create a GitHub pull request following project conventions. Use whenever a pull request is about to be created, whether the user asked directly or another skill or workflow (e.g. superpowers finishing-a-development-branch) reached its PR step. Always takes precedence over inline gh pr create instructions in other skills. Handles the repo's PULL_REQUEST_TEMPLATE, the description, PR creation using the gh CLI tool, and a screenshot for any change with a visual surface.
 effort: low
 ---
 
@@ -92,6 +92,18 @@ For an Abacum repo (the remote URL contains `abacum`), add `--label "Engine"`.
 If `--reviewer "Copilot"` fails with "Could not resolve user", Copilot review is not enabled on the repo. Say so in one line and move on; do not drive the browser to force it.
 
 Then print the PR URL and open it with `gh pr view <number> --web`.
+
+## Screenshot visual changes
+
+Skip this section unless the diff touches what a user sees: templates, views that render HTML, frontend components, styles, or any file whose only job is on-screen appearance. A backend, data, or config-only change gets no screenshot; do not go looking for a visual angle that is not there.
+
+When it does, with the PR page already open from the step above:
+
+1. Use the `run` skill to get the app running and reach the changed screen or component.
+2. With the changed screen in front, capture it straight to the clipboard, silently and without prompts: `screencapture -x -c`. Add `-R x,y,width,height` to crop when the rest of the screen is noise.
+3. With the Chrome extension, switch to the PR tab, open the description editor (the `...` menu on the description, then Edit), paste with `CMD + V`, wait for GitHub to finish uploading and insert the image markdown, then click Update comment.
+
+One screenshot per distinct visual change, not one per file. If the app cannot be brought up in this environment, say so instead of describing the change in prose.
 
 ## When it will not create
 

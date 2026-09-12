@@ -112,6 +112,7 @@ My personal Mac setup and configurations
   * Disable Spotlight shortcut to enable Raycast one (System Preferences -> Keyboard -> Shortcuts -> Spotlight -> Uncheck `Show Spotlight search`)
   * Configure shortcuts following [keymap.md](docs/keymap.md)
 - Install [Amphetamine](https://apps.apple.com/app/amphetamine/id937984704) and set it to keep the computer awake indefinitely
+- Grant Screen Recording permission to your terminal app (System Settings -> Privacy & Security -> Screen Recording): `screencapture` needs it, and Claude Code uses `screencapture` to screenshot visual changes for a PR (see the `create-pull-request` skill)
 
 - Enable auto-focus: `defaults write com.apple.Terminal FocusFollowsMouse -bool true`
 - Install [`reviewr`](https://github.com/persiyanov/herdr-reviewr), the herdr plugin that reviews an agent's diff in a pane beside it and sends the line comments back
@@ -216,7 +217,7 @@ without them. See [Per-project plugins](#per-project-plugins) and
 
 | Skill | Description | MCPs |
 |---|---|---|
-| `create-pull-request` | Create a GitHub PR following project conventions using `gh` CLI | None |
+| `create-pull-request` | Create a GitHub PR following project conventions using `gh` CLI, with a screenshot attached when the change has a visual surface | None |
 | `django-patterns` | Django architecture, REST APIs with Pydantic, ORM best practices, caching, and signals | None |
 | `domain-service-layer` | Where business logic lives in a Django app: domain services own the rules, views do HTTP, factories wire the dependencies | None |
 | `explain` | Turn a link into a local HTML page that explains it visually, with diagrams built from pure CSS and inline SVG, then open it in Chrome via `/explain` | Optional: `atlassian` for Jira and Confluence links, `notion` for Notion links. Other link types use WebFetch and `gh` |
