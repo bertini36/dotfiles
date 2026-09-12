@@ -112,6 +112,7 @@ My personal Mac setup and configurations
   * Disable Spotlight shortcut to enable Raycast one (System Preferences -> Keyboard -> Shortcuts -> Spotlight -> Uncheck `Show Spotlight search`)
   * Configure shortcuts following [keymap.md](docs/keymap.md)
 - Install [Amphetamine](https://apps.apple.com/app/amphetamine/id937984704) and set it to keep the computer awake indefinitely
+- Grant Screen Recording permission to your terminal app (System Settings -> Privacy & Security -> Screen Recording): `screencapture` needs it, and Claude Code uses `screencapture` to screenshot visual changes for a PR (see the `create-pull-request` skill)
 
 - Enable auto-focus: `defaults write com.apple.Terminal FocusFollowsMouse -bool true`
 - Install [`reviewr`](https://github.com/persiyanov/herdr-reviewr), the herdr plugin that reviews an agent's diff in a pane beside it and sends the line comments back
@@ -156,39 +157,31 @@ All Claude Code configuration lives under `.claude/` and is symlinked into `~/.c
 
 ### Workflow
 
-This is spec-driven development (SDD): no code before a spec you approved and a plan that passed a GO. The `superpowers` plugin supplies the SDD stages; this repo supplies the gates around them, `feature-router`, `grill-me`, `plan-evaluator`, `fix-until-green` and `/audit`. Full walkthrough in `.claude/skills/start-feature/SKILL.md`.
+Spec-driven development, opt-in. `/start-feature "<task>"` runs the full pipeline: a spec, a grilled plan, and a verified implementation, worth it for work that changes architecture, persistent data, or a public contract. Everything else stays a direct conversation, no ceremony paid unless it is asked for explicitly. The `superpowers` plugin supplies the stages; this repo supplies `grilling` and `fix-until-green` around them. Full walkthrough in `.claude/skills/start-feature/SKILL.md`.
 
-`/start-feature "<task>"` walks the pipeline, stopping where it needs you. Route classifies the task first, so a one-line fix skips the Brainstorm/Plan/Grill/Evaluate ceremony and lands straight on the same Verify → Review → PR tail as everything else.
+`/start-feature "<task>"` walks the pipeline, stopping only where it needs you, and always ends on the same Verify → Review → PR → Address feedback → Finish tail.
 
 🙋 orange waits for you · 🤖 gray runs alone · ❓ blue runs alone but can interrupt · 📄 green are the documents it writes.
 
 ```mermaid
 flowchart TD
     K["🙋 0 · Kick off<br><b>/start-feature</b><br><i>you describe the task, plus the Jira ticket</i>"]
-    W["🤖 1 · Worktree<br><b>superpowers:using-git-worktrees</b><br><i>the hook provisions the virtualenv<br>in Python worktrees</i>"]
-    RT["🙋 2 · Route<br><b>feature-router</b><br><i>classifies the task; you confirm the route</i>"]
-    B["🙋 3 · Brainstorm<br><b>superpowers:brainstorming</b><br><i>you answer questions one at a time,<br>then approve the design section by section</i>"]
+    W["🙋 1 · Branch or worktree<br><b>superpowers:using-git-worktrees</b><br><i>the hook provisions the virtualenv<br>in Python worktrees</i>"]
+    B["🙋 2 · Brainstorm<br><b>superpowers:brainstorming</b><br><i>you answer questions one at a time,<br>then approve the design section by section</i>"]
     SPEC[/"📄 SPEC · what and why<br>docs/superpowers/specs/&lt;date&gt;-&lt;topic&gt;-design.md<br><i>you review the file</i>"/]
-    P["🙋 4 · Plan<br><b>superpowers:writing-plans</b>"]
+    P["🙋 3 · Plan<br><b>superpowers:writing-plans</b>"]
     PLAN[/"📄 PLAN · how, task by task<br>docs/superpowers/plans/&lt;date&gt;-&lt;feature&gt;.md<br><i>you read it</i>"/]
-    G["🙋 4 · Grill<br><b>grill-me</b><br><i>you answer the interview until<br>no decision in the plan is fuzzy</i>"]
-    E["🙋 4 · Evaluate<br><b>plan-evaluator</b> agent<br><i>checks the plan against the real codebase;<br>you read the verdict and its blockers</i>"]
-    V{"verdict"}
-    I["❓ 5 · Implement<br><b>superpowers:executing-plans</b> · small plans<br><b>superpowers:subagent-driven-development</b> · 3+ tasks<br><b>superpowers:test-driven-development</b> · every task<br><i>runs task to task without checking in;<br>reviewer subagents, not you, gate each task</i>"]
-    Y["🤖 6 · Verify<br><b>superpowers:verification-before-completion</b><br>fix-until-green · on failing checks<br>superpowers:systematic-debugging · on surprises<br><i>you get the evidence: tests + pre-commit output</i>"]
-    R["🙋 7 · Review<br><b>/review-branch</b> · code-reviewer<br><b>/audit</b> · code-reviewer + security-reviewer<br><i>you pick the depth and judge each finding</i>"]
-    PR["🙋 8 · PR<br><b>create-pull-request</b> skill<br>writing-clearly · superpowers:finishing-a-development-branch<br><i>you read the title and body before they go out</i>"]
-    F["🙋 9 · Feedback<br><b>pr-reviewer</b> agent<br><i>you paste the PR link,<br>and you answer human reviewers yourself</i>"]
-    Z["🙋 10 · Finish<br><b>/end-feature</b><br><i>you merge the PR first, then run it</i>"]
+    G["🙋 3 · Grill<br><b>grilling</b><br><i>you answer a round at a time until<br>no decision in the plan is fuzzy,<br>then you confirm</i>"]
+    I["❓ 4 · Implement<br><b>superpowers:executing-plans</b> · in session<br><b>superpowers:test-driven-development</b> · every task<br><b>superpowers:dispatching-parallel-agents</b> · fan-out only<br><i>runs task to task without checking in</i>"]
+    Y["🤖 5 · Verify<br><b>superpowers:verification-before-completion</b><br>fix-until-green · on failing checks<br>superpowers:systematic-debugging · on surprises<br><i>you get the evidence: tests + pre-commit output</i>"]
+    R["🙋 6 · Review<br><b>code-reviewer</b> agent on the diff<br><i>plus /security-review when the change<br>touches auth, secrets, or user input</i>"]
+    PR["🙋 7 · PR<br><b>create-pull-request</b> skill<br>writing-clearly · superpowers:finishing-a-development-branch<br><i>you read the title and body before they go out</i>"]
+    F["🙋 8 · Feedback<br><b>pr-reviewer</b> agent<br><i>you paste the PR link; it closes threads,<br>and you answer human reviewers yourself</i>"]
+    Z["🙋 9 · Finish<br><i>you merge the PR, then switch to main, pull,<br>and remove the feature branch (and worktree)</i>"]
 
-    K --> W --> RT
-    RT -- "Quick Change / Standard Implementation:<br>implement per the router's preview" --> Y
-    RT -- "Needs Grill/Plan" --> B
-    B --> SPEC --> P
+    K --> W --> B --> SPEC --> P
     P --> PLAN --> G
-    G --> E --> V
-    V -- "NO-GO: back with the blockers,<br>re-grill only what changed" --> P
-    V -- GO --> I
+    G --> I
     I -- "stops only on a plan conflict,<br>an implementer question, or BLOCKED" --> Y
     Y --> R --> PR --> F --> Z
 
@@ -196,19 +189,21 @@ flowchart TD
     classDef auto fill:#E5E7EB,stroke:#6B7280,color:#111827
     classDef ask fill:#DBEAFE,stroke:#1D4ED8,color:#111827
     classDef doc fill:#DCFCE7,stroke:#15803D,color:#111827
-    class K,RT,B,P,G,E,R,PR,F,Z you
-    class W,Y auto
+    class K,W,B,P,G,R,PR,F,Z you
+    class Y auto
     class I ask
     class SPEC,PLAN doc
-    class V you
 ```
 
-Only the Needs Grill/Plan route reaches the spec and plan at all. Route (stage 2) sends Quick Change and Standard Implementation straight to Verify (stage 6) instead, so there is one verification path, not two.
+This pipeline only runs behind `/start-feature`. Nothing routes a task into it automatically; anything not started that way is a direct conversation, no spec, plan, or grill imposed.
 
-Two rules never bend:
+Five rules never bend:
 
-- **GO only.** `plan-evaluator` runs with fresh context and no stake in the plan. NO-GO sends the blockers back to the plan.
-- **Humans answer humans.** `pr-reviewer` handles your threads and bot threads. Another person's thread stays yours, even when you asked for the fix.
+- **No fuzzy decisions.** `grilling` interviews you in rounds until every decision is settled. It ends when you confirm the understanding is shared, not when it runs out of questions.
+- **A plan names its harness.** Every behavior the plan promises says which test fails when it breaks. A spec is only as solid as the thing that checks it.
+- **Subagents fan out, they do not relay.** A dependent chain stays in one session. Subagents take work that shares no state and no ordering: sweeping for references, auditing an area, getting oriented.
+- **The diff is reviewed once.** `code-reviewer` audits it at stage 6. `pr-reviewer` then owns the open threads, not a second pass over the same code.
+- **Humans answer humans.** `pr-reviewer` closes your threads and bot threads. Another person's thread stays yours, even when you asked for the fix.
 
 ### Skills
 
@@ -222,33 +217,24 @@ without them. See [Per-project plugins](#per-project-plugins) and
 
 | Skill | Description | MCPs |
 |---|---|---|
-| `audit` | Run a full production audit with the `code-reviewer` and `security-reviewer` agents | None |
-| `create-pull-request` | Create a GitHub PR following project conventions using `gh` CLI | None |
-| `end-feature` | Finalize a merged PR: switch to main, pull, and remove the merged feature branch | None |
-| `ddd-patterns` | DDD entities, aggregate roots, value objects, repositories, domain services, and specifications | None |
+| `create-pull-request` | Create a GitHub PR following project conventions using `gh` CLI, with a screenshot attached when the change has a visual surface | None |
 | `django-patterns` | Django architecture, REST APIs with Pydantic, ORM best practices, caching, and signals | None |
+| `domain-service-layer` | Where business logic lives in a Django app: domain services own the rules, views do HTTP, factories wire the dependencies | None |
 | `explain` | Turn a link into a local HTML page that explains it visually, with diagrams built from pure CSS and inline SVG, then open it in Chrome via `/explain` | Optional: `atlassian` for Jira and Confluence links, `notion` for Notion links. Other link types use WebFetch and `gh` |
-| `feature-router` | Classifies a `start-feature` task as Quick Change, Standard Implementation, or Needs Grill/Plan, and routes the pipeline accordingly | None |
-| `fix-until-green` | Loop project checks and pre-commit, dispatching a fixer subagent per failure, until green or 5 iterations | None |
-| `grill-me` | Stress-test a plan or design by interviewing one question at a time across the decision tree, recording each resolved decision into the plan file | None |
+| `fix-until-green` | Loop project checks and pre-commit until green or 5 iterations, fixing each failure against its full output | None |
+| `grilling` | Grill the user relentlessly about a plan, decision, or idea, interviewing in rounds until every decision is settled ([source](https://github.com/mattpocock/skills/blob/main/skills/productivity/grilling/SKILL.md)) | None |
 | `herdr` | Drive [herdr](https://herdr.dev) through its CLI: inspect panes, tabs and workspaces, split layout, start sibling agents and read their output ([source](https://github.com/herdrdev/herdr/tree/master/skills/herdr)) | None |
 | `investigate-sentry` | Investigate a Sentry exception down to root cause and propose a fix | Required: `sentry`. Optional: `datadog-mcp` to correlate the request behind the exception |
-| `langchain-architecture` | LangChain 1.x and LangGraph for agents, memory, and tool integration | None |
 | `memento` | Morning briefing from the previous working day's Granola meetings and Slack conversations: up to 5 importance-sorted points, action-flagged, with the review window resolved against Google Calendar | Required: `granola`, `slack`, `google-calendar` (all three checked in a preflight gate) |
-| `production-code-audit` | Deep-scan a codebase and transform it to production-grade quality | None |
 | `python-code-style` | Python type safety, generics, protocols, and advanced type annotations | None |
-| `review-branch` | Review current branch changes for quality and security | None |
 | `save-session` | Save a high-density summary of the current session to `.claude_sessions.md` | None |
-| `socratic` | Question-only mode on any topic via `/socratic`: the agent asks rather than answers, with narrow exceptions for facts and safety, until told to stop | None |
-| `start-feature` | Start the feature development pipeline | None |
-| `teach` | Turn the current directory into a stateful teaching workspace via `/teach`: mission, resources, HTML lessons, reference sheets, and learning records ([source](https://github.com/mattpocock/skills/tree/main/skills/productivity/teach)) | None |
+| `start-feature` | Start the feature development pipeline, via `/start-feature` only | None |
 | `tldr` | Quick bullet summary of a URL (article, blog post, video) via `/tldr` | None |
-| `wiki-karpathy` | Initialize, ingest, query, and lint a Karpathy-style personal wiki inside an Obsidian vault | Optional: `notion` for Notion-backed sources; other sources are local files |
 | `writing-clearly` | Clear prose for docs, commits, error messages, and UI text | None |
 
 #### Evals
 
-Some skills carry an `evals/evals.json` file that defines test cases to measure skill effectiveness: `create-pull-request`, `django-patterns`, `langchain-architecture`, `production-code-audit`, `python-code-style`, and `writing-clearly`. To run the evals, paste the following steps into your AI agent prompt.
+Some skills carry an `evals/evals.json` file that defines test cases to measure skill effectiveness: `create-pull-request`, `django-patterns`, `python-code-style`, and `writing-clearly`. To run the evals, paste the following steps into your AI agent prompt.
 
 1. Read the eval definitions in `.claude/skills/<skill>/evals/evals.json`
 2. Generate outputs - run each eval prompt twice per skill (once with the skill loaded, once without) and save the results to `.claude/skills-workspace/iteration-1/<eval-id>/with_skill/outputs/` and `without_skill/outputs/`
@@ -262,10 +248,8 @@ Specialized subagents that run in isolated context windows with restricted tools
 
 | Agent | Description |
 |---|---|
-| `code-reviewer` | Read-only production code audit with A-F graded report (architecture, security, performance, quality, testing) |
-| `security-reviewer` | OWASP Top 10 and Django-specific security vulnerability scanner |
-| `plan-evaluator` | Quality gate that checks implementation plans on 4 criteria (simplicity, consistency, security, reversibility) with GO/NO-GO verdict |
-| `pr-reviewer` | End-to-end PR review: audits diff, fetches open comments, applies fixes, commits, pushes, replies, resolves threads, and verifies CI |
+| `code-reviewer` | Read-only diff audit with an A-F graded report (architecture, security, performance, quality, testing) and explicit agent-authored red flags |
+| `pr-reviewer` | Closes out a PR's open review comments: fetches, triages, fixes, commits, pushes, replies, resolves threads, and verifies CI |
 
 ### Rules
 
@@ -273,11 +257,9 @@ Path-scoped rules that load automatically only when working on matching files.
 
 | Rule | Scope |
 |---|---|
-| `python` | `**/*.py` - Python 3.12+ conventions, ruff, uv, naming, imports |
-| `performance` | `**/*.py` - N+1 prevention, batch writes, query-count guards, no premature caching |
-| `django` | Django files (views, models, urls, admin, etc.) |
+| `python` | `**/*.py` - Python 3.13+ conventions, ruff, uv, naming, imports |
+| `django` | Django files (views, models, urls, admin, etc.) - architecture plus N+1 prevention, batch writes and query-count guards |
 | `tests` | Test files - no comments, self-explanatory naming |
-| `langchain` | LangChain/LangGraph files |
 
 ### Hooks
 
@@ -287,7 +269,7 @@ session events. Registered in the `hooks` block of `.claude/settings.json`.
 | Hook | Event | Description |
 |---|---|---|
 | `python-worktree-venv.sh` | `SessionStart` | Provisions the virtualenv when a session starts inside a Python git worktree |
-| `git-push-protected-branch.sh` | `PreToolUse` (`Bash`, `git push*`) | Asks for confirmation when a push targets `main` or `master`; stays silent for any other push |
+| `git-protected-branches.sh` | `PreToolUse` (`Bash`) | Denies any push to `main` or `master` and any rewrite of their history (amend, rebase, moving reset, forced branch moves, filter-repo); stays silent for everything else |
 
 `rtk hook claude` also runs on every `Bash` call to rewrite commands through the
 [rtk](#rtk) proxy.

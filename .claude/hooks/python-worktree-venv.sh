@@ -19,7 +19,7 @@ GIT_COMMON=$(git rev-parse --git-common-dir 2>/dev/null) || exit 0
 GIT_DIR_ABS=$(cd "$GIT_DIR" && pwd -P)
 GIT_COMMON_ABS=$(cd "$GIT_COMMON" && pwd -P)
 
-# Not a worktree — nothing to do
+# Not a worktree, nothing to do
 [[ "$GIT_DIR_ABS" == "$GIT_COMMON_ABS" ]] && exit 0
 
 # Not a Python project
