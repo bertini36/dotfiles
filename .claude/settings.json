@@ -13,9 +13,6 @@
       "Bash(dd *)",
       "Bash(mkfs *)",
       "Bash(shred *)",
-      "Bash(git push --force*)",
-      "Bash(git filter-branch*)",
-      "Bash(git filter-repo*)",
       "Bash(cat /etc/passwd)",
       "Bash(cat /etc/shadow)",
       "Bash(cat /etc/ssh/**)",
@@ -24,11 +21,9 @@
       "Read(~/.aws/**)"
     ],
     "ask": [
-      "Bash(git reset --hard*)",
-      "Bash(git clean -*)",
       "Bash(gh pr merge *)"
     ],
-    "defaultMode": "auto"
+    "defaultMode": "bypassPermissions"
   },
   "hooks": {
     "SessionStart": [
@@ -56,9 +51,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash ~/.claude/hooks/git-push-protected-branch.sh",
-            "if": "Bash(git push*)",
-            "statusMessage": "Checking push target"
+            "command": "bash ~/.claude/hooks/git-protected-branches.sh",
+            "statusMessage": "Checking protected branches"
           }
         ]
       }

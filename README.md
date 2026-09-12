@@ -269,7 +269,7 @@ session events. Registered in the `hooks` block of `.claude/settings.json`.
 | Hook | Event | Description |
 |---|---|---|
 | `python-worktree-venv.sh` | `SessionStart` | Provisions the virtualenv when a session starts inside a Python git worktree |
-| `git-push-protected-branch.sh` | `PreToolUse` (`Bash`, `git push*`) | Asks for confirmation when a push targets `main` or `master`; stays silent for any other push |
+| `git-protected-branches.sh` | `PreToolUse` (`Bash`) | Denies any push to `main` or `master` and any rewrite of their history (amend, rebase, moving reset, forced branch moves, filter-repo); stays silent for everything else |
 
 `rtk hook claude` also runs on every `Bash` call to rewrite commands through the
 [rtk](#rtk) proxy.
