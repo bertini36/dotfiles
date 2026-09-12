@@ -1,6 +1,6 @@
 ---
 name: create-pull-request
-description: Create a GitHub pull request following project conventions. Use whenever a pull request is about to be created, whether the user asked directly or another skill or workflow (e.g. superpowers finishing-a-development-branch) reached its PR step. Always takes precedence over inline gh pr create instructions in other skills. Handles commit analysis, branch management, the repo's PULL_REQUEST_TEMPLATE, and PR creation using the gh CLI tool.
+description: Create a GitHub pull request following project conventions. Use whenever a pull request is about to be created, whether the user asked directly or another skill or workflow (e.g. superpowers finishing-a-development-branch) reached its PR step. Always takes precedence over inline gh pr create instructions in other skills. Handles commit analysis, branch management, the repo's PULL_REQUEST_TEMPLATE, PR creation using the gh CLI tool, and a screenshot for any change with a visual surface.
 effort: low
 ---
 
@@ -243,8 +243,17 @@ After creating the PR:
    gh pr view <number> --web
    ```
 
-4. **Remind about CI checks**: Tests and linting will run automatically
-5. **Suggest next steps**:
+4. **Screenshot visual changes.** Skip this step unless the diff touches what a user sees: templates, views that render HTML, frontend components, styles, or any file whose only job is on-screen appearance. A backend, data, or config-only change gets no screenshot; do not go looking for a visual angle that is not there.
+
+   When it does, with the PR page already open from the step above:
+   1. Use the `run` skill to get the app running and reach the changed screen or component.
+   2. Capture the screen straight to the clipboard, no intermediate file: `screencapture -i -c` for a region, `screencapture -w -c` for a single window (click it when prompted).
+   3. Click into the PR description field in the browser and paste. GitHub uploads the image and inserts the markdown itself; save the description.
+
+   One screenshot per distinct visual change, not one per file. If the app cannot be brought up in this environment, say so instead of describing the change in prose.
+
+5. **Remind about CI checks**: Tests and linting will run automatically
+6. **Suggest next steps**:
    - Add labels if needed: `gh pr edit --add-label "bug"`
 
 ## Error Handling
@@ -283,3 +292,4 @@ Before finalizing, ensure:
 - [ ] PR is created in draft mode (`--draft`)
 - [ ] Copilot added as reviewer
 - [ ] PR opened in the browser
+- [ ] Screenshot attached if the change has a visual surface
