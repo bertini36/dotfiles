@@ -27,9 +27,9 @@
 * Calendar `Caps Lock + S`
 * WhatsApp `Caps Lock + W`
 * Granola `Caps Lock + G`
-* Claude `Caps Lock + I`
+* Claude `Caps Lock + A`
 * Open Downloads `Caps Lock + D`
-* Pomodoro `Caps Lock + O`
+* Pomodoro `Caps Lock + P`
 * DeepL `Caps Lock + L`
 * Keep `Caps Lock + K`
 * Left half of the screen `Caps Lock + ←`
