@@ -67,7 +67,6 @@ Domain-specific rules load automatically based on the files touched:
 |---|---|---|
 | `**/*.py` | `python` | `python-code-style` |
 | Django files (views, models, urls, admin, etc.) | `django` | `django-patterns` |
-| LangChain/LangGraph files | `langchain` | `langchain-architecture` |
 | Test files | `tests` | - |
 
 ### Commit discipline

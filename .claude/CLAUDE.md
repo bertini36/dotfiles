@@ -10,7 +10,6 @@
   - `domain-service-layer`
   - `django-patterns`
   - `python-code-style`
-  - `langchain-architecture`
 
 ## Docstrings and Comments
 

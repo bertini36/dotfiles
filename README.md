@@ -230,7 +230,6 @@ without them. See [Per-project plugins](#per-project-plugins) and
 | `grill-me` | Stress-test a plan or design by interviewing in rounds across the decision tree, recording each resolved decision into the plan file | None |
 | `herdr` | Drive [herdr](https://herdr.dev) through its CLI: inspect panes, tabs and workspaces, split layout, start sibling agents and read their output ([source](https://github.com/herdrdev/herdr/tree/master/skills/herdr)) | None |
 | `investigate-sentry` | Investigate a Sentry exception down to root cause and propose a fix | Required: `sentry`. Optional: `datadog-mcp` to correlate the request behind the exception |
-| `langchain-architecture` | LangChain 1.x and LangGraph for agents, memory, and tool integration | None |
 | `memento` | Morning briefing from the previous working day's Granola meetings and Slack conversations: up to 5 importance-sorted points, action-flagged, with the review window resolved against Google Calendar | Required: `granola`, `slack`, `google-calendar` (all three checked in a preflight gate) |
 | `python-code-style` | Python type safety, generics, protocols, and advanced type annotations | None |
 | `save-session` | Save a high-density summary of the current session to `.claude_sessions.md` | None |
@@ -241,7 +240,7 @@ without them. See [Per-project plugins](#per-project-plugins) and
 
 #### Evals
 
-Some skills carry an `evals/evals.json` file that defines test cases to measure skill effectiveness: `create-pull-request`, `django-patterns`, `langchain-architecture`, `python-code-style`, and `writing-clearly`. To run the evals, paste the following steps into your AI agent prompt.
+Some skills carry an `evals/evals.json` file that defines test cases to measure skill effectiveness: `create-pull-request`, `django-patterns`, `python-code-style`, and `writing-clearly`. To run the evals, paste the following steps into your AI agent prompt.
 
 1. Read the eval definitions in `.claude/skills/<skill>/evals/evals.json`
 2. Generate outputs - run each eval prompt twice per skill (once with the skill loaded, once without) and save the results to `.claude/skills-workspace/iteration-1/<eval-id>/with_skill/outputs/` and `without_skill/outputs/`
