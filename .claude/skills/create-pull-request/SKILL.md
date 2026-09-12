@@ -247,8 +247,8 @@ After creating the PR:
 
    When it does, with the PR page already open from the step above:
    1. Use the `run` skill to get the app running and reach the changed screen or component.
-   2. Capture the screen straight to the clipboard, no intermediate file: `screencapture -i -c` for a region, `screencapture -w -c` for a single window (click it when prompted).
-   3. Click into the PR description field in the browser and paste. GitHub uploads the image and inserts the markdown itself; save the description.
+   2. With the changed screen in front, capture it straight to the clipboard, silently and without prompts: `screencapture -x -c`. Add `-R x,y,width,height` to crop when the rest of the screen is noise.
+   3. With the Chrome extension, switch to the PR tab, open the description editor (the `...` menu on the description, then Edit), paste with `CMD + V`, wait for GitHub to finish uploading and insert the image markdown, then click Update comment.
 
    One screenshot per distinct visual change, not one per file. If the app cannot be brought up in this environment, say so instead of describing the change in prose.
 
