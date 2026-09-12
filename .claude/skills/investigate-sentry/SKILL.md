@@ -69,7 +69,7 @@ For suspected data problems, gather evidence: query the event payload for the of
 
 ## Step 6: If the trace is not enough, grill the user
 
-When the stack trace and code reading leave the root cause ambiguous, the user usually holds the missing context: recent deploys, known data quirks, business rules not visible in code. Invoke the `grill-me` skill and interview them until the picture is complete. Useful angles:
+When the stack trace and code reading leave the root cause ambiguous, the user usually holds the missing context: recent deploys, known data quirks, business rules not visible in code. Invoke the `grilling` skill and interview them until the picture is complete. Useful angles:
 
 - What changed around the first-seen date (deploys, migrations, config, third-party APIs)?
 - Is the failing input expected to exist? Who or what produces it?

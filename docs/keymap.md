@@ -175,11 +175,10 @@ Everything else keeps its Herdr default behind the same prefix.
 
 ### Repo skills (invoke with `/skill-name`)
 
-* `/start-feature` → Start the feature development pipeline (route, branch, brainstorm, plan, grill, implement, verify, review, PR, feedback, finish)
-* `/grill-me` → Get interviewed in rounds about a plan or design until the understanding is shared
+* `/start-feature` → Start the feature development pipeline (branch, brainstorm, plan, grill, implement, verify, review, PR, feedback, finish)
+* `/grilling` → Get interviewed in rounds about a plan, decision, or idea until the understanding is shared
 * `/fix-until-green` → Loop project checks and pre-commit, fixing each failure until everything passes
 * `/create-pull-request` → Create a GitHub PR following project conventions and the repo template
-* `/end-feature` → Finalize a merged PR: switch to main, pull, delete the feature branch locally and remotely
 * `/save-session` → Save a high-density summary of the current session to `.claude_sessions.md`
 * `/tldr <url>` → Quick bullet summary of an article, blog post, YouTube video, or web page
 * `/investigate-sentry <issue>` → Root-cause a Sentry exception and propose a fix

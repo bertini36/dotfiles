@@ -3,7 +3,7 @@ name: start-feature
 description: Start the feature development pipeline
 ---
 
-Follow this pipeline strictly, stage by stage, without skipping stages, except where stage 1 (Route) directs a shorter path. Pause between stages only when the pipeline asks the user something.
+Follow this pipeline stage by stage, without skipping any. Pause between stages only when the pipeline asks the user something.
 
 Task: $ARGUMENTS
 
@@ -13,22 +13,11 @@ In a worktree: !`git rev-parse --git-dir 2>/dev/null | grep -q '/worktrees/' && 
 
 Additional rules:
 - If the task above includes a Jira ticket, pass it along so it lands in the PR description.
-- If no `.git` repo is present, skip the git and PR stages (branch or worktree creation, commits, PR). Route still classifies the task, then whichever path it selects continues normally through Verify.
+- If no `.git` repo is present, skip the git and PR stages (branch or worktree creation, commits, PR); continue the rest of the pipeline through Verify.
 
-## 1. Route
-
-Invoke the `feature-router` skill first, before touching git. It reads only enough of the repository to classify the task, and asks for confirmation.
-
-- **Quick Change or Standard Implementation confirmed:** implement per the router's recommendation, following the commit discipline in `CLAUDE.md` and the domain-specific rules under stage 5 (Implement) below, then skip ahead to stage 6 (Verify) and continue the rest of the pipeline (Review, PR, Address feedback, Finish) as normal. Do not run Brainstorm, Plan, or Grill.
-- **Needs Grill/Plan:** continue to Brainstorm below, unchanged.
-
-## 2. Start a branch or worktree
-
-Classification comes first because it decides what isolation the work is worth. A one-line fix does not need its own checkout and its own virtualenv.
+## 1. Start a branch or worktree
 
 If the context above says the session is already in a worktree, say so and move on without asking.
-
-On a **Quick Change**, create a descriptive branch off `main` (for example `fix/resolve-base-branch-from-remote`) and stay in the current working tree.
 
 Otherwise ask the user, with `AskUserQuestion`:
 
@@ -37,19 +26,19 @@ Otherwise ask the user, with `AskUserQuestion`:
 
 Take the answer at face value; do not re-ask later in the pipeline.
 
-## 3. Brainstorm
+## 2. Brainstorm
 
 The user describes what they want to build. The `superpowers:brainstorming` skill explores requirements, edge cases, and design before any code is written. Brainstorming is for when the user does not yet know what they want: the model asks, the user discovers.
 
-## 4. Plan
+## 3. Plan
 
 The `superpowers:writing-plans` skill creates a step-by-step implementation plan.
 
 The plan must name how the work will be proven: which tests pin each behavior, and what has to pass before the change is done. A spec is only as solid as the harness that checks it; without one, the plan states an intention and nothing measures whether the code met it.
 
-Once the plan looks complete, the `grill-me` skill runs: it interviews the user in rounds, each round asking only the decisions whose prerequisites are already settled, anchored in the plan's concrete decisions. The interview is the gate. Running out of questions does not open it; the user confirming that the understanding is shared does.
+Once the plan looks complete, the `grilling` skill runs: it interviews the user in rounds, anchored in the plan's concrete decisions, until every decision is settled. The interview is the gate. Running out of questions does not open it; the user confirming shared understanding does.
 
-## 5. Implement
+## 4. Implement
 
 Implement in this session with `superpowers:executing-plans`. Each task follows `superpowers:test-driven-development`: a failing test pins the behavior before any implementation code.
 
@@ -73,11 +62,11 @@ Domain-specific rules load automatically based on the files touched:
 
 The rules live in `CLAUDE.md` and apply to every commit, inside this pipeline and out of it. Follow them here; do not restate them.
 
-## 6. Verify
+## 5. Verify
 
 The `superpowers:verification-before-completion` skill runs before any success claim: run the tests and `pre-commit` hooks and confirm the output. When checks fail, run the `fix-until-green` skill: it loops the project checks and `pre-commit`, capped at 5 iterations, and reports honestly if it cannot converge. When a test fails or behavior surprises, use `superpowers:systematic-debugging` before proposing fixes; the same applies to bugs found in the Review step. Domain pattern skills (`django-patterns`, `python-code-style`, etc.) already applied during implementation via the rules; reviews happen in the next step.
 
-## 7. Review
+## 6. Review
 
 Dispatch the `code-reviewer` agent on the diff against `main`. It reports; it does not fix. Judge each finding yourself before acting on it.
 
@@ -85,35 +74,27 @@ Review the diff once. The PR feedback stage handles reviewer comments, not a sec
 
 When the change touches authentication, authorization, secrets, user input, or serialization, run `/security-review` as well.
 
-## 8. Create PR
+## 7. Create PR
 
 Use the `create-pull-request` skill with `writing-clearly` for the description. The `superpowers:finishing-a-development-branch` skill guides the merge/PR decision.
 
-## 9. Address PR feedback
+## 8. Address PR feedback
 
 After the PR is open and reviewers leave comments, the user pastes the PR link (e.g. https://github.com/owner/repo/pull/42). Dispatch the `pr-reviewer` agent.
 
-The agent fetches all open review comments (humans and bots like Copilot, CodeRabbit), triages each one (apply, reject, or defer), commits fixes, pushes, replies to threads, resolves them, verifies CI is green, and reports. It does not re-audit the diff; stage 7 already did.
+The agent fetches all open review comments (humans and bots like Copilot, CodeRabbit), triages each one (apply, reject, or defer), commits fixes, pushes, replies to threads, resolves them, verifies CI is green, and reports. It does not re-audit the diff; stage 6 already did.
 
-## 10. Finish
+## 9. Finish
 
-Run `/end-feature`: switches to `main`, pulls latest, and removes the worktree and the merged feature branch locally and remotely.
+Once the PR is merged: switch to `main`, pull the latest changes, then remove the merged feature branch locally and remotely. If the work ran in a worktree, remove it too (`git worktree remove`).
 
 ## Quick Reference
 
 ```
-Route --> Branch or worktree
-              |
-              +-- Quick Change / Standard Implementation ------------------------+
-              |                                                                  |
-              +-- Needs Grill/Plan --> Brainstorm --> Plan --> Grill --> Implement
-                                                                                 |
-                                                                                 v
-                                     Verify --> Review --> PR --> Address feedback --> Finish
+Branch or worktree --> Brainstorm --> Plan --> Grill --> Implement --> Verify --> Review --> PR --> Address feedback --> Finish
 ```
 
 Most steps trigger automatically through the `superpowers` plugin. The manual touchpoints are:
 
 - `/create-pull-request` to open the PR
 - Paste a PR link to dispatch the `pr-reviewer` agent for handling review comments
-- `/end-feature` to clean up after merge
