@@ -30,7 +30,6 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "sonnet",
   "hooks": {
     "SessionStart": [
       {
@@ -124,5 +123,6 @@
       "$defaults",
       "Never read, print, copy, or transmit SSH keys and cloud credentials"
     ]
-  }
+  },
+  "model": "opus"
 }
