@@ -6,9 +6,6 @@
     "CAVEMAN_DEFAULT_MODE": "lite"
   },
   "permissions": {
-    "allow": [
-      "Bash(*)"
-    ],
     "deny": [
       "Bash(rm -rf /)",
       "Bash(rm -rf ~)",
@@ -26,7 +23,7 @@
     "ask": [
       "Bash(gh pr merge *)"
     ],
-    "defaultMode": "bypassPermissions"
+    "defaultMode": "auto"
   },
   "hooks": {
     "SessionStart": [
@@ -121,5 +118,7 @@
       "Never read, print, copy, or transmit SSH keys and cloud credentials"
     ]
   },
-  "model": "opus"
+  "model": "opus",
+  "skipAutoPermissionPrompt": true,
+  "autoContinueAtUsageLimit": true
 }
