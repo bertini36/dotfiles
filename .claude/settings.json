@@ -21,10 +21,13 @@
       "Read(~/.aws/**)"
     ],
     "ask": [
-      "Bash(gh pr merge *)"
+      "Bash(gh pr merge *)",
+      "Bash(ssh *)",
+      "Bash(kubectl *)"
     ],
     "defaultMode": "auto"
   },
+  "model": "sonnet",
   "hooks": {
     "SessionStart": [
       {
@@ -106,7 +109,9 @@
   },
   "effortLevel": "high",
   "tui": "fullscreen",
+  "autoContinueAtUsageLimit": true,
   "remoteControlAtStartup": true,
+  "skipAutoPermissionPrompt": true,
   "autoMode": {
     "soft_deny": [
       "$defaults",
@@ -117,8 +122,5 @@
       "$defaults",
       "Never read, print, copy, or transmit SSH keys and cloud credentials"
     ]
-  },
-  "model": "opus",
-  "skipAutoPermissionPrompt": true,
-  "autoContinueAtUsageLimit": true
+  }
 }
